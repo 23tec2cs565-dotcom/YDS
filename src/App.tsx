@@ -22,6 +22,15 @@ import { initAnalytics } from "./utils/analytics";
 function AppContent() {
   const location = useLocation();
 
+  // Track page views in Google Analytics on route changes
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof (window as unknown as { gtag?: Function }).gtag === "function") {
+      (window as unknown as { gtag: Function }).gtag("config", "G-PZK8FJJXT4", {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location.pathname, location.search]);
+
   // Debug trigger to preview the Error Boundary Runtime Error view
   if (location.search.includes("trigger-error=true")) {
     throw new Error(
