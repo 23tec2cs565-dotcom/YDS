@@ -42,6 +42,15 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
   const touchEndX = useRef<number | null>(null);
   const SWIPE_THRESHOLD = 50;
 
+  const handleClose = useCallback(() => {
+    setAnimating(true);
+    // small delay to allow fade-out
+    setTimeout(() => {
+      setAnimating(false);
+      onClose();
+    }, 150);
+  }, [onClose]);
+
   useEffect(() => {
     if (project) setActiveIndex(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -126,15 +135,6 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
   }, [isOpen, project, handleClose]);
 
   const imgs = project?.images && project.images.length ? project.images : project?.image ? [project.image] : [];
-
-  const handleClose = useCallback(() => {
-    setAnimating(true);
-    // small delay to allow fade-out
-    setTimeout(() => {
-      setAnimating(false);
-      onClose();
-    }, 150);
-  }, [onClose]);
 
   const stop = (e: React.MouseEvent) => e.stopPropagation();
 

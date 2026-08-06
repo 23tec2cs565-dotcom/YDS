@@ -1,12 +1,10 @@
-// src/pages/ServiceDetails.tsx
 import React, { useMemo, useCallback } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate, Navigate } from "react-router-dom";
 import {
   ArrowRight,
   ChevronLeft,
   CheckCircle2,
   Clock,
-  FileText,
   Hammer,
   Sparkles,
   Layout,
@@ -60,33 +58,7 @@ const ServiceDetails: React.FC = () => {
   }, [navigate]);
 
   if (!service) {
-    return (
-      <>
-        <SEOHead seo={{ ...pageSEO.home, title: "Service not found" }} />
-        <main className="min-h-screen flex items-center justify-center bg-[#FAFAFA] px-4 py-12">
-          <div className="max-w-md text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400" aria-hidden>
-              <FileText size={24} />
-            </div>
-
-            <h1 className="text-2xl font-serif font-bold text-gray-900 mb-2">Service Not Found</h1>
-            <p className="text-gray-500 mb-6">The requested service couldn't be found. It may have been renamed or removed.</p>
-
-            <div className="flex items-center justify-center gap-3">
-              <button
-                onClick={() => navigate("/services")}
-                className="px-6 py-2.5 rounded-full bg-[#18181B] text-white hover:bg-black transition-colors"
-              >
-                Back to Services
-              </button>
-              <Link to="/" className="px-6 py-2.5 rounded-full border border-gray-200">
-                Home
-              </Link>
-            </div>
-          </div>
-        </main>
-      </>
-    );
+    return <Navigate to="/404" replace />;
   }
 
   return (
@@ -243,7 +215,7 @@ const ServiceDetails: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedProjects.map((p) => (
                 <article key={p.id} className="group">
-                  <Link to={`/projects?search=${encodeURIComponent(p.title)}`} className="block rounded-lg overflow-hidden" aria-label={`Open project ${p.title}`}>
+                  <Link to={`/projects?project=${encodeURIComponent(p.id)}`} className="block rounded-lg overflow-hidden" aria-label={`Open project ${p.title}`}>
                     <div className="relative aspect-[4/3] bg-gray-800 mb-3 rounded-lg overflow-hidden">
                       <img
                         src={p.image || "/assets/placeholder-rect.jpg"}

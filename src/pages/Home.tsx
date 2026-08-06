@@ -1,5 +1,6 @@
 // src/pages/Home.tsx
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import {
   motion,
   AnimatePresence,
@@ -185,12 +186,12 @@ const Hero: React.FC = () => {
               <Button onClick={() => (window.location.href = "#contact")} withIcon>
                 Start a Conversation
               </Button>
-              <a
-                href="#projects"
+              <Link
+                to="/projects"
                 className="px-6 py-3 rounded-full text-sm font-medium text-gray-700 hover:text-[#0B1220] hover:bg-gray-100 transition-colors"
               >
                 View Selected Work
-              </a>
+              </Link>
             </div>
           </Reveal>
 
@@ -301,6 +302,7 @@ const About: React.FC = () => {
 };
 
 const ProjectsSection: React.FC = () => {
+  const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
@@ -364,7 +366,7 @@ const ProjectsSection: React.FC = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <Button variant="outline" className="border-gray-300">View Full Portfolio</Button>
+          <Button onClick={() => navigate("/projects")} variant="outline" className="border-gray-300">View Full Portfolio</Button>
         </div>
       </div>
 

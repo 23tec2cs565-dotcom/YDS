@@ -3,7 +3,7 @@ import { MapPin, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Project } from "../data/projects";
 import { getCategoryStyles } from "../utils/categoryStyles";
-import posthog from "../utils/analytics";
+import { safeCapture } from "../utils/analytics";
 
 interface ProjectCardProps {
   project: Project;
@@ -46,7 +46,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
         onClick ? "cursor-pointer" : "cursor-default"
       }`}
       onClick={() => {
-        posthog.capture("project_viewed", {
+        safeCapture("project_viewed", {
           project_id: project.id,
           category: project.category,
           location: project.location,

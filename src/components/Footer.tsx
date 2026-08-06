@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Facebook as FacebookIcon,
@@ -37,6 +38,44 @@ const GlassBtn: React.FC<GlassBtnProps> = ({ href, variant, children, className 
   // Clamp horizontal movement so shadow never extends past the button borders
   const shadowLeft = Math.max(0, Math.min(40, pos.x - 30));
 
+  const btnProps = {
+    ref,
+    onMouseMove: onMove,
+    onMouseEnter: () => setHovered(true),
+    onMouseLeave: () => setHovered(false),
+    style: {
+      background: isGold
+        ? "linear-gradient(135deg, rgba(230,181,102,0.28) 0%, rgba(230,181,102,0.10) 100%)"
+        : "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 100%)",
+      boxShadow: isGold
+        ? "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.15), 0 0 28px rgba(230,181,102,0.18), 0 8px 32px rgba(0,0,0,0.35)"
+        : "inset 0 1px 0 rgba(255,255,255,0.20), inset 0 -1px 0 rgba(0,0,0,0.12), 0 8px 32px rgba(0,0,0,0.30)",
+    },
+    className: `group relative z-10 inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl border ${
+      isGold
+        ? "border-[#E6B566]/55 text-[#E6B566]"
+        : "border-white/25 text-white/70 hover:text-white"
+    } px-7 py-3.5 text-xs font-${isGold ? "bold" : "medium"} uppercase tracking-widest backdrop-blur-xl transition-all duration-300 ${className}`,
+  };
+
+  const innerContent = (
+    <>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-200"
+        style={{
+          opacity: hovered ? 1 : 0,
+          background: `radial-gradient(circle 80px at ${pos.x}% ${pos.y}%, ${
+            isGold ? "rgba(230,181,102,0.45)" : "rgba(255,255,255,0.18)"
+          } 0%, transparent 80%)`,
+        }}
+      />
+      <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[45%] rounded-t-xl bg-gradient-to-b from-white/20 to-transparent" />
+      <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] rounded-b-xl bg-gradient-to-t from-black/20 to-transparent" />
+      <span className="relative z-10 inline-flex items-center gap-2">{children}</span>
+    </>
+  );
+
   return (
     <div className="relative">
       <span
@@ -53,46 +92,15 @@ const GlassBtn: React.FC<GlassBtnProps> = ({ href, variant, children, className 
         }}
       />
 
-      <a
-        ref={ref}
-        href={href}
-        onMouseMove={onMove}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        style={{
-          background: isGold
-            ? "linear-gradient(135deg, rgba(230,181,102,0.28) 0%, rgba(230,181,102,0.10) 100%)"
-            : "linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 100%)",
-          boxShadow: isGold
-            ? "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.15), 0 0 28px rgba(230,181,102,0.18), 0 8px 32px rgba(0,0,0,0.35)"
-            : "inset 0 1px 0 rgba(255,255,255,0.20), inset 0 -1px 0 rgba(0,0,0,0.12), 0 8px 32px rgba(0,0,0,0.30)",
-        }}
-        className={`group relative z-10 inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl border ${
-          isGold
-            ? "border-[#E6B566]/55 text-[#E6B566]"
-            : "border-white/25 text-white/70 hover:text-white"
-        } px-7 py-3.5 text-xs font-${isGold ? "bold" : "medium"} uppercase tracking-widest backdrop-blur-xl transition-all duration-300 ${className}`}
-      >
-        {/* ── Moving spotlight — follows mouse ── */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-200"
-          style={{
-            opacity: hovered ? 1 : 0,
-            background: `radial-gradient(circle 80px at ${pos.x}% ${pos.y}%, ${
-              isGold
-                ? "rgba(230,181,102,0.45)"
-                : "rgba(255,255,255,0.18)"
-            } 0%, transparent 80%)`,
-          }}
-        />
-        {/* top-edge highlight */}
-        <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[45%] rounded-t-xl bg-gradient-to-b from-white/20 to-transparent" />
-        {/* bottom reflection */}
-        <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] rounded-b-xl bg-gradient-to-t from-black/20 to-transparent" />
-        {/* content */}
-      <span className="relative z-10 inline-flex items-center gap-2">{children}</span>
-      </a>
+      {href.startsWith("/") ? (
+        <Link to={href} {...(btnProps as unknown as React.ComponentProps<typeof Link>)}>
+          {innerContent}
+        </Link>
+      ) : (
+        <a href={href} {...btnProps}>
+          {innerContent}
+        </a>
+      )}
     </div>
   );
 };
@@ -263,14 +271,14 @@ const Footer: React.FC = () => {
               </h3>
               <nav className="mt-4 grid grid-cols-2 gap-x-3 gap-y-0.5">
                 {serviceList.map((service) => (
-                  <a
+                  <Link
                     key={service.label}
-                    href={service.href}
+                    to={service.href}
                     className="group relative py-2 text-xs text-gray-400 transition-colors duration-300 hover:text-white"
                   >
                     <span className="block truncate">{service.label}</span>
                     <span className="absolute bottom-0 left-0 h-px w-0 bg-[#E6B566]/50 transition-all duration-300 group-hover:w-full" />
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -282,14 +290,14 @@ const Footer: React.FC = () => {
               </h3>
               <nav className="mt-4 grid grid-cols-2 gap-x-3 gap-y-0.5">
                 {companyLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.href}
                     className="group relative py-2 text-xs text-gray-400 transition-colors duration-300 hover:text-white"
                   >
                     <span className="block truncate">{link.label}</span>
                     <span className="absolute bottom-0 left-0 h-px w-0 bg-[#E6B566]/50 transition-all duration-300 group-hover:w-full" />
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -349,12 +357,12 @@ const Footer: React.FC = () => {
               © {new Date().getFullYear()} Younick Design Studio. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center gap-5 font-mono">
-              <a href="#" className="transition-colors duration-300 hover:text-[#E6B566]">
+              <Link to="/privacy" className="transition-colors duration-300 hover:text-[#E6B566]">
                 Privacy Policy
-              </a>
-              <a href="#" className="transition-colors duration-300 hover:text-[#E6B566]">
+              </Link>
+              <Link to="/terms" className="transition-colors duration-300 hover:text-[#E6B566]">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
 

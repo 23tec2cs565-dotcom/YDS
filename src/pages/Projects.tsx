@@ -1,13 +1,13 @@
 // src/pages/Projects.tsx
 import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Search, Grid, List, Filter, SlidersHorizontal, ChevronDown, X, MapPin, Calendar, ArrowUpRight } from "lucide-react";
 import { projects as ALL_PROJECTS } from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
 import ProjectModal from "../components/ProjectModal";
 import SEOHead from "../components/SEOHead";
-import posthog from "../utils/analytics";
+import { safeCapture } from "../utils/analytics";
 import { getSimilarProjects } from "../utils/recommendation";
 import { getCategoryStyles } from "../utils/categoryStyles";
 import HeroScene3D from "../components/HeroScene3D";
@@ -329,6 +329,7 @@ const heroSlides = {
    ══════════════════════════════════════════════════ */
 const Projects: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   // Load dynamic projects from localStorage and merge with static ones
   const combinedProjects = useMemo(() => {
@@ -464,6 +465,22 @@ const Projects: React.FC = () => {
     setFiltered(results);
   }, [searchParams, combinedProjects]);
 
+  // Auto-open modal if 'project' or 'id' query parameter is present in URL
+  useEffect(() => {
+    const projId = searchParams.get("project") || searchParams.get("id");
+    if (projId) {
+      const found = combinedProjects.find(
+        (p) => p.id === projId || slugify(p.title) === slugify(projId)
+      );
+      if (found) {
+        setSelected(found);
+        setModalOpen(true);
+      } else {
+        navigate("/404", { replace: true });
+      }
+    }
+  }, [searchParams, combinedProjects, navigate]);
+
   const updateParams = useCallback(
     (params: Record<string, string | undefined>) => {
       const newParams = new URLSearchParams(searchParams.toString());
@@ -486,7 +503,7 @@ const Projects: React.FC = () => {
     setCategory("all");
     setLocationFilter("all");
     setSort("newest");
-    updateParams({ search: "", filter: "all", location: "all", sort: "newest" });
+    updateParams({ search: "", filter: "all", location: "all", sort: "newest", project: undefined, id: undefined });
   };
 
   // Debounced live search
@@ -494,7 +511,7 @@ const Projects: React.FC = () => {
   const handleSearchChange = (value: string) => {
     setSearchText(value);
     if (value.length > 2) {
-      posthog.capture("search_typing", { query: value });
+      safeCapture("search_typing", { query: value });
     }
     clearTimeout(searchTimer.current);
     searchTimer.current = setTimeout(() => {
@@ -505,9 +522,11 @@ const Projects: React.FC = () => {
   const openProject = (proj: (typeof ALL_PROJECTS)[0]) => {
     setSelected(proj);
     setModalOpen(true);
+    updateParams({ project: proj.id });
   };
   const closeProject = () => {
     setModalOpen(false);
+    updateParams({ project: undefined, id: undefined });
     setTimeout(() => setSelected(null), 150);
   };
 
@@ -829,7 +848,7 @@ const Projects: React.FC = () => {
                         transition={{ duration: 0.35, delay: idx * 0.05 }}
                         className="group relative sm:pl-16 cursor-pointer"
                         onClick={() => {
-                          posthog.capture("project_viewed", {
+                          safeCapture("project_viewed", {
                             project_id: proj.id,
                             title: proj.title,
                             category: proj.category,

@@ -2,7 +2,7 @@
 // Consolidated, High-Impact Team Page
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import {
   Heart,
   Sparkles,
@@ -263,7 +263,7 @@ const OurTeam: React.FC = () => {
                 {/* Bento Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-[300px]">
                   <Reveal className="h-full">
-                    <a href="/projects" className="group relative block h-full overflow-hidden rounded-2xl">
+                    <Link to="/projects" className="group relative block h-full overflow-hidden rounded-2xl">
                       <img
                         src="/assets/optimized/gallery/g1-768.jpeg"
                         alt="Workspace detail"
@@ -277,11 +277,11 @@ const OurTeam: React.FC = () => {
                           <ArrowUpRight size={14} />
                         </span>
                       </div>
-                    </a>
+                    </Link>
                   </Reveal>
                   <div className="grid grid-rows-2 gap-4 h-full">
                     <Reveal className="h-full">
-                      <a href="/projects" className="group relative block h-full overflow-hidden rounded-xl">
+                      <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl">
                         <img
                           src="/assets/optimized/gallery/g2-768.jpeg"
                           alt="Material samples"
@@ -289,10 +289,10 @@ const OurTeam: React.FC = () => {
                           loading="lazy"
                           onError={handleImgError}
                         />
-                      </a>
+                      </Link>
                     </Reveal>
                     <Reveal className="h-full">
-                      <a href="/projects" className="group relative block h-full overflow-hidden rounded-xl">
+                      <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl">
                         <img
                           src="/assets/optimized/gallery/g3-768.jpeg"
                           alt="Model draft"
@@ -300,7 +300,7 @@ const OurTeam: React.FC = () => {
                           loading="lazy"
                           onError={handleImgError}
                         />
-                      </a>
+                      </Link>
                     </Reveal>
                   </div>
                 </div>

@@ -165,7 +165,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
 
   const selectSuggestion = (s: Suggest) => {
     if (s.type === "project") {
-      navigate(`/projects?navSearch=${encodeURIComponent(s.title)}`);
+      navigate(`/projects?project=${encodeURIComponent(s.projectId)}`);
     } else {
       navigate(`/team#${s.memberId}`);
     }

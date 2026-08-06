@@ -29,19 +29,21 @@ function AppContent() {
     );
   }
 
-  const is404Page = ![
-    "/",
-    "/home",
-    "/about",
-    "/projects",
-    "/team",
-    "/contact",
-    "/faq",
-    "/services",
-    "/career",
-    "/admin",
-  ].includes(location.pathname) &&
-  !location.pathname.startsWith("/services/");
+  const is404Page = location.pathname === "/404" || (
+    ![
+      "/",
+      "/home",
+      "/about",
+      "/projects",
+      "/team",
+      "/contact",
+      "/faq",
+      "/services",
+      "/career",
+      "/admin",
+    ].includes(location.pathname) &&
+    !location.pathname.startsWith("/services/")
+  );
 
   const handleSearch = () => {
     // No-op: search is handled via url searchParams navigation inside Navigation component
@@ -80,6 +82,7 @@ function AppContent() {
             <Route path="/admin" element={<Admin />} />
 
             {/* 404 */}
+            <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </React.Suspense>
