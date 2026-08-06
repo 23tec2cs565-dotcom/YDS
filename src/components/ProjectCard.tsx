@@ -55,6 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
       }}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
+      aria-label={onClick ? `View project details for ${project.title}` : undefined}
       onKeyDown={(e) => {
         if (!onClick) return;
         if (e.key === "Enter" || e.key === " ") {

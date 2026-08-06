@@ -125,7 +125,7 @@ const NotFound: React.FC = () => {
 
   return (
     <>
-      <SEOHead seo={seoForPage} type="website" />
+      <SEOHead seo={seoForPage} type="website" noIndex={true} />
 
       <div
         ref={containerRef}
@@ -197,6 +197,7 @@ const NotFound: React.FC = () => {
             <img
               src="/assets/404/luxury-sofa.png"
               alt=""
+              aria-hidden="true"
               onError={handleImgError}
               className="mx-auto w-[240px] object-contain sm:w-[300px] md:w-[360px] lg:w-[420px] opacity-10 filter brightness-50"
             />

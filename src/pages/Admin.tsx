@@ -101,10 +101,10 @@ const Admin: React.FC = () => {
 
   return (
     <>
-      <SEOHead seo={seoForPage} type="website" />
+      <SEOHead seo={seoForPage} type="website" noIndex={true} />
 
       {/* Main Container */}
-      <main className="min-h-screen bg-[#09090B] text-white pt-24 pb-12 px-0 font-sans overflow-hidden relative">
+      <div className="min-h-screen bg-[#09090B] text-white pt-24 pb-12 px-0 font-sans overflow-hidden relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_-10%,rgba(230,181,102,0.03),transparent)] pointer-events-none" />
 
         <div className="w-full relative z-10">
@@ -243,7 +243,7 @@ const Admin: React.FC = () => {
           )}
 
         </div>
-      </main>
+      </div>
     </>
   );
 };

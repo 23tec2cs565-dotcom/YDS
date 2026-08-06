@@ -75,8 +75,10 @@ const ContactForm = ({ onSubmit }: { onSubmit: (data: { name: string; email: str
               setFormData({...formData, name: e.target.value});
               if (errors.name) setErrors({...errors, name: ""});
             }}
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "contact-name-error" : undefined}
           />
-          {errors.name && <span className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.name}</span>}
+          {errors.name && <span id="contact-name-error" className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.name}</span>}
         </div>
         <div className="space-y-1 ">
           <label htmlFor="contact-phone" className="text-xs font-bold uppercase tracking-widest text-gray-500 ">Phone</label>
@@ -92,8 +94,10 @@ const ContactForm = ({ onSubmit }: { onSubmit: (data: { name: string; email: str
               setFormData({...formData, phone: e.target.value});
               if (errors.phone) setErrors({...errors, phone: ""});
             }}
+            aria-invalid={!!errors.phone}
+            aria-describedby={errors.phone ? "contact-phone-error" : undefined}
           />
-          {errors.phone && <span className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.phone}</span>}
+          {errors.phone && <span id="contact-phone-error" className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.phone}</span>}
         </div>
       </div>
       <div className="space-y-1">
@@ -110,8 +114,10 @@ const ContactForm = ({ onSubmit }: { onSubmit: (data: { name: string; email: str
             setFormData({...formData, email: e.target.value});
             if (errors.email) setErrors({...errors, email: ""});
           }}
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "contact-email-error" : undefined}
         />
-        {errors.email && <span className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.email}</span>}
+        {errors.email && <span id="contact-email-error" className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.email}</span>}
       </div>
       <div className="space-y-1">
         <label htmlFor="contact-message" className="text-xs font-bold uppercase tracking-widest text-gray-500">Message</label>
@@ -213,7 +219,7 @@ const ContactUs: React.FC = () => {
     <>
       <SEOHead seo={pageSEO.contact} />
 
-      <main className="bg-[#FAFAFA] min-h-screen">
+      <div className="bg-[#FAFAFA] min-h-screen">
         
         <header className="relative bg-[#0F0F10] text-white py-24 px-6 overflow-hidden">
           <div className="absolute inset-0 opacity-20">
@@ -339,7 +345,7 @@ const ContactUs: React.FC = () => {
           </div>
         </div>
 
-      </main>
+      </div>
     </>
   );
 };

@@ -1,5 +1,5 @@
 // src/pages/Home.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   motion,
@@ -217,6 +217,8 @@ const Hero: React.FC = () => {
                 alt="Luxury Interior"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
                 onError={handleImgError}
+                loading="eager"
+                fetchpriority="high"
               />
             </div>
           </MotionDiv>
@@ -225,9 +227,11 @@ const Hero: React.FC = () => {
             <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB]">
               <img
                 src={heroImgB}
-                alt="Detail Shot"
+                alt="Architectural detail of interior design work by Younick Studio"
                 className="w-full h-full object-cover"
                 onError={handleImgError}
+                loading="eager"
+                fetchpriority="high"
               />
             </div>
 
@@ -255,10 +259,10 @@ const About: React.FC = () => {
             <Reveal>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 mt-12">
-                  <img src={(projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? ""} alt="Materials" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} />
+                  <img src={(projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? ""} alt="Premium materials and finishes used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
                 <div className="space-y-4">
-                  <img src={(projects[1] as ExtendedProject)?.imageUrl ?? projects[1]?.image ?? ""} alt="Interior" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} />
+                  <img src={(projects[1] as ExtendedProject)?.imageUrl ?? projects[1]?.image ?? ""} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
               </div>
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-[#F7F7F9] rounded-full blur-3xl opacity-60" />
@@ -306,6 +310,16 @@ const ProjectsSection: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedProject) {
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [selectedProject]);
 
   return (
     <section id="projects" className="py-24 bg-[#FAFAFB]">
@@ -355,7 +369,7 @@ const ProjectsSection: React.FC = () => {
                         View Project
                       </span>
                     </div>
-                    <img src={img} alt={project.title ?? "Project"} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={handleImgError} />
+                    <img src={img} alt={project.title ?? "Project"} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={handleImgError} loading="lazy" decoding="async" />
                   </div>
                   <h3 className="text-2xl font-serif text-[#0B1220] group-hover:text-[#E6B566] transition-colors">{project.title}</h3>
                   <p className="text-gray-500 text-sm mt-1">{project.location} : {project.category}</p>
@@ -372,7 +386,7 @@ const ProjectsSection: React.FC = () => {
 
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" role="dialog" aria-modal="true">
             <MotionDiv initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-[#0B1220]/80 backdrop-blur-sm" />
             <MotionDiv layoutId={`project-${selectedProject.id}`} className="bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row" initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 50, opacity: 0 }}>
               <button onClick={() => setSelectedProject(null)} aria-label="Close modal" className="absolute top-4 right-4 z-50 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"><X size={20} /></button>
@@ -465,12 +479,14 @@ const ServicesSection: React.FC = () => {
                     )}
                   />
                   <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-xl">
-                    <img
-                      src={img}
-                      alt={s?.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      onError={handleImgError}
-                    />
+                      <img
+                        src={img}
+                        alt={s?.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        onError={handleImgError}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     <div className="absolute top-6 left-6 w-16 h-16 bg-white/95 backdrop-blur rounded-2xl flex items-center justify-center shadow-lg text-[#0B1220]">
                       {Icon ? (
                         <Icon size={28} strokeWidth={1.5} />
@@ -557,7 +573,7 @@ const TestimonialsSection: React.FC = () => {
               </div>
               <p className="text-2xl md:text-3xl font-serif text-[#0B1220] leading-relaxed italic mb-8">"{TESTIMONIALS[index].quote}"</p>
               <div className="flex flex-col items-center">
-                <img src={TESTIMONIALS[index].avatarUrl} alt={TESTIMONIALS[index].name} className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" onError={(e) => {
+                <img src={TESTIMONIALS[index].avatarUrl} alt={TESTIMONIALS[index].name} className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" loading="lazy" decoding="async" onError={(e) => {
                   const img = e.currentTarget;
                   img.onerror = null;
                   img.src = `data:image/svg+xml;utf8,${encodeURIComponent(
@@ -599,6 +615,8 @@ const LeadershipSection: React.FC = () => {
                     src={member.image || member.image480 || member.image768}
                     alt={member.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       const img = e.currentTarget;
                       img.onerror = null;

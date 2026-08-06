@@ -1,5 +1,5 @@
 // src/pages/Career.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
 import { 
@@ -225,7 +225,6 @@ const Career: React.FC = () => {
         portfolio: formValues.portfolio.replace(/<[^>]*>/g, "").trim(),
         message: formValues.message.replace(/<[^>]*>/g, "").trim()
       };
-      console.log("Sanitized submission:", sanitized);
       
       // Simulate form submission using sanitized data
       setTimeout(() => {
@@ -244,6 +243,17 @@ const Career: React.FC = () => {
     if (activeFilter === "Internships") return role.department === "Internships";
     return role.department === activeFilter;
   });
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && applyingRole) {
+        setApplyingRole(null);
+        setStatus("idle");
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [applyingRole]);
 
   return (
     <>
@@ -559,7 +569,7 @@ const Career: React.FC = () => {
 
       {/* --- APPLICATION FORM OVERLAY MODAL --- */}
       {applyingRole && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="career-modal-title">
           <div className="bg-white rounded-sm shadow-xl w-full max-w-xl overflow-hidden relative border border-gray-200 animate-in fade-in zoom-in-95 duration-200">
             {/* Header bar */}
             <div className="bg-[#18181B] text-white p-6 md:p-8 flex justify-between items-center">
@@ -567,7 +577,7 @@ const Career: React.FC = () => {
                 <span className="font-mono text-[10px] text-[#B08D57] uppercase tracking-widest block mb-1">
                   Applying For:
                 </span>
-                <h3 className="text-xl md:text-2xl font-serif text-white">{applyingRole.title}</h3>
+                <h3 id="career-modal-title" className="text-xl md:text-2xl font-serif text-white">{applyingRole.title}</h3>
               </div>
               <button
                 onClick={() => {
@@ -596,7 +606,7 @@ const Career: React.FC = () => {
               ) : (
                 <form onSubmit={handleApplySubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="modal-name" className="block font-mono text-[10px] text-gray-400 uppercase tracking-widest mb-2">
+                    <label htmlFor="modal-name" className="block font-mono text-[10px] text-gray-600 uppercase tracking-widest mb-2">
                       Full Name *
                     </label>
                     <input
@@ -606,15 +616,17 @@ const Career: React.FC = () => {
                       type="text"
                       value={formValues.name}
                       onChange={handleInputChange}
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? "career-name-error" : undefined}
                       placeholder="e.g. Kabir Singh"
                       className="w-full bg-[#FAF9F6] border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#18181B] placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-[#B08D57] focus:border-transparent transition-all"
                     />
-                    {errors.name && <span className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.name}</span>}
+                    {errors.name && <span id="career-name-error" className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.name}</span>}
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="modal-email" className="block font-mono text-[10px] text-gray-400 uppercase tracking-widest mb-2">
+                      <label htmlFor="modal-email" className="block font-mono text-[10px] text-gray-600 uppercase tracking-widest mb-2">
                         Email Address *
                       </label>
                       <input
@@ -624,13 +636,15 @@ const Career: React.FC = () => {
                         type="email"
                         value={formValues.email}
                         onChange={handleInputChange}
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? "career-email-error" : undefined}
                         placeholder="e.g. kabir@email.com"
                         className="w-full bg-[#FAF9F6] border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#18181B] placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-[#B08D57] focus:border-transparent transition-all"
                       />
-                      {errors.email && <span className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.email}</span>}
+                      {errors.email && <span id="career-email-error" className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.email}</span>}
                     </div>
                     <div>
-                      <label htmlFor="modal-portfolio" className="block font-mono text-[10px] text-gray-400 uppercase tracking-widest mb-2">
+                      <label htmlFor="modal-portfolio" className="block font-mono text-[10px] text-gray-600 uppercase tracking-widest mb-2">
                         Portfolio Link *
                       </label>
                       <input
@@ -640,15 +654,17 @@ const Career: React.FC = () => {
                         type="url"
                         value={formValues.portfolio}
                         onChange={handleInputChange}
+                        aria-invalid={!!errors.portfolio}
+                        aria-describedby={errors.portfolio ? "career-portfolio-error" : undefined}
                         placeholder="e.g. Behance or website"
                         className="w-full bg-[#FAF9F6] border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#18181B] placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-[#B08D57] focus:border-transparent transition-all"
                       />
-                      {errors.portfolio && <span className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.portfolio}</span>}
+                      {errors.portfolio && <span id="career-portfolio-error" className="text-red-500 text-[10px] font-mono tracking-wide mt-1 block">{errors.portfolio}</span>}
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="modal-message" className="block font-mono text-[10px] text-gray-400 uppercase tracking-widest mb-2">
+                    <label htmlFor="modal-message" className="block font-mono text-[10px] text-gray-600 uppercase tracking-widest mb-2">
                       Cover Note (Brief introduction)
                     </label>
                     <textarea

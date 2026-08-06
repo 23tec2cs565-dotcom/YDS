@@ -53,7 +53,7 @@ function AppContent() {
     <div className="min-h-screen flex flex-col">
       <Navigation onSearch={handleSearch} />
 
-      <main role="main" className="flex-1">
+      <main id="main-content" role="main" className="flex-1">
         <React.Suspense fallback={
           <div className="min-h-screen bg-[#0A0A0A] flex flex-col items-center justify-center text-center px-6 pointer-events-none">
             <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#E6B566] animate-pulse">
@@ -146,6 +146,9 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[#E6B566] focus:text-black focus:rounded-md focus:font-semibold focus:shadow-lg">
+          Skip to main content
+        </a>
         <ErrorBoundary>
           {/* Intro overlay — fixed on top, unmounts after exit animation */}
           {showIntro && (

@@ -352,7 +352,7 @@ const Footer: React.FC = () => {
           {/* ── Bottom bar ── */}
           <div className="h-px bg-gradient-to-r from-transparent via-[#E6B566]/12 to-transparent" />
 
-          <div className="flex flex-col gap-2 py-5 text-[10px] text-gray-500 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-2 py-5 text-[10px] text-gray-400 md:flex-row md:items-center md:justify-between">
             <p className="font-mono uppercase tracking-[0.22em]">
               © {new Date().getFullYear()} Younick Design Studio. All rights reserved.
             </p>

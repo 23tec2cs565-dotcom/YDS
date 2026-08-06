@@ -110,7 +110,7 @@ export const pageSEO: Record<string, SEOData> = {
     title: "About Younick Design Studio — Our Story, Values & Team",
     description: "Learn about Younick Design Studio — our philosophy, process and the people who bring design to life across Rajasthan.",
     url: "https://younickdesign.com/about",
-    image: "/younick-about-hero.jpg",
+    image: "https://younickdesign.com/younick-about-hero.jpg",
     keywords: "about, younick design, interior design studio, rajasthan"
   },
   services: {
@@ -119,6 +119,13 @@ export const pageSEO: Record<string, SEOData> = {
     url: "https://younickdesign.com/services",
     image: SITE.logo,
     keywords: "interior design services, turnkey construction, renovation jaipur, 3d design, architectural consultation"
+  },
+  career: {
+    title: 'Career Opportunities — Younick Design Studio',
+    description: 'Join our creative team at Younick Design Studio. Explore career opportunities in interior design, architecture, 3D visualization, and construction across Rajasthan.',
+    keywords: 'interior design careers, design jobs Jaipur, architecture careers Rajasthan, Younick Design Studio careers',
+    url: 'https://younickdesign.com/career',
+    image: 'https://younickdesign.com/younick-about-hero.jpg',
   }
   // Add more page presets if needed, e.g. blog posts or project detail pages
 };

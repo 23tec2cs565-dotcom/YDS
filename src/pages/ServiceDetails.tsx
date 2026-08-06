@@ -68,6 +68,7 @@ const ServiceDetails: React.FC = () => {
           ...pageSEO.home,
           title: `${service.title} — Younick Design Studio`,
           description: service.description || pageSEO.home.description,
+          url: `https://younickdesign.com/services/${service.id}`
           // optionally add open graph image if service.image exists
         }}
       />

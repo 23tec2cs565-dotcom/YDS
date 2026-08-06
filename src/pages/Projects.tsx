@@ -5,12 +5,12 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Search, Grid, List, Filter, SlidersHorizontal, ChevronDown, X, MapPin, Calendar, ArrowUpRight } from "lucide-react";
 import { projects as ALL_PROJECTS } from "../data/projects";
 import ProjectCard from "../components/ProjectCard";
-import ProjectModal from "../components/ProjectModal";
+const ProjectModal = React.lazy(() => import('../components/ProjectModal'));
 import SEOHead from "../components/SEOHead";
 import { safeCapture } from "../utils/analytics";
 import { getSimilarProjects } from "../utils/recommendation";
 import { getCategoryStyles } from "../utils/categoryStyles";
-import HeroScene3D from "../components/HeroScene3D";
+const HeroScene3D = React.lazy(() => import('../components/HeroScene3D'));
 
 /* ── helpers ────────────────────────────────────── */
 const slugify = (s?: string) =>
@@ -558,7 +558,9 @@ const Projects: React.FC = () => {
         style={{ height: "clamp(500px, 68vh, 720px)" }}
       >
         {/* Full-bleed slideshow behind text */}
-        <HeroScene3D activeIndex={category === "all" ? currentSlide : 0} customImages={activeHeroImages} />
+        <React.Suspense fallback={null}>
+          <HeroScene3D activeIndex={category === "all" ? currentSlide : 0} customImages={activeHeroImages} />
+        </React.Suspense>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B1220]/45 via-[#0B1220]/30 to-[#0B1220]/85 pointer-events-none" />
  
         {/* Content */}
@@ -670,7 +672,7 @@ const Projects: React.FC = () => {
       {/* ═══════════════════════════════════════════
           MAIN CONTENT
           ═══════════════════════════════════════════ */}
-      <main className="bg-gradient-to-b from-[#F8F7F4] via-white to-[#F8F4EE] min-h-screen">
+      <div className="bg-gradient-to-b from-[#F8F7F4] via-white to-[#F8F4EE] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* ─── Floating Filter Toolbar ─── */}
           <Reveal>
@@ -686,6 +688,7 @@ const Projects: React.FC = () => {
                     <input
                       id="project-search"
                       name="project-search"
+                      aria-label="Search projects"
                       value={searchText}
                       onChange={(e) => handleSearchChange(e.target.value)}
                       placeholder="Search projects, locations, or categories..."
@@ -962,15 +965,17 @@ const Projects: React.FC = () => {
 
         {/* Modal */}
         {selected && (
-          <ProjectModal
-            project={selected}
-            isOpen={modalOpen}
-            onClose={closeProject}
-            related={getSimilarProjects(selected, combinedProjects)}
-            onSelectRelated={(p) => openProject(p)}
-          />
+          <React.Suspense fallback={null}>
+            <ProjectModal
+              project={selected}
+              isOpen={modalOpen}
+              onClose={closeProject}
+              related={getSimilarProjects(selected, combinedProjects)}
+              onSelectRelated={(p) => openProject(p)}
+            />
+          </React.Suspense>
         )}
-      </main>
+      </div>
     </>
   );
 };

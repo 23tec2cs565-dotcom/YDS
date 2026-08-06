@@ -151,9 +151,10 @@ const AboutContent = () => {
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500 z-10" />
                 <img 
                   src="/younick-about-hero.jpg" 
-                  alt="Studio Main" 
+                  alt="Younick Design Studio main workspace and creative environment" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   onError={handleImgError}
+                  loading="eager"
                 />
                 <div className="absolute bottom-6 left-6 z-20 bg-white/90 backdrop-blur px-4 py-2 text-xs font-mono uppercase tracking-widest">
                   [01] The Studio
@@ -163,9 +164,10 @@ const AboutContent = () => {
                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500 z-10" />
                  <img 
                   src="/younick-thumb3.jpg" 
-                  alt="Studio Detail" 
+                  alt="Detailed view of design materials at Younick Studio" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   onError={handleImgError}
+                  loading="lazy"
                 />
                 <div className="absolute bottom-6 left-6 z-20 bg-white/90 backdrop-blur px-4 py-2 text-xs font-mono uppercase tracking-widest">
                   [02] The Craft
@@ -279,8 +281,8 @@ const AboutContent = () => {
             <div className="md:w-1/2 relative">
                <div className="absolute -top-10 -left-10 w-32 h-32 border-l-2 border-t-2 border-[#B08D57] opacity-50" />
                <div className="grid grid-cols-2 gap-4">
-                 <img src="/younick-thumb1.jpg" onError={handleImgError} className="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm" alt="Team Work" />
-                 <img src="/younick-thumb2.jpg" onError={handleImgError} className="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm translate-y-8" alt="Team Meeting" />
+                 <img src="/younick-thumb1.jpg" onError={handleImgError} className="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm" alt="Younick Design Studio team collaborating on a project" loading="lazy" />
+                 <img src="/younick-thumb2.jpg" onError={handleImgError} className="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm translate-y-8" alt="Younick Design Studio team meeting and planning session" loading="lazy" />
                </div>
             </div>
             <div className="md:w-1/2">
@@ -406,6 +408,7 @@ const AboutContent = () => {
                     alt="Teak Joinery"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={handleImgError}
+                    loading="lazy"
                   />
                   <div className="absolute top-6 left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-3 py-1 text-[10px] font-mono uppercase tracking-widest">
                     Woodwork
@@ -429,6 +432,7 @@ const AboutContent = () => {
                     alt="Brass Detailing"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={handleImgError}
+                    loading="lazy"
                   />
                   <div className="absolute top-6 left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-3 py-1 text-[10px] font-mono uppercase tracking-widest">
                     Hardware
@@ -452,6 +456,7 @@ const AboutContent = () => {
                     alt="Stone Joints"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={handleImgError}
+                    loading="lazy"
                   />
                   <div className="absolute top-6 left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-3 py-1 text-[10px] font-mono uppercase tracking-widest">
                     Masonry
