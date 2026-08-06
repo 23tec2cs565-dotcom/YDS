@@ -9,10 +9,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
+        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
         serif: ['Ovelion', 'Cormorant Garamond', 'Playfair Display', 'Georgia', 'ui-serif', 'serif'],
         ovelion: ['Ovelion', 'Cormorant Garamond', 'serif'],
-        angelone: ['Angelone', 'Inter', 'sans-serif'],
+        angelone: ['Cormorant Garamond', 'serif'],
       },
       colors: {
         primary: "#E6B566",
