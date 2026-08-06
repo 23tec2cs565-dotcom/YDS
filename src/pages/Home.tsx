@@ -160,7 +160,7 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B1220] border border-[#0B1220] shadow-sm text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#111633] border border-[#0B1220] shadow-sm text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
               <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
               Jaipur, Rajasthan
             </div>
