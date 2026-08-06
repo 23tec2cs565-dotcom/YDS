@@ -168,7 +168,7 @@ const Hero: React.FC = () => {
           <Reveal delay={0.1}>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-8">
               Interiors that <br />
-              <span className="italic text-[#8C6226]">feel curated</span>
+              <span className="italic text-[#8C6226] font-angelone">feel curated</span>
               <br />
               modern & warm.
             </h1>
@@ -267,7 +267,7 @@ const About: React.FC = () => {
           <div className="order-1 lg:order-2">
             <Reveal>
               <h2 className="text-4xl md:text-5xl font-serif text-[#0B1220] mb-8 leading-tight">
-                We listen first, then we <span className="italic text-[#E6B566]">create.</span>
+                We listen first, then we <span className="italic text-[#8C6226] font-angelone">create.</span>
               </h2>
             </Reveal>
 

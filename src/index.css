@@ -2,14 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Ovelion';
+  src: url('/fonts/ovelion-font/Ovelion-Zpjqx.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Angelone';
+  src: url('/fonts/angelone-font/Angelone-2vXp8.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Angelone';
+  src: url('/fonts/angelone-font/AngeloneItalic-KV5Lo.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
   body {
     @apply antialiased bg-[#FAFAFA] text-gray-900;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  h1, h2 {
+    font-family: 'Ovelion', 'Cormorant Garamond', 'Playfair Display', serif;
+    letter-spacing: -0.01em;
+  }
+  h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', 'Ovelion', 'Playfair Display', serif;
   }
 }
 

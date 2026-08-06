@@ -10,7 +10,9 @@ export default {
     extend: {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'ui-serif', 'serif'],
+        serif: ['Ovelion', 'Cormorant Garamond', 'Playfair Display', 'Georgia', 'ui-serif', 'serif'],
+        ovelion: ['Ovelion', 'Cormorant Garamond', 'serif'],
+        angelone: ['Angelone', 'Inter', 'sans-serif'],
       },
       colors: {
         primary: "#E6B566",
