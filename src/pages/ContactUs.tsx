@@ -219,7 +219,7 @@ const ContactUs: React.FC = () => {
     <>
       <SEOHead seo={pageSEO.contact} />
 
-      <div className="bg-[#FAFAFA] min-h-screen">
+      <div className="bg-[#FAFAFA] min-h-screen pt-20">
         
         <header className="relative bg-[#0F0F10] text-white py-24 px-6 overflow-hidden">
           <div className="absolute inset-0 opacity-20">

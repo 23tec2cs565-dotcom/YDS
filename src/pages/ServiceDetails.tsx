@@ -73,7 +73,7 @@ const ServiceDetails: React.FC = () => {
         }}
       />
 
-      <main className="bg-white min-h-screen">
+      <main className="bg-white min-h-screen pt-20">
         {/* HERO */}
         <header className="relative h-[60vh] min-h-[420px] bg-[#0F0F10] text-white flex items-end" role="region" aria-label={`${service.title} hero`}>
           <div className="absolute inset-0">
@@ -88,15 +88,17 @@ const ServiceDetails: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F10] via-[#0F0F10]/40 to-transparent" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full">
+          <div className="absolute top-6 left-0 right-0 z-20 max-w-7xl mx-auto px-6 pointer-events-none">
             <button
               onClick={goBack}
               aria-label="Go back to services"
-              className="absolute top-6 left-6 inline-flex items-center gap-2 text-sm text-white/80 hover:text-[#E6B566] backdrop-blur-md px-3 py-2 rounded-full bg-white/5 border border-white/10"
+              className="pointer-events-auto inline-flex items-center gap-2 text-sm text-white/80 hover:text-[#E6B566] backdrop-blur-md px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 transition-colors"
             >
               <ChevronLeft size={16} /> Back
             </button>
+          </div>
 
+          <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full">
             <div className="max-w-3xl">
               <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-widest uppercase bg-[#E6B566] text-black rounded-sm">
                 Service Overview
