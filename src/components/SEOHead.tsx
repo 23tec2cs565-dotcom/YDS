@@ -18,7 +18,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const meta = { ...defaultSEO, ...seo };
   const url = meta.url?.startsWith("http")
     ? meta.url
-    : `https://younickdesign.com${meta.url || ""}`;
+    : `https://yds-liart.vercel.app${meta.url || ""}`;
   const schemaData =
     schema && Object.keys(schema).length > 0
       ? { ...structuredData.organization, ...schema }

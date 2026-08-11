@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://younickdesign.com/sitemap.xml
+Sitemap: https://yds-liart.vercel.app/sitemap.xml
