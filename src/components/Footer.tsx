@@ -163,15 +163,69 @@ const companyLinks = [
 const Footer: React.FC = () => {
   return (
     <>
-      {/* ── Gradient bridge: white page → dark footer ── */}
-      <div
-        aria-hidden="true"
-        className="h-14 w-full"
-        style={{
-          background:
-            "linear-gradient(to bottom, #ffffff 0%, #f4f3f0 25%, #1f1f22 75%, #18181B 100%)",
-        }}
-      />
+      {/* ── Architectural Curved & Layered Palette Transition ── */}
+      <div className="relative w-full overflow-hidden bg-white">
+        {/* Soft Tonal Intermediate Palette Layer (#F6F4EE) with subtle pattern grid */}
+        <div className="bg-[#F6F4EE] py-4 px-6 border-t border-gray-200/60 relative">
+          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#18181B_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+
+          <div className="relative mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs tracking-wider uppercase text-gray-600 font-medium">
+            <div className="flex items-center gap-3">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E6B566] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B08D57]" />
+              </span>
+              <span className="font-semibold tracking-widest text-gray-800">Younick Design Studio</span>
+              <span className="text-gray-300">•</span>
+              <span className="text-gray-500 lowercase tracking-normal italic font-serif text-sm">Jaipur • Architecture & Luxury Interiors</span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] text-gray-600 font-semibold tracking-widest">
+              <span className="inline-flex items-center gap-1.5 text-gray-800">
+                <span className="text-[#B08D57]">✦</span> 150+ Signature Projects
+              </span>
+              <span className="text-gray-300">•</span>
+              <span className="inline-flex items-center gap-1.5 text-gray-800">
+                <span className="text-[#B08D57]">✦</span> Turnkey Execution
+              </span>
+              <span className="text-gray-300">•</span>
+              <span className="inline-flex items-center gap-1.5 text-gray-800">
+                <span className="text-[#B08D57]">✦</span> Bespoke Craftsmanship
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Architectural Multi-Curved SVG Divider into Footer */}
+        <div className="relative leading-none bg-[#F6F4EE]">
+          <svg
+            viewBox="0 0 1440 76"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-10 md:h-16 lg:h-20 block text-[#18181B]"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="goldGradientCurve" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#F5D899" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#E6B566" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#B08D57" stopOpacity="0.8" />
+              </linearGradient>
+            </defs>
+
+            {/* Glowing metallic gold accent curve */}
+            <path
+              d="M0,18 Q720,68 1440,18 L1440,76 L0,76 Z"
+              fill="url(#goldGradientCurve)"
+            />
+            {/* Main sleek architectural dark curve */}
+            <path
+              d="M0,28 Q720,76 1440,28 L1440,76 L0,76 Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+      </div>
 
       <footer
         aria-label="Site Footer"
@@ -179,40 +233,47 @@ const Footer: React.FC = () => {
       >
         {/* Ambient warm glows */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="absolute right-[-5rem] top-0 h-80 w-80 rounded-full bg-[#E6B566]/5 blur-[90px]" />
-          <div className="absolute left-[-3rem] bottom-0 h-64 w-64 rounded-full bg-[#E6B566]/4 blur-[70px]" />
+          <div className="absolute right-[-5rem] top-0 h-80 w-80 rounded-full bg-[#E6B566]/8 blur-[90px]" />
+          <div className="absolute left-[-3rem] bottom-0 h-64 w-64 rounded-full bg-[#E6B566]/5 blur-[70px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
 
-          {/* ── CTA Banner — horizontal, mid-height ── */}
-          <section className="flex flex-col gap-8 border-b border-white/8 py-14 lg:flex-row lg:items-center lg:justify-between lg:py-16">
-            {/* Left: eyebrow + headline + sub-copy */}
-            <div className="max-w-xl">
-              <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#E6B566]">
-                <span className="h-px w-7 bg-[#E6B566]" />
-                Younick Design Studio · Jaipur
-              </span>
-              <h2 className="mt-4 font-serif text-3xl leading-snug text-white lg:text-[2.75rem] lg:leading-tight">
-                Every great space starts with a{" "}
-                <span className="italic text-[#E6B566]">single conversation.</span>
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-gray-400">
-                From concept to completion — we bring calm planning, better material
-                clarity, and refined execution to every project.
-              </p>
-            </div>
+          {/* ── CTA Banner — Luxury Framed Card ── */}
+          <section className="relative my-8 md:my-12 rounded-3xl border border-white/10 bg-gradient-to-r from-[#1A1A1E] via-[#222228] to-[#1A1A1E] p-8 md:p-12 lg:p-14 shadow-2xl overflow-hidden group">
+            {/* Subtle luxury background radial glow */}
+            <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#E6B566]/10 blur-[80px]" />
+            <div className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-[#B08D57]/10 blur-[80px]" />
 
-            {/* Right: CTAs */}
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-              <GlassBtn href="/contact" variant="gold">
-                Start Your Project
-                <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </GlassBtn>
+            <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              {/* Left: eyebrow + headline + sub-copy */}
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2.5 rounded-full border border-[#E6B566]/30 bg-[#E6B566]/10 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[#E6B566] backdrop-blur-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#E6B566] animate-pulse" />
+                  Younick Design Studio · Jaipur
+                </div>
+                <h2 className="mt-5 font-serif text-3xl leading-snug text-white md:text-4xl lg:text-[2.85rem] lg:leading-tight">
+                  Every great space starts with a{" "}
+                  <span className="italic bg-gradient-to-r from-[#F5D899] via-[#E6B566] to-[#C5A059] bg-clip-text text-transparent drop-shadow-sm">
+                    single conversation.
+                  </span>
+                </h2>
+                <p className="mt-4 text-sm md:text-base leading-relaxed text-gray-300 max-w-xl">
+                  From architectural concept to meticulous execution — we bring clarity, high-end material selection, and timeless sophistication to every space.
+                </p>
+              </div>
 
-              <GlassBtn href="/projects" variant="neutral">
-                View Portfolio
-              </GlassBtn>
+              {/* Right: Lucrative CTAs */}
+              <div className="flex shrink-0 flex-col gap-4 sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center">
+                <GlassBtn href="/contact" variant="gold" className="shadow-lg shadow-[#E6B566]/10">
+                  Start Your Project
+                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </GlassBtn>
+
+                <GlassBtn href="/projects" variant="neutral">
+                  View Portfolio
+                </GlassBtn>
+              </div>
             </div>
           </section>
 
