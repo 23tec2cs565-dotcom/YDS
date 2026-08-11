@@ -18,6 +18,7 @@ const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Admin = React.lazy(() => import("./pages/Admin"));
 import ErrorBoundary from "./components/ErrorBoundary";
 import { initAnalytics } from "./utils/analytics";
+import { Analytics } from "@vercel/analytics/react";
 
 function AppContent() {
   const location = useLocation();
@@ -165,6 +166,7 @@ function App() {
           )}
           <ScrollToTop />
           <AppContent />
+          <Analytics />
         </ErrorBoundary>
       </Router>
     </HelmetProvider>
