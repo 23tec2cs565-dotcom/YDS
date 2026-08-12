@@ -104,9 +104,9 @@ export const teamMembers: TeamMember[] = [
     id: "keshav-sain",
     name: "Keshav Sain",
     role: "Technical Assistant ",
-    image: "/assets/optimized/team/Keshav/Keshav-768.jpeg",
-    image768: "/assets/optimized/team/Keshav/Keshav-768.jpeg",
-    image480: "/assets/optimized/team/Keshav/Keshav-480.jpeg",
+    image: "/assets/optimized/team/Keshav/Keshav-768.jpeg?v=2",
+    image768: "/assets/optimized/team/Keshav/Keshav-768.jpeg?v=2",
+    image480: "/assets/optimized/team/Keshav/Keshav-480.jpeg?v=2",
     description:
       "Keshav supports design thinking and operations, ensuring technical excellence in every project.",
     expertise: [

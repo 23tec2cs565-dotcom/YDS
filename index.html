@@ -52,78 +52,93 @@
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
 
-
-    <!-- Optional: small inline critical CSS (if you use any critical above-the-fold styles) -->
-    <!-- <style> /* critical css */ </style> -->
+    <!-- Critical inline CSS: hide SEO fallback content from sighted users -->
+    <style>
+      /* SEO fallback content is for crawlers only — hidden from visual users.
+         React will replace the entire #root contents on mount. */
+      #seo-fallback {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
   </head>
 
   <body>
     <div id="root">
-      <!-- Semantic initial HTML for SEO Crawlers (Seobility, Googlebot, Bing) & instant initial paint.
-           Hydrated/replaced automatically when React mounts. -->
-      <header role="banner">
-        <nav aria-label="Main Navigation">
-          <a href="/">Home</a>
-          <a href="/projects">Projects</a>
-          <a href="/services">Services</a>
-          <a href="/about">About Us</a>
-          <a href="/contact">Contact Us</a>
-          <a href="/career">Careers</a>
-          <a href="/team">Our Team</a>
-          <a href="/faq">FAQ</a>
-        </nav>
-      </header>
+      <!-- Semantic HTML for SEO crawlers (Seobility, Googlebot, Bing).
+           Visually hidden from users. React replaces #root on mount. -->
+      <div id="seo-fallback">
+        <header role="banner">
+          <nav aria-label="Main Navigation">
+            <a href="/">Home</a>
+            <a href="/projects">Projects</a>
+            <a href="/services">Services</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/career">Careers</a>
+            <a href="/team">Our Team</a>
+            <a href="/faq">FAQ</a>
+          </nav>
+        </header>
 
-      <main>
-        <article>
-          <h1>Best Interior Designer in Jaipur — Younick Design Studio</h1>
-          <p>
-            Younick Design Studio is a premier interior design, turnkey construction, renovation, and 3D visualization studio based in Jaipur, Rajasthan. We specialize in luxury residential villas, modern apartments, corporate offices, and commercial architecture across Jaipur, Udaipur, Jodhpur, and Rajasthan.
-          </p>
+        <main>
+          <article>
+            <h1>Best Interior Designer in Jaipur — Younick Design Studio</h1>
+            <p>
+              Younick Design Studio is a premier interior design, turnkey construction, renovation, and 3D visualization studio based in Jaipur, Rajasthan. We specialize in luxury residential villas, modern apartments, corporate offices, and commercial architecture across Jaipur, Udaipur, Jodhpur, and Rajasthan.
+            </p>
 
-          <h2>Our Interior Design & Turnkey Construction Services</h2>
-          <p>
-            From initial architectural concept to meticulous site execution, we deliver calm planning, material clarity, and refined execution.
-          </p>
-          <ul>
-            <li><a href="/services">Residential Interior Design</a> — Luxury home interiors, villa design, modular kitchens, and custom woodwork.</li>
-            <li><a href="/services">Commercial & Office Fit-outs</a> — High-performance corporate offices, retail stores, and hospitality spaces.</li>
-            <li><a href="/services">Turnkey Construction & Execution</a> — Complete end-to-end site management, contractor supervision, and material sourcing.</li>
-            <li><a href="/services">3D Visualization & Architectural Planning</a> — Photorealistic 3D rendering, spatial modeling, and CAD drawings.</li>
-          </ul>
+            <h2>Our Interior Design & Turnkey Construction Services</h2>
+            <p>
+              From initial architectural concept to meticulous site execution, we deliver calm planning, material clarity, and refined execution.
+            </p>
+            <ul>
+              <li><a href="/services">Residential Interior Design</a> — Luxury home interiors, villa design, modular kitchens, and custom woodwork.</li>
+              <li><a href="/services">Commercial & Office Fit-outs</a> — High-performance corporate offices, retail stores, and hospitality spaces.</li>
+              <li><a href="/services">Turnkey Construction & Execution</a> — Complete end-to-end site management, contractor supervision, and material sourcing.</li>
+              <li><a href="/services">3D Visualization & Architectural Planning</a> — Photorealistic 3D rendering, spatial modeling, and CAD drawings.</li>
+            </ul>
 
-          <h2>Interior Design & Architecture Portfolio</h2>
-          <p>
-            Explore our signature interior design projects in Jaipur and across Rajasthan. Our portfolio showcases modern minimalist villas, heritage renovations, and contemporary commercial spaces built with raw materiality and millimeter precision.
-          </p>
-          <p>
-            <a href="/projects">View Full Portfolio & Case Studies</a>
-          </p>
+            <h2>Interior Design & Architecture Portfolio</h2>
+            <p>
+              Explore our signature interior design projects in Jaipur and across Rajasthan. Our portfolio showcases modern minimalist villas, heritage renovations, and contemporary commercial spaces built with raw materiality and millimeter precision.
+            </p>
+            <p>
+              <a href="/projects">View Full Portfolio & Case Studies</a>
+            </p>
 
-          <h2>About Younick Design Studio</h2>
-          <p>
-            Founded in Jaipur, Younick Design Studio is a collective of interior architects, civil engineers, and master craftsmen. We combine architectural thoughtfulness with craft-driven finishes to deliver spaces that are functional, durable, and visually inspiring.
-          </p>
+            <h2>About Younick Design Studio</h2>
+            <p>
+              Founded in Jaipur, Younick Design Studio is a collective of interior architects, civil engineers, and master craftsmen. We combine architectural thoughtfulness with craft-driven finishes to deliver spaces that are functional, durable, and visually inspiring.
+            </p>
 
-          <h2>Get in Touch with Our Jaipur Studio</h2>
-          <p>
-            Address: 3008, Third Floor, Orbit Mall, Civil Lines, Jaipur, Rajasthan 302001.<br>
-            Phone: <a href="tel:+918854883058">+91 8854883058</a> | Email: <a href="mailto:studioyounick@gmail.com">studioyounick@gmail.com</a>
-          </p>
-          <p>
-            <a href="/contact">Request a Design Consultation</a>
-          </p>
-        </article>
-      </main>
+            <h2>Get in Touch with Our Jaipur Studio</h2>
+            <p>
+              Address: 3008, Third Floor, Orbit Mall, Civil Lines, Jaipur, Rajasthan 302001.<br>
+              Phone: <a href="tel:+918854883058">+91 8854883058</a> | Email: <a href="mailto:studioyounick@gmail.com">studioyounick@gmail.com</a>
+            </p>
+            <p>
+              <a href="/contact">Request a Design Consultation</a>
+            </p>
+          </article>
+        </main>
 
-      <footer>
-        <p>© 2026 Younick Design Studio. All rights reserved. Jaipur, Rajasthan, India.</p>
-        <div>
-          <a href="https://www.instagram.com/studio.younick" target="_blank" rel="noopener noreferrer">Instagram</a> |
-          <a href="https://www.facebook.com/studioyounick" target="_blank" rel="noopener noreferrer">Facebook</a> |
-          <a href="https://www.youtube.com/@Younickdesignstudio" target="_blank" rel="noopener noreferrer">YouTube</a>
-        </div>
-      </footer>
+        <footer>
+          <p>© 2026 Younick Design Studio. All rights reserved. Jaipur, Rajasthan, India.</p>
+          <div>
+            <a href="https://www.instagram.com/studio.younick" target="_blank" rel="noopener noreferrer">Instagram</a> |
+            <a href="https://www.facebook.com/studioyounick" target="_blank" rel="noopener noreferrer">Facebook</a> |
+            <a href="https://www.youtube.com/@Younickdesignstudio" target="_blank" rel="noopener noreferrer">YouTube</a>
+          </div>
+        </footer>
+      </div>
     </div>
     <!-- Vite entry (module) -->
     <script type="module" src="/src/main.tsx"></script>
