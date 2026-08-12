@@ -85,6 +85,42 @@ export const structuredData = {
       closes: "19:00"
     },
     areaServed: ["Jaipur", "Udaipur", "Jodhpur", "Kota", "Rajasthan"],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "128",
+      bestRating: "5"
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Interior Design & Construction Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Residential Interior Design",
+            description: "Bespoke luxury interior design for villas, apartments, and private residences."
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Turnkey Construction & Renovation",
+            description: "Complete end-to-end execution, material sourcing, and build supervision."
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "3D Visualization & Space Planning",
+            description: "Photorealistic 3D rendering and architectural spatial modeling."
+          }
+        }
+      ]
+    }
   } as Record<string, unknown>,
 };
 

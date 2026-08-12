@@ -259,8 +259,9 @@ const Career: React.FC = () => {
     <>
       <SEOHead seo={pageSEO.career ?? { title: "Career - Younick" }} />
 
-      {/* --- HERO SECTION: EDITORIAL --- */}
-      <header className="relative min-h-[90vh] flex items-center bg-[#18181B] text-white pt-24 overflow-hidden">
+      <main className="bg-white min-h-screen pt-20">
+        {/* --- HERO SECTION: EDITORIAL --- */}
+        <header className="relative min-h-[85vh] flex items-center bg-[#18181B] text-white overflow-hidden">
         {/* Background decoration grid */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
              style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -697,6 +698,7 @@ const Career: React.FC = () => {
           </div>
         </div>
       )}
+      </main>
     </>
   );
 };
