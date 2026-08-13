@@ -1,7 +1,7 @@
 // src/components/ProjectModal.tsx
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { X as CloseIcon, ArrowLeft, ArrowRight, MapPin, Calendar, Maximize2, User } from "lucide-react";
+import { X as CloseIcon, ArrowLeft, ArrowRight, MapPin, Calendar, Maximize2, User, Play, IndianRupee } from "lucide-react";
 import type { Project } from "../data/projects";
 
 type Props = {
@@ -11,6 +11,8 @@ type Props = {
   related?: Project[];
   onSelectRelated?: (project: Project) => void;
 };
+
+const isVideo = (url?: string) => Boolean(url && /\.(mp4|webm|mov)(\?.*)?$/i.test(url));
 
 export default function ProjectModal({ project, isOpen, onClose, related = [], onSelectRelated }: Props) {
   // prefer a dedicated modal root if provided
@@ -191,7 +193,7 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
       role="dialog"
       aria-modal="true"
       aria-label={`${project.title} details`}
-      className={`fixed inset-0 z-50 flex items-center justify-center px-4 py-8 transition-opacity duration-200 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 transition-opacity duration-200 ${
         animating ? "opacity-0" : "opacity-100"
       }`}
       onClick={handleClose}
@@ -202,8 +204,7 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
       <div
         ref={dialogRef}
         onClick={stop}
-        className="relative z-10 mx-auto w-full max-w-7xl rounded-3xl overflow-hidden border border-[#2A2A2E] shadow-2xl transform bg-gradient-to-br from-[#0d0d0f] via-[#121214] to-[#1b1b1f] text-[#EAEAEA]"
-        style={{ height: "92vh" }}
+        className="relative z-10 mx-auto w-full max-w-7xl max-h-[96vh] md:h-[92vh] rounded-2xl md:rounded-3xl overflow-hidden border border-[#2A2A2E] shadow-2xl transform bg-gradient-to-br from-[#0d0d0f] via-[#121214] to-[#1b1b1f] text-[#EAEAEA] flex flex-col"
       >
         {/* Close */}
         <button
@@ -214,31 +215,44 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
             e.stopPropagation();
             handleClose();
           }}
-          className="absolute right-5 top-5 z-40 h-10 w-10 flex items-center justify-center rounded-full bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white transition"
+          className="absolute right-3 top-3 sm:right-5 sm:top-5 z-40 h-8 w-8 sm:h-10 sm:w-10 flex items-center justify-center rounded-full bg-black/60 sm:bg-white/10 text-gray-200 sm:text-gray-300 hover:bg-white/20 hover:text-white transition backdrop-blur-md"
         >
-          <CloseIcon size={20} />
+          <CloseIcon size={18} className="sm:w-5 sm:h-5" />
         </button>
 
-        <div className="flex flex-col md:flex-row h-full">
-          {/* Image area */}
-          <div className="modal-image-area relative md:w-[58%] bg-[#0d0d0f] flex items-center justify-center overflow-hidden">
-            <div className="w-full h-full p-6 flex items-center justify-center">
-              <img
-                src={imgs[activeIndex]}
-                alt={`${project.title} ${activeIndex + 1}`}
-                className="max-h-full max-w-full object-contain rounded-xl shadow-xl"
-                loading="lazy"
-                decoding="async"
-                onError={(e) => {
-                  const img = e.currentTarget as HTMLImageElement;
-                  img.onerror = null;
-                  if (img.src.endsWith(".heic")) {
-                    img.src = img.src.replace(/\.heic$/i, ".jpg");
-                    return;
-                  }
-                  img.src = project.image || "/default-project.jpg";
-                }}
-              />
+        <div className="flex flex-col md:flex-row h-full overflow-y-auto md:overflow-hidden">
+          {/* Image/Video area */}
+          <div className="modal-image-area relative h-[40vh] sm:h-[48vh] md:h-full md:w-[55%] lg:w-[58%] shrink-0 bg-[#0d0d0f] flex items-center justify-center overflow-hidden">
+            <div className="w-full h-full p-3 sm:p-5 md:p-6 flex items-center justify-center">
+              {isVideo(imgs[activeIndex]) ? (
+                <video
+                  key={imgs[activeIndex]}
+                  src={imgs[activeIndex]}
+                  controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="max-h-full max-w-full object-contain rounded-lg md:rounded-xl shadow-xl"
+                />
+              ) : (
+                <img
+                  src={imgs[activeIndex]}
+                  alt={`${project.title} ${activeIndex + 1}`}
+                  className="max-h-full max-w-full object-contain rounded-lg md:rounded-xl shadow-xl"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    const img = e.currentTarget as HTMLImageElement;
+                    img.onerror = null;
+                    if (img.src.endsWith(".heic")) {
+                      img.src = img.src.replace(/\.heic$/i, ".jpg");
+                      return;
+                    }
+                    img.src = project.image || "/default-project.jpg";
+                  }}
+                />
+              )}
             </div>
 
             {/* left/right arrows */}
@@ -251,9 +265,9 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                     setActiveIndex((i) => Math.max(0, i - 1));
                   }}
                   disabled={activeIndex === 0}
-                  className="absolute left-6 top-1/2 -translate-y-1/2 z-30 rounded-full bg-black/50 text-white p-3 hover:bg-[#E6B566] hover:text-black transition disabled:opacity-30"
+                  className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 rounded-full bg-black/60 text-white p-2 sm:p-3 hover:bg-[#E6B566] hover:text-black transition disabled:opacity-30 backdrop-blur-md"
                 >
-                  <ArrowLeft size={18} />
+                  <ArrowLeft size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </button>
 
                 <button
@@ -263,22 +277,22 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                     setActiveIndex((i) => Math.min(imgs.length - 1, i + 1));
                   }}
                   disabled={activeIndex === imgs.length - 1}
-                  className="absolute right-6 top-1/2 -translate-y-1/2 z-30 rounded-full bg-black/50 text-white p-3 hover:bg-[#E6B566] hover:text-black transition disabled:opacity-30"
+                  className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 rounded-full bg-black/60 text-white p-2 sm:p-3 hover:bg-[#E6B566] hover:text-black transition disabled:opacity-30 backdrop-blur-md"
                 >
-                  <ArrowRight size={18} />
+                  <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </button>
 
                 {/* page dots */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+                <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 sm:gap-2">
                   {imgs.map((_, i) => (
                     <button
                       key={i}
-                      aria-label={`Go to image ${i + 1}`}
+                      aria-label={`Go to item ${i + 1}`}
                       onClick={(e) => {
                         e.stopPropagation();
                         setActiveIndex(i);
                       }}
-                      className={`h-2 rounded-full transition-all ${i === activeIndex ? "w-9 bg-[#E6B566]" : "w-3 bg-white/40"}`}
+                      className={`h-1.5 sm:h-2 rounded-full transition-all ${i === activeIndex ? "w-6 sm:w-9 bg-[#E6B566]" : "w-2 sm:w-3 bg-white/40"}`}
                     />
                   ))}
                 </div>
@@ -287,7 +301,7 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
           </div>
 
           {/* Details panel */}
-          <aside className="md:w-[42%] h-full overflow-y-auto p-10 bg-gradient-to-b from-[#111111] via-[#18181B] to-[#1E1E21]">
+          <aside className="md:w-[45%] lg:w-[42%] h-auto md:h-full overflow-y-auto p-5 sm:p-8 lg:p-10 bg-gradient-to-b from-[#111111] via-[#18181B] to-[#1E1E21]">
             <div className="space-y-6">
               <header>
                 <div className="flex items-center gap-3 mb-3">
@@ -341,17 +355,26 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                   </div>
                 </div>
 
-              {project.clientContact && project.clientContact.toLowerCase() !== "available upon request" && (
-                <div className="col-span-2">
-                  <div className="text-[#E6B566] uppercase text-xs flex items-center gap-1 mb-1">
-                    <User size={12} /> Client
+                {project.clientContact && project.clientContact.toLowerCase() !== "available upon request" && (
+                  <div>
+                    <div className="text-[#E6B566] uppercase text-xs flex items-center gap-1 mb-1">
+                      <User size={12} /> Client
+                    </div>
+                    <div className="font-medium text-white truncate" title={project.clientContact}>
+                      {project.clientContact}
+                    </div>
                   </div>
-                  <div className="font-medium text-white truncate" title={project.clientContact}>
-                    {project.clientContact}
+                )}
+
+                {project.budget && (
+                  <div>
+                    <div className="text-[#E6B566] uppercase text-xs flex items-center gap-1 mb-1">
+                      <IndianRupee size={12} /> Budget
+                    </div>
+                    <div className="font-medium text-[#E6B566]">{project.budget}</div>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
 
             {project.workScope && project.workScope.length > 0 && (
                 <div>
@@ -370,28 +393,40 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                 <div>
                   <h4 className="text-xs font-bold text-white/40 uppercase mb-3">Gallery</h4>
                   <div className="grid grid-cols-4 gap-3">
-                    {imgs.map((src, i) => (
-                      <button
-                        key={i}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setActiveIndex(i);
-                        }}
-                        aria-label={`Thumbnail ${i + 1}`}
-                        className={`overflow-hidden rounded-md border transition ${i === activeIndex ? "border-[#E6B566] scale-105" : "border-transparent opacity-70 hover:opacity-100"}`}
-                      >
-                        <img
-                          src={src}
-                          alt={`${project.title} ${i + 1}`}
-                          className="h-16 w-full object-cover"
-                          onError={(e) => {
-                            const img = e.currentTarget;
-                            img.onerror = null;
-                            img.src = "/assets/placeholder.jpg";
+                    {imgs.map((src, i) => {
+                      const itemIsVideo = isVideo(src);
+                      return (
+                        <button
+                          key={i}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveIndex(i);
                           }}
-                        />
-                      </button>
-                    ))}
+                          aria-label={`Media ${i + 1}`}
+                          className={`relative overflow-hidden rounded-md border transition ${i === activeIndex ? "border-[#E6B566] scale-105" : "border-transparent opacity-70 hover:opacity-100"}`}
+                        >
+                          {itemIsVideo ? (
+                            <div className="h-16 w-full bg-black/80 flex items-center justify-center relative">
+                              <video src={src} className="h-16 w-full object-cover opacity-60" muted />
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                                <Play size={18} className="text-[#E6B566] fill-[#E6B566]" />
+                              </div>
+                            </div>
+                          ) : (
+                            <img
+                              src={src}
+                              alt={`${project.title} ${i + 1}`}
+                              className="h-16 w-full object-cover"
+                              onError={(e) => {
+                                const img = e.currentTarget;
+                                img.onerror = null;
+                                img.src = "/assets/placeholder.jpg";
+                              }}
+                            />
+                          )}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               )}

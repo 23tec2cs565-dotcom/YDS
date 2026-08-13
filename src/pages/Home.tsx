@@ -144,6 +144,7 @@ Button.displayName = "Button";
 // ------------------ Sections ------------------
 
 const Hero: React.FC = () => {
+  const navigate = useNavigate();
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 100]);
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
@@ -183,7 +184,7 @@ const Hero: React.FC = () => {
 
           <Reveal delay={0.3}>
             <div className="flex flex-wrap items-center gap-4 mb-12">
-              <Button onClick={() => (window.location.href = "#contact")} withIcon>
+              <Button onClick={() => navigate("/contact")} withIcon>
                 Start a Conversation
               </Button>
               <Link
@@ -309,7 +310,7 @@ const ProjectsSection: React.FC = () => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
-  const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
+  const filtered = (filter === "All" ? projects : projects.filter((p) => p.category === filter)).slice(0, 6);
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -348,7 +349,7 @@ const ProjectsSection: React.FC = () => {
           </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, idx) => {
               const img = (project as ExtendedProject)?.imageUrl ?? project.image ?? "";
@@ -526,12 +527,12 @@ const ServicesSection: React.FC = () => {
                     ))}
                   </div>
 
-                  <a
-                    href="#contact"
+                  <Link
+                    to={`/services/${s?.id || activeTab}`}
                     className="inline-flex items-center text-[#0B1220] font-semibold border-b border-[#0B1220] pb-1 hover:text-[#E6B566] hover:border-[#E6B566] transition-colors"
                   >
                     Learn More <ArrowRight size={16} className="ml-2" />
-                  </a>
+                  </Link>
                 </motion.div>
               </div>
             );

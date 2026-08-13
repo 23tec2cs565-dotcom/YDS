@@ -200,27 +200,29 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       aria-label="Main Navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-md py-3 shadow-md border-b border-gray-100"
-          : "bg-transparent py-5"
+          ? "bg-white/85 backdrop-blur-md py-2 sm:py-3 shadow-md border-b border-gray-100"
+          : "bg-transparent py-3 sm:py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex justify-between items-center h-16 relative">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative">
+        <div className="flex justify-between items-center h-14 sm:h-16 relative">
           {/* Logo */}
-          <NavLink to="/" end className="flex items-center space-x-3">
+          <NavLink to="/" end className="flex items-center space-x-2.5 sm:space-x-3">
             <img
               src="/younick-logo.PNG"
               alt="Younick Design Studio"
               width="44"
               height="44"
-              className="h-11 w-auto rounded-md shadow-sm brightness-105"
+              className="h-9 w-auto sm:h-11 rounded-md shadow-sm brightness-105"
             />
-            <span className="font-serif text-2xl font-bold text-[#0B1220] tracking-tight leading-tight flex items-baseline">
-              Younick
-              <span className="font-sans font-medium text-gray-500 text-[12.5px] ml-2 hidden sm:inline-block tracking-widest uppercase">
+            <div className="flex flex-col justify-center leading-none">
+              <span className="font-serif text-lg sm:text-2xl font-bold text-[#0B1220] tracking-tight">
+                Younick
+              </span>
+              <span className="font-sans font-medium text-gray-500 text-[9px] sm:text-[11.5px] tracking-[0.18em] uppercase mt-0.5">
                 Design Studio
               </span>
-            </span>
+            </div>
           </NavLink>
 
           {/* Desktop Navigation */}
