@@ -25,9 +25,9 @@ export const teamMembers: TeamMember[] = [
     id: "founder",
     name: "Nikhil Sain",
     role: "Founder & Lead Designer",
-    image: "/assets/optimized/team/Nikhil/Nikhil-1024.jpg",
-    image768: "/assets/optimized/team/Nikhil/Nikhil-768.jpg",
-    image480: "/assets/optimized/team/Nikhil/Nikhil-480.jpg",
+    image: "/assets/optimized/team/Nikhil/Nikhil-1024.jpeg?v=2",
+    image768: "/assets/optimized/team/Nikhil/Nikhil-1024.jpeg?v=2",
+    image480: "/assets/optimized/team/Nikhil/Nikhil-1024.jpeg?v=2",
     description:
       "Nikhil Sain is an experienced and dynamic interior designer who pursued his Master's at Arch College of Interior and Business in 2017. His philosophy centers on incorporating the client's needs into the design with a creative flair. He focuses on finishes, furnishings, materials and practical solutions that last.",
     expertise: [
