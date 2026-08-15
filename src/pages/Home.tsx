@@ -146,17 +146,36 @@ const Hero: React.FC = () => {
     "/assets/optimized/Projects/Detailing devils/video-13.mp4",
     "/assets/optimized/Projects/Detailing devils/video-14.mp4",
   ];
-  const videoIdxRef = useRef(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  // Dual-buffered video playlist to eliminate blinking and ensure seamless preloaded transitions on production deployments
+  const [activePlayer, setActivePlayer] = useState<"A" | "B">("A");
+  const [currentVideoIdx, setCurrentVideoIdx] = useState(0);
+  const [videoASrc, setVideoASrc] = useState(heroVideos[0]);
+  const [videoBSrc, setVideoBSrc] = useState(heroVideos[1 % heroVideos.length]);
+  const videoARef = useRef<HTMLVideoElement>(null);
+  const videoBRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoEnded = useCallback(() => {
-    videoIdxRef.current = (videoIdxRef.current + 1) % heroVideos.length;
-    const vid = videoRef.current;
-    if (vid) {
-      vid.src = heroVideos[videoIdxRef.current];
-      vid.play().catch(() => {});
+    const nextIdx = (currentVideoIdx + 1) % heroVideos.length;
+    const nextNextIdx = (nextIdx + 1) % heroVideos.length;
+
+    if (activePlayer === "A") {
+      if (videoBRef.current) {
+        videoBRef.current.currentTime = 0;
+        videoBRef.current.play().catch(() => {});
+      }
+      setActivePlayer("B");
+      setCurrentVideoIdx(nextIdx);
+      setVideoASrc(heroVideos[nextNextIdx]);
+    } else {
+      if (videoARef.current) {
+        videoARef.current.currentTime = 0;
+        videoARef.current.play().catch(() => {});
+      }
+      setActivePlayer("A");
+      setCurrentVideoIdx(nextIdx);
+      setVideoBSrc(heroVideos[nextNextIdx]);
     }
-  }, [heroVideos]);
+  }, [activePlayer, currentVideoIdx, heroVideos]);
 
   // Back panel static image from first featured project (or fallback to first project)
   const featuredProject = projects.find((p) => p.featured) || projects[0];
@@ -234,15 +253,31 @@ const Hero: React.FC = () => {
           </MotionDiv>
 
           <MotionDiv style={{ y: y2 }} className="absolute bottom-0 left-0 w-3/5 h-1/2 z-20">
-            <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB]">
+            <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB] relative bg-[#0B1220]">
+              {/* Player A */}
               <video
-                ref={videoRef}
-                src={heroVideos[0]}
+                ref={videoARef}
+                src={videoASrc}
                 autoPlay
                 muted
                 playsInline
-                onEnded={handleVideoEnded}
-                className="w-full h-full object-cover"
+                preload="auto"
+                onEnded={activePlayer === "A" ? handleVideoEnded : undefined}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                  activePlayer === "A" ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                }`}
+              />
+              {/* Player B */}
+              <video
+                ref={videoBRef}
+                src={videoBSrc}
+                muted
+                playsInline
+                preload="auto"
+                onEnded={activePlayer === "B" ? handleVideoEnded : undefined}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                  activePlayer === "B" ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                }`}
               />
             </div>
 
@@ -324,7 +359,10 @@ const ProjectsSection: React.FC = () => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
-  const filtered = (filter === "All" ? projects : projects.filter((p) => p.category === filter)).slice(0, 6);
+
+  // Only display projects with featured: true in Selected Works
+  const featuredProjects = projects.filter((p) => p.featured);
+  const filtered = (filter === "All" ? featuredProjects : featuredProjects.filter((p) => p.category === filter)).slice(0, 6);
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
