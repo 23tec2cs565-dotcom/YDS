@@ -209,7 +209,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
           {/* Logo */}
           <NavLink to="/" end className="flex items-center space-x-2.5 sm:space-x-3">
             <img
-              src="/younick-logo.PNG"
+              src="/favicon.ico"
               alt="Younick Design Studio"
               width="44"
               height="44"

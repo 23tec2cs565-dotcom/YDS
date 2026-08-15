@@ -28,13 +28,25 @@ export const projects: Project[] = [
     title: "PCP Sikar",
     category: "Interior Design",
     location: "Sikar",
-    image: "/assets/optimized/Projects/PCP Sikar/1/1-1024.jpg",
+    image: "/assets/optimized/Projects/PCP Sikar/1.jpeg",
     images: [
-      "/assets/optimized/Projects/PCP Sikar/1/1-1024.jpg",
-      "/assets/optimized/Projects/PCP Sikar/2/2-1024.jpg",
-      "/assets/optimized/Projects/PCP Sikar/3/3-1024.jpg",
-      "/assets/optimized/Projects/PCP Sikar/4/4-1024.jpg",
-      "/assets/optimized/Projects/PCP Sikar/5/5-1024.jpg"
+      "/assets/optimized/Projects/PCP Sikar/1.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/2.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/3.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/4.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/5.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/6.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/7.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/8.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/9.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/10.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/11.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/12.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/13.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/14.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/15.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/16.jpeg",
+      "/assets/optimized/Projects/PCP Sikar/17.jpeg"
     ],
     subtitle: "Luxury Contemporary Living",
     description:
@@ -55,54 +67,21 @@ export const projects: Project[] = [
     focalPoint: { x: 0.5, y: 0.45 }
   },
   {
-    id: "bright-school",
-    slug: "bright-school",
-    title: "Bright School",
-    category: "Construction",
-    location: "Govindgarh",
-    image: "/assets/optimized/Projects/BRIGHT SCHOOL/1/1-1024.jpg",
-    images: [
-      "/assets/optimized/Projects/BRIGHT SCHOOL/1/1-1024.jpg",
-      "/assets/optimized/Projects/BRIGHT SCHOOL/2/2-1024.jpg",
-      "/assets/optimized/Projects/BRIGHT SCHOOL/3/3-1024.jpg",
-      "/assets/optimized/Projects/BRIGHT SCHOOL/4/4-1024.jpg",
-      "/assets/optimized/Projects/BRIGHT SCHOOL/5/5-1024.jpg"
-    ],
-    subtitle: "Future-Ready Education Spaces",
-    description:
-      "Modern school construction with functional classrooms and play areas.",
-    longDescription:
-      "A contemporary educational facility designed for safety, flexibility, and natural light. Includes learning zones, labs and recreational areas tailored to children.",
-    outcome: "Created a safer, brighter learning environment with flexible classrooms and shared spaces.",
-    workScope: [
-      "Space Planning",
-      "Construction Management",
-      "Interior Design",
-      "MEP Coordination"
-    ],
-    clientContact: "Available upon request",
-    completionDate: "October 2023",
-    area: "2,800 sq ft",
-    featured: true,
-    focalPoint: { x: 0.5, y: 0.5 }
-  },
-  {
     id: "jk-lon",
     slug: "jk-lon",
     title: "JK LON Hospital",
     category: "Renovation",
     location: "Jaipur",
-    image: "/assets/optimized/Projects/JK LON/1/1-1024.jpg",
+    image: "/assets/optimized/Projects/JK LON/1.jpg",
     images: [
-      "/assets/optimized/Projects/JK LON/1/1-1024.jpg",
-      "/assets/optimized/Projects/JK LON/2/2-1024.jpg",
-      "/assets/optimized/Projects/JK LON/3/3-1024.jpg",
-      "/assets/optimized/Projects/JK LON/4/4-1024.jpg",
-      "/assets/optimized/Projects/JK LON/5/5-1024.jpg",
-      "/assets/optimized/Projects/JK LON/6/6-1024.jpg",
-      "/assets/optimized/Projects/JK LON/7/7-1024.jpg",
-      "/assets/optimized/Projects/JK LON/8/8-1024.jpg",
-      "/assets/optimized/Projects/JK LON/9/9-1024.jpg"
+      "/assets/optimized/Projects/JK LON/1.jpg",
+      "/assets/optimized/Projects/JK LON/2.jpg",
+      "/assets/optimized/Projects/JK LON/3.jpg",
+      "/assets/optimized/Projects/JK LON/4.jpg",
+      "/assets/optimized/Projects/JK LON/5.jpg",
+      "/assets/optimized/Projects/JK LON/6.jpg",
+      "/assets/optimized/Projects/JK LON/7.jpg",
+      "/assets/optimized/Projects/JK LON/8.jpg"
     ],
     subtitle: "Healthcare Reimagined",
     description:
@@ -128,16 +107,13 @@ export const projects: Project[] = [
     title: "Dharmendra Villa",
     category: "Interior Design",
     location: "Jagatpura, Jaipur",
-    image: "/assets/optimized/Projects/Home-Dharmendra/1.jpeg",
+    image: "/assets/optimized/Projects/Home-Dharmendra/1.jpg",
     images: [
-      "/assets/optimized/Projects/Home-Dharmendra/1.jpeg",
+      "/assets/optimized/Projects/Home-Dharmendra/1.jpg",
+      "/assets/optimized/Projects/Home-Dharmendra/2.jpeg",
+      "/assets/optimized/Projects/Home-Dharmendra/3.jpg",
       "/assets/optimized/Projects/Home-Dharmendra/video-1.mp4",
-      "/assets/optimized/Projects/Home-Dharmendra/video-2.mp4",
-      "/assets/optimized/Projects/Home-Dharmendra/1/1-1024.jpg",
-      "/assets/optimized/Projects/Home-Dharmendra/2/2-1024.jpg",
-      "/assets/optimized/Projects/Home-Dharmendra/3/3-1024.jpg",
-      "/assets/optimized/Projects/Home-Dharmendra/4/4-1024.jpg",
-      "/assets/optimized/Projects/Home-Dharmendra/5/5-1024.jpg"
+      "/assets/optimized/Projects/Home-Dharmendra/video-2.mp4"
     ],
     subtitle: "Design & Execution • Budget ₹45 Lakhs",
     description:
@@ -152,70 +128,51 @@ export const projects: Project[] = [
       "Lighting & Ceilings"
     ],
     clientContact: "Mr. Dharmendra Sharma",
-    completionDate: "November 2023",
-    area: "3,000 sq ft",
+    completionDate: "November 2024",
+    area: "1,200 sq ft",
     budget: "₹45 Lakhs",
-    featured: false
-  },
-  {
-    id: "home-pradeep",
-    slug: "home-pradeep",
-    title: "Pradeep Villa",
-    category: "Consultation",
-    location: "Jagatpura",
-    image: "/assets/optimized/Projects/Home-Pradeep/1/1-1024.jpg",
-    images: [
-      "/assets/optimized/Projects/Home-Pradeep/1/1-1024.jpg",
-      "/assets/optimized/Projects/Home-Pradeep/2/2-1024.jpg",
-      "/assets/optimized/Projects/Home-Pradeep/3/3-1024.jpg",
-      "/assets/optimized/Projects/Home-Pradeep/4/4-1024.jpg"
-    ],
-    subtitle: "Heritage Meets Modern",
-    description:
-      "Design consultation for a private villa blending modern comfort with local Rajasthani details.",
-    longDescription:
-      "This villa consultation explored cultural motifs, handcrafted textures, and contemporary planning to create a warm, upscale home with regional character.",
-    outcome: "Aligned design direction early, reducing revisions and accelerating planning decisions.",
-    workScope: [
-      "Design Consultation",
-      "Cultural Integration",
-      "Space Planning",
-      "Material Guidance"
-    ],
-    clientContact: "Available upon request",
-    completionDate: "September 2023",
-    area: "8,000 sq ft",
     featured: false
   },
   {
     id: "foyer",
     slug: "foyer",
-    title: "Foyer",
-    category: "Interior Design",
-    location: "Tonk Phatak",
-    image: "/assets/optimized/Projects/Foyer/1/1-1024.jpg",
+    title: "Entrance Foyer Renovation",
+    category: "Renovation",
+    location: "New Light Colony, Tonk Road, Jaipur",
+    image: "/assets/optimized/Projects/Foyer/1.jpeg",
     images: [
-      "/assets/optimized/Projects/Foyer/1/1-1024.jpg",
-      "/assets/optimized/Projects/Foyer/2/2-1024.jpg",
-      "/assets/optimized/Projects/Foyer/3/3-1024.jpg",
-      "/assets/optimized/Projects/Foyer/4/4-1024.jpg",
-      "/assets/optimized/Projects/Foyer/5/5-1024.jpg"
+      "/assets/optimized/Projects/Foyer/2.jpg",
+      "/assets/optimized/Projects/Foyer/3.jpeg",
+      "/assets/optimized/Projects/Foyer/4.jpeg",
+      "/assets/optimized/Projects/Foyer/5.jpeg?v=2",
+      "/assets/optimized/Projects/Foyer/6.jpg",
+      "/assets/optimized/Projects/Foyer/7.jpg",
+      "/assets/optimized/Projects/Foyer/8.jpeg",
+      "/assets/optimized/Projects/Foyer/9.jpeg",
+      "/assets/optimized/Projects/Foyer/10.jpeg",
+      "/assets/optimized/Projects/Foyer/11.jpeg",
+      "/assets/optimized/Projects/Foyer/video-1.mp4",
+      "/assets/optimized/Projects/Foyer/video-2.mp4",
+      "/assets/optimized/Projects/Foyer/video-3.mp4",
+      "/assets/optimized/Projects/Foyer/video-4.mp4"
     ],
-    subtitle: "Rustic Modern Charm",
+    subtitle: "Foyer Renovation • Budget ₹15 Lakhs",
     description:
-      "Contemporary farmhouse design blending modern amenities with rustic charm.",
+      "Entrance foyer renovation project for Mr. Arpit Agrawal in New Light Colony, Tonk Road, Jaipur.",
     longDescription:
-      "This farmhouse project brought modern living to a rustic setting. Natural wood, large windows, and outdoor integration made this design both cozy and contemporary.",
-    outcome: "Balanced rustic charm with modern comfort, strengthening indoor-outdoor connection.",
+      "High-end entrance foyer renovation for Mr. Arpit Agrawal at New Light Colony, Tonk Road, Jaipur. Features custom wall cladding, luxury foyer lighting, and premium carpentry detailing within a ₹15 Lakh budget.",
+    outcome: "Elevated the home's arrival experience with refined material textures and warm welcoming light.",
     workScope: [
-      "Interior Design",
-      "Furniture Design",
-      "Landscape Integration",
-      "Lighting Design"
+      "Entrance Foyer Renovation",
+      "Custom Wall Cladding",
+      "Lighting Upgrade",
+      "Luxuary Finish",
+      "Custom Consoles"
     ],
-    clientContact: "Available upon request",
-    completionDate: "July 2023",
-    area: "3,200 sq ft",
+    clientContact: "Mr. Arpit Agrawal",
+    completionDate: "March 2025",
+    area: "250 sq ft",
+    budget: "₹15 Lakhs",
     featured: false
   },
   {
@@ -235,11 +192,7 @@ export const projects: Project[] = [
       "/assets/optimized/Projects/Chhoti bai jewellers/7.jpeg",
       "/assets/optimized/Projects/Chhoti bai jewellers/8.jpeg",
       "/assets/optimized/Projects/Chhoti bai jewellers/9.jpeg",
-      "/assets/optimized/Projects/Chhoti bai jewellers/10.jpeg",
-      "/assets/optimized/Projects/Chhoti bai jewellers/11.jpeg",
-      "/assets/optimized/Projects/Chhoti bai jewellers/12.jpeg",
-      "/assets/optimized/Projects/Chhoti bai jewellers/13.jpeg",
-      "/assets/optimized/Projects/Chhoti bai jewellers/14.jpeg"
+      "/assets/optimized/Projects/Chhoti bai jewellers/10.jpeg"
     ],
     subtitle: "Turnkey Project with Material • Budget ₹14 Lakhs",
     description:
@@ -251,11 +204,12 @@ export const projects: Project[] = [
       "Turnkey Project with Material",
       "Retail Interior Design",
       "Display Vitrines",
+      "Workspace For Designers",
       "Security Layout Planning"
     ],
     clientContact: "Chhoti Bai Jewellers",
-    completionDate: "January 2024",
-    area: "2,200 sq ft",
+    completionDate: "January 2026",
+    area: "600 sq ft",
     budget: "₹14 Lakhs",
     featured: true,
     focalPoint: { x: 0.5, y: 0.45 }
@@ -297,46 +251,8 @@ export const projects: Project[] = [
       "Industrial Aesthetics"
     ],
     clientContact: "Mr. Sanjay Choudhary",
-    completionDate: "February 2024",
+    completionDate: "March 2025",
     area: "3,500 sq ft",
-    featured: false
-  },
-  {
-    id: "foyer-renovation",
-    slug: "foyer-renovation",
-    title: "Entrance Foyer Renovation",
-    category: "Renovation",
-    location: "New Light Colony, Tonk Road, Jaipur",
-    image: "/assets/optimized/Projects/Foyer Renovation/1.jpeg",
-    images: [
-      "/assets/optimized/Projects/Foyer Renovation/1.jpeg",
-      "/assets/optimized/Projects/Foyer Renovation/video-1.mp4",
-      "/assets/optimized/Projects/Foyer Renovation/video-2.mp4",
-      "/assets/optimized/Projects/Foyer Renovation/video-3.mp4",
-      "/assets/optimized/Projects/Foyer Renovation/video-4.mp4",
-      "/assets/optimized/Projects/Foyer Renovation/2.jpeg",
-      "/assets/optimized/Projects/Foyer Renovation/3.jpeg",
-      "/assets/optimized/Projects/Foyer Renovation/4.jpeg",
-      "/assets/optimized/Projects/Foyer Renovation/5.jpeg",
-      "/assets/optimized/Projects/Foyer Renovation/6.jpeg",
-      "/assets/optimized/Projects/Foyer Renovation/7.jpeg"
-    ],
-    subtitle: "Foyer Renovation • Budget ₹15 Lakhs",
-    description:
-      "Entrance foyer renovation project for Mr. Arpit Agrawal in New Light Colony, Tonk Road, Jaipur.",
-    longDescription:
-      "High-end entrance foyer renovation for Mr. Arpit Agrawal at New Light Colony, Tonk Road, Jaipur. Features custom wall cladding, luxury foyer lighting, and premium carpentry detailing within a ₹15 Lakh budget.",
-    outcome: "Elevated the home's arrival experience with refined material textures and warm welcoming light.",
-    workScope: [
-      "Entrance Foyer Renovation",
-      "Custom Wall Panelling",
-      "Lighting Upgrade",
-      "Custom Consoles"
-    ],
-    clientContact: "Mr. Arpit Agrawal",
-    completionDate: "March 2024",
-    area: "800 sq ft",
-    budget: "₹15 Lakhs",
     featured: false
   },
   {
@@ -364,8 +280,8 @@ export const projects: Project[] = [
       "Material Selection"
     ],
     clientContact: "Mr. Sampat Goyal",
-    completionDate: "April 2024",
-    area: "2,400 sq ft",
+    completionDate: "September 2025",
+    area: "1,800 sq ft",
     featured: false
   },
   {
@@ -399,8 +315,8 @@ export const projects: Project[] = [
       "Lighting & Panelling"
     ],
     clientContact: "Mrs. Himani Sain",
-    completionDate: "May 2024",
-    area: "3,100 sq ft",
+    completionDate: "February 2023",
+    area: "175 sq ft",
     budget: "₹2.5 Lakhs",
     featured: true,
     focalPoint: { x: 0.5, y: 0.5 }
@@ -411,18 +327,18 @@ export const projects: Project[] = [
     title: "Rawat Light Studio",
     category: "Consultation",
     location: "Murlipura, Jaipur",
-    image: "/assets/optimized/Projects/Rawat light studio/1.jpeg",
+    image: "/assets/optimized/Projects/Rawat light studio/5.jpeg",
     images: [
       "/assets/optimized/Projects/Rawat light studio/1.jpeg",
-      "/assets/optimized/Projects/Rawat light studio/video-1.mp4",
-      "/assets/optimized/Projects/Rawat light studio/video-2.mp4",
-      "/assets/optimized/Projects/Rawat light studio/video-3.mp4",
       "/assets/optimized/Projects/Rawat light studio/2.jpeg",
       "/assets/optimized/Projects/Rawat light studio/3.jpeg",
       "/assets/optimized/Projects/Rawat light studio/4.jpeg",
-      "/assets/optimized/Projects/Rawat light studio/5.jpeg",
-      "/assets/optimized/Projects/Rawat light studio/6.jpeg",
-      "/assets/optimized/Projects/Rawat light studio/7.jpeg"
+      "/assets/optimized/Projects/Rawat light studio/5.jpeg?v=2",
+      "/assets/optimized/Projects/Rawat light studio/6.jpeg?v=2",
+      "/assets/optimized/Projects/Rawat light studio/7.jpeg?v=2",
+      "/assets/optimized/Projects/Rawat light studio/video-1.mp4",
+      "/assets/optimized/Projects/Rawat light studio/video-2.mp4",
+      "/assets/optimized/Projects/Rawat light studio/video-3.mp4"
     ],
     subtitle: "Design Consultancy Project",
     description:
@@ -432,13 +348,14 @@ export const projects: Project[] = [
     outcome: "Built a sleek, high-contrast showroom layout that highlights architectural lighting fixtures.",
     workScope: [
       "Design Consultancy",
-      "Showroom Architecture",
-      "Lighting Display Layout",
+      "Lighting Showroom Design",
+      "Furniture Design ",
+      "Light Display",
       "Electrical Planning"
     ],
     clientContact: "Mr. Rahul Jangir",
-    completionDate: "June 2024",
-    area: "1,800 sq ft",
+    completionDate: "July 2025",
+    area: "500 sq ft",
     featured: false
   },
   {
@@ -469,8 +386,8 @@ export const projects: Project[] = [
       "Material Selection"
     ],
     clientContact: "Ms. Jyoti Sharma",
-    completionDate: "July 2024",
-    area: "4,200 sq ft",
+    completionDate: "November 2026",
+    area: "1,800 sq ft",
     featured: true,
     focalPoint: { x: 0.5, y: 0.45 }
   },
@@ -492,17 +409,18 @@ export const projects: Project[] = [
     description:
       "Design and execution project for The Coffee Crust Caffe in Vidyadhar Nagar, Jaipur for Mr. Shashank.",
     longDescription:
-      "Complete design and execution for Mr. Shashank's The Coffee Crust Caffe in Vidyadhar Nagar, Jaipur. Created a warm, inviting cafe interior featuring custom wooden counter, cozy seating, and ambient lighting within a ₹2.5 Lakh budget.",
+      "Complete design and execution for Mr. Shashank The Coffee Crust Caffe in Vidyadhar Nagar, Jaipur. Created a warm, inviting cafe interior featuring custom wooden counter, cozy seating, and ambient lighting within a ₹2.5 Lakh budget.",
     outcome: "Created a trendy, photogenic cafe space that maximizes seating capacity while maintaining a relaxed vibe.",
     workScope: [
       "Design & Execution",
       "Cafe Interior Design",
-      "Counter Fabrication",
+      "Furniture Design",
+      "Renovation",
       "Lighting & Ambience"
     ],
     clientContact: "Mr. Shashank",
-    completionDate: "August 2024",
-    area: "1,500 sq ft",
+    completionDate: "October 2023",
+    area: "350 sq ft",
     budget: "₹2.5 Lakhs",
     featured: true,
     focalPoint: { x: 0.5, y: 0.5 }

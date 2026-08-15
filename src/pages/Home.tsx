@@ -1,5 +1,5 @@
 // src/pages/Home.tsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   motion,
@@ -149,9 +149,37 @@ const Hero: React.FC = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, 100]);
   const y2 = useTransform(scrollY, [0, 500], [0, -100]);
 
-  // safe picks for hero images (some project objects may use different keys)
-  const heroImgA = (projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
-  const heroImgB = (projects[1] as ExtendedProject)?.imageUrl ?? projects[1]?.image ?? "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop";
+  // Detailing Devils video playlist for hero front panel
+  const heroVideos = [
+    "/assets/optimized/Projects/Detailing devils/video-1.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-2.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-3.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-4.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-5.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-6.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-7.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-8.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-9.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-10.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-11.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-12.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-13.mp4",
+    "/assets/optimized/Projects/Detailing devils/video-14.mp4",
+  ];
+  const videoIdxRef = useRef(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoEnded = useCallback(() => {
+    videoIdxRef.current = (videoIdxRef.current + 1) % heroVideos.length;
+    const vid = videoRef.current;
+    if (vid) {
+      vid.src = heroVideos[videoIdxRef.current];
+      vid.play().catch(() => {});
+    }
+  }, [heroVideos]);
+
+  // Back panel static image from first active project
+  const heroBackImg = (projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
 
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-[#FAFAFB]">
@@ -214,25 +242,25 @@ const Hero: React.FC = () => {
           <MotionDiv style={{ y: y1 }} className="absolute top-0 right-0 w-4/5 h-4/5 z-10">
             <div className="w-full h-full rounded-tr-[100px] rounded-bl-[40px] overflow-hidden shadow-2xl">
               <img
-                src={heroImgA}
+                src={heroBackImg}
                 alt="Luxury Interior"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
                 onError={handleImgError}
                 loading="eager"
-                fetchpriority="high"
               />
             </div>
           </MotionDiv>
 
           <MotionDiv style={{ y: y2 }} className="absolute bottom-0 left-0 w-3/5 h-1/2 z-20">
             <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB]">
-              <img
-                src={heroImgB}
-                alt="Architectural detail of interior design work by Younick Studio"
+              <video
+                ref={videoRef}
+                src={heroVideos[0]}
+                autoPlay
+                muted
+                playsInline
+                onEnded={handleVideoEnded}
                 className="w-full h-full object-cover"
-                onError={handleImgError}
-                loading="eager"
-                fetchpriority="high"
               />
             </div>
 

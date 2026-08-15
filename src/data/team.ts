@@ -77,9 +77,9 @@ export const teamMembers: TeamMember[] = [
     id: "pooja-sain",
     name: "Pooja Sain",
     role: "Architect & Designer · CEO",
-    image: "/assets/optimized/team/Pooja/Pooja-1024.jpg",
-    image768: "/assets/optimized/team/Pooja/Pooja-768.jpg",
-    image480: "/assets/optimized/team/Pooja/Pooja-480.jpg",
+    image: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
+    image768: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
+    image480: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
     description:
       "Pooja leads design thinking and operations, bringing sustainable architecture and refined detailing to every project.",
     expertise: [
@@ -100,7 +100,33 @@ export const teamMembers: TeamMember[] = [
     isFounder: true,
     badge: "CEO",
   },
-{
+  {
+    id: "nikhil-verma",
+    name: "Nikhil Verma",
+    role: "Interior Designer",
+    image: "/assets/optimized/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
+    image768: "/assets/optimized/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
+    image480: "/assets/optimized/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
+    description:
+      "Nikhil Verma is a Jaipur-based Interior Designer with a creative mind and a passion for transforming spaces. He is continuously learning and exploring new design ideas, focusing on creating interiors that are functional, aesthetic, and unique.",
+    expertise: [
+      "Interior Design",
+      "Space Planning",
+      "Aesthetic Concepts",
+      "Functional Design",
+    ],
+    contact: {
+      email: "nikhilverma@younickdesign.com",
+      phone: "+91 8854883058",
+      whatsapp: "+91 8854883058",
+    },
+    social: {
+      instagram: "https://instagram.com/nikhil_younick",
+    },
+    isFounder: false,
+    badge: "Member",
+  },
+  {
     id: "keshav-sain",
     name: "Keshav Sain",
     role: "Technical Assistant ",
