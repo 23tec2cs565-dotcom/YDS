@@ -38,6 +38,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
 import { projects } from "../data/projects";
 import { services } from "../data/services";
 import { teamMembers } from "../data/team";
+import { testimonials as TESTIMONIALS } from "../data/testimonials";
 import type { Project } from "../data/projects";
 import type { Service } from "../data/services";
 import SEOHead from "../components/SEOHead";
@@ -69,27 +70,6 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
     img.alt = "Younick studio image fallback";
   }
 }
-
-
-
-const TESTIMONIALS = [
-  {
-    id: "t1",
-    name: "Amit Sharma",
-    role: "Homeowner",
-    quote: "The attention to detail is unlike anything else.",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=512&auto=format&fit=crop",
-  },
-  {
-    id: "t2",
-    name: "Riya Kapoor",
-    role: "Interior Designer",
-    quote: "Great process, clear communication and beautiful finishes.",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1545996124-5b9c9b3dd7a9?q=80&w=512&auto=format&fit=crop",
-  },
-];
 
 const Reveal: React.FC<{
   children: React.ReactNode;
@@ -178,8 +158,9 @@ const Hero: React.FC = () => {
     }
   }, [heroVideos]);
 
-  // Back panel static image from first active project
-  const heroBackImg = (projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
+  // Back panel static image from first featured project (or fallback to first project)
+  const featuredProject = projects.find((p) => p.featured) || projects[0];
+  const heroBackImg = (featuredProject as ExtendedProject)?.imageUrl ?? featuredProject?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
 
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-[#FAFAFB]">
@@ -242,6 +223,7 @@ const Hero: React.FC = () => {
           <MotionDiv style={{ y: y1 }} className="absolute top-0 right-0 w-4/5 h-4/5 z-10">
             <div className="w-full h-full rounded-tr-[100px] rounded-bl-[40px] overflow-hidden shadow-2xl">
               <img
+                key={heroBackImg}
                 src={heroBackImg}
                 alt="Luxury Interior"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
@@ -270,7 +252,7 @@ const Hero: React.FC = () => {
                   <Star key={i} className="w-3 h-3 text-[#E6B566]" />
                 ))}
               </div>
-              <p className="text-xs font-medium text-[#0B1220]">"The attention to detail is unlike anything else."</p>
+              <p className="text-xs font-medium text-[#0B1220]">"{TESTIMONIALS[0]?.quote || "The attention to detail is unlike anything else."}"</p>
             </div>
           </MotionDiv>
         </div>
@@ -280,6 +262,10 @@ const Hero: React.FC = () => {
 };
 
 const About: React.FC = () => {
+  const featuredProjects = projects.filter((p) => p.featured);
+  const aboutImgA = (featuredProjects[0] as ExtendedProject)?.imageUrl ?? featuredProjects[0]?.image ?? projects[0]?.image ?? "";
+  const aboutImgB = (featuredProjects[1] as ExtendedProject)?.imageUrl ?? featuredProjects[1]?.image ?? projects[1]?.image ?? "";
+
   return (
     <section id="about" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">
@@ -288,10 +274,10 @@ const About: React.FC = () => {
             <Reveal>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 mt-12">
-                  <img src={(projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? ""} alt="Premium materials and finishes used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
+                  <img src={aboutImgA} alt="Premium materials and finishes used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
                 <div className="space-y-4">
-                  <img src={(projects[1] as ExtendedProject)?.imageUrl ?? projects[1]?.image ?? ""} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
+                  <img src={aboutImgB} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
               </div>
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-[#F7F7F9] rounded-full blur-3xl opacity-60" />
