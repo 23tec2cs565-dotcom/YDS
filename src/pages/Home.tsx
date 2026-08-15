@@ -146,36 +146,66 @@ const Hero: React.FC = () => {
     "/assets/optimized/Projects/Detailing devils/video-13.mp4",
     "/assets/optimized/Projects/Detailing devils/video-14.mp4",
   ];
-  // Dual-buffered video playlist to eliminate blinking and ensure seamless preloaded transitions on production deployments
-  const [activePlayer, setActivePlayer] = useState<"A" | "B">("A");
-  const [currentVideoIdx, setCurrentVideoIdx] = useState(0);
-  const [videoASrc, setVideoASrc] = useState(heroVideos[0]);
-  const [videoBSrc, setVideoBSrc] = useState(heroVideos[1 % heroVideos.length]);
-  const videoARef = useRef<HTMLVideoElement>(null);
-  const videoBRef = useRef<HTMLVideoElement>(null);
+  // Zero-Blink Seamless Crossfade Engine:
+  // Starts the next video 0.6s before the current video ends, only crossfading once real frames are actively rendering.
+  const [activeLayer, setActiveLayer] = useState<0 | 1>(0);
+  const [sources, setSources] = useState<[string, string]>([heroVideos[0], heroVideos[1]]);
+  const videoIndexRef = useRef(0);
+  const video0Ref = useRef<HTMLVideoElement>(null);
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const isTransitioningRef = useRef(false);
 
-  const handleVideoEnded = useCallback(() => {
-    const nextIdx = (currentVideoIdx + 1) % heroVideos.length;
-    const nextNextIdx = (nextIdx + 1) % heroVideos.length;
-
-    if (activePlayer === "A") {
-      if (videoBRef.current) {
-        videoBRef.current.currentTime = 0;
-        videoBRef.current.play().catch(() => {});
+  const handleTimeUpdate0 = () => {
+    if (activeLayer !== 0 || isTransitioningRef.current) return;
+    const v0 = video0Ref.current;
+    if (v0 && v0.duration && v0.currentTime >= v0.duration - 0.6) {
+      isTransitioningRef.current = true;
+      const v1 = video1Ref.current;
+      if (v1) {
+        v1.currentTime = 0;
+        v1.play().catch(() => {});
       }
-      setActivePlayer("B");
-      setCurrentVideoIdx(nextIdx);
-      setVideoASrc(heroVideos[nextNextIdx]);
-    } else {
-      if (videoARef.current) {
-        videoARef.current.currentTime = 0;
-        videoARef.current.play().catch(() => {});
-      }
-      setActivePlayer("A");
-      setCurrentVideoIdx(nextIdx);
-      setVideoBSrc(heroVideos[nextNextIdx]);
     }
-  }, [activePlayer, currentVideoIdx, heroVideos]);
+  };
+
+  const handleTimeUpdate1 = () => {
+    if (activeLayer !== 1 || isTransitioningRef.current) return;
+    const v1 = video1Ref.current;
+    if (v1 && v1.duration && v1.currentTime >= v1.duration - 0.6) {
+      isTransitioningRef.current = true;
+      const v0 = video0Ref.current;
+      if (v0) {
+        v0.currentTime = 0;
+        v0.play().catch(() => {});
+      }
+    }
+  };
+
+  const handlePlaying1 = () => {
+    if (activeLayer === 0 && isTransitioningRef.current) {
+      setActiveLayer(1);
+      const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
+      videoIndexRef.current = nextIdx;
+      setTimeout(() => {
+        const nextNextIdx = (nextIdx + 1) % heroVideos.length;
+        setSources((prev) => [heroVideos[nextNextIdx], prev[1]]);
+        isTransitioningRef.current = false;
+      }, 700);
+    }
+  };
+
+  const handlePlaying0 = () => {
+    if (activeLayer === 1 && isTransitioningRef.current) {
+      setActiveLayer(0);
+      const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
+      videoIndexRef.current = nextIdx;
+      setTimeout(() => {
+        const nextNextIdx = (nextIdx + 1) % heroVideos.length;
+        setSources((prev) => [prev[0], heroVideos[nextNextIdx]]);
+        isTransitioningRef.current = false;
+      }, 700);
+    }
+  };
 
   // Back panel static image from first featured project (or fallback to first project)
   const featuredProject = projects.find((p) => p.featured) || projects[0];
@@ -254,40 +284,50 @@ const Hero: React.FC = () => {
 
           <MotionDiv style={{ y: y2 }} className="absolute bottom-0 left-0 w-3/5 h-1/2 z-20">
             <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB] relative bg-[#0B1220]">
-              {/* Player A */}
+              {/* Layer 0 Video */}
               <video
-                ref={videoARef}
-                src={videoASrc}
+                ref={video0Ref}
+                src={sources[0]}
                 autoPlay
                 muted
                 playsInline
                 preload="auto"
-                onEnded={activePlayer === "A" ? handleVideoEnded : undefined}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                  activePlayer === "A" ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                }`}
+                onTimeUpdate={handleTimeUpdate0}
+                onPlaying={handlePlaying0}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  opacity: activeLayer === 0 ? 1 : 0,
+                  transition: "opacity 0.6s ease-in-out",
+                  zIndex: activeLayer === 0 ? 10 : 5,
+                }}
               />
-              {/* Player B */}
+              {/* Layer 1 Video */}
               <video
-                ref={videoBRef}
-                src={videoBSrc}
+                ref={video1Ref}
+                src={sources[1]}
                 muted
                 playsInline
                 preload="auto"
-                onEnded={activePlayer === "B" ? handleVideoEnded : undefined}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                  activePlayer === "B" ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                }`}
+                onTimeUpdate={handleTimeUpdate1}
+                onPlaying={handlePlaying1}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  opacity: activeLayer === 1 ? 1 : 0,
+                  transition: "opacity 0.6s ease-in-out",
+                  zIndex: activeLayer === 1 ? 10 : 5,
+                }}
               />
             </div>
 
-            <div className="absolute -top-8 -right-8 bg-white p-4 rounded-xl shadow-xl max-w-[180px]">
+            <div className="absolute -top-6 -right-6 z-40 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-gray-100/80 max-w-[200px]">
               <div className="flex items-center gap-1 mb-2">
                 {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-3 h-3 text-[#E6B566]" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-[#E6B566] text-[#E6B566]" />
                 ))}
               </div>
-              <p className="text-xs font-medium text-[#0B1220]">"{TESTIMONIALS[0]?.quote || "The attention to detail is unlike anything else."}"</p>
+              <p className="text-xs font-medium text-[#0B1220] leading-snug">
+                "The attention to detail is unlike anything else."
+              </p>
             </div>
           </MotionDiv>
         </div>
