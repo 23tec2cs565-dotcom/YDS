@@ -14,9 +14,6 @@ import {
   Clipboard,
   LayoutGrid,
 } from "lucide-react";
-import { projects } from "../data/projects";
-import { teamMembers } from "../data/team";
-
 interface NavigationProps {
   onSearch: (query: string) => void;
 }
@@ -104,21 +101,28 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       // call onSearch only for non-empty queries
       onSearch(q);
 
-      const projectMatches: Suggest[] = projects
-        .filter((p) =>
-          `${p.title} ${p.description} ${p.category} ${p.location}`.toLowerCase().includes(q)
-        )
-        .slice(0, 4)
-        .map((p) => ({ type: "project", title: p.title, projectId: p.id }));
+      Promise.all([
+        import("../data/projects"),
+        import("../data/team"),
+      ]).then(([{ projects }, { teamMembers }]) => {
+        const projectMatches: Suggest[] = projects
+          .filter((p: any) =>
+            `${p.title} ${p.description} ${p.category} ${p.location}`.toLowerCase().includes(q)
+          )
+          .slice(0, 4)
+          .map((p: any) => ({ type: "project", title: p.title, projectId: p.id }));
 
-      const teamMatches: Suggest[] = teamMembers
-        .filter((m) =>
-          `${m.name} ${m.role} ${m.expertise?.join(" ")}`.toLowerCase().includes(q)
-        )
-        .slice(0, 3)
-        .map((m) => ({ type: "team", name: m.name, role: m.role, memberId: m.id }));
+        const teamMatches: Suggest[] = teamMembers
+          .filter((m: any) =>
+            `${m.name} ${m.role} ${m.expertise?.join(" ")}`.toLowerCase().includes(q)
+          )
+          .slice(0, 3)
+          .map((m: any) => ({ type: "team", name: m.name, role: m.role, memberId: m.id }));
 
-      setSuggests([...projectMatches, ...teamMatches].slice(0, 6));
+        setSuggests([...projectMatches, ...teamMatches]);
+      }).catch(() => {
+        setSuggests([]);
+      });
     }, DEBOUNCE);
 
     return () => {

@@ -140,18 +140,61 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      window.addEventListener('load', function() {
+      function initGtag() {
+        if (window.__gtagLoaded) return;
+        window.__gtagLoaded = true;
         var s = document.createElement('script');
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PZK8FJJXT4';
         s.async = true;
         document.head.appendChild(s);
         gtag('js', new Date());
         gtag('config', 'G-PZK8FJJXT4');
+      }
+      if ('requestIdleCallback' in window) {
+        window.addEventListener('load', function() {
+          requestIdleCallback(function() { setTimeout(initGtag, 1500); });
+        });
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(initGtag, 2000);
+        });
+      }
+      ['scroll', 'touchstart', 'click', 'mousemove'].forEach(function(ev) {
+        window.addEventListener(ev, initGtag, { once: true, passive: true });
       });
     </script>
   </head>
 
   <body>
+    <!-- Pre-render shell: paints instantly before React or CSS loads.
+         Eliminates blank filmstrip frames. React mounts into #root and
+         replaces this with the full app. -->
+    <style>
+      #pre-render-shell {
+        position: fixed; inset: 0; z-index: 99999;
+        background: #0C1018;
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.3s ease;
+      }
+      #pre-render-shell.fade-out { opacity: 0; pointer-events: none; }
+      #pre-render-shell img { width: 48px; height: 48px; filter: brightness(1.6) saturate(0.5); }
+    </style>
+    <div id="pre-render-shell" aria-hidden="true">
+      <img src="/younick-logo.PNG" alt="" width="48" height="48" />
+    </div>
+    <script>
+      // Remove shell once React has painted (first meaningful content in #root)
+      var _obs = new MutationObserver(function() {
+        var root = document.getElementById('root');
+        if (root && root.childElementCount > 1) {
+          var shell = document.getElementById('pre-render-shell');
+          if (shell) { shell.classList.add('fade-out'); setTimeout(function(){ shell.remove(); }, 350); }
+          _obs.disconnect();
+        }
+      });
+      _obs.observe(document.getElementById('root') || document.body, { childList: true, subtree: true });
+    </script>
+
     <div id="root">
       <!-- Semantic HTML for SEO crawlers (Seobility, Googlebot, Bing).
            Visually hidden from users. React replaces #root on mount. -->
