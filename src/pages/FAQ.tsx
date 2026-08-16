@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import { ChevronDown, ArrowRight, HelpCircle, Sparkles } from "lucide-react";
 import SEOHead from "../components/SEOHead";
-import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 
 function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
@@ -57,24 +56,15 @@ const faqItems = [
 ];
 
 const FAQ: React.FC = () => {
-  const [faqAnimation, setFaqAnimation] = useState<object | null>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-const [focusedIndex, setFocusedIndex] = useState<number | null>(0);
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(0);
 
   const toggleFAQ = (index: number) => {
-  const isClosing = openIndex === index;
+    const isClosing = openIndex === index;
+    setOpenIndex(isClosing ? null : index);
+    setFocusedIndex(isClosing ? null : index);
+  };
 
-  setOpenIndex(isClosing ? null : index);
-  setFocusedIndex(isClosing ? null : index);
-};
-  useEffect(() => {
-  fetch("/assets/lottie/faq-confused.json")
-    .then((res) => res.json())
-    .then((data) => setFaqAnimation(data))
-    .catch((err) =>
-      console.error("Failed to load FAQ animation:", err)
-    );
-}, []);
 
   const seoForPage = {
     title: "FAQ — Younick Design Studio",
@@ -159,26 +149,17 @@ const faqSchema = {
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/20 via-transparent to-transparent" />
 
-<div className="absolute top-6 right-6 flex h-28 w-28 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+<div className="absolute top-6 right-6 flex h-24 w-24 items-center justify-center rounded-full border border-white/30 bg-white/20 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
   {/* inner luxury ring */}
-  <div className="absolute h-16 w-16 rounded-full border border-[#E6B566]/25" />
+  <div className="absolute h-16 w-16 rounded-full border border-[#E6B566]/40 animate-pulse" />
 
   {/* soft glow */}
-  <div className="absolute inset-0 rounded-full bg-[#E6B566]/[0.03]" />
+  <div className="absolute inset-0 rounded-full bg-[#E6B566]/10" />
 
-  {/* lottie animation */}
-  <div className="relative z-10 -mt-10 translate-x-1 w-[100px] opacity-80 mix-blend-screen animate-lottieEntrance">
-    {faqAnimation && (
-      <Lottie
-        animationData={faqAnimation}
-        loop
-        autoplay
-        style={{
-          filter:
-  "sepia(1) saturate(1.4) hue-rotate(345deg) brightness(0.82) contrast(0.92)"
-        }}
-      />
-    )}
+  {/* luxury pure svg badge */}
+  <div className="relative z-10 flex flex-col items-center justify-center text-center">
+    <Sparkles className="w-6 h-6 text-[#E6B566]" />
+    <span className="text-[8px] uppercase tracking-[0.2em] text-[#0B1220] font-bold mt-1">24/7 Studio</span>
   </div>
 </div>
 

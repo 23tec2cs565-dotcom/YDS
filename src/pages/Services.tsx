@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import * as Lucide from "lucide-react";
+import React, { useRef, useState, useMemo } from "react";
 import {
   ChevronDown,
   ArrowRight,
@@ -29,7 +28,6 @@ import { services as SERVICES } from "../data/services";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
 import { useNavigate } from "react-router-dom";
-import INDIA_CITIES from "../data/india-cities.json";
 
 function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
@@ -134,6 +132,37 @@ const RAJASTHAN_LOCATIONS = [
   { id: "jhunjhunu", label: "Jhunjhunu", region: "Rajasthan, District (~170 km)", multiplier: 1.12 },
   { id: "karauli", label: "Karauli", region: "Rajasthan, District (~160 km)", multiplier: 1.09 },
   { id: "sawai-madhopur", label: "Sawai Madhopur", region: "Rajasthan, District (~130 km)", multiplier: 1.10 },
+  { id: "udaipur", label: "Udaipur", region: "Rajasthan, District (Heritage)", multiplier: 1.12 },
+  { id: "jodhpur", label: "Jodhpur", region: "Rajasthan, District", multiplier: 1.10 },
+  { id: "bikaner", label: "Bikaner", region: "Rajasthan, District", multiplier: 1.10 },
+  { id: "kota", label: "Kota", region: "Rajasthan, District", multiplier: 1.08 },
+  { id: "bhilwara", label: "Bhilwara", region: "Rajasthan, District", multiplier: 1.08 },
+];
+
+const ALL_INDIA_LOCATIONS = [
+  ...RAJASTHAN_LOCATIONS,
+  { id: "delhi-ncr", label: "Delhi / NCR", region: "National Capital Region", multiplier: 1.15 },
+  { id: "gurgaon", label: "Gurugram (Gurgaon)", region: "Haryana, NCR", multiplier: 1.18 },
+  { id: "noida", label: "Noida / Greater Noida", region: "Uttar Pradesh, NCR", multiplier: 1.15 },
+  { id: "mumbai", label: "Mumbai", region: "Maharashtra, Metro", multiplier: 1.25 },
+  { id: "pune", label: "Pune", region: "Maharashtra", multiplier: 1.18 },
+  { id: "bengaluru", label: "Bengaluru", region: "Karnataka, Metro", multiplier: 1.22 },
+  { id: "hyderabad", label: "Hyderabad", region: "Telangana, Metro", multiplier: 1.18 },
+  { id: "chennai", label: "Chennai", region: "Tamil Nadu, Metro", multiplier: 1.18 },
+  { id: "kolkata", label: "Kolkata", region: "West Bengal, Metro", multiplier: 1.15 },
+  { id: "ahmedabad", label: "Ahmedabad", region: "Gujarat", multiplier: 1.12 },
+  { id: "surat", label: "Surat", region: "Gujarat", multiplier: 1.12 },
+  { id: "chandigarh", label: "Chandigarh", region: "Punjab & Haryana", multiplier: 1.15 },
+  { id: "lucknow", label: "Lucknow", region: "Uttar Pradesh", multiplier: 1.10 },
+  { id: "indore", label: "Indore", region: "Madhya Pradesh", multiplier: 1.10 },
+  { id: "bhopal", label: "Bhopal", region: "Madhya Pradesh", multiplier: 1.08 },
+  { id: "dehradun", label: "Dehradun", region: "Uttarakhand", multiplier: 1.12 },
+  { id: "goa", label: "Goa", region: "Goa Coastal", multiplier: 1.20 },
+  { id: "nagpur", label: "Nagpur", region: "Maharashtra", multiplier: 1.10 },
+  { id: "patna", label: "Patna", region: "Bihar", multiplier: 1.10 },
+  { id: "ranchi", label: "Ranchi", region: "Jharkhand", multiplier: 1.10 },
+  { id: "guwahati", label: "Guwahati", region: "Assam", multiplier: 1.15 },
+  { id: "kochi", label: "Kochi", region: "Kerala", multiplier: 1.15 },
 ];
 
 const ServicesPage: React.FC = () => {
@@ -151,34 +180,27 @@ const ServicesPage: React.FC = () => {
   // Turnkey construction & Renovation are restricted to Rajasthan locations near Jaipur (under 150-170 km)
   const hasRestrictedService = selectedServices.includes("construction") || selectedServices.includes("renovation");
 
-  // If restricted service, use RAJASTHAN_LOCATIONS. Otherwise use the complete static cities database
+  // If restricted service, use RAJASTHAN_LOCATIONS. Otherwise use the full national locations list
   const activeCitiesList = hasRestrictedService
     ? RAJASTHAN_LOCATIONS
-    : INDIA_CITIES;
+    : ALL_INDIA_LOCATIONS;
 
   // Memoize filtered cities so it only runs once and limits results to 15 cities to prevent browser hanging
-  const filteredCities = React.useMemo(() => {
+  const filteredCities = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     if (!query) return activeCitiesList.slice(0, 15);
 
-    const matches = [];
-    for (let i = 0; i < activeCitiesList.length; i++) {
-      const city = activeCitiesList[i];
-      if (
-        city.label.toLowerCase().includes(query) ||
-        city.region.toLowerCase().includes(query)
-      ) {
-        matches.push(city);
-        if (matches.length >= 15) break;
-      }
-    }
-    return matches;
+    return activeCitiesList.filter(
+      (c) =>
+        c.label.toLowerCase().includes(query) ||
+        c.region.toLowerCase().includes(query)
+    ).slice(0, 15);
   }, [searchQuery, activeCitiesList]);
 
   // Find the selected location label robustly
-  const selectedCityLabel = React.useMemo(() => {
+  const selectedCityLabel = useMemo(() => {
     const found = activeCitiesList.find((c) => c.id === location) ||
-                  INDIA_CITIES.find((c) => c.id === location);
+                  ALL_INDIA_LOCATIONS.find((c) => c.id === location);
     return found ? found.label : "";
   }, [location, activeCitiesList]);
 
@@ -222,7 +244,7 @@ const ServicesPage: React.FC = () => {
 
     // Find multiplier for the current selected city
     const activeLocation = activeCitiesList.find((c) => c.id === location) ||
-                           INDIA_CITIES.find((c) => c.id === location) ||
+                           ALL_INDIA_LOCATIONS.find((c) => c.id === location) ||
                            RAJASTHAN_LOCATIONS[0];
     const multiplier = activeLocation.multiplier;
     let minCost = totalMinRate * area * multiplier;
