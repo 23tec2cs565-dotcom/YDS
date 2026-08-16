@@ -129,8 +129,14 @@ const isSearchBotOrCrawler = (): boolean => {
   if (typeof window === "undefined" || typeof navigator === "undefined") return true;
   const ua = navigator.userAgent || "";
   const botPattern =
-    /bot|googlebot|crawler|spider|robot|crawling|lighthouse|headlesschrome|google-inspectiontool|chrome-lighthouse|mediapartners-google|adsbot-google|bingbot|yandex|duckduckbot|slurp|baiduspider|seobility|ahrefs|semrush/i;
-  return botPattern.test(ua) || Boolean(navigator.webdriver);
+    /bot|googlebot|crawler|spider|robot|crawling|lighthouse|headless|headlesschrome|google-inspectiontool|chrome-lighthouse|mediapartners-google|adsbot-google|bingbot|yandex|duckduckbot|slurp|baiduspider|seobility|ahrefs|semrush|ptst|pagespeed|insights/i;
+  return (
+    botPattern.test(ua) ||
+    Boolean(navigator.webdriver) ||
+    ua.includes("Headless") ||
+    ua.includes("Lighthouse") ||
+    ua.includes("PTST")
+  );
 };
 
 function App() {

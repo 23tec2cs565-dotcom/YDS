@@ -292,7 +292,7 @@ const Hero: React.FC = () => {
                 autoPlay
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 onTimeUpdate={handleTimeUpdate0}
                 onPlaying={handlePlaying0}
                 className="absolute inset-0 w-full h-full object-cover"
@@ -308,7 +308,7 @@ const Hero: React.FC = () => {
                 src={sources[1]}
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 onTimeUpdate={handleTimeUpdate1}
                 onPlaying={handlePlaying1}
                 className="absolute inset-0 w-full h-full object-cover"
