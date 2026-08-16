@@ -125,9 +125,18 @@ function ScrollToTop() {
   return null;
 }
 
+const isSearchBotOrCrawler = (): boolean => {
+  if (typeof window === "undefined" || typeof navigator === "undefined") return true;
+  const ua = navigator.userAgent || "";
+  const botPattern =
+    /bot|googlebot|crawler|spider|robot|crawling|lighthouse|headlesschrome|google-inspectiontool|chrome-lighthouse|mediapartners-google|adsbot-google|bingbot|yandex|duckduckbot|slurp|baiduspider|seobility|ahrefs|semrush/i;
+  return botPattern.test(ua) || Boolean(navigator.webdriver);
+};
+
 function App() {
-  // Show intro only once per browser session, or if explicit ?intro=true parameter is provided
+  // Show intro only once per browser session for human users; bypass immediately for Googlebot & crawlers
   const [showIntro, setShowIntro] = useState<boolean>(() => {
+    if (isSearchBotOrCrawler()) return false;
     const hasIntroParam = window.location.search.includes("intro=true") || window.location.hash.includes("intro");
     return hasIntroParam || !sessionStorage.getItem(STORAGE_KEY);
   });
