@@ -27,6 +27,10 @@
     <meta name="geo.position" content="26.9069;75.7836" />
     <meta name="ICBM" content="26.9069, 75.7836" />
 
+    <!-- Application / Site Name for Search Engines -->
+    <meta name="application-name" content="Younick Design Studio" />
+    <meta name="apple-mobile-web-app-title" content="Younick Design Studio" />
+
     <!-- Mobile theme color -->
     <meta name="theme-color" content="#0B1220" />
 
@@ -40,58 +44,72 @@
     <meta name="twitter:title" content="Best Interior Designer in Jaipur — Younick Design Studio" />
     <meta name="twitter:description" content="Premier interior design, turnkey construction, and 3D visualization studio in Jaipur, Rajasthan." />
 
-    <!-- LocalBusiness JSON-LD Schema for Search Engines -->
+    <!-- WebSite & LocalBusiness JSON-LD Schema for Google Search Site Name & Rich Results -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "ProfessionalService"],
-      "name": "Younick Design Studio",
-      "alternateName": "Younick Studio Jaipur",
-      "url": "https://yds-liart.vercel.app",
-      "logo": "https://yds-liart.vercel.app/younick-logo.PNG",
-      "image": "https://yds-liart.vercel.app/assets/og/hero-1200.webp",
-      "telephone": "+91 8854883058",
-      "email": "studioyounick@gmail.com",
-      "priceRange": "₹₹₹",
-      "hasMap": "https://maps.google.com/?q=Orbit+Mall+Civil+Lines+Jaipur",
-      "sameAs": [
-        "https://www.instagram.com/studio.younick",
-        "https://www.facebook.com/studioyounick",
-        "https://www.youtube.com/@Younickdesignstudio",
-        "https://wa.me/918854883058"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "3008, Third Floor, Orbit Mall, Civil Lines",
-        "addressLocality": "Jaipur",
-        "addressRegion": "Rajasthan",
-        "postalCode": "302001",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 26.9069,
-        "longitude": 75.7836
-      },
-      "openingHoursSpecification": [
+      "@graph": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "10:00",
-          "closes": "19:00"
+          "@type": "WebSite",
+          "@id": "https://yds-liart.vercel.app/#website",
+          "url": "https://yds-liart.vercel.app/",
+          "name": "Younick Design Studio",
+          "alternateName": ["Younick Studio", "Younick Design Studio Jaipur", "YDS"],
+          "description": "Premier luxury interior design, turnkey construction, and 3D architectural visualization studio in Jaipur, Rajasthan.",
+          "inLanguage": "en-IN"
+        },
+        {
+          "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "ProfessionalService"],
+          "@id": "https://yds-liart.vercel.app/#organization",
+          "name": "Younick Design Studio",
+          "alternateName": "Younick Studio Jaipur",
+          "url": "https://yds-liart.vercel.app/",
+          "logo": "https://yds-liart.vercel.app/android-chrome-512x512.png",
+          "image": "https://yds-liart.vercel.app/assets/og/hero-1200.webp",
+          "telephone": "+91 8854883058",
+          "email": "studioyounick@gmail.com",
+          "priceRange": "₹₹₹",
+          "hasMap": "https://maps.google.com/?q=Orbit+Mall+Civil+Lines+Jaipur",
+          "sameAs": [
+            "https://www.instagram.com/studio.younick",
+            "https://www.facebook.com/studioyounick",
+            "https://www.youtube.com/@Younickdesignstudio",
+            "https://wa.me/918854883058"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3008, Third Floor, Orbit Mall, Civil Lines",
+            "addressLocality": "Jaipur",
+            "addressRegion": "Rajasthan",
+            "postalCode": "302001",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 26.9069,
+            "longitude": 75.7836
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "10:00",
+              "closes": "19:00"
+            }
+          ],
+          "areaServed": [
+            "Jaipur", "Civil Lines", "C-Scheme", "Mansarovar", "Vaishali Nagar",
+            "Malviya Nagar", "Pratap Nagar", "Jagatpura", "Tonk Road", "Raja Park",
+            "Bani Park", "Sikar", "Udaipur", "Jodhpur", "Kota", "Rajasthan"
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "128",
+            "bestRating": "5"
+          }
         }
-      ],
-      "areaServed": [
-        "Jaipur", "Civil Lines", "C-Scheme", "Mansarovar", "Vaishali Nagar",
-        "Malviya Nagar", "Pratap Nagar", "Jagatpura", "Tonk Road", "Raja Park",
-        "Bani Park", "Sikar", "Udaipur", "Jodhpur", "Kota", "Rajasthan"
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "128",
-        "bestRating": "5"
-      }
+      ]
     }
     </script>
 
@@ -106,10 +124,12 @@
           imagesrcset="/assets/optimized/hero-1920.webp 1920w, /assets/optimized/hero-1440.webp 1440w, /assets/optimized/hero-1024.webp 1024w"
           imagesizes="(max-width: 768px) 100vw, 1240px">
 
-    <!-- Favicon, manifest & sitemap -->
-    <link rel="icon" href="/favicon.ico" />
+    <!-- Favicon, Icons, Manifest & Sitemap -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
 

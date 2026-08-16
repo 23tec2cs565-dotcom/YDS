@@ -55,7 +55,7 @@ export const structuredData = {
     description: "Award-winning interior design, turnkey construction, and 3D spatial visualization studio based in Civil Lines, Jaipur, Rajasthan.",
     image: SITE.logo,
     url: SITE.url,
-    logo: SITE.logo,
+    logo: "https://yds-liart.vercel.app/android-chrome-512x512.png",
     telephone: SITE.telephone,
     email: SITE.email,
     priceRange: "₹₹₹",
@@ -63,7 +63,7 @@ export const structuredData = {
     sameAs: SITE.sameAs,
     founder: {
       "@type": "Person",
-      name: "Pooja Sain",
+      name: "Nikhil Sain",
       jobTitle: "Founder & Lead Interior Designer",
       worksFor: {
         "@type": "Organization",
