@@ -150,16 +150,32 @@ const Hero: React.FC = () => {
   // Zero-Blink Seamless Crossfade Engine:
   // Starts the next video 0.6s before the current video ends, only crossfading once real frames are actively rendering.
   const [activeLayer, setActiveLayer] = useState<0 | 1>(0);
-  const [sources, setSources] = useState<[string, string]>([heroVideos[0], heroVideos[1]]);
+  const [sources, setSources] = useState<[string, string]>([heroVideos[0], ""]);
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
   const videoIndexRef = useRef(0);
   const video0Ref = useRef<HTMLVideoElement>(null);
   const video1Ref = useRef<HTMLVideoElement>(null);
   const isTransitioningRef = useRef(false);
 
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
+
   const handleTimeUpdate0 = () => {
-    if (activeLayer !== 0 || isTransitioningRef.current) return;
     const v0 = video0Ref.current;
-    if (v0 && v0.duration && v0.currentTime >= v0.duration - 0.6) {
+    if (!v0 || !v0.duration) return;
+
+    // Pre-assign video 1 src when video 0 is halfway
+    if (!sources[1] && v0.currentTime >= v0.duration / 2) {
+      const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
+      setSources((prev) => [prev[0], heroVideos[nextIdx]]);
+    }
+
+    if (activeLayer !== 0 || isTransitioningRef.current) return;
+    if (v0.currentTime >= v0.duration - 0.6) {
       isTransitioningRef.current = true;
       const v1 = video1Ref.current;
       if (v1) {
@@ -170,9 +186,19 @@ const Hero: React.FC = () => {
   };
 
   const handleTimeUpdate1 = () => {
-    if (activeLayer !== 1 || isTransitioningRef.current) return;
     const v1 = video1Ref.current;
-    if (v1 && v1.duration && v1.currentTime >= v1.duration - 0.6) {
+    if (!v1 || !v1.duration) return;
+
+    // Pre-assign video 0 src when video 1 is halfway
+    if (v1.currentTime >= v1.duration / 2) {
+      const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
+      if (sources[0] !== heroVideos[nextIdx]) {
+        setSources((prev) => [heroVideos[nextIdx], prev[1]]);
+      }
+    }
+
+    if (activeLayer !== 1 || isTransitioningRef.current) return;
+    if (v1.currentTime >= v1.duration - 0.6) {
       isTransitioningRef.current = true;
       const v0 = video0Ref.current;
       if (v0) {
@@ -188,8 +214,6 @@ const Hero: React.FC = () => {
       const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
       videoIndexRef.current = nextIdx;
       setTimeout(() => {
-        const nextNextIdx = (nextIdx + 1) % heroVideos.length;
-        setSources((prev) => [heroVideos[nextNextIdx], prev[1]]);
         isTransitioningRef.current = false;
       }, 700);
     }
@@ -201,8 +225,6 @@ const Hero: React.FC = () => {
       const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
       videoIndexRef.current = nextIdx;
       setTimeout(() => {
-        const nextNextIdx = (nextIdx + 1) % heroVideos.length;
-        setSources((prev) => [prev[0], heroVideos[nextNextIdx]]);
         isTransitioningRef.current = false;
       }, 700);
     }
@@ -285,39 +307,45 @@ const Hero: React.FC = () => {
 
           <MotionDiv style={{ y: y2 }} className="absolute bottom-0 left-0 w-3/5 h-1/2 z-20">
             <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB] relative bg-[#0B1220]">
-              {/* Layer 0 Video */}
-              <video
-                ref={video0Ref}
-                src={sources[0]}
-                autoPlay
-                muted
-                playsInline
-                preload="metadata"
-                onTimeUpdate={handleTimeUpdate0}
-                onPlaying={handlePlaying0}
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{
-                  opacity: activeLayer === 0 ? 1 : 0,
-                  transition: "opacity 0.6s ease-in-out",
-                  zIndex: activeLayer === 0 ? 10 : 5,
-                }}
-              />
-              {/* Layer 1 Video */}
-              <video
-                ref={video1Ref}
-                src={sources[1]}
-                muted
-                playsInline
-                preload="metadata"
-                onTimeUpdate={handleTimeUpdate1}
-                onPlaying={handlePlaying1}
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{
-                  opacity: activeLayer === 1 ? 1 : 0,
-                  transition: "opacity 0.6s ease-in-out",
-                  zIndex: activeLayer === 1 ? 10 : 5,
-                }}
-              />
+              {isDesktop && (
+                <>
+                  {/* Layer 0 Video */}
+                  <video
+                    ref={video0Ref}
+                    src={sources[0]}
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="metadata"
+                    onTimeUpdate={handleTimeUpdate0}
+                    onPlaying={handlePlaying0}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{
+                      opacity: activeLayer === 0 ? 1 : 0,
+                      transition: "opacity 0.6s ease-in-out",
+                      zIndex: activeLayer === 0 ? 10 : 5,
+                    }}
+                  />
+                  {/* Layer 1 Video */}
+                  {sources[1] && (
+                    <video
+                      ref={video1Ref}
+                      src={sources[1]}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      onTimeUpdate={handleTimeUpdate1}
+                      onPlaying={handlePlaying1}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{
+                        opacity: activeLayer === 1 ? 1 : 0,
+                        transition: "opacity 0.6s ease-in-out",
+                        zIndex: activeLayer === 1 ? 10 : 5,
+                      }}
+                    />
+                  )}
+                </>
+              )}
             </div>
 
             <div className="absolute -top-6 -right-6 z-40 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-gray-100/80 max-w-[200px]">
