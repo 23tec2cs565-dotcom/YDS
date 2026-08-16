@@ -115,7 +115,7 @@ const BentoCard: React.FC<{
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
       onClick={onClick}
       className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
-        large ? "row-span-2" : ""
+        large ? "col-span-2 md:col-span-1 md:row-span-2" : ""
       }`}
     >
       {/* Image */}
@@ -157,27 +157,27 @@ const BentoCard: React.FC<{
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 p-6 sm:p-8">
+      <div className="absolute bottom-0 left-0 right-0 z-10 p-4 sm:p-8">
         {project.subtitle && (
           <p className="text-[11px] font-semibold uppercase tracking-widest text-[#E6B566] mb-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
             {project.subtitle}
           </p>
         )}
         <h3
-          className={`font-serif font-medium text-white leading-tight mb-2 ${
-            large ? "text-2xl sm:text-3xl lg:text-4xl" : "text-xl sm:text-2xl"
+          className={`font-serif font-medium text-white leading-tight mb-1 sm:mb-2 ${
+            large ? "text-base sm:text-3xl lg:text-4xl" : "text-sm sm:text-2xl"
           }`}
         >
           {project.title}
         </h3>
         <p
-          className={`text-white/60 leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-75 ${
+          className={`text-white/60 leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-75 hidden sm:block ${
             large ? "text-sm sm:text-base line-clamp-3" : "text-sm line-clamp-2"
           }`}
         >
           {project.description}
         </p>
-        <div className="flex items-center gap-3 mt-3 text-xs text-white/50">
+        <div className="flex items-center gap-2 sm:gap-3 mt-1 sm:mt-3 text-[10px] sm:text-xs text-white/50">
           <span className="inline-flex items-center gap-1">
             <MapPin size={12} />
             {project.location}
@@ -555,7 +555,7 @@ const Projects: React.FC = () => {
       <header
         ref={heroRef}
         className="relative bg-[#0B1220] text-white mt-24 overflow-hidden"
-        style={{ height: "clamp(500px, 68vh, 720px)" }}
+        style={{ height: "clamp(380px, 60vh, 720px)" }}
       >
         {/* Full-bleed slideshow behind text */}
         <React.Suspense fallback={null}>
@@ -581,13 +581,13 @@ const Projects: React.FC = () => {
                 {activeSlideData.badge}
               </p>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium tracking-tight leading-[1.12]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-medium tracking-tight leading-[1.12]">
                 {activeSlideData.titleLine1}
                 <br />
                 <span className="text-[#E6B566] italic font-normal">{activeSlideData.titleLine2}</span>
               </h1>
               
-              <p className="mt-5 text-sm sm:text-base text-white/70 max-w-xl leading-relaxed">
+              <p className="mt-4 text-xs sm:text-base text-white/70 max-w-xl leading-relaxed line-clamp-3 sm:line-clamp-none">
                 {activeSlideData.desc}
               </p>
             </motion.div>
@@ -595,7 +595,7 @@ const Projects: React.FC = () => {
  
           {/* Stats */}
           <Reveal delay={0.35}>
-            <div className="mt-8 flex items-center gap-8 sm:gap-12">
+            <div className="mt-6 sm:mt-8 flex items-center gap-5 sm:gap-12">
               <Counter value={combinedProjects.length} label="Projects" suffix="+" />
               <div className="w-px h-10 bg-white/15" />
               <Counter value={categories.length} label="Categories" />
@@ -647,7 +647,7 @@ const Projects: React.FC = () => {
               </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6" style={{ gridAutoRows: "280px" }}>
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-6" style={{ gridAutoRows: "clamp(180px, 35vw, 280px)" }}>
               <BentoCard
                 project={featuredProjects[0]}
                 large
@@ -820,7 +820,7 @@ const Projects: React.FC = () => {
               PROJECT GRID
               ═══════════════════════════════════════ */}
           {view === "grid" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
               <AnimatePresence mode="popLayout">
                 {filtered.map((proj) => (
                   <ProjectCard key={proj.id} project={proj} onClick={() => openProject(proj)} />

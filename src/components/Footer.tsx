@@ -55,7 +55,7 @@ const GlassBtn: React.FC<GlassBtnProps> = ({ href, variant, children, className 
       isGold
         ? "border-[#E6B566]/55 text-[#E6B566]"
         : "border-white/25 text-white/70 hover:text-white"
-    } px-7 py-3.5 text-xs font-${isGold ? "bold" : "medium"} uppercase tracking-widest backdrop-blur-xl transition-all duration-300 ${className}`,
+    } px-5 sm:px-7 py-3 sm:py-3.5 text-[11px] sm:text-xs font-${isGold ? "bold" : "medium"} uppercase tracking-widest backdrop-blur-xl transition-all duration-300 ${className}`,
   };
 
   const innerContent = (
@@ -166,21 +166,21 @@ const Footer: React.FC = () => {
       {/* ── Architectural Curved & Layered Palette Transition ── */}
       <div className="relative w-full overflow-hidden bg-white">
         {/* Soft Tonal Intermediate Palette Layer (#F6F4EE) with subtle pattern grid */}
-        <div className="bg-[#F6F4EE] py-4 px-6 border-t border-gray-200/60 relative">
+        <div className="bg-[#F6F4EE] py-3 sm:py-4 px-4 sm:px-6 border-t border-gray-200/60 relative">
           <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#18181B_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
-          <div className="relative mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs tracking-wider uppercase text-gray-600 font-medium">
-            <div className="flex items-center gap-3">
+          <div className="relative mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-[10px] sm:text-xs tracking-wider uppercase text-gray-600 font-medium text-center md:text-left">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E6B566] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B08D57]" />
               </span>
               <span className="font-semibold tracking-widest text-gray-800">Younick Design Studio</span>
-              <span className="text-gray-300">•</span>
-              <span className="text-gray-500 lowercase tracking-normal italic font-serif text-sm">Jaipur • Architecture & Luxury Interiors</span>
+              <span className="text-gray-300 hidden sm:inline">•</span>
+              <span className="text-gray-500 lowercase tracking-normal italic font-serif text-xs sm:text-sm">Jaipur • Architecture & Luxury Interiors</span>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] text-gray-600 font-semibold tracking-widest">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] text-gray-600 font-semibold tracking-widest">
               <span className="inline-flex items-center gap-1.5 text-gray-800">
                 <span className="text-[#B08D57]">✦</span> 150+ Signature Projects
               </span>
@@ -202,7 +202,7 @@ const Footer: React.FC = () => {
             viewBox="0 0 1440 76"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 md:h-16 lg:h-20 block text-[#18181B]"
+            className="w-full h-6 sm:h-10 md:h-16 lg:h-20 block text-[#18181B]"
             preserveAspectRatio="none"
           >
             <defs>
@@ -237,10 +237,10 @@ const Footer: React.FC = () => {
           <div className="absolute left-[-3rem] bottom-0 h-64 w-64 rounded-full bg-[#E6B566]/5 blur-[70px]" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
           {/* ── CTA Banner — Luxury Framed Card ── */}
-          <section className="relative my-8 md:my-12 rounded-3xl border border-white/10 bg-gradient-to-r from-[#1A1A1E] via-[#222228] to-[#1A1A1E] p-8 md:p-12 lg:p-14 shadow-2xl overflow-hidden group">
+          <section className="relative my-6 sm:my-8 md:my-12 rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-r from-[#1A1A1E] via-[#222228] to-[#1A1A1E] p-5 sm:p-8 md:p-12 lg:p-14 shadow-2xl overflow-hidden group">
             {/* Subtle luxury background radial glow */}
             <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#E6B566]/10 blur-[80px]" />
             <div className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-[#B08D57]/10 blur-[80px]" />
@@ -248,17 +248,17 @@ const Footer: React.FC = () => {
             <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
               {/* Left: eyebrow + headline + sub-copy */}
               <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2.5 rounded-full border border-[#E6B566]/30 bg-[#E6B566]/10 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[#E6B566] backdrop-blur-sm">
+                <div className="inline-flex items-center gap-2 sm:gap-2.5 rounded-full border border-[#E6B566]/30 bg-[#E6B566]/10 px-3 sm:px-3.5 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.25em] text-[#E6B566] backdrop-blur-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#E6B566] animate-pulse" />
                   Younick Design Studio · Jaipur
                 </div>
-                <h2 className="mt-5 font-serif text-3xl leading-snug text-white md:text-4xl lg:text-[2.85rem] lg:leading-tight">
+                <h2 className="mt-3 sm:mt-5 font-serif text-2xl sm:text-3xl leading-snug text-white md:text-4xl lg:text-[2.85rem] lg:leading-tight">
                   Every great space starts with a{" "}
                   <span className="italic bg-gradient-to-r from-[#F5D899] via-[#E6B566] to-[#C5A059] bg-clip-text text-transparent drop-shadow-sm">
                     single conversation.
                   </span>
                 </h2>
-                <p className="mt-4 text-sm md:text-base leading-relaxed text-gray-300 max-w-xl">
+                <p className="mt-2.5 sm:mt-4 text-xs sm:text-sm md:text-base leading-relaxed text-gray-300 max-w-xl">
                   From architectural concept to meticulous execution — we bring clarity, high-end material selection, and timeless sophistication to every space.
                 </p>
               </div>
@@ -278,32 +278,32 @@ const Footer: React.FC = () => {
           </section>
 
           {/* ── 4-column links ── */}
-          <section className="grid gap-8 py-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-10 lg:py-11">
+          <section className="grid gap-6 sm:gap-8 py-8 sm:py-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-10 lg:py-11">
 
             {/* Col 1: Brand + socials */}
-            <div>
-              <a href="/" className="inline-flex items-center gap-3">
+            <div className="sm:col-span-2 lg:col-span-1">
+              <a href="/" className="inline-flex items-center gap-2.5 sm:gap-3">
                 <img
                   src="/younick-logo.PNG"
                   alt="Younick Design Studio"
                   width="54"
                   height="54"
-                  className="h-[3.375rem] w-auto brightness-110"
+                  className="h-10 sm:h-[3.375rem] w-auto brightness-110"
                   loading="lazy"
                   decoding="async"
                 />
                 <div>
-                  <p className="text-[1.55rem] font-bold tracking-tight text-white leading-tight">Younick</p>
-                  <p className="text-[12.5px] uppercase tracking-[0.32em] text-[#E6B566]">Design Studio</p>
+                  <p className="text-xl sm:text-[1.55rem] font-bold tracking-tight text-white leading-tight">Younick</p>
+                  <p className="text-[10px] sm:text-[12.5px] uppercase tracking-[0.32em] text-[#E6B566]">Design Studio</p>
                 </div>
               </a>
 
-              <p className="mt-4 max-w-xs text-xs leading-relaxed text-gray-400">
+              <p className="mt-3 sm:mt-4 max-w-xs text-[11px] sm:text-xs leading-relaxed text-gray-400">
                 Interior design, construction, renovation and 3D visualization — crafted
                 with calm precision from Jaipur.
               </p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-4 sm:mt-5 flex flex-wrap gap-2">
                 {socials.map((social) => {
                   const Icon = social.icon;
                   return (
@@ -330,12 +330,12 @@ const Footer: React.FC = () => {
               <h3 className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
                 Services
               </h3>
-              <nav className="mt-4 grid grid-cols-2 gap-x-3 gap-y-0.5">
+              <nav className="mt-3 sm:mt-4 grid grid-cols-2 gap-x-3 gap-y-0.5">
                 {serviceList.map((service) => (
                   <Link
                     key={service.label}
                     to={service.href}
-                    className="group relative py-2 text-xs text-gray-400 transition-colors duration-300 hover:text-white"
+                    className="group relative py-1.5 sm:py-2 text-[11px] sm:text-xs text-gray-400 transition-colors duration-300 hover:text-white"
                   >
                     <span className="block truncate">{service.label}</span>
                     <span className="absolute bottom-0 left-0 h-px w-0 bg-[#E6B566]/50 transition-all duration-300 group-hover:w-full" />
@@ -349,12 +349,12 @@ const Footer: React.FC = () => {
               <h3 className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
                 Company
               </h3>
-              <nav className="mt-4 grid grid-cols-2 gap-x-3 gap-y-0.5">
+              <nav className="mt-3 sm:mt-4 grid grid-cols-2 gap-x-3 gap-y-0.5">
                 {companyLinks.map((link) => (
                   <Link
                     key={link.label}
                     to={link.href}
-                    className="group relative py-2 text-xs text-gray-400 transition-colors duration-300 hover:text-white"
+                    className="group relative py-1.5 sm:py-2 text-[11px] sm:text-xs text-gray-400 transition-colors duration-300 hover:text-white"
                   >
                     <span className="block truncate">{link.label}</span>
                     <span className="absolute bottom-0 left-0 h-px w-0 bg-[#E6B566]/50 transition-all duration-300 group-hover:w-full" />
@@ -368,7 +368,7 @@ const Footer: React.FC = () => {
               <h3 className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
                 Get In Touch
               </h3>
-              <div className="mt-4 space-y-3">
+              <div className="mt-3 sm:mt-4 space-y-2.5 sm:space-y-3">
                 <a
                   href="https://maps.google.com/?q=Orbit+Mall+Civil+Lines+Jaipur"
                   target="_blank"
@@ -413,11 +413,11 @@ const Footer: React.FC = () => {
           {/* ── Bottom bar ── */}
           <div className="h-px bg-gradient-to-r from-transparent via-[#E6B566]/12 to-transparent" />
 
-          <div className="flex flex-col gap-2 py-5 text-[10px] text-gray-400 md:flex-row md:items-center md:justify-between">
-            <p className="font-mono uppercase tracking-[0.22em]">
+          <div className="flex flex-col gap-2 py-4 sm:py-5 text-[9px] sm:text-[10px] text-gray-400 md:flex-row md:items-center md:justify-between text-center md:text-left">
+            <p className="font-mono uppercase tracking-[0.18em] sm:tracking-[0.22em]">
               © {new Date().getFullYear()} Younick Design Studio. All rights reserved.
             </p>
-            <div className="flex flex-wrap items-center gap-5 font-mono">
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 sm:gap-5 font-mono">
               <Link to="/privacy" className="transition-colors duration-300 hover:text-[#E6B566]">
                 Privacy Policy
               </Link>

@@ -83,25 +83,25 @@ const ServiceCard: React.FC<{ service: ServiceType; onExplore: (id: string) => v
       tabIndex={0}
       onKeyDown={handleKey}
       onClick={() => onExplore(service.id)}
-      className="group relative bg-white p-8 border border-gray-100 hover:border-[#B08D57]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#B08D57]/5 flex flex-col h-full overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-[#E6B566]/30"
+      className="group relative bg-white p-4 sm:p-8 border border-gray-100 hover:border-[#B08D57]/30 transition-all duration-500 hover:shadow-xl hover:shadow-[#B08D57]/5 flex flex-col h-full overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-[#E6B566]/30"
       aria-label={`Open service ${displayTitle}`}
     >
       <div className="absolute top-0 left-0 w-1 h-0 bg-[#B08D57] transition-all duration-500 group-hover:h-full" />
 
-      <div className="mb-5 text-gray-400 group-hover:text-[#B08D57] transition-colors duration-300">
-        <IconComp size={28} />
+      <div className="mb-3 sm:mb-5 text-gray-400 group-hover:text-[#B08D57] transition-colors duration-300">
+        <IconComp size={20} className="sm:w-7 sm:h-7" />
       </div>
 
-      <h3 className="text-xl font-serif text-gray-900 mb-3 group-hover:translate-x-2 transition-transform duration-300">
+      <h3 className="text-sm sm:text-xl font-serif text-gray-900 mb-1 sm:mb-3 group-hover:translate-x-2 transition-transform duration-300 leading-tight">
         {displayTitle}
       </h3>
 
-      <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+      <p className="text-gray-500 text-[11px] sm:text-sm leading-relaxed mb-3 sm:mb-6 flex-grow line-clamp-2 sm:line-clamp-none">
         {service.description}
       </p>
 
-      <div className="mt-auto pt-5 border-t border-gray-50 flex items-center justify-between">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#B08D57] transition-colors">
+      <div className="mt-auto pt-3 sm:pt-5 border-t border-gray-50 flex items-center justify-between">
+        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-[#B08D57] transition-colors">
           Explore
         </span>
 
@@ -111,7 +111,7 @@ const ServiceCard: React.FC<{ service: ServiceType; onExplore: (id: string) => v
             e.stopPropagation();
             onExplore(service.id);
           }}
-          className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#B08D57] group-hover:text-white transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E6B566]"
+          className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-[#B08D57] group-hover:text-white transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E6B566]"
           aria-label={`Explore ${displayTitle}`}
         >
           <ArrowRight size={14} />
@@ -296,11 +296,11 @@ const ServicesPage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F10] via-[#0F0F10]/50 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-24 text-center">
-          <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 tracking-tight leading-tight">
+        <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 pt-12 sm:pt-20 pb-16 sm:pb-24 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-serif text-white mb-4 sm:mb-6 tracking-tight leading-tight">
             Our Expertise
           </h1>
-          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed mb-6 sm:mb-10">
             We don't just design spaces; we curate experiences. Discover our range of specialized services crafted for modern living.
           </p>
 
@@ -319,10 +319,10 @@ const ServicesPage: React.FC = () => {
         {/* Stats */}
         <div className="bg-[#0F0F10] border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6 py-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 divide-x divide-white/10">
               {STATS.map((stat, idx) => (
-                <div key={idx} className="text-center px-4">
-                  <div className="text-2xl md:text-3xl font-serif text-[#E6B566] mb-1">{stat.value}</div>
+                <div key={idx} className="text-center px-2 sm:px-4">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-serif text-[#E6B566] mb-1">{stat.value}</div>
                   <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest">{stat.label}</div>
                 </div>
               ))}
@@ -331,19 +331,19 @@ const ServicesPage: React.FC = () => {
         </div>
 
         {/* Services Grid */}
-        <section ref={servicesRef} className="bg-[#FAFAFA] py-20">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-12 md:flex items-end justify-between">
+        <section ref={servicesRef} className="bg-[#FAFAFA] py-12 sm:py-20">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6">
+            <div className="mb-8 sm:mb-12 md:flex items-end justify-between">
               <div className="max-w-xl">
-                <span className="text-[#8C6226] font-bold tracking-widest uppercase text-xs mb-2 block">What We Do</span>
-                <h2 className="text-3xl md:text-4xl font-serif text-gray-900">Comprehensive Design Services</h2>
+                <span className="text-[#8C6226] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">What We Do</span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-900">Comprehensive Design Services</h2>
               </div>
               <p className="hidden md:block text-gray-500 max-w-sm text-sm leading-relaxed text-right">
                 From concept to completion, we handle every detail so you can enjoy the transformation.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-gray-200">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-gray-200">
               {visibleServices.map((s) => (
                 <div key={s.id} className="border-r border-b border-gray-200">
                   <ServiceCard service={s} onExplore={goToService} />
@@ -354,28 +354,28 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* Process Section */}
-        <section className="py-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <section className="py-12 sm:py-20 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
               <div>
-                <span className="text-[#8C6226] font-bold tracking-widest uppercase text-xs mb-2 block">How It Works</span>
-                <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-6">The Younick Standard</h2>
-                <p className="text-gray-600 text-base leading-relaxed mb-8">
+                <span className="text-[#8C6226] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">How It Works</span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-900 mb-4 sm:mb-6">The Younick Standard</h2>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
                   We've refined our process over a decade to ensure clarity, creativity, and precision at every stage. No surprises, just exceptional results.
                 </p>
-                <div className="space-y-8">
+                <div className="space-y-5 sm:space-y-8">
                   {[
                     { step: "01", title: "Discovery", desc: "We meet to discuss your vision, budget, and requirements." },
                     { step: "02", title: "Curation", desc: "We develop concepts, mood boards, and detailed layouts." },
                     { step: "03", title: "Execution", desc: "Our team brings the design to life with expert craftsmanship." }
                   ].map((item, idx) => (
-                    <div key={idx} className="flex gap-6 group">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-sm font-serif text-gray-400 group-hover:border-[#B08D57] group-hover:text-[#B08D57] transition-colors duration-300">
+                    <div key={idx} className="flex gap-4 sm:gap-6 group">
+                      <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-200 flex items-center justify-center text-xs sm:text-sm font-serif text-gray-400 group-hover:border-[#B08D57] group-hover:text-[#B08D57] transition-colors duration-300">
                         {item.step}
                       </div>
                       <div>
-                        <h3 className="text-lg font-medium text-gray-900 mb-1">{item.title}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                        <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-1">{item.title}</h3>
+                        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -401,33 +401,33 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* Interactive Budget Estimator Section */}
-        <section className="py-24 px-6 bg-gray-50 border-t border-gray-100">
+        <section className="py-12 sm:py-24 px-5 sm:px-6 bg-gray-50 border-t border-gray-100">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
-            <div className="text-center mb-16">
-              <span className="text-[#B08D57] font-bold tracking-widest uppercase text-xs mb-2 block">
+            <div className="text-center mb-8 sm:mb-16">
+              <span className="text-[#B08D57] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">
                 Interactive Tool
               </span>
-              <h2 className="text-3xl md:text-5xl font-serif text-gray-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-gray-900 tracking-tight">
                 Project Budget Estimator
               </h2>
-              <p className="mt-4 text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+              <p className="mt-3 sm:mt-4 text-gray-500 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
                 Estimate your custom project costs instantly. Select multiple services, your location, area size, and finish quality to plan your next space.
               </p>
             </div>
 
             {/* Layout Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-stretch">
               
               {/* Controls Column (7 cols) */}
-              <div className="lg:col-span-7 bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 flex flex-col justify-between">
+              <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-sm border border-gray-100 flex flex-col justify-between">
                 
                 {/* Service Selector */}
-                <div className="mb-8">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">
+                <div className="mb-5 sm:mb-8">
+                  <label className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 sm:mb-4">
                     1. Select Services (Select Multiple)
                   </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     {[
                       { id: "interior-design", label: "Interior Design", icon: "Paintbrush", desc: "Lighting, ceiling, furniture & woodwork" },
                       { id: "construction", label: "Turnkey Construction", icon: "Hammer", desc: "Civil architecture, brick & structure build" },
@@ -442,22 +442,22 @@ const ServicesPage: React.FC = () => {
                           key={svc.id}
                           type="button"
                           onClick={() => toggleService(svc.id)}
-                          className={`flex items-start text-left p-3.5 rounded-2xl border transition-all duration-300 ${
+                          className={`flex items-start text-left p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border transition-all duration-300 ${
                             isSelected
                               ? "border-[#B08D57] bg-[#B08D57]/5 shadow-sm"
                               : "border-gray-200 hover:border-gray-300 bg-white"
                           }`}
                         >
-                          <div className={`mr-3.5 mt-0.5 p-2 rounded-xl flex items-center justify-center ${
+                          <div className={`mr-2 sm:mr-3.5 mt-0.5 p-1.5 sm:p-2 rounded-lg sm:rounded-xl flex items-center justify-center ${
                             isSelected ? "bg-[#B08D57] text-white" : "bg-gray-100 text-gray-500"
                           }`}>
                             <SvcIcon size={16} />
                           </div>
                           <div>
-                            <span className="block text-sm font-semibold text-gray-900 leading-none mb-1">
+                            <span className="block text-xs font-semibold text-gray-900 leading-none mb-0.5 sm:mb-1">
                               {svc.label}
                             </span>
-                            <span className="block text-[11px] text-gray-400 leading-normal">
+                            <span className="hidden sm:block text-[11px] text-gray-400 leading-normal">
                               {svc.desc}
                             </span>
                           </div>
@@ -467,7 +467,7 @@ const ServicesPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mb-8 relative">
+                <div className="mb-5 sm:mb-8 relative">
                   {/* Location Selector (Searchable Dropdown) */}
                   <div className="flex justify-between items-center mb-3">
                     <label htmlFor="city-search" className="block text-xs font-bold uppercase tracking-wider text-gray-500">
@@ -563,7 +563,7 @@ const ServicesPage: React.FC = () => {
                 </div>
 
                 {/* Area Slider */}
-                <div className="mb-8">
+                <div className="mb-5 sm:mb-8">
                   <div className="flex justify-between items-center mb-3">
                     <label htmlFor="area-number" className="block text-xs font-bold uppercase tracking-wider text-gray-500">
                       3. Area of Project
@@ -644,7 +644,7 @@ const ServicesPage: React.FC = () => {
               </div>
 
               {/* Estimate Results Card (5 cols) */}
-              <div className="lg:col-span-5 bg-[#09090B] text-white rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden border border-white/5 shadow-2xl">
+              <div className="lg:col-span-5 bg-[#09090B] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden border border-white/5 shadow-2xl">
                 
                 {/* Accent glows */}
                 <div className="absolute top-0 right-0 w-80 h-80 bg-[#B08D57]/5 rounded-full blur-[70px] pointer-events-none" />
@@ -663,7 +663,7 @@ const ServicesPage: React.FC = () => {
                       </div>
                     ) : (
                       <div>
-                        <div className="font-serif text-4xl sm:text-5xl text-[#E6B566] tracking-tight">
+                        <div className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#E6B566] tracking-tight">
                           {formatCost(min)} - {formatCost(max)}
                         </div>
                         <p className="text-[11px] text-gray-400 mt-2 tracking-wide font-mono">
@@ -687,7 +687,7 @@ const ServicesPage: React.FC = () => {
 
                   {/* Breakdown Progress Bars */}
                   {selectedServices.length > 0 && (
-                    <div className="mt-9 space-y-5">
+                    <div className="mt-6 sm:mt-9 space-y-4 sm:space-y-5">
                       <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 border-b border-white/5 pb-2">
                         Estimated Cost Allocation
                       </p>
@@ -718,7 +718,7 @@ const ServicesPage: React.FC = () => {
 
                 </div>
 
-                <div className="relative z-10 mt-10 space-y-4">
+                <div className="relative z-10 mt-6 sm:mt-10 space-y-3 sm:space-y-4">
                   <button
                     type="button"
                     onClick={startProject}

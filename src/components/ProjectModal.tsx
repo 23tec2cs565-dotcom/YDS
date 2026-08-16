@@ -467,12 +467,23 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                 </div>
               )}
 
-              <div className="flex gap-3 pt-4">
+              <div className="flex flex-wrap gap-2.5 pt-4">
                 {project.link && (
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="rounded-md border border-[#3A3A3F] bg-[#1F1F22] px-4 py-2 text-sm text-[#E6B566]">
                     View Live
                   </a>
                 )}
+                <a
+                  href={`https://wa.me/918854883058?text=${encodeURIComponent(
+                    `Hi Younick Studio! I saw your portfolio project: ${project.title} (${project.location}) and would like to discuss a similar design/execution.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md border border-[#25D366]/40 bg-[#25D366]/10 px-3.5 py-2 text-sm text-[#25D366] hover:bg-[#25D366] hover:text-black font-medium transition flex items-center gap-1.5"
+                >
+                  <img src="/icons/whatsapp-logo new.png" alt="WhatsApp" className="w-4 h-4 object-contain" />
+                  <span>WhatsApp</span>
+                </a>
                 <a href="/contact" className="rounded-md bg-[#E6B566] px-4 py-2 text-sm text-[#1b1b1b] font-semibold shadow-lg shadow-[#E6B566]/20">
                   Start a Project
                 </a>

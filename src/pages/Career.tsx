@@ -261,28 +261,28 @@ const Career: React.FC = () => {
 
       <main className="bg-white min-h-screen pt-20">
         {/* --- HERO SECTION: EDITORIAL --- */}
-        <header className="relative min-h-[85vh] flex items-center bg-[#18181B] text-white overflow-hidden">
+        <header className="relative min-h-[60vh] sm:min-h-[85vh] flex items-center bg-[#18181B] text-white overflow-hidden">
         {/* Background decoration grid */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
              style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-        <div className="max-w-[1400px] mx-auto px-6 w-full relative z-10 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 w-full relative z-10 py-10 sm:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-3 mb-6">
-                <span className="w-12 h-[1px] bg-[#B08D57]"></span>
-                <span className="font-mono text-xs font-bold tracking-widest text-[#B08D57] uppercase">Join the Collective</span>
+              <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <span className="w-8 sm:w-12 h-[1px] bg-[#B08D57]"></span>
+                <span className="font-mono text-[10px] sm:text-xs font-bold tracking-widest text-[#B08D57] uppercase">Join the Collective</span>
               </div>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-[1.05] tracking-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-5 sm:mb-8 leading-[1.08] tracking-tight">
                 Shape the <br />
                 <span className="italic text-[#B08D57]">Future of Space.</span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-xl mb-10 border-l-2 border-[#B08D57] pl-6">
+              <p className="text-sm sm:text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-xl mb-6 sm:mb-10 border-l-2 border-[#B08D57] pl-4 sm:pl-6 line-clamp-3 sm:line-clamp-none">
                 We are a collective of designers, builders, and detail obsessives who build spaces that breathe. We are always looking for new minds who respect the grid, the materials, and the craft.
               </p>
               <a 
                 href="#roles" 
-                className="inline-flex items-center gap-3 bg-[#B08D57] hover:bg-[#967748] text-[#18181B] font-mono text-xs uppercase tracking-widest px-8 py-4 font-bold transition-all duration-300 hover:shadow-lg shadow-black/20"
+                className="inline-flex items-center gap-2 sm:gap-3 bg-[#B08D57] hover:bg-[#967748] text-[#18181B] font-mono text-[10px] sm:text-xs uppercase tracking-widest px-6 sm:px-8 py-3 sm:py-4 font-bold transition-all duration-300 hover:shadow-lg shadow-black/20"
               >
                 Explore Open Roles <ArrowRight size={14} />
               </a>
@@ -307,28 +307,28 @@ const Career: React.FC = () => {
       </header>
 
       {/* --- SECTION: CORE PILLARS / VALUES BENTO --- */}
-      <section className="bg-[#18181B] text-white py-24 px-6 border-t border-white/5">
+      <section className="bg-[#18181B] text-white py-12 sm:py-24 px-5 sm:px-6 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-16 border-b border-white/10 pb-8">
-            <span className="text-[#B08D57] font-mono font-bold tracking-widest text-xs mb-3 block uppercase">[ How We Work ]</span>
-            <h2 className="text-4xl md:text-6xl font-serif text-white tracking-tight">Our Core Pillars</h2>
+          <div className="mb-8 sm:mb-16 border-b border-white/10 pb-6 sm:pb-8">
+            <span className="text-[#B08D57] font-mono font-bold tracking-widest text-[10px] sm:text-xs mb-2 sm:mb-3 block uppercase">[ How We Work ]</span>
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-serif text-white tracking-tight">Our Core Pillars</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {CORE_VALUES.map((val) => (
               <div 
                 key={val.id} 
-                className="bg-white/5 p-8 rounded-sm border border-white/5 hover:border-[#B08D57]/30 transition-colors group flex flex-col justify-between min-h-[260px]"
+                className="bg-white/5 p-4 sm:p-8 rounded-sm border border-white/5 hover:border-[#B08D57]/30 transition-colors group flex flex-col justify-between min-h-0 sm:min-h-[260px]"
               >
-                <div className="flex justify-between items-start mb-10">
-                  <div className="p-3 bg-white/5 rounded-sm group-hover:bg-[#B08D57]/10 transition-colors">
-                    <val.icon className="text-[#B08D57] group-hover:scale-110 transition-transform duration-500" size={24} />
+                <div className="flex justify-between items-start mb-4 sm:mb-10">
+                  <div className="p-2 sm:p-3 bg-white/5 rounded-sm group-hover:bg-[#B08D57]/10 transition-colors">
+                    <val.icon className="text-[#B08D57] group-hover:scale-110 transition-transform duration-500 w-4 h-4 sm:w-6 sm:h-6" />
                   </div>
-                  <span className="font-mono text-white/20 text-xs uppercase tracking-widest">{val.id.split("-")[1]}</span>
+                  <span className="font-mono text-white/20 text-[9px] sm:text-xs uppercase tracking-widest">{val.id.split("-")[1]}</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-serif mb-3 text-white">{val.title}</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed font-light">{val.description}</p>
+                  <h3 className="text-sm sm:text-xl font-serif mb-1 sm:mb-3 text-white">{val.title}</h3>
+                  <p className="text-gray-400 text-[10px] sm:text-xs leading-relaxed font-light line-clamp-3 sm:line-clamp-none">{val.description}</p>
                 </div>
               </div>
             ))}
@@ -337,12 +337,12 @@ const Career: React.FC = () => {
       </section>
 
       {/* --- SECTION: ROLES EXPLORER --- */}
-      <section id="roles" className="py-24 px-6 bg-white border-t border-gray-100">
+      <section id="roles" className="py-12 sm:py-24 px-5 sm:px-6 bg-white border-t border-gray-100">
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-8 border-b border-gray-100">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-16 pb-6 sm:pb-8 border-b border-gray-100">
             <div>
-              <span className="text-[#B08D57] font-mono font-bold tracking-widest text-xs mb-3 block uppercase">[ OPPORTUNITIES ]</span>
-              <h2 className="text-4xl md:text-6xl font-serif text-[#18181B] tracking-tight">Open Opportunities</h2>
+              <span className="text-[#B08D57] font-mono font-bold tracking-widest text-[10px] sm:text-xs mb-2 sm:mb-3 block uppercase">[ OPPORTUNITIES ]</span>
+              <h2 className="text-2xl sm:text-4xl md:text-6xl font-serif text-[#18181B] tracking-tight">Open Opportunities</h2>
             </div>
             <p className="text-gray-500 text-sm max-w-sm mt-4 md:mt-0 font-light leading-relaxed">
               We look for people who respect materials, love spatial alignment, and can collaborate under rigorous schedules.
@@ -350,7 +350,7 @@ const Career: React.FC = () => {
           </div>
 
           {/* Filtering Tabs */}
-          <div className="flex flex-wrap gap-2 mb-12 border-b border-gray-100 pb-6">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 sm:mb-12 border-b border-gray-100 pb-4 sm:pb-6">
             {(["All", "Design", "Execution", "Internships"] as const).map((filter) => (
               <button
                 key={filter}
@@ -358,7 +358,7 @@ const Career: React.FC = () => {
                   setActiveFilter(filter);
                   setExpandedRoleId(null);
                 }}
-                className={`font-mono text-xs uppercase tracking-widest px-5 py-2.5 rounded-sm border transition-all duration-300 ${
+                className={`font-mono text-[10px] sm:text-xs uppercase tracking-widest px-3 sm:px-5 py-2 sm:py-2.5 rounded-sm border transition-all duration-300 ${
                   activeFilter === filter
                     ? "bg-[#18181B] border-[#18181B] text-white shadow-sm"
                     : "bg-transparent border-gray-200 text-gray-500 hover:text-gray-800 hover:border-gray-300"
@@ -386,7 +386,7 @@ const Career: React.FC = () => {
                     {/* Header Trigger */}
                     <button
                       onClick={() => setExpandedRoleId(isExpanded ? null : role.id)}
-                      className="w-full text-left p-6 md:p-8 flex justify-between items-center gap-6"
+                      className="w-full text-left p-4 sm:p-6 md:p-8 flex justify-between items-center gap-3 sm:gap-6"
                     >
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center gap-3 mb-2">
@@ -397,7 +397,7 @@ const Career: React.FC = () => {
                             <MapPin size={10} /> {role.location}
                           </span>
                         </div>
-                        <h3 className="text-2xl font-serif text-[#18181B]">{role.title}</h3>
+                        <h3 className="text-lg sm:text-2xl font-serif text-[#18181B]">{role.title}</h3>
                       </div>
                       
                       <div className="flex items-center gap-4">
@@ -419,7 +419,7 @@ const Career: React.FC = () => {
                         isExpanded ? "max-h-[1000px] border-t border-gray-100" : "max-h-0"
                       }`}
                     >
-                      <div className="p-6 md:p-8 space-y-8">
+                      <div className="p-4 sm:p-6 md:p-8 space-y-6 sm:space-y-8">
                         <div>
                           <p className="text-gray-600 text-base leading-relaxed max-w-3xl">
                             {role.description}
@@ -483,21 +483,21 @@ const Career: React.FC = () => {
       </section>
 
       {/* --- SECTION: LIFE AT THE STUDIO (VISUAL GALLERY) --- */}
-      <section className="bg-[#18181B] text-white py-24 px-6 relative overflow-hidden border-t border-white/5">
+      <section className="bg-[#18181B] text-white py-12 sm:py-24 px-5 sm:px-6 relative overflow-hidden border-t border-white/5">
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-white/10 pb-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-16 border-b border-white/10 pb-6 sm:pb-8">
             <div>
-              <span className="text-[#B08D57] font-mono font-bold tracking-widest text-xs mb-3 block uppercase">[ STUDIO CULTURE ]</span>
-              <h2 className="text-4xl md:text-6xl font-serif text-white tracking-tight">Life at Younick</h2>
+              <span className="text-[#B08D57] font-mono font-bold tracking-widest text-[10px] sm:text-xs mb-2 sm:mb-3 block uppercase">[ STUDIO CULTURE ]</span>
+              <h2 className="text-2xl sm:text-4xl md:text-6xl font-serif text-white tracking-tight">Life at Younick</h2>
             </div>
             <p className="text-gray-400 text-sm max-w-sm mt-4 md:mt-0 font-light leading-relaxed">
               We work in a high-collaboration, open-workspace design house. We balance rigorous drafting with daily site visits and materials research.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-8">
             {/* Card 1 */}
-            <div className="group relative rounded-sm overflow-hidden h-[400px]">
+            <div className="group relative rounded-sm overflow-hidden h-[200px] sm:h-[400px] col-span-2 md:col-span-1">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
@@ -505,13 +505,13 @@ const Career: React.FC = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />
-              <div className="absolute bottom-6 left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-3 py-1.5 text-[10px] font-mono uppercase tracking-widest text-white">
+              <div className="absolute bottom-3 left-3 sm:bottom-6 sm:left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-2 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white">
                 Sourcing & Materials
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="group relative rounded-sm overflow-hidden h-[400px]">
+            <div className="group relative rounded-sm overflow-hidden h-[160px] sm:h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
                 src="https://images.unsplash.com/photo-1503387762-592dedb80256?auto=format&fit=crop&q=80&w=800"
@@ -519,13 +519,13 @@ const Career: React.FC = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />
-              <div className="absolute bottom-6 left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-3 py-1.5 text-[10px] font-mono uppercase tracking-widest text-white">
+              <div className="absolute bottom-3 left-3 sm:bottom-6 sm:left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-2 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white">
                 Drafting & Visuals
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="group relative rounded-sm overflow-hidden h-[400px]">
+            <div className="group relative rounded-sm overflow-hidden h-[160px] sm:h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
                 src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800"
@@ -533,7 +533,7 @@ const Career: React.FC = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />
-              <div className="absolute bottom-6 left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-3 py-1.5 text-[10px] font-mono uppercase tracking-widest text-white">
+              <div className="absolute bottom-3 left-3 sm:bottom-6 sm:left-6 z-20 bg-black/80 backdrop-blur border border-white/10 px-2 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white">
                 Site & Craft Work
               </div>
             </div>
@@ -542,25 +542,25 @@ const Career: React.FC = () => {
       </section>
 
       {/* --- SECTION: PERKS & BENEFITS GRID --- */}
-      <section className="py-24 px-6 bg-[#FAF9F6] border-t border-gray-100">
+      <section className="py-12 sm:py-24 px-5 sm:px-6 bg-[#FAF9F6] border-t border-gray-100">
         <div className="max-w-[1400px] mx-auto text-center">
-          <span className="text-[#B08D57] font-mono font-bold tracking-widest text-xs mb-4 block uppercase">
+          <span className="text-[#B08D57] font-mono font-bold tracking-widest text-[10px] sm:text-xs mb-3 sm:mb-4 block uppercase">
             [ STUDIO PERKS ]
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-[#18181B] mb-16 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-[#18181B] mb-8 sm:mb-16 tracking-tight">
             Why Grow With Us?
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8 max-w-6xl mx-auto">
             {PERKS.map((perk, idx) => (
               <div 
                 key={idx}
-                className="bg-white p-8 rounded-sm border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow text-left flex flex-col justify-between"
+                className="bg-white p-4 sm:p-8 rounded-sm border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow text-left flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-1.5 h-1.5 bg-[#B08D57] rounded-full mb-6" />
-                  <h3 className="text-lg font-serif text-[#18181B] mb-3">{perk.title}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed font-light">{perk.description}</p>
+                  <div className="w-1.5 h-1.5 bg-[#B08D57] rounded-full mb-3 sm:mb-6" />
+                  <h3 className="text-sm sm:text-lg font-serif text-[#18181B] mb-1 sm:mb-3">{perk.title}</h3>
+                  <p className="text-gray-500 text-[10px] sm:text-xs leading-relaxed font-light">{perk.description}</p>
                 </div>
               </div>
             ))}

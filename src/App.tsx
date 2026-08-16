@@ -4,6 +4,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import IntroScreen from "./components/IntroScreen";
+import WhatsAppButton from "./components/WhatsAppButton";
 const STORAGE_KEY = "younick_intro_v1";
 const Home = React.lazy(() => import("./pages/Home"));
 const Projects = React.lazy(() => import("./pages/Projects"));
@@ -60,7 +61,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden w-full max-w-[100vw]">
       <Navigation onSearch={handleSearch} />
 
       <main id="main-content" role="main" className="flex-1">
@@ -99,6 +100,7 @@ function AppContent() {
       </main>
 
       {!is404Page && <Footer />}
+      <WhatsAppButton />
     </div>
   );
 }

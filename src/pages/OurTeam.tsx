@@ -7,6 +7,7 @@ import {
   Heart,
   Sparkles,
   Leaf,
+  Award,
   ArrowRight,
   ArrowUpRight,
 } from "lucide-react";
@@ -137,6 +138,11 @@ const OurTeam: React.FC = () => {
       title: "Sustainability",
       desc: "Responsibly sourced, long-lasting materials that honor both beauty and the environment.",
     },
+    {
+      icon: Award,
+      title: "Timeless Quality",
+      desc: "Built to endure with refined materials, precision detailing, and architectural elegance.",
+    },
   ];
 
   return (
@@ -193,19 +199,21 @@ const OurTeam: React.FC = () => {
       </header>
 
       <main className="bg-gradient-to-b from-[#F8F7F4] via-white to-[#F8F4EE] min-h-screen">
-        {/* Values Row — directly below Hero */}
-        <section className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Values Row — 2 columns x 2 rows on mobile, 4 columns on desktop */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
             {values.map((v, idx) => (
               <Reveal key={idx} delay={idx * 0.1}>
-                <div className="relative group bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-[#0B1220] text-[#E6B566] mb-4 group-hover:scale-105 transition-transform duration-300">
-                    <v.icon size={20} />
+                <div className="h-full relative group bg-white/70 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                  <div>
+                    <div className="h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center rounded-lg bg-[#0B1220] text-[#E6B566] mb-3 group-hover:scale-105 transition-transform duration-300">
+                      <v.icon size={18} className="sm:w-5 sm:h-5" />
+                    </div>
+                    <h3 className="text-sm sm:text-base font-serif font-semibold text-[#0B1220] mb-1 sm:mb-1.5">
+                      {v.title}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-gray-500 leading-relaxed">{v.desc}</p>
                   </div>
-                  <h3 className="text-base font-serif font-semibold text-[#0B1220] mb-2">
-                    {v.title}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -241,8 +249,8 @@ const OurTeam: React.FC = () => {
         {/* ═══════════════════════════════════════════
             SECTION 3: WORKSPACE & CULTURE (Consolidated Gallery + CTA)
             ═══════════════════════════════════════════ */}
-          <section className="max-w-7xl mx-auto px-6 py-16 pb-24">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 pb-20 sm:pb-24">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
               
               {/* Left Column: Bento Workspace Gallery */}
               <div className="lg:col-span-7 flex flex-col justify-between">
@@ -260,10 +268,10 @@ const OurTeam: React.FC = () => {
                   </div>
                 </Reveal>
 
-                {/* Bento Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-[300px]">
+                {/* Bento Grid with clean mobile & desktop heights */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-auto sm:h-[340px]">
                   <Reveal className="h-full">
-                    <Link to="/projects" className="group relative block h-full overflow-hidden rounded-2xl">
+                    <Link to="/projects" className="group relative block h-[220px] sm:h-full overflow-hidden rounded-2xl shadow-sm">
                       <img
                         src="/assets/optimized/gallery/g1-768.jpeg"
                         alt="Workspace detail"
@@ -279,9 +287,9 @@ const OurTeam: React.FC = () => {
                       </div>
                     </Link>
                   </Reveal>
-                  <div className="grid grid-rows-2 gap-4 h-full">
+                  <div className="grid grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 gap-4 h-[120px] sm:h-full">
                     <Reveal className="h-full">
-                      <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl">
+                      <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
                         <img
                           src="/assets/optimized/gallery/g2-768.jpeg"
                           alt="Material samples"
@@ -292,7 +300,7 @@ const OurTeam: React.FC = () => {
                       </Link>
                     </Reveal>
                     <Reveal className="h-full">
-                      <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl">
+                      <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
                         <img
                           src="/assets/optimized/gallery/g3-768.jpeg"
                           alt="Model draft"
@@ -307,9 +315,9 @@ const OurTeam: React.FC = () => {
               </div>
 
               {/* Right Column: Hiring / Join CTA Card */}
-              <div className="lg:col-span-5 flex">
+              <div className="lg:col-span-5 flex mt-4 lg:mt-0">
                 <Reveal className="w-full h-full flex">
-                  <div className="relative w-full overflow-hidden rounded-3xl bg-[#0B1220] p-8 sm:p-10 flex flex-col justify-center text-center lg:text-left border border-white/[0.05] shadow-xl">
+                  <div className="relative w-full overflow-hidden rounded-3xl bg-[#0B1220] p-6 sm:p-10 flex flex-col justify-center text-center lg:text-left border border-white/[0.05] shadow-xl">
                     {/* Decorative gradient orb */}
                     <div
                       aria-hidden
@@ -350,7 +358,6 @@ const OurTeam: React.FC = () => {
                   </div>
                 </Reveal>
               </div>
-
             </div>
           </section>
       </main>

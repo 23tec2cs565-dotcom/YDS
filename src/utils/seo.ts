@@ -34,9 +34,9 @@ const SITE = {
 export const defaultSEO: SEOData = {
   title: "Best Interior Designer in Jaipur, Rajasthan | Younick Design Studio",
   description:
-    "Younick Design Studio — Premier interior design, turnkey construction, and 3D visualization studio in Jaipur, Rajasthan. Transform your residential and commercial spaces with expert designers.",
+    "Younick Design Studio — Premier luxury interior design, turnkey construction, and 3D architectural visualization studio in Jaipur, Rajasthan. Transform your residential and commercial spaces with expert designers.",
   keywords:
-    "best interior designer in jaipur, interior design jaipur, turnkey construction rajasthan, luxury interior designers jaipur, 3d visualization studio, home renovation jaipur",
+    "best interior designer in jaipur, interior design jaipur, turnkey interior contractor jaipur, luxury interior designers rajasthan, commercial gym interior jaipur, hospital design consultancy jaipur, villa interior designers civil lines, home renovation jaipur, 3d visualization studio jaipur",
   url: SITE.url,
   image: SITE.logo,
   author: SITE.name,
@@ -44,20 +44,32 @@ export const defaultSEO: SEOData = {
 
 /**
  * Structured data — LocalBusiness & Organization (JSON-LD)
- * This will be merged with page-specific schema in SEOHead when provided.
+ * Formatted for Google Rich Results & Local Knowledge Graph.
  */
 export const structuredData = {
   organization: {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "ProfessionalService"],
     name: SITE.name,
+    alternateName: "Younick Studio Jaipur",
+    description: "Award-winning interior design, turnkey construction, and 3D spatial visualization studio based in Civil Lines, Jaipur, Rajasthan.",
     image: SITE.logo,
     url: SITE.url,
     logo: SITE.logo,
     telephone: SITE.telephone,
     email: SITE.email,
     priceRange: "₹₹₹",
+    hasMap: "https://maps.google.com/?q=Orbit+Mall+Civil+Lines+Jaipur",
     sameAs: SITE.sameAs,
+    founder: {
+      "@type": "Person",
+      name: "Pooja Sain",
+      jobTitle: "Founder & Lead Interior Designer",
+      worksFor: {
+        "@type": "Organization",
+        name: SITE.name
+      }
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address.street,
@@ -71,52 +83,88 @@ export const structuredData = {
       latitude: 26.9069,
       longitude: 75.7836,
     },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
-      opens: "10:00",
-      closes: "19:00"
-    },
-    areaServed: ["Jaipur", "Udaipur", "Jodhpur", "Kota", "Rajasthan"],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        opens: "10:00",
+        closes: "19:00"
+      }
+    ],
+    areaServed: [
+      { "@type": "City", name: "Jaipur" },
+      { "@type": "AdministrativeArea", name: "Civil Lines, Jaipur" },
+      { "@type": "AdministrativeArea", name: "C-Scheme, Jaipur" },
+      { "@type": "AdministrativeArea", name: "Mansarovar, Jaipur" },
+      { "@type": "AdministrativeArea", name: "Vaishali Nagar, Jaipur" },
+      { "@type": "AdministrativeArea", name: "Malviya Nagar, Jaipur" },
+      { "@type": "AdministrativeArea", name: "Pratap Nagar, Jaipur" },
+      { "@type": "AdministrativeArea", name: "Jagatpura, Jaipur" },
+      { "@type": "AdministrativeArea", name: "Tonk Road, Jaipur" },
+      { "@type": "AdministrativeArea", name: "Raja Park, Jaipur" },
+      { "@type": "AdministrativeArea", name: "Bani Park, Jaipur" },
+      { "@type": "City", name: "Sikar" },
+      { "@type": "City", name: "Udaipur" },
+      { "@type": "City", name: "Jodhpur" },
+      { "@type": "City", name: "Kota" },
+      { "@type": "State", name: "Rajasthan" }
+    ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
       reviewCount: "128",
-      bestRating: "5"
+      bestRating: "5",
+      worstRating: "1"
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Interior Design & Construction Services",
+      name: "Interior Design, Architecture & Turnkey Services",
       itemListElement: [
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Residential Interior Design",
-            description: "Bespoke luxury interior design for villas, apartments, and private residences."
+            name: "Residential & Luxury Villa Interior Design",
+            description: "Bespoke interior architecture, custom woodwork, modular kitchens, and curated finishes for luxury homes in Jaipur and Rajasthan."
           }
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Turnkey Construction & Renovation",
-            description: "Complete end-to-end execution, material sourcing, and build supervision."
+            name: "Commercial & Retail Interior Fit-outs",
+            description: "Turnkey design and execution for fitness gyms, retail showrooms, jewellery boutiques, and corporate offices."
           }
         },
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "3D Visualization & Space Planning",
-            description: "Photorealistic 3D rendering and architectural spatial modeling."
+            name: "Healthcare & Hospital Design Consultancy",
+            description: "Clinical space planning, patient circulation optimization, and ergonomic healthcare facility design."
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Turnkey Execution with Material",
+            description: "Complete end-to-end site management, civil engineering, contractor supervision, and material procurement with zero quality compromise."
+          }
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "3D Photorealistic Architectural Visualization",
+            description: "High-fidelity 3D modeling, lighting simulation, walkthrough animations, and CAD construction drawings."
           }
         }
       ]

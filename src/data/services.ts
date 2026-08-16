@@ -7,6 +7,7 @@ export interface Service {
   image: string;
   features: string[];
   keywords?: string[];
+  timeline?: string;
 }
 
 export const services: Service[] = [
@@ -31,6 +32,7 @@ export const services: Service[] = [
       "space planning",
       "decor ideas",
     ],
+    timeline: "4 - 8 Weeks",
   },
   {
     id: "construction",
@@ -47,6 +49,7 @@ export const services: Service[] = [
       "Site Supervision",
     ],
     keywords: ["turnkey projects", "building", "civil work", "contractor"],
+    timeline: "4 - 8 Months",
   },
   {
     id: "renovation",
@@ -63,6 +66,7 @@ export const services: Service[] = [
       "Budget Optimization",
     ],
     keywords: ["remodeling", "home renovation", "revamp", "modern interiors"],
+    timeline: "3 - 6 Weeks",
   },
   {
     id: "consultation",
@@ -79,6 +83,7 @@ export const services: Service[] = [
       "Timeline Optimization",
     ],
     keywords: ["interior advice", "design consultancy", "project planning"],
+    timeline: "3 - 7 Days",
   },
   {
     id: "3d-visualization",
@@ -95,5 +100,6 @@ export const services: Service[] = [
       "Lighting Simulation",
     ],
     keywords: ["render", "3D design", "architectural visualization", "walkthrough"],
+    timeline: "5 - 10 Days",
   },
 ];

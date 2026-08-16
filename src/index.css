@@ -35,10 +35,15 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
   body {
     @apply antialiased bg-[#FAFAFA] text-gray-900;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
   }
   h1, h2 {
     font-family: 'Ovelion', 'Cormorant Garamond', 'Playfair Display', serif;

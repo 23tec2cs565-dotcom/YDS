@@ -43,6 +43,7 @@ import type { Project } from "../data/projects";
 import type { Service } from "../data/services";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
+import BeforeAfterSlider from "../components/BeforeAfterSlider";
 
 const cn = (...args: Array<string | false | null | undefined>) =>
   args.filter(Boolean).join(" ");
@@ -212,9 +213,9 @@ const Hero: React.FC = () => {
   const heroBackImg = (featuredProject as ExtendedProject)?.imageUrl ?? featuredProject?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
 
   return (
-    <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-[#FAFAFB]">
-      <div className="absolute top-0 right-0 w-[40vw] h-full bg-[#EAEAEA] rounded-l-[120px] -z-10 hidden lg:block opacity-50" />
-      <div className="absolute top-20 left-20 w-64 h-64 bg-[#E6B566]/5 rounded-full blur-3xl -z-10 pointer-events-none" />
+    <section id="home" className="relative min-h-screen pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden bg-[#FAFAFB] w-full">
+      <div className="absolute top-0 right-0 w-[40vw] h-full bg-[#EAEAEA] rounded-l-[120px] -z-10 hidden lg:block opacity-50 overflow-hidden" />
+      <div className="absolute top-20 left-20 w-64 h-64 bg-[#E6B566]/5 rounded-full blur-3xl -z-10 pointer-events-none overflow-hidden" />
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
@@ -226,7 +227,7 @@ const Hero: React.FC = () => {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-6 sm:mb-8">
               Interiors that <br />
               <span className="italic text-[#8C6226] font-angelone">feel curated</span>
               <br />
@@ -342,9 +343,9 @@ const About: React.FC = () => {
   const aboutImgB = (featuredProjects[1] as ExtendedProject)?.imageUrl ?? featuredProjects[1]?.image ?? projects[1]?.image ?? "";
 
   return (
-    <section id="about" className="py-24 bg-white relative">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-16 sm:py-24 bg-white relative overflow-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
             <Reveal>
               <div className="grid grid-cols-2 gap-4">
@@ -355,7 +356,7 @@ const About: React.FC = () => {
                   <img src={aboutImgB} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
               </div>
-              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-[#F7F7F9] rounded-full blur-3xl opacity-60" />
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[400px] h-[80%] bg-[#F7F7F9] rounded-full blur-3xl opacity-60 pointer-events-none" />
             </Reveal>
           </div>
 
@@ -395,6 +396,33 @@ const About: React.FC = () => {
   );
 };
 
+const TransformationSection: React.FC = () => {
+  return (
+    <section className="py-16 sm:py-24 bg-white relative overflow-hidden border-t border-gray-100 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] text-[#E6B566] text-xs font-bold tracking-widest uppercase mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
+              Before & After Transformations
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#0B1220] mb-6 leading-tight">
+              Witness the Art of <span className="italic text-[#8C6226] font-angelone">Turnkey Execution</span>
+            </h2>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+              From raw masonry shells and outdated layouts to luminous, mastercrafted interiors. Drag the slider to explore the precision of our on-site transformations.
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal delay={0.15}>
+          <BeforeAfterSlider />
+        </Reveal>
+      </div>
+    </section>
+  );
+};
+
 const ProjectsSection: React.FC = () => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -415,8 +443,8 @@ const ProjectsSection: React.FC = () => {
   }, [selectedProject]);
 
   return (
-    <section id="projects" className="py-24 bg-[#FAFAFB]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-16 sm:py-24 bg-[#FAFAFB] overflow-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <Reveal>
             <h2 className="text-4xl font-serif text-[#0B1220] mb-4">Selected Works</h2>
@@ -528,8 +556,8 @@ const ProjectsSection: React.FC = () => {
 
 const ServicesSection: React.FC = () => {
   return (
-    <section id="services" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="services" className="py-16 sm:py-24 bg-white overflow-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-5xl font-serif text-[#0B1220] mb-6">
             Our Expertise
@@ -641,8 +669,8 @@ const TestimonialsSection: React.FC = () => {
   const prev = () => setIndex((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
 
   return (
-    <section className="py-24 bg-[#FAFAFB] border-y border-white">
-      <div className="max-w-5xl mx-auto px-6 relative">
+    <section className="py-16 sm:py-24 bg-[#FAFAFB] border-y border-white overflow-hidden w-full">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
         <div className="absolute top-0 left-10 text-[#E6B566]/10 pointer-events-none">
           <Quote size={120} />
         </div>
@@ -688,8 +716,8 @@ const LeadershipSection: React.FC = () => {
   const leadership = teamMembers.filter((member) => member.isFounder);
 
   return (
-    <section id="team" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="team" className="py-16 sm:py-24 bg-white overflow-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <Reveal>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif mb-4">The Leadership</h2>
@@ -748,8 +776,8 @@ const StatsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 bg-white border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section className="py-10 sm:py-12 bg-white border-b border-gray-100 overflow-hidden w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
         {STATS.map((stat, i) => (
           <Reveal key={stat.id} delay={i * 0.1} className="text-center">
             <h3 className="text-4xl font-serif text-[#0B1220] mb-1">{stat.value}</h3>
@@ -766,11 +794,12 @@ const Home: React.FC = () => {
   return (
     <>
       <SEOHead seo={pageSEO.home} />
-      <div className="min-h-screen bg-[#FAFAFB] text-[#0B1220] font-sans selection:bg-[#E6B566] selection:text-white">
-        <main>
+      <div className="min-h-screen bg-[#FAFAFB] text-[#0B1220] font-sans selection:bg-[#E6B566] selection:text-white overflow-x-hidden w-full max-w-[100vw]">
+        <main className="overflow-x-hidden w-full">
           <Hero />
           <StatsSection />
           <About />
+          <TransformationSection />
           <ProjectsSection />
           <ServicesSection />
           <TestimonialsSection />
