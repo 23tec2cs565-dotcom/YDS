@@ -109,17 +109,7 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    document.documentElement.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    document.body.scrollTo({ top: 0, left: 0, behavior: "auto" });
-
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      document.documentElement.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      document.body.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    }, 100);
-
-    return () => clearTimeout(timer);
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;

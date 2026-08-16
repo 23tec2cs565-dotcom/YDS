@@ -117,7 +117,7 @@ const ServiceDetails: React.FC = () => {
             <div className="lg:col-span-7 space-y-8 sm:space-y-12">
               <section>
                 <h2 className="text-2xl sm:text-3xl font-serif text-gray-900 mb-3 sm:mb-4">The Approach</h2>
-                <div className="prose prose-sm sm:prose-lg text-gray-600 max-w-none text-xs sm:text-base leading-relaxed space-y-3">
+                <div className="text-gray-600 max-w-none text-xs sm:text-base leading-relaxed space-y-3">
                   <p>{service.description}</p>
                   <p>
                     We combine architectural thoughtfulness with craft-driven finishes to deliver

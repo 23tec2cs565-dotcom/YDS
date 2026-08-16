@@ -19,14 +19,14 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
         sessionStorage.setItem(STORAGE_KEY, "1");
       } catch {}
       onComplete();
-    }, 900);
+    }, 500);
   }, [onComplete]);
 
-  // Counter: 0 → 100 over ~2.4s with ease-out
+  // Counter: 0 → 100 over ~1.8s with smooth ease-out
   useEffect(() => {
     let raf: number;
     const start = performance.now();
-    const duration = 3300;
+    const duration = 1800;
 
     const tick = (now: number) => {
       const elapsed = now - start;
@@ -37,8 +37,8 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
       if (progress < 1) {
         raf = requestAnimationFrame(tick);
       } else {
-        // Brief hold then exit
-        setTimeout(triggerExit, 600);
+        // Brief crisp hold then exit
+        setTimeout(triggerExit, 250);
       }
     };
 
@@ -123,7 +123,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
           className="mt-9 text-[10px] uppercase tracking-[0.32em] text-white/25"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.7, duration: 0.9, ease: "easeOut" }}
+          transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
         >
           Architecture&nbsp;&nbsp;·&nbsp;&nbsp;Interiors&nbsp;&nbsp;·&nbsp;&nbsp;Jaipur
         </motion.p>
@@ -146,7 +146,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
         className="absolute bottom-10 left-10 font-mono leading-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
         aria-hidden
       >
         <span className="text-[4.5rem] font-thin text-white/10 tabular-nums">
@@ -159,7 +159,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
         className="absolute bottom-12 right-10 text-right"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.7 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
         aria-hidden
       >
         <p className="text-[9px] uppercase tracking-[0.28em] text-white/20">
@@ -171,10 +171,10 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
       <motion.button
         type="button"
         onClick={triggerExit}
-        className="absolute top-8 right-8 text-[9px] uppercase tracking-[0.28em] text-white/20 transition-colors duration-300 hover:text-white/50"
+        className="absolute top-8 right-8 text-[9px] uppercase tracking-[0.28em] text-white/20 transition-colors duration-300 hover:text-white/50 cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
+        transition={{ delay: 0.4, duration: 0.4 }}
         aria-label="Skip intro"
       >
         Skip
