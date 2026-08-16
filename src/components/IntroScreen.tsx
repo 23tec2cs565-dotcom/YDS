@@ -15,7 +15,9 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
   const triggerExit = useCallback(() => {
     setPhase("exit");
     setTimeout(() => {
-      sessionStorage.setItem(STORAGE_KEY, "1");
+      try {
+        sessionStorage.setItem(STORAGE_KEY, "1");
+      } catch {}
       onComplete();
     }, 900);
   }, [onComplete]);
