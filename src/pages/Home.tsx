@@ -151,17 +151,15 @@ const Hero: React.FC = () => {
   // Starts the next video 0.6s before the current video ends, only crossfading once real frames are actively rendering.
   const [activeLayer, setActiveLayer] = useState<0 | 1>(0);
   const [sources, setSources] = useState<[string, string]>([heroVideos[0], ""]);
-  const [isDesktop, setIsDesktop] = useState<boolean>(false);
-  const videoIndexRef = useRef(0);
-  const video0Ref = useRef<HTMLVideoElement>(null);
-  const video1Ref = useRef<HTMLVideoElement>(null);
-  const isTransitioningRef = useRef(false);
+  const [isDesktop, setIsDesktop] = useState<boolean>(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
+  );
 
   useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
+    const mq = window.matchMedia('(min-width: 768px)');
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
   }, []);
 
   const handleTimeUpdate0 = () => {
@@ -257,11 +255,11 @@ const Hero: React.FC = () => {
             </h1>
           </Reveal>
 
-          <Reveal delay={0.2}>
-            <p className="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
-              Architecture, craft and human-centred spatial thinking — from concept and visualization to turnkey delivery. Spaces people truly want to live in.
-            </p>
-          </Reveal>
+          {/* LCP element — rendered directly without Reveal/animation to ensure immediate paint */}
+          <p className="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
+            Architecture, craft and human-centred spatial thinking — from concept and visualization to turnkey delivery. Spaces people truly want to live in.
+          </p>
+
 
           <Reveal delay={0.3}>
             <div className="flex flex-wrap items-center gap-4 mb-12">
