@@ -10,7 +10,12 @@ import {
   Building,
   Wrench,
   MessageCircle,
-  Eye
+  Eye,
+  Paintbrush,
+  Hammer,
+  RefreshCw,
+  Layers,
+  HelpCircle,
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -23,6 +28,16 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
   Wrench,
   MessageCircle,
   Eye
+};
+
+// Icon map for the budget estimator service selector buttons
+const ESTIMATOR_ICON_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
+  Paintbrush,
+  Hammer,
+  RefreshCw,
+  Layers,
+  HelpCircle,
+  Home,
 };
 import { services as SERVICES } from "../data/services";
 import SEOHead from "../components/SEOHead";
@@ -458,7 +473,7 @@ const ServicesPage: React.FC = () => {
                       { id: "consultation", label: "Design Consultation", icon: "HelpCircle", desc: "Layout planning & mood boards" }
                     ].map((svc) => {
                       const isSelected = selectedServices.includes(svc.id);
-                      const SvcIcon = (Lucide as Record<string, React.ComponentType<{ size?: number }>>)[svc.icon] ?? Lucide.Home;
+                      const SvcIcon = ESTIMATOR_ICON_MAP[svc.icon] ?? Home;
                       return (
                         <button
                           key={svc.id}
