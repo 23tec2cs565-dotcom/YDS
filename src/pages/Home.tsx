@@ -90,6 +90,23 @@ const Reveal: React.FC<{
   </div>
 );
 
+// HeroReveal: mount-triggered animation (no IntersectionObserver overhead).
+// Used only for above-fold hero elements so LCP isn't blocked by viewport detection.
+const HeroReveal: React.FC<{
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}> = ({ children, delay = 0, className }) => (
+  <MotionDiv
+    className={className}
+    initial={{ opacity: 0, y: 24 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7, delay, ease: [0.25, 0.1, 0, 1] }}
+  >
+    {children}
+  </MotionDiv>
+);
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost" | "link";
   withIcon?: boolean;
@@ -154,6 +171,10 @@ const Hero: React.FC = () => {
   const [isDesktop, setIsDesktop] = useState<boolean>(
     () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
   );
+  const videoIndexRef = useRef(0);
+  const video0Ref = useRef<HTMLVideoElement>(null);
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const isTransitioningRef = useRef(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)');
@@ -239,29 +260,31 @@ const Hero: React.FC = () => {
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
-          <Reveal>
+          <HeroReveal delay={0}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#111633] border border-[#0B1220] shadow-sm text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
               <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
               Jaipur, Rajasthan
             </div>
-          </Reveal>
+          </HeroReveal>
 
-          <Reveal delay={0.1}>
+          <HeroReveal delay={0.1}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-6 sm:mb-8">
               Interiors that <br />
               <span className="italic text-[#8C6226] font-angelone">feel curated</span>
               <br />
               modern & warm.
             </h1>
-          </Reveal>
+          </HeroReveal>
 
-          {/* LCP element — rendered directly without Reveal/animation to ensure immediate paint */}
-          <p className="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
-            Architecture, craft and human-centred spatial thinking — from concept and visualization to turnkey delivery. Spaces people truly want to live in.
-          </p>
+          {/* LCP element — HeroReveal uses animate (mount-triggered), not whileInView.
+              Animation plays immediately so LCP is measured from mount, not viewport detection. */}
+          <HeroReveal delay={0.18}>
+            <p className="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
+              Architecture, craft and human-centred spatial thinking — from concept and visualization to turnkey delivery. Spaces people truly want to live in.
+            </p>
+          </HeroReveal>
 
-
-          <Reveal delay={0.3}>
+          <HeroReveal delay={0.28}>
             <div className="flex flex-wrap items-center gap-4 mb-12">
               <Button onClick={() => navigate("/contact")} withIcon>
                 Start a Conversation
@@ -273,9 +296,9 @@ const Hero: React.FC = () => {
                 View Selected Work
               </Link>
             </div>
-          </Reveal>
+          </HeroReveal>
 
-          <Reveal delay={0.4}>
+          <HeroReveal delay={0.36}>
             <div className="flex items-center gap-8 pt-8 border-t border-gray-200/80">
               <div>
                 <div className="text-3xl font-serif text-[#0B1220]">150+</div>
@@ -286,7 +309,7 @@ const Hero: React.FC = () => {
                 <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Commitment</p>
               </div>
             </div>
-          </Reveal>
+          </HeroReveal>
         </div>
 
         <div className="lg:col-span-6 relative h-[600px] hidden md:block">
