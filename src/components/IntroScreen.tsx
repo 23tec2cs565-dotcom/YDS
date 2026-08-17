@@ -22,11 +22,11 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
     }, 500);
   }, [onComplete]);
 
-  // Counter: 0 → 100 over ~1.8s with smooth ease-out
+  // Counter: 0 → 100 over ~2.0s with smooth ease-out
   useEffect(() => {
     let raf: number;
     const start = performance.now();
-    const duration = 1800;
+    const duration = 2000;
 
     const tick = (now: number) => {
       const elapsed = now - start;
