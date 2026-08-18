@@ -30,8 +30,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 
   const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.currentTarget;
-    // @ts-expect-error: Setting onerror to null is valid JS but TS expects the exact event handler type
-    img.onerror = null;
     img.src = "/assets/placeholder.jpg";
   };
 

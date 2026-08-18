@@ -516,10 +516,12 @@ const ServicesSection: React.FC = () => {
                     {mediaIsVideo ? (
                       <video
                         src={mediaUrl}
+                        poster={s?.imageUrl ?? s?.image ?? "/assets/services/interior-design.jpeg"}
                         autoPlay
                         muted
                         loop
                         playsInline
+                        preload="auto"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (
