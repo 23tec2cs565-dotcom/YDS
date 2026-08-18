@@ -70,7 +70,6 @@ export const teamMembers: TeamMember[] = [
       whatsapp: "+91 9166776697",
     },
     social: {
-      linkedin: "https://linkedin.com/in/kamalrajoriya-tech",
       instagram: "https://www.instagram.com/studio.younick",
     },
     isFounder: true,
@@ -86,6 +85,7 @@ export const teamMembers: TeamMember[] = [
     description:
       "Pooja leads design thinking and operations, bringing sustainable architecture and refined detailing to every project.",
     expertise: [
+      "Aesthetic Concepts",
       "Architecture Drawings",
       "Material Exploration",
       "3D Visualization",
@@ -93,7 +93,7 @@ export const teamMembers: TeamMember[] = [
     ],
     contact: {},
     social: {
-      instagram: "https://instagram.com/pooja_sain_design",
+    instagram: "https://www.instagram.com/inter._space10",
     },
     isFounder: true,
     badge: "3D Visualizer",
@@ -143,10 +143,36 @@ export const teamMembers: TeamMember[] = [
       whatsapp: "+91 9887159297",
     },
     social: {
-      linkedin: "https://linkedin.com/in/keshav-sain-4450271b2",
-      instagram: "https://instagram.com/keshav_sain_design",
+      linkedin: "https://www.linkedin.com/in/keshav-sain-1a6ba942a",
+      instagram: "https://www.instagram.com/keshavsain34",
     },
     isFounder: false,
     badge: "Member",
   },
+  {
+    id: "rahul-kumawat",
+    name: "Rahul Kumawat",
+    role: "Intern",
+    image: "/assets/optimized/team/Rahul/Rahul-768.jpeg?v=2",
+    image768: "/assets/optimized/team/Rahul/Rahul-768.jpeg?v=2",
+    image480: "/assets/optimized/team/Rahul/Rahul-480.jpeg?v=2",
+    description:
+      "Rahul supports design thinking and operations, ensuring technical excellence in every project.",
+    expertise: [
+      "Interior Design",
+      "Space Planning",
+      "Aesthetic Concepts",
+      "Functional Design",
+    ],
+    contact: {
+      email: "rahulkumawat@gmail.com",
+      phone: "+91 9876543210",
+      whatsapp: "+91 9876543210",
+    },
+    social: {
+    },
+    isFounder: false,
+    badge: "intern",
+  },
+
 ];

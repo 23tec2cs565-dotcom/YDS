@@ -6,6 +6,7 @@ export interface Project {
   location: string;
   image: string;
   images: string[];
+  videos?: string[];
   description: string;
   longDescription?: string;
   outcome?: string;
@@ -147,6 +148,17 @@ export const projects: Project[] = [
       "/assets/optimized/Projects/Chhoti bai jewellers/9.webp",
       "/assets/optimized/Projects/Chhoti bai jewellers/10.webp"
     ],
+    videos: [
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-1.mp4",
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-2.mp4",
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-3.mp4",
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-4.mp4",
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-5.mp4",
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-6.mp4",
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-7.mp4",
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-8.mp4",
+      "/assets/optimized/Projects/Chhoti bai jewellers/video-9.mp4"
+    ],
     subtitle: "Turnkey Project with Material • Budget ₹14 Lakhs",
     description: "Turnkey commercial jewellery showroom project with material execution in City Center, Sansar Chandra Road, Jaipur.",
     longDescription: "Complete turnkey commercial project with premium material execution for Chhoti Bai Jewellers at City Center, Sansar Chandra Road, Jaipur. Features bespoke display units, security integration, and luxury interior finishing within a ₹14 Lakh budget.",
@@ -182,7 +194,9 @@ export const projects: Project[] = [
       "/assets/optimized/Projects/Foyer/8.webp",
       "/assets/optimized/Projects/Foyer/9.webp",
       "/assets/optimized/Projects/Foyer/10.webp",
-      "/assets/optimized/Projects/Foyer/11.webp",
+      "/assets/optimized/Projects/Foyer/11.webp"
+    ],
+    videos: [
       "/assets/optimized/Projects/Foyer/video-1.mp4",
       "/assets/optimized/Projects/Foyer/video-2.mp4",
       "/assets/optimized/Projects/Foyer/video-3.mp4",
@@ -287,7 +301,9 @@ export const projects: Project[] = [
       "/assets/optimized/Projects/JK LON/6.webp",
       "/assets/optimized/Projects/JK LON/7.webp",
       "/assets/optimized/Projects/JK LON/8.webp",
-      "/assets/optimized/Projects/JK LON/9.webp",
+      "/assets/optimized/Projects/JK LON/9.webp"
+    ],
+    videos: [
       "/assets/optimized/Projects/JK LON/video-1.mp4"
     ],
     subtitle: "Healthcare Reimagined",
@@ -316,7 +332,9 @@ export const projects: Project[] = [
     images: [
       "/assets/optimized/Projects/Home-Dharmendra/1.webp",
       "/assets/optimized/Projects/Home-Dharmendra/2.webp",
-      "/assets/optimized/Projects/Home-Dharmendra/3.webp",
+      "/assets/optimized/Projects/Home-Dharmendra/3.webp"
+    ],
+    videos: [
       "/assets/optimized/Projects/Home-Dharmendra/video-1.mp4",
       "/assets/optimized/Projects/Home-Dharmendra/video-2.mp4"
     ],
@@ -344,7 +362,9 @@ export const projects: Project[] = [
     location: "Vaishali Nagar, Jaipur",
     image: "/assets/optimized/Projects/Detailing devils/1.webp",
     images: [
-      "/assets/optimized/Projects/Detailing devils/1.webp",
+      "/assets/optimized/Projects/Detailing devils/1.webp"
+    ],
+    videos: [
       "/assets/optimized/Projects/Detailing devils/video-1.mp4",
       "/assets/optimized/Projects/Detailing devils/video-2.mp4",
       "/assets/optimized/Projects/Detailing devils/video-3.mp4",
@@ -384,7 +404,9 @@ export const projects: Project[] = [
     image: "/assets/optimized/Projects/Mr. Goyal's renovation project/1.webp",
     images: [
       "/assets/optimized/Projects/Mr. Goyal's renovation project/1.webp",
-      "/assets/optimized/Projects/Mr. Goyal's renovation project/2.webp",
+      "/assets/optimized/Projects/Mr. Goyal's renovation project/2.webp"
+    ],
+    videos: [
       "/assets/optimized/Projects/Mr. Goyal's renovation project/video-1.mp4"
     ],
     subtitle: "Exterior Renovation • Design Consultancy",
@@ -416,7 +438,9 @@ export const projects: Project[] = [
       "/assets/optimized/Projects/Rawat light studio/4.webp",
       "/assets/optimized/Projects/Rawat light studio/5.webp",
       "/assets/optimized/Projects/Rawat light studio/6.webp",
-      "/assets/optimized/Projects/Rawat light studio/7.webp",
+      "/assets/optimized/Projects/Rawat light studio/7.webp"
+    ],
+    videos: [
       "/assets/optimized/Projects/Rawat light studio/video-1.mp4",
       "/assets/optimized/Projects/Rawat light studio/video-2.mp4",
       "/assets/optimized/Projects/Rawat light studio/video-3.mp4"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapPin, ArrowUpRight, User, IndianRupee } from "lucide-react";
+import { MapPin, ArrowUpRight, User, IndianRupee, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Project } from "../data/projects";
 import { getCategoryStyles } from "../utils/categoryStyles";
@@ -86,7 +86,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
         {/* Gradient overlay — always visible, deepens on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
 
-        {/* Category & Budget badges — top left */}
+        {/* Category & Budget & Video badges — top left */}
         <div className="absolute top-2 left-2 sm:top-4 sm:left-4 z-10 flex flex-wrap gap-1 sm:gap-2 max-w-[calc(100%-3rem)] sm:max-w-[calc(100%-4rem)]">
           <span
             className={`inline-flex items-center rounded-full border px-2 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[11px] font-bold uppercase tracking-wider backdrop-blur-md ${getCategoryStyles(
@@ -99,6 +99,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
             <span className="hidden sm:inline-flex items-center gap-0.5 rounded-full border border-[#E6B566]/40 bg-[#0B1220]/80 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-semibold text-[#E6B566] backdrop-blur-md">
               <IndianRupee size={9} className="sm:w-2.5 sm:h-2.5" />
               {project.budget.replace(/^₹\s*/, '')}
+            </span>
+          )}
+          {project.videos && project.videos.length > 0 && (
+            <span className="inline-flex items-center gap-1 rounded-full border border-[#E6B566]/40 bg-[#0B1220]/85 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[9px] sm:text-[10.5px] font-semibold text-[#E6B566] backdrop-blur-md shadow-sm">
+              <Play size={8} className="sm:w-2.5 sm:h-2.5 fill-[#E6B566]" />
+              <span>{project.videos.length} {project.videos.length === 1 ? "Video" : "Videos"}</span>
             </span>
           )}
         </div>
