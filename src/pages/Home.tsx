@@ -512,7 +512,7 @@ const ServicesSection: React.FC = () => {
                         : "-rotate-2 group-hover:rotate-1"
                     )}
                   />
-                  <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-xl bg-black/10">
+                  <div className="relative overflow-hidden rounded-2xl aspect-[4/3] sm:aspect-[16/11] shadow-2xl bg-black/20">
                     {mediaIsVideo ? (
                       <video
                         src={mediaUrl}
@@ -522,23 +522,23 @@ const ServicesSection: React.FC = () => {
                         loop
                         playsInline
                         preload="auto"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (
                       <img
                         src={mediaUrl}
                         alt={s?.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                         onError={handleImgError}
                         loading="lazy"
                         decoding="async"
                       />
                     )}
-                    <div className="absolute top-6 left-6 w-16 h-16 bg-white/95 backdrop-blur rounded-2xl flex items-center justify-center shadow-lg text-[#0B1220] z-10">
+                    <div className="absolute top-4 left-4 sm:top-5 sm:left-5 w-11 h-11 sm:w-13 sm:h-13 bg-[#0B1220]/85 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center shadow-xl text-[#E6B566] z-10">
                       {Icon ? (
-                        <Icon size={28} />
+                        <Icon size={22} />
                       ) : (
-                        <svg width="28" height="28" aria-hidden />
+                        <svg width="22" height="22" aria-hidden />
                       )}
                     </div>
                   </div>
