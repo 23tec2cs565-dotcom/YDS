@@ -33,20 +33,22 @@ export const teamMembers: TeamMember[] = [
     expertise: [
       "Interior Design",
       "Space Planning",
+      "3D Visualization",
       "Project Management",
       "Design Strategy",
     ],
     contact: {
-      email: "nikhil@younickdesign.com",
+      email: "nick885488@gmail.com",
       phone: "+91 8854883058",
       whatsapp: "+91 8854883058",
     },
     social: {
-      linkedin: "https://linkedin.com/in/nikhilsain-design",
-      instagram: "https://instagram.com/nikhil_younick",
+      linkedin: "https://www.linkedin.com/in/nikhil-sain-300351156",
+      instagram: "https://www.instagram.com/studio.younick",
     },
     isFounder: true,
   },
+
   {
     id: "co-founder",
     name: "Kamal Rajoriya",
@@ -69,37 +71,34 @@ export const teamMembers: TeamMember[] = [
     },
     social: {
       linkedin: "https://linkedin.com/in/kamalrajoriya-tech",
-      instagram: "https://www.instagram.com/kamal_rajoriya99",
+      instagram: "https://www.instagram.com/studio.younick",
     },
     isFounder: true,
   },
+
   {
     id: "pooja-sain",
     name: "Pooja Sain",
-    role: "Architect & Designer · CEO",
+    role: "Interior Designer",
     image: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
     image768: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
     image480: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
     description:
       "Pooja leads design thinking and operations, bringing sustainable architecture and refined detailing to every project.",
     expertise: [
-      "Architecture",
-      "Sustainable Design",
+      "Architecture Drawings",
+      "Material Exploration",
       "3D Visualization",
       "Design Detailing",
     ],
-    contact: {
-      email: "pooja@younickdesign.com",
-      phone: "+91 90000 00000",
-      whatsapp: "+91 90000 00000",
-    },
+    contact: {},
     social: {
-      linkedin: "https://linkedin.com/in/pooja-sain",
       instagram: "https://instagram.com/pooja_sain_design",
     },
     isFounder: true,
-    badge: "CEO",
+    badge: "3D Visualizer",
   },
+
   {
     id: "nikhil-verma",
     name: "Nikhil Verma",
@@ -117,19 +116,18 @@ export const teamMembers: TeamMember[] = [
     ],
     contact: {
       email: "nikhilverma@younickdesign.com",
-      phone: "+91 8854883058",
-      whatsapp: "+91 8854883058",
+      phone: "+91 9057009494",
+      whatsapp: "+91 9057009494",
     },
-    social: {
-      instagram: "https://instagram.com/nikhil_younick",
-    },
+    social: {},
     isFounder: false,
     badge: "Member",
   },
+
   {
     id: "keshav-sain",
     name: "Keshav Sain",
-    role: "Technical Assistant ",
+    role: "Technical Assistant",
     image: "/assets/optimized/team/Keshav/Keshav-768.jpeg?v=2",
     image768: "/assets/optimized/team/Keshav/Keshav-768.jpeg?v=2",
     image480: "/assets/optimized/team/Keshav/Keshav-480.jpeg?v=2",
@@ -137,7 +135,6 @@ export const teamMembers: TeamMember[] = [
       "Keshav supports design thinking and operations, ensuring technical excellence in every project.",
     expertise: [
       "Technical Support",
-      "3D Visualization",
       "Design Implementation",
     ],
     contact: {
@@ -146,7 +143,7 @@ export const teamMembers: TeamMember[] = [
       whatsapp: "+91 9887159297",
     },
     social: {
-      linkedin: "https://linkedin.com/in/keshav-sain-4450271b2 ",
+      linkedin: "https://linkedin.com/in/keshav-sain-4450271b2",
       instagram: "https://instagram.com/keshav_sain_design",
     },
     isFounder: false,

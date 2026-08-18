@@ -50,7 +50,7 @@ const blueprintSteps = [
     id: "01",
     phase: "Discover & Dialogue",
     subtitle: "Lifestyle Mapping & Spatial Analysis",
-    description: "Before drawing a single line, we map how you live. We analyze daily routines, lighting requirements, and your emotional relationship with the space to establish a foundational design intent.",
+    description: "Before drawing a single line, we map how you live. We analyze daily routines, needs and your emotional relationship with the space to establish a foundational and practical design intent.",
     details: [
       "Site analysis & sunpath mapping",
       "Material preference dialogues",
