@@ -38,12 +38,10 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
 import { projects } from "../data/projects";
 import { services } from "../data/services";
 import { teamMembers } from "../data/team";
-import { testimonials as TESTIMONIALS } from "../data/testimonials";
 import type { Project } from "../data/projects";
 import type { Service } from "../data/services";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
-import BeforeAfterSlider from "../components/BeforeAfterSlider";
 
 const cn = (...args: Array<string | false | null | undefined>) =>
   args.filter(Boolean).join(" ");
@@ -61,7 +59,10 @@ interface ExtendedProject extends Project {
 
 interface ExtendedService extends Service {
   imageUrl?: string;
+  videoUrl?: string;
 }
+
+const isVideo = (url?: string) => Boolean(url && /\.(mp4|webm|mov)(\?.*)?$/i.test(url));
 
 function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
@@ -71,6 +72,27 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
     img.alt = "Younick studio image fallback";
   }
 }
+
+
+
+const TESTIMONIALS = [
+  {
+    id: "t1",
+    name: "Arpit Agarwal",
+    role: "Client",
+    quote: "Nikhil ji, everything came out really beautiful and elegant, thank you so much for all your efforts and to the team also.. looking forward to working in future also..",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=512&auto=format&fit=crop",
+  },
+  {
+    id: "t2",
+    name: "Sanjay Choudhary",
+    role: "Client",
+    quote: "Great process, clear communication and beautiful finishes.",
+    avatarUrl:
+      "https://images.unsplash.com/photo-1545996124-5b9c9b3dd7a9?q=80&w=512&auto=format&fit=crop",
+  },
+];
 
 const Reveal: React.FC<{
   children: React.ReactNode;
@@ -88,23 +110,6 @@ const Reveal: React.FC<{
       {children}
     </MotionDiv>
   </div>
-);
-
-// HeroReveal: mount-triggered animation (no IntersectionObserver overhead).
-// Used only for above-fold hero elements so LCP isn't blocked by viewport detection.
-const HeroReveal: React.FC<{
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}> = ({ children, delay = 0, className }) => (
-  <MotionDiv
-    className={className}
-    initial={{ opacity: 0, y: 24 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7, delay, ease: [0.25, 0.1, 0, 1] }}
-  >
-    {children}
-  </MotionDiv>
 );
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -164,127 +169,52 @@ const Hero: React.FC = () => {
     "/assets/optimized/Projects/Detailing devils/video-13.mp4",
     "/assets/optimized/Projects/Detailing devils/video-14.mp4",
   ];
-  // Zero-Blink Seamless Crossfade Engine:
-  // Starts the next video 0.6s before the current video ends, only crossfading once real frames are actively rendering.
-  const [activeLayer, setActiveLayer] = useState<0 | 1>(0);
-  const [sources, setSources] = useState<[string, string]>([heroVideos[0], ""]);
-  const [isDesktop, setIsDesktop] = useState<boolean>(
-    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
-  );
-  const videoIndexRef = useRef(0);
-  const video0Ref = useRef<HTMLVideoElement>(null);
-  const video1Ref = useRef<HTMLVideoElement>(null);
-  const isTransitioningRef = useRef(false);
+  const videoIdxRef = useRef(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
-
-  const handleTimeUpdate0 = () => {
-    const v0 = video0Ref.current;
-    if (!v0 || !v0.duration) return;
-
-    // Pre-assign video 1 src when video 0 is halfway
-    if (!sources[1] && v0.currentTime >= v0.duration / 2) {
-      const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
-      setSources((prev) => [prev[0], heroVideos[nextIdx]]);
+  const handleVideoEnded = useCallback(() => {
+    videoIdxRef.current = (videoIdxRef.current + 1) % heroVideos.length;
+    const vid = videoRef.current;
+    if (vid) {
+      vid.src = heroVideos[videoIdxRef.current];
+      vid.play().catch(() => {});
     }
+  }, [heroVideos]);
 
-    if (activeLayer !== 0 || isTransitioningRef.current) return;
-    if (v0.currentTime >= v0.duration - 0.6) {
-      isTransitioningRef.current = true;
-      const v1 = video1Ref.current;
-      if (v1) {
-        v1.currentTime = 0;
-        v1.play().catch(() => {});
-      }
-    }
-  };
-
-  const handleTimeUpdate1 = () => {
-    const v1 = video1Ref.current;
-    if (!v1 || !v1.duration) return;
-
-    // Pre-assign video 0 src when video 1 is halfway
-    if (v1.currentTime >= v1.duration / 2) {
-      const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
-      if (sources[0] !== heroVideos[nextIdx]) {
-        setSources((prev) => [heroVideos[nextIdx], prev[1]]);
-      }
-    }
-
-    if (activeLayer !== 1 || isTransitioningRef.current) return;
-    if (v1.currentTime >= v1.duration - 0.6) {
-      isTransitioningRef.current = true;
-      const v0 = video0Ref.current;
-      if (v0) {
-        v0.currentTime = 0;
-        v0.play().catch(() => {});
-      }
-    }
-  };
-
-  const handlePlaying1 = () => {
-    if (activeLayer === 0 && isTransitioningRef.current) {
-      setActiveLayer(1);
-      const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
-      videoIndexRef.current = nextIdx;
-      setTimeout(() => {
-        isTransitioningRef.current = false;
-      }, 700);
-    }
-  };
-
-  const handlePlaying0 = () => {
-    if (activeLayer === 1 && isTransitioningRef.current) {
-      setActiveLayer(0);
-      const nextIdx = (videoIndexRef.current + 1) % heroVideos.length;
-      videoIndexRef.current = nextIdx;
-      setTimeout(() => {
-        isTransitioningRef.current = false;
-      }, 700);
-    }
-  };
-
-  // Back panel static image from first featured project (or fallback to first project)
+  // Back panel static image: dynamically find the first featured project (or fallback to projects[0])
   const featuredProject = projects.find((p) => p.featured) || projects[0];
   const heroBackImg = (featuredProject as ExtendedProject)?.imageUrl ?? featuredProject?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
 
   return (
-    <section id="home" className="relative min-h-screen pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 overflow-hidden bg-[#FAFAFB] w-full">
-      <div className="absolute top-0 right-0 w-[40vw] h-full bg-[#EAEAEA] rounded-l-[120px] -z-10 hidden lg:block opacity-50 overflow-hidden" />
-      <div className="absolute top-20 left-20 w-64 h-64 bg-[#E6B566]/5 rounded-full blur-3xl -z-10 pointer-events-none overflow-hidden" />
+    <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-[#FAFAFB]">
+      <div className="absolute top-0 right-0 w-[40vw] h-full bg-[#EAEAEA] rounded-l-[120px] -z-10 hidden lg:block opacity-50" />
+      <div className="absolute top-20 left-20 w-64 h-64 bg-[#E6B566]/5 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
-          <HeroReveal delay={0}>
+          <Reveal>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#111633] border border-[#0B1220] shadow-sm text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
               <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
               Jaipur, Rajasthan
             </div>
-          </HeroReveal>
+          </Reveal>
 
-          <HeroReveal delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-6 sm:mb-8">
+          <Reveal delay={0.1}>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-8">
               Interiors that <br />
               <span className="italic text-[#8C6226] font-angelone">feel curated</span>
               <br />
               modern & warm.
             </h1>
-          </HeroReveal>
+          </Reveal>
 
-          {/* LCP element — HeroReveal uses animate (mount-triggered), not whileInView.
-              Animation plays immediately so LCP is measured from mount, not viewport detection. */}
-          <HeroReveal delay={0.18}>
+          <Reveal delay={0.2}>
             <p className="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
               Architecture, craft and human-centred spatial thinking — from concept and visualization to turnkey delivery. Spaces people truly want to live in.
             </p>
-          </HeroReveal>
+          </Reveal>
 
-          <HeroReveal delay={0.28}>
+          <Reveal delay={0.3}>
             <div className="flex flex-wrap items-center gap-4 mb-12">
               <Button onClick={() => navigate("/contact")} withIcon>
                 Start a Conversation
@@ -296,9 +226,9 @@ const Hero: React.FC = () => {
                 View Selected Work
               </Link>
             </div>
-          </HeroReveal>
+          </Reveal>
 
-          <HeroReveal delay={0.36}>
+          <Reveal delay={0.4}>
             <div className="flex items-center gap-8 pt-8 border-t border-gray-200/80">
               <div>
                 <div className="text-3xl font-serif text-[#0B1220]">150+</div>
@@ -309,14 +239,13 @@ const Hero: React.FC = () => {
                 <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Commitment</p>
               </div>
             </div>
-          </HeroReveal>
+          </Reveal>
         </div>
 
         <div className="lg:col-span-6 relative h-[600px] hidden md:block">
           <MotionDiv style={{ y: y1 }} className="absolute top-0 right-0 w-4/5 h-4/5 z-10">
             <div className="w-full h-full rounded-tr-[100px] rounded-bl-[40px] overflow-hidden shadow-2xl">
               <img
-                key={heroBackImg}
                 src={heroBackImg}
                 alt="Luxury Interior"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
@@ -327,57 +256,25 @@ const Hero: React.FC = () => {
           </MotionDiv>
 
           <MotionDiv style={{ y: y2 }} className="absolute bottom-0 left-0 w-3/5 h-1/2 z-20">
-            <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB] relative bg-[#0B1220]">
-              {isDesktop && (
-                <>
-                  {/* Layer 0 Video */}
-                  <video
-                    ref={video0Ref}
-                    src={sources[0]}
-                    autoPlay
-                    muted
-                    playsInline
-                    preload="metadata"
-                    onTimeUpdate={handleTimeUpdate0}
-                    onPlaying={handlePlaying0}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{
-                      opacity: activeLayer === 0 ? 1 : 0,
-                      transition: "opacity 0.6s ease-in-out",
-                      zIndex: activeLayer === 0 ? 10 : 5,
-                    }}
-                  />
-                  {/* Layer 1 Video */}
-                  {sources[1] && (
-                    <video
-                      ref={video1Ref}
-                      src={sources[1]}
-                      muted
-                      playsInline
-                      preload="metadata"
-                      onTimeUpdate={handleTimeUpdate1}
-                      onPlaying={handlePlaying1}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      style={{
-                        opacity: activeLayer === 1 ? 1 : 0,
-                        transition: "opacity 0.6s ease-in-out",
-                        zIndex: activeLayer === 1 ? 10 : 5,
-                      }}
-                    />
-                  )}
-                </>
-              )}
+            <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB]">
+              <video
+                ref={videoRef}
+                src={heroVideos[0]}
+                autoPlay
+                muted
+                playsInline
+                onEnded={handleVideoEnded}
+                className="w-full h-full object-cover"
+              />
             </div>
 
-            <div className="absolute -top-6 -right-6 z-40 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-gray-100/80 max-w-[200px]">
+            <div className="absolute -top-8 -right-8 bg-white p-4 rounded-xl shadow-xl max-w-[180px]">
               <div className="flex items-center gap-1 mb-2">
                 {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-[#E6B566] text-[#E6B566]" />
+                  <Star key={i} className="w-3 h-3 text-[#E6B566]" />
                 ))}
               </div>
-              <p className="text-xs font-medium text-[#0B1220] leading-snug">
-                "The attention to detail is unlike anything else."
-              </p>
+              <p className="text-xs font-medium text-[#0B1220]">"The attention to detail is unlike anything else."</p>
             </div>
           </MotionDiv>
         </div>
@@ -387,25 +284,21 @@ const Hero: React.FC = () => {
 };
 
 const About: React.FC = () => {
-  const featuredProjects = projects.filter((p) => p.featured);
-  const aboutImgA = (featuredProjects[0] as ExtendedProject)?.imageUrl ?? featuredProjects[0]?.image ?? projects[0]?.image ?? "";
-  const aboutImgB = (featuredProjects[1] as ExtendedProject)?.imageUrl ?? featuredProjects[1]?.image ?? projects[1]?.image ?? "";
-
   return (
-    <section id="about" className="py-16 sm:py-24 bg-white relative overflow-hidden w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <section id="about" className="py-24 bg-white relative">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
             <Reveal>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 mt-12">
-                  <img src={aboutImgA} alt="Premium materials and finishes used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
+                  <img src={(projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? ""} alt="Premium materials and finishes used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
                 <div className="space-y-4">
-                  <img src={aboutImgB} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
+                  <img src={(projects[1] as ExtendedProject)?.imageUrl ?? projects[1]?.image ?? ""} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
               </div>
-              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[400px] h-[80%] bg-[#F7F7F9] rounded-full blur-3xl opacity-60 pointer-events-none" />
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-[#F7F7F9] rounded-full blur-3xl opacity-60" />
             </Reveal>
           </div>
 
@@ -445,41 +338,11 @@ const About: React.FC = () => {
   );
 };
 
-const TransformationSection: React.FC = () => {
-  return (
-    <section className="py-16 sm:py-24 bg-white relative overflow-hidden border-t border-gray-100 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] text-[#E6B566] text-xs font-bold tracking-widest uppercase mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
-              Before & After Transformations
-            </div>
-            <h2 className="text-4xl md:text-5xl font-serif text-[#0B1220] mb-6 leading-tight">
-              Witness the Art of <span className="italic text-[#8C6226] font-angelone">Turnkey Execution</span>
-            </h2>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-              From raw masonry shells and outdated layouts to luminous, mastercrafted interiors. Drag the slider to explore the precision of our on-site transformations.
-            </p>
-          </Reveal>
-        </div>
-
-        <Reveal delay={0.15}>
-          <BeforeAfterSlider />
-        </Reveal>
-      </div>
-    </section>
-  );
-};
-
 const ProjectsSection: React.FC = () => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
-
-  // Only display projects with featured: true in Selected Works
-  const featuredProjects = projects.filter((p) => p.featured);
-  const filtered = (filter === "All" ? featuredProjects : featuredProjects.filter((p) => p.category === filter)).slice(0, 6);
+  const filtered = (filter === "All" ? projects : projects.filter((p) => p.category === filter)).slice(0, 6);
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -492,8 +355,8 @@ const ProjectsSection: React.FC = () => {
   }, [selectedProject]);
 
   return (
-    <section id="projects" className="py-16 sm:py-24 bg-[#FAFAFB] overflow-hidden w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="projects" className="py-24 bg-[#FAFAFB]">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <Reveal>
             <h2 className="text-4xl font-serif text-[#0B1220] mb-4">Selected Works</h2>
@@ -605,8 +468,8 @@ const ProjectsSection: React.FC = () => {
 
 const ServicesSection: React.FC = () => {
   return (
-    <section id="services" className="py-16 sm:py-24 bg-white overflow-hidden w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="services" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-5xl font-serif text-[#0B1220] mb-6">
             Our Expertise
@@ -619,7 +482,8 @@ const ServicesSection: React.FC = () => {
         <div className="space-y-32">
           {services.map((service, index) => {
             const s = service as ExtendedService;
-            const img = s?.imageUrl ?? s?.image ?? "";
+            const mediaUrl = s?.video || s?.videoUrl || s?.imageUrl || s?.image || "";
+            const mediaIsVideo = isVideo(mediaUrl) || Boolean(s?.video) || Boolean(s?.videoUrl);
 
             const Icon = s?.icon ? ICON_MAP[s.icon] || HelpCircle : null;
 
@@ -648,18 +512,29 @@ const ServicesSection: React.FC = () => {
                         : "-rotate-2 group-hover:rotate-1"
                     )}
                   />
-                  <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-xl">
+                  <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-xl bg-black/10">
+                    {mediaIsVideo ? (
+                      <video
+                        src={mediaUrl}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
                       <img
-                        src={img}
+                        src={mediaUrl}
                         alt={s?.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         onError={handleImgError}
                         loading="lazy"
                         decoding="async"
                       />
-                    <div className="absolute top-6 left-6 w-16 h-16 bg-white/95 backdrop-blur rounded-2xl flex items-center justify-center shadow-lg text-[#0B1220]">
+                    )}
+                    <div className="absolute top-6 left-6 w-16 h-16 bg-white/95 backdrop-blur rounded-2xl flex items-center justify-center shadow-lg text-[#0B1220] z-10">
                       {Icon ? (
-                        <Icon size={28} strokeWidth={1.5} />
+                        <Icon size={28} />
                       ) : (
                         <svg width="28" height="28" aria-hidden />
                       )}
@@ -697,7 +572,7 @@ const ServicesSection: React.FC = () => {
                   </div>
 
                   <Link
-                    to={`/services/${s?.id || activeTab}`}
+                    to={`/services/${s?.id ?? index}`}
                     className="inline-flex items-center text-[#0B1220] font-semibold border-b border-[#0B1220] pb-1 hover:text-[#E6B566] hover:border-[#E6B566] transition-colors"
                   >
                     Learn More <ArrowRight size={16} className="ml-2" />
@@ -718,8 +593,8 @@ const TestimonialsSection: React.FC = () => {
   const prev = () => setIndex((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FAFAFB] border-y border-white overflow-hidden w-full">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative">
+    <section className="py-24 bg-[#FAFAFB] border-y border-white">
+      <div className="max-w-5xl mx-auto px-6 relative">
         <div className="absolute top-0 left-10 text-[#E6B566]/10 pointer-events-none">
           <Quote size={120} />
         </div>
@@ -765,8 +640,8 @@ const LeadershipSection: React.FC = () => {
   const leadership = teamMembers.filter((member) => member.isFounder);
 
   return (
-    <section id="team" className="py-16 sm:py-24 bg-white overflow-hidden w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="team" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
         <Reveal>
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif mb-4">The Leadership</h2>
@@ -825,8 +700,8 @@ const StatsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-10 sm:py-12 bg-white border-b border-gray-100 overflow-hidden w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
+    <section className="py-12 bg-white border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         {STATS.map((stat, i) => (
           <Reveal key={stat.id} delay={i * 0.1} className="text-center">
             <h3 className="text-4xl font-serif text-[#0B1220] mb-1">{stat.value}</h3>
@@ -843,12 +718,11 @@ const Home: React.FC = () => {
   return (
     <>
       <SEOHead seo={pageSEO.home} />
-      <div className="min-h-screen bg-[#FAFAFB] text-[#0B1220] font-sans selection:bg-[#E6B566] selection:text-white overflow-x-hidden w-full max-w-[100vw]">
-        <main className="overflow-x-hidden w-full">
+      <div className="min-h-screen bg-[#FAFAFB] text-[#0B1220] font-sans selection:bg-[#E6B566] selection:text-white">
+        <main>
           <Hero />
           <StatsSection />
           <About />
-          <TransformationSection />
           <ProjectsSection />
           <ServicesSection />
           <TestimonialsSection />

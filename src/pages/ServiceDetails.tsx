@@ -77,14 +77,25 @@ const ServiceDetails: React.FC = () => {
         {/* HERO */}
         <header className="relative h-[45vh] sm:h-[60vh] min-h-[320px] sm:min-h-[420px] bg-[#0F0F10] text-white flex items-end overflow-hidden" role="region" aria-label={`${service.title} hero`}>
           <div className="absolute inset-0">
-            <img
-              src={service.image || "/assets/placeholder-rect.jpg"}
-              alt={`${service.title} — hero`}
-              className="w-full h-full object-cover opacity-60"
-              loading="lazy"
-              decoding="async"
-              onError={handleImgError}
-            />
+            {service.video || (service.image && /\.(mp4|webm|mov)(\?.*)?$/i.test(service.image)) ? (
+              <video
+                src={service.video || service.image}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover opacity-60"
+              />
+            ) : (
+              <img
+                src={service.image || "/assets/placeholder-rect.jpg"}
+                alt={`${service.title} — hero`}
+                className="w-full h-full object-cover opacity-60"
+                loading="lazy"
+                decoding="async"
+                onError={handleImgError}
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F10] via-[#0F0F10]/40 to-transparent" />
           </div>
 

@@ -5,6 +5,7 @@ export interface Service {
   description: string;
   icon: string; // lucide-react icon name (e.g. "Home", "Building", "Wrench")
   image: string;
+  video?: string;
   features: string[];
   keywords?: string[];
   timeline?: string;
@@ -18,6 +19,7 @@ export const services: Service[] = [
       "Transform your spaces with functional and timeless interiors — blending aesthetics, comfort, and smart space planning.",
     icon: "Home",
     image: "/assets/services/interior-design.jpeg",
+    video: "/assets/services/interior-design.mp4",
     features: [
       "Space Planning",
       "Furniture & Layouts",
