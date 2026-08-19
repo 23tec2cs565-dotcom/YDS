@@ -76,10 +76,10 @@ const blueprintSteps = [
     id: "03",
     phase: "Curate & Source",
     subtitle: "Natural Stone, Teak & Custom Brass",
-    description: "We source authentic, raw materials directly from trusted quarries and craft workshops. Every block of marble, panel of teak, and custom brass detail is hand-selected to ensure organic unity.",
+    description: "We source authentic, raw materials directly from trusted vendors and craft workshops. Every material is hand picked to ensure organic unity.",
     details: [
-      "Direct sourcing from stone quarries",
-      "Bespoke brass hardware detailing",
+      "Direct sourcing from trusted vendors",
+      "Acquiring quality material",
       "Premium seasoned teak selection",
       "Upholstery & textile curation"
     ],

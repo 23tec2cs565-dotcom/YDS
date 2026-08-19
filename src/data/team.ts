@@ -152,7 +152,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "rahul-kumawat",
     name: "Rahul Kumawat",
-    role: "Intern",
+    role: "Member",
     image: "/assets/optimized/team/Rahul/Rahul-768.jpeg?v=2",
     image768: "/assets/optimized/team/Rahul/Rahul-768.jpeg?v=2",
     image480: "/assets/optimized/team/Rahul/Rahul-480.jpeg?v=2",
@@ -172,7 +172,7 @@ export const teamMembers: TeamMember[] = [
     social: {
     },
     isFounder: false,
-    badge: "intern",
+    badge: "Member",
   },
 
 ];

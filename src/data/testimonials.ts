@@ -12,7 +12,7 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     id: "t1",
-    name: "Amit Sharma",
+    name: "Arpit agarwal",
     role: "Client",
     quote: "Nikhil ji, everything came out really beautiful and elegant, thank you so much for all your efforts and to the team also.. looking forward to working in future also..",
     avatarUrl:
