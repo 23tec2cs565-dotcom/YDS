@@ -59,10 +59,7 @@ interface ExtendedProject extends Project {
 
 interface ExtendedService extends Service {
   imageUrl?: string;
-  videoUrl?: string;
 }
-
-const isVideo = (url?: string) => Boolean(url && /\.(mp4|webm|mov)(\?.*)?$/i.test(url));
 
 function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
@@ -181,9 +178,10 @@ const Hero: React.FC = () => {
     }
   }, [heroVideos]);
 
-  // Back panel static image: dynamically find the first featured project (or fallback to projects[0])
-  const featuredProject = projects.find((p) => p.featured) || projects[0];
-  const heroBackImg = (featuredProject as ExtendedProject)?.imageUrl ?? featuredProject?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
+  // Back panel static image from first featured project
+  const featuredProjects = projects.filter((p) => p.featured);
+  const heroProject = featuredProjects[0] ?? projects[0];
+  const heroBackImg = (heroProject as ExtendedProject)?.imageUrl ?? heroProject?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
 
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-[#FAFAFB]">
@@ -193,7 +191,7 @@ const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#111633] border border-[#0B1220] shadow-sm text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B3528] border border-emerald-500/40 shadow-md text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
               <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
               Jaipur, Rajasthan
             </div>
@@ -284,6 +282,10 @@ const Hero: React.FC = () => {
 };
 
 const About: React.FC = () => {
+  const featuredProjects = projects.filter((p) => p.featured);
+  const aboutImg1 = (featuredProjects[0] as ExtendedProject)?.imageUrl ?? featuredProjects[0]?.image ?? (projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? "";
+  const aboutImg2 = (featuredProjects[1] as ExtendedProject)?.imageUrl ?? featuredProjects[1]?.image ?? (projects[1] as ExtendedProject)?.imageUrl ?? projects[1]?.image ?? "";
+
   return (
     <section id="about" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">
@@ -292,10 +294,10 @@ const About: React.FC = () => {
             <Reveal>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 mt-12">
-                  <img src={(projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? ""} alt="Premium materials and finishes used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
+                  <img src={aboutImg1} alt="Premium materials and finishes used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
                 <div className="space-y-4">
-                  <img src={(projects[1] as ExtendedProject)?.imageUrl ?? projects[1]?.image ?? ""} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
+                  <img src={aboutImg2} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
               </div>
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-[#F7F7F9] rounded-full blur-3xl opacity-60" />
@@ -342,7 +344,11 @@ const ProjectsSection: React.FC = () => {
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
-  const filtered = (filter === "All" ? projects : projects.filter((p) => p.category === filter)).slice(0, 6);
+  const filtered = (
+    filter === "All"
+      ? projects.filter((p) => p.featured)
+      : projects.filter((p) => p.category === filter).sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+  ).slice(0, 6);
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -482,8 +488,7 @@ const ServicesSection: React.FC = () => {
         <div className="space-y-32">
           {services.map((service, index) => {
             const s = service as ExtendedService;
-            const mediaUrl = s?.video || s?.videoUrl || s?.imageUrl || s?.image || "";
-            const mediaIsVideo = isVideo(mediaUrl) || Boolean(s?.video) || Boolean(s?.videoUrl);
+            const img = s?.imageUrl ?? s?.image ?? "";
 
             const Icon = s?.icon ? ICON_MAP[s.icon] || HelpCircle : null;
 
@@ -512,33 +517,19 @@ const ServicesSection: React.FC = () => {
                         : "-rotate-2 group-hover:rotate-1"
                     )}
                   />
-                  <div className="relative overflow-hidden rounded-2xl aspect-[4/3] sm:aspect-[16/11] shadow-2xl bg-black/20">
-                    {mediaIsVideo ? (
-                      <video
-                        src={mediaUrl}
-                        poster={s?.imageUrl ?? s?.image ?? "/assets/services/interior-design.jpeg"}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="auto"
-                        className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                      />
-                    ) : (
+                  <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-xl">
                       <img
-                        src={mediaUrl}
+                        src={img}
                         alt={s?.title}
-                        className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         onError={handleImgError}
                         loading="lazy"
                         decoding="async"
                       />
-                    )}
-                    <div className="absolute top-4 left-4 sm:top-5 sm:left-5 w-11 h-11 sm:w-13 sm:h-13 bg-[#0B1220]/85 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center shadow-xl text-[#E6B566] z-10">
-                      {Icon ? (
-                        <Icon size={22} />
+                      <div className="absolute top-4 left-4 sm:top-5 sm:left-5 w-12 h-12 sm:w-14 sm:h-14 bg-[#0B3528]/95 backdrop-blur-md rounded-2xl border border-emerald-500/40 flex items-center justify-center shadow-xl text-[#E6B566] z-10 shadow-emerald-950/40">                      {Icon ? (
+                        <Icon size={28} strokeWidth={1.5} />
                       ) : (
-                        <svg width="22" height="22" aria-hidden />
+                        <svg width="28" height="28" aria-hidden />
                       )}
                     </div>
                   </div>
@@ -574,7 +565,7 @@ const ServicesSection: React.FC = () => {
                   </div>
 
                   <Link
-                    to={`/services/${s?.id ?? index}`}
+                    to={`/services/${s?.id || activeTab}`}
                     className="inline-flex items-center text-[#0B1220] font-semibold border-b border-[#0B1220] pb-1 hover:text-[#E6B566] hover:border-[#E6B566] transition-colors"
                   >
                     Learn More <ArrowRight size={16} className="ml-2" />

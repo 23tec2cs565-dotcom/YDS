@@ -99,12 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
               {project.budget.replace(/^₹\s*/, '')}
             </span>
           )}
-          {project.videos && project.videos.length > 0 && (
-            <span className="inline-flex items-center gap-1 rounded-full border border-[#E6B566]/40 bg-[#0B1220]/85 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[9px] sm:text-[10.5px] font-semibold text-[#E6B566] backdrop-blur-md shadow-sm">
-              <Play size={8} className="sm:w-2.5 sm:h-2.5 fill-[#E6B566]" />
-              <span>{project.videos.length} {project.videos.length === 1 ? "Video" : "Videos"}</span>
-            </span>
-          )}
+
         </div>
 
         {/* View arrow — top right */}

@@ -24,6 +24,39 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "hera-mahal",
+    slug: "hera-mahal",
+    title: "Hera Mahal",
+    category: "Construction",
+    location: "Jaipur, Rajasthan",
+    image: "/assets/optimized/Projects/Hera Mahal/1.jpg",
+    images: [
+      "/assets/optimized/Projects/Hera Mahal/1.jpg"
+    ],
+    videos: [
+      "/assets/optimized/Projects/Hera Mahal/Video-1.mp4",
+      "/assets/optimized/Projects/Hera Mahal/Video-2.mp4",
+      "/assets/optimized/Projects/Hera Mahal/Video-3.mp4",
+      "/assets/optimized/Projects/Hera Mahal/Video-4.mp4"
+    ],
+    subtitle: "Turnkey Construction & Civil Execution",
+    description: "Complete turnkey construction and civil engineering execution for Hera Mahal.",
+    longDescription: "End-to-end civil construction and structural execution project for Hera Mahal in Jaipur. Features high-grade materials, precision structural engineering, and comprehensive project management from foundation to final finishes.",
+    outcome: "Delivered a structurally sound, premium construction landmark executed with meticulous attention to structural standards.",
+    workScope: [
+      "Turnkey Construction",
+      "Civil Engineering",
+      "Structural Execution",
+      "Site Development & Quality Assurance"
+    ],
+    clientContact: "Hera Mahal, Jaipur",
+    completionDate: "October 2024",
+    area: "6,000 sq ft",
+    budget: "Turnkey Execution",
+    featured: true,
+    focalPoint: { x: 0.5, y: 0.5 }
+  },
+  {
     id: "six-eleven-gym",
     slug: "six-eleven-gym",
     title: "Six Eleven Gym",

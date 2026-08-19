@@ -18,7 +18,7 @@ export const services: Service[] = [
     description:
       "Transform your spaces with functional and timeless interiors — blending aesthetics, comfort, and smart space planning.",
     icon: "Home",
-    image: "/assets/services/interior-design.jpeg",
+    image: "/assets/services/interior-design3.jpg",
     video: "/assets/services/interior-design.mp4",
     features: [
       "Space Planning",
@@ -42,7 +42,7 @@ export const services: Service[] = [
     description:
       "From foundation to finish, we deliver robust construction services that ensure precision, durability, and timely execution.",
     icon: "Building",
-    image: "/assets/services/construction.jpeg",
+    image: "/assets/services/construction.avif",
     features: [
       "Project Management",
       "Structural Execution",
@@ -59,7 +59,7 @@ export const services: Service[] = [
     description:
       "Revamp your existing spaces with modern designs, efficient layouts, and an improved living experience.",
     icon: "Wrench",
-    image: "/assets/services/renovation.jpeg",
+    image: "/assets/services/renovation.avif",
     features: [
       "Remodeling & Refurbishment",
       "Structural Alterations",
@@ -76,7 +76,7 @@ export const services: Service[] = [
     description:
       "Professional design consultation to guide your project from concept to reality with the right decisions at every step.",
     icon: "MessageCircle",
-    image: "/assets/services/consultation.jpeg",
+    image: "/assets/services/consultation.avif",
     features: [
       "Concept Development",
       "Budget Planning",
@@ -93,7 +93,7 @@ export const services: Service[] = [
     description:
       "Experience your dream design before execution with realistic 3D renders and walkthroughs powered by advanced visualization.",
     icon: "Eye",
-    image: "/assets/services/3d-visualization.jpeg",
+    image: "/assets/services/3d-visualization.jpg",
     features: [
       "3D Modeling",
       "Photorealistic Rendering",
