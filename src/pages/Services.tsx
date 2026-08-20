@@ -442,7 +442,7 @@ const ServicesPage: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="text-center mb-8 sm:mb-16">
-              <span className="text-[#B08D57] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">
+              <span className="text-[#8C6226] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">
                 Interactive Tool
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-gray-900 tracking-tight">
@@ -481,12 +481,12 @@ const ServicesPage: React.FC = () => {
                           onClick={() => toggleService(svc.id)}
                           className={`flex items-start text-left p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border transition-all duration-300 ${
                             isSelected
-                              ? "border-[#B08D57] bg-[#B08D57]/5 shadow-sm"
+                              ? "border-[#F9D2BA] bg-[#F9D2BA]/15 shadow-sm ring-1 ring-[#F9D2BA]"
                               : "border-gray-200 hover:border-gray-300 bg-white"
                           }`}
                         >
                           <div className={`mr-2 sm:mr-3.5 mt-0.5 p-1.5 sm:p-2 rounded-lg sm:rounded-xl flex items-center justify-center ${
-                            isSelected ? "bg-[#B08D57] text-white" : "bg-gray-100 text-gray-500"
+                            isSelected ? "bg-[#F9D2BA] text-gray-900 shadow-sm" : "bg-gray-100 text-gray-500"
                           }`}>
                             <SvcIcon size={16} />
                           </div>
@@ -511,7 +511,7 @@ const ServicesPage: React.FC = () => {
                       2. Project Location
                     </label>
                     {hasRestrictedService && (
-                      <span className="text-[10px] font-semibold text-[#8C6226] px-2 py-0.5 rounded-md bg-[#8C6226]/10">
+                      <span className="text-[10px] font-semibold text-[#8C6226] px-2 py-0.5 rounded-md bg-[#F9D2BA]/30 border border-[#F9D2BA]/50">
                         Rajasthan Only
                       </span>
                     )}
@@ -525,7 +525,7 @@ const ServicesPage: React.FC = () => {
                       id="city-search"
                       name="city-search"
                       type="text"
-                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-gray-200 text-sm focus:border-[#B08D57] focus:ring-1 focus:ring-[#B08D57] outline-none transition-all bg-white text-gray-800"
+                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-gray-200 text-sm focus:border-[#F9D2BA] focus:ring-2 focus:ring-[#F9D2BA]/40 outline-none transition-all bg-white text-gray-800"
                       placeholder={hasRestrictedService ? "Search Rajasthan locations near Jaipur..." : "Search major India cities..."}
                       value={showDropdown ? searchQuery : selectedCityLabel}
                       onChange={(e) => setSearchQuery(e.target.value)}
@@ -571,7 +571,7 @@ const ServicesPage: React.FC = () => {
                               }}
                               className={`flex items-center justify-between w-full px-4 py-2.5 text-xs text-left transition-colors ${
                                 isSelected
-                                  ? "bg-[#B08D57]/5 text-[#B08D57] font-semibold"
+                                  ? "bg-[#F9D2BA]/25 text-gray-900 font-semibold"
                                   : "hover:bg-gray-50 text-gray-700"
                               }`}
                             >
@@ -579,7 +579,7 @@ const ServicesPage: React.FC = () => {
                                 <span className="block text-gray-900 font-medium">{city.label}</span>
                                 <span className="block text-[10px] text-gray-400">{city.region}</span>
                               </div>
-                              {isSelected && <Check size={12} className="text-[#B08D57]" />}
+                              {isSelected && <Check size={12} className="text-[#8C6226]" />}
                             </button>
                           );
                         })
@@ -590,7 +590,7 @@ const ServicesPage: React.FC = () => {
                   {/* Service warning note */}
                   {hasRestrictedService && (
                     <div className="mt-3.5 p-3.5 rounded-2xl bg-amber-950/80 border border-amber-500/30 text-[11px] text-amber-200 flex items-start gap-2.5">
-                      <AlertCircle size={15} className="shrink-0 text-[#E6B566] mt-0.5" />
+                      <AlertCircle size={15} className="shrink-0 text-[#F9D2BA] mt-0.5" />
                       <div>
                         <span className="font-bold block mb-1 text-white text-xs uppercase tracking-wider">Location Restricted Service</span>
                         Turnkey Construction and Renovation services are limited only to select locations in Rajasthan (primarily Jaipur and nearby surrounding districts).
@@ -605,7 +605,7 @@ const ServicesPage: React.FC = () => {
                     <label htmlFor="area-number" className="block text-xs font-bold uppercase tracking-wider text-gray-500">
                       3. Area of Project
                     </label>
-                    <div className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-xl px-2.5 py-1 focus-within:border-[#B08D57] focus-within:ring-1 focus-within:ring-[#B08D57] transition-all shadow-sm">
+                    <div className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-xl px-2.5 py-1 focus-within:border-[#F9D2BA] focus-within:ring-2 focus-within:ring-[#F9D2BA]/40 transition-all shadow-sm">
                       <input
                         id="area-number"
                         name="area-number"
@@ -620,7 +620,7 @@ const ServicesPage: React.FC = () => {
                         onBlur={() => {
                           if (area < 100) setArea(500);
                         }}
-                        className="w-20 bg-transparent text-right font-serif text-sm font-bold text-[#B08D57] outline-none border-none p-0 focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        className="w-20 bg-transparent text-right font-serif text-sm font-bold text-gray-900 outline-none border-none p-0 focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       <span className="text-[10px] font-sans font-normal text-gray-400">Sq. Ft.</span>
                     </div>
@@ -634,7 +634,7 @@ const ServicesPage: React.FC = () => {
                     step="100"
                     value={Math.max(500, Math.min(6000, area))}
                     onChange={(e) => setArea(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-[#B08D57]"
+                    className="w-full h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-[#F9D2BA]"
                   />
                   <div className="flex justify-between text-[10px] text-gray-400 mt-1 font-mono">
                     <span>500 SQFT</span>
@@ -662,11 +662,11 @@ const ServicesPage: React.FC = () => {
                           onClick={() => setQuality(g.id as "standard" | "premium" | "luxury")}
                           className={`flex flex-col items-center py-2 px-3 rounded-2xl border text-center transition-all duration-200 ${
                             isSelected
-                              ? "border-[#B08D57] bg-[#B08D57]/5 shadow-sm"
+                              ? "border-[#F9D2BA] bg-[#F9D2BA]/15 shadow-sm ring-1 ring-[#F9D2BA]"
                               : "border-gray-200 hover:border-gray-300 bg-white"
                           }`}
                         >
-                          <span className={`block text-xs font-semibold ${isSelected ? "text-[#B08D57]" : "text-gray-900"}`}>
+                          <span className={`block text-xs font-semibold ${isSelected ? "text-gray-900" : "text-gray-700"}`}>
                             {g.label}
                           </span>
                           <span className="block text-[10px] text-gray-400 mt-0.5">
@@ -681,14 +681,14 @@ const ServicesPage: React.FC = () => {
               </div>
 
               {/* Estimate Results Card (5 cols) */}
-              <div className="lg:col-span-5 bg-[#09090B] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden border border-white/5 shadow-2xl">
+              <div className="lg:col-span-5 bg-[#0B1220] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden border border-[#F9D2BA]/25 shadow-2xl shadow-[#0B1220]/25">
                 
                 {/* Accent glows */}
-                <div className="absolute top-0 right-0 w-80 h-80 bg-[#B08D57]/5 rounded-full blur-[70px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#E6B566]/5 rounded-full blur-[60px] pointer-events-none" />
+                <div className="absolute top-0 right-0 w-80 h-80 bg-[#F9D2BA]/15 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#B08D57]/10 rounded-full blur-[70px] pointer-events-none" />
 
                 <div className="relative z-10">
-                  <span className="text-[#E6B566] text-[10px] font-bold uppercase tracking-[0.25em]">
+                  <span className="text-[#F9D2BA] text-[10px] font-bold uppercase tracking-[0.25em]">
                     Estimated Budget Range
                   </span>
                   
@@ -700,7 +700,7 @@ const ServicesPage: React.FC = () => {
                       </div>
                     ) : (
                       <div>
-                        <div className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#E6B566] tracking-tight">
+                        <div className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#F9D2BA] tracking-tight">
                           {formatCost(min)} - {formatCost(max)}
                         </div>
                         <p className="text-[11px] text-gray-400 mt-2 tracking-wide font-mono">
@@ -712,8 +712,8 @@ const ServicesPage: React.FC = () => {
 
                   {/* Discounts Notifications */}
                   {(comboDiscount > 0 || scaleDiscount > 0) && (
-                    <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#E6B566]/10 border border-[#E6B566]/20 text-[10.5px] text-[#E6B566]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566] animate-pulse" />
+                    <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F9D2BA]/15 border border-[#F9D2BA]/30 text-[10.5px] text-[#F9D2BA]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#F9D2BA] animate-pulse" />
                       <span>
                         Applied: {comboDiscount > 0 ? `${comboDiscount}% Combo` : ""}{" "}
                         {comboDiscount > 0 && scaleDiscount > 0 ? "+" : ""}{" "}
@@ -725,7 +725,7 @@ const ServicesPage: React.FC = () => {
                   {/* Breakdown Progress Bars */}
                   {selectedServices.length > 0 && (
                     <div className="mt-6 sm:mt-9 space-y-4 sm:space-y-5">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-500 border-b border-white/5 pb-2">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 border-b border-white/10 pb-2">
                         Estimated Cost Allocation
                       </p>
                       
@@ -736,16 +736,16 @@ const ServicesPage: React.FC = () => {
                       ].map((item, idx) => (
                         <div key={idx} className="space-y-1">
                           <div className="flex justify-between text-xs font-semibold">
-                            <span className="text-gray-300">{item.label}</span>
-                            <span className="text-[#E6B566] font-mono">{item.pct}%</span>
+                            <span className="text-gray-200">{item.label}</span>
+                            <span className="text-[#F9D2BA] font-mono">{item.pct}%</span>
                           </div>
-                          <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                          <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-gradient-to-r from-[#B08D57] to-[#E6B566] rounded-full"
+                              className="h-full bg-gradient-to-r from-[#B08D57] to-[#F9D2BA] rounded-full"
                               style={{ width: `${item.pct}%` }}
                             />
                           </div>
-                          <span className="block text-[10px] text-gray-500 font-light leading-none">
+                          <span className="block text-[10px] text-gray-400 font-light leading-none">
                             {item.detail}
                           </span>
                         </div>
@@ -759,12 +759,12 @@ const ServicesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={startProject}
-                    className="w-full py-4 px-6 bg-[#E6B566] text-black hover:bg-white transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg shadow-[#E6B566]/10 active:scale-[0.98] flex items-center justify-center gap-2 group"
+                    className="w-full py-4 px-6 bg-[#F9D2BA] text-[#0B1220] hover:bg-white transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg shadow-[#F9D2BA]/25 active:scale-[0.98] flex items-center justify-center gap-2 group"
                   >
                     Discuss This Estimate
                     <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
-                  <p className="text-[10px] text-center text-gray-500 leading-normal">
+                  <p className="text-[10px] text-center text-gray-400 leading-normal">
                     Estimate is ballpark. Get in touch for a detailed, itemized quote based on your site drawings.
                   </p>
                 </div>

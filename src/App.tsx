@@ -14,7 +14,6 @@ const About = React.lazy(() => import("./pages/About"));
 const Services = React.lazy(() => import("./pages/Services"));
 const Career = React.lazy(() => import("./pages/Career"));
 const ServiceDetails = React.lazy(() => import("./pages/ServiceDetails"));
-const FAQ = React.lazy(() => import("./pages/FAQ"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Admin = React.lazy(() => import("./pages/Admin"));
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -40,21 +39,23 @@ function AppContent() {
     );
   }
 
-  const is404Page = location.pathname === "/404" || (
-    ![
-      "/",
-      "/home",
-      "/about",
-      "/projects",
-      "/team",
-      "/contact",
-      "/faq",
-      "/services",
-      "/career",
-      "/admin",
-    ].includes(location.pathname) &&
-    !location.pathname.startsWith("/services/")
-  );
+  const cleanPath = location.pathname.replace(/\/+$/, "") || "/";
+  const validRoutes = [
+    "/",
+    "/home",
+    "/index.html",
+    "/about",
+    "/projects",
+    "/team",
+    "/contact",
+    "/faq",
+    "/services",
+    "/career",
+    "/admin",
+  ];
+  const is404Page =
+    cleanPath === "/404" ||
+    (!validRoutes.includes(cleanPath) && !cleanPath.startsWith("/services/"));
 
   const handleSearch = () => {
     // No-op: search is handled via url searchParams navigation inside Navigation component
@@ -85,7 +86,6 @@ function AppContent() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/team" element={<OurTeam />} />
             <Route path="/contact" element={<ContactUs />} />
-            <Route path="/faq" element={<FAQ />} />
 
             {/* Additional pages */}
             <Route path="/services" element={<Services />} />

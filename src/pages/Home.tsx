@@ -79,7 +79,7 @@ const TESTIMONIALS = [
     role: "Client",
     quote: "Nikhil ji, everything came out really beautiful and elegant, thank you so much for all your efforts and to the team also.. looking forward to working in future also..",
     avatarUrl:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=512&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1545996124-5b9c9b3dd7a9?q=80&w=512&auto=format&fit=crop",
   },
   {
     id: "t2",
@@ -377,7 +377,7 @@ const ProjectsSection: React.FC = () => {
                   onClick={() => setFilter(cat)}
                   className={cn(
                     "px-4 py-2 text-sm rounded-full transition-all whitespace-nowrap",
-                    filter === cat ? "bg-[#0B1220] text-white shadow-md" : "text-gray-600 hover:bg-gray-50"
+                    filter === cat ? "bg-[#0B3528] text-white shadow-md" : "text-gray-600 hover:bg-gray-50"
                   )}
                 >
                   {cat}

@@ -713,7 +713,7 @@ const Projects: React.FC = () => {
                         onClick={() => setView("grid")}
                         className={`p-2 rounded-lg transition ${
                           view === "grid"
-                            ? "bg-[#0B1220] text-white shadow-sm"
+                            ? "bg-[#0B3528] text-white shadow-sm"
                             : "text-gray-500 hover:bg-gray-50"
                         }`}
                         type="button"
@@ -725,7 +725,7 @@ const Projects: React.FC = () => {
                         onClick={() => setView("list")}
                         className={`p-2 rounded-lg transition ${
                           view === "list"
-                            ? "bg-[#0B1220] text-white shadow-sm"
+                            ? "bg-[#0B3528] text-white shadow-sm"
                             : "text-gray-500 hover:bg-gray-50"
                         }`}
                         type="button"
@@ -744,7 +744,7 @@ const Projects: React.FC = () => {
                     onClick={() => applyCategory("all")}
                     className={`flex-shrink-0 inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
                       category === "all"
-                        ? "bg-[#0B1220] text-white border-[#0B1220]"
+                        ? "bg-[#0B3528] text-white border-[#0B1220]"
                         : "bg-white text-gray-600 border-gray-200 hover:border-[#D2A761]"
                     }`}
                   >
@@ -758,7 +758,7 @@ const Projects: React.FC = () => {
                       onClick={() => applyCategory(cat)}
                       className={`flex-shrink-0 inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
                         slugify(category) === slugify(cat)
-                          ? "bg-[#0B1220] text-white border-[#0B1220]"
+                          ? "bg-[#0B3528] text-white border-[#faf9f7]"
                           : "bg-white text-gray-600 border-gray-200 hover:border-[#D2A761]"
                       }`}
                     >
