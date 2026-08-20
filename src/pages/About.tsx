@@ -9,6 +9,7 @@ import {
 
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
+import { projects } from "../data/projects";
 
 
 
@@ -235,7 +236,7 @@ const AboutContent = () => {
               <div className="col-span-2 lg:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-2 sm:mt-4">
                  <div className="bg-[#B08D57] p-4 sm:p-6 text-[#18181B] flex flex-col justify-between h-24 sm:h-32 hover:bg-white transition-colors duration-300 group">
                     <span className="font-mono text-[9px] sm:text-xs uppercase tracking-widest opacity-60">Projects</span>
-                    <span className="text-3xl sm:text-5xl font-serif font-medium">30+</span>
+                    <span className="text-3xl sm:text-5xl font-serif font-medium">{projects.length}+</span>
                  </div>
                  <div className="bg-white/5 border border-white/5 p-4 sm:p-6 flex flex-col justify-between h-24 sm:h-32 hover:bg-[#B08D57] hover:text-[#18181B] transition-colors duration-300 group">
                     <span className="font-mono text-[9px] sm:text-xs uppercase tracking-widest opacity-60 group-hover:opacity-60">Established</span>

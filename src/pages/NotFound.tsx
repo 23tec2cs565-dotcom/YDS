@@ -12,6 +12,7 @@ import {
   FolderOpen
 } from "lucide-react";
 import SEOHead from "../components/SEOHead";
+import { projects } from "../data/projects";
 
 function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
@@ -121,7 +122,7 @@ const NotFound: React.FC = () => {
       x: isMobile ? 14 : 12,
       y: isMobile ? 42 : 46,
       title: "Curated Showcase",
-      subtitle: "150+ Built Spaces",
+      subtitle: `${projects.length}+ Built Spaces`,
       path: "/projects",
     },
     {

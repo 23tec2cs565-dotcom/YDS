@@ -227,24 +227,24 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-14 sm:h-16 relative">
           {/* Logo */}
-          <NavLink to="/" end className="flex items-center space-x-3 sm:space-x-3.5 group">
+          <NavLink to="/" end className="flex items-center space-x-2.5 sm:space-x-3 group">
             <img
-              src="/younick-logo.PNG"
+              src="/younick-crest.png"
               alt="Younick Design Studio"
-              width="52"
+              width="44"
               height="52"
-              className="h-10 w-auto sm:h-12 md:h-13 rounded-lg shadow-sm object-contain group-hover:scale-105 transition-transform duration-300"
+              className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 select-none"
               onError={(e) => {
                 const img = e.currentTarget;
                 img.onerror = null;
-                img.src = "/favicon.ico";
+                img.src = "/younick-logo.PNG";
               }}
             />
             <div className="flex flex-col justify-center leading-none">
               <span className="font-serif text-xl sm:text-2xl font-bold text-[#0B1220] tracking-tight group-hover:text-[#8C6226] transition-colors">
                 Younick
               </span>
-              <span className="font-sans font-medium text-gray-500 text-[10px] sm:text-[12px] tracking-[0.2em] uppercase mt-0.5">
+              <span className="font-sans font-medium text-gray-500 text-[9px] sm:text-[11px] tracking-[0.22em] uppercase mt-0.5">
                 Design Studio
               </span>
             </div>

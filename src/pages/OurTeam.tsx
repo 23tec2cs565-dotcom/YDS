@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { teamMembers } from "../data/team";
+import { projects } from "../data/projects";
 import TeamMember from "../components/TeamMember";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
@@ -188,11 +189,11 @@ const OurTeam: React.FC = () => {
           {/* Stats integrated directly in Hero */}
           <Reveal delay={0.35}>
             <div className="mt-8 flex items-center gap-8 sm:gap-12">
-              <Counter value={150} label="Projects" suffix="+" />
+              <Counter value={projects.length} label="Projects" suffix="+" />
               <div className="w-px h-10 bg-white/15" />
               <Counter value={120} label="Happy Clients" suffix="+" />
               <div className="w-px h-10 bg-white/15" />
-              <Counter value={10} label="Years" suffix="+" />
+              <Counter value={8} label="Years" suffix="+" />
             </div>
           </Reveal>
         </motion.div>

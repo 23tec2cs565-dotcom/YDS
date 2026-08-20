@@ -54,9 +54,11 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
 }
 
 
+import { projects } from "../data/projects";
+
 const STATS = [
-  { label: "Years of Experience", value: "12+" },
-  { label: "Projects Completed", value: "150+" },
+  { label: "Years of Experience", value: "8+" },
+  { label: "Projects Completed", value: `${projects.length}+` },
   { label: "Design Awards", value: "08" },
   { label: "Happy Clients", value: "100%" },
 ];

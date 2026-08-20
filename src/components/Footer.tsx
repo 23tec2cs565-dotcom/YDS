@@ -10,6 +10,7 @@ import {
   Phone,
   Youtube as YoutubeIcon,
 } from "lucide-react";
+import { projects } from "../data/projects";
 
 // ── Mouse-tracking glass button ──
 interface GlassBtnProps {
@@ -182,7 +183,7 @@ const Footer: React.FC = () => {
 
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] text-gray-600 font-semibold tracking-widest">
               <span className="inline-flex items-center gap-1.5 text-gray-800">
-                <span className="text-[#B08D57]">✦</span> 150+ Signature Projects
+                <span className="text-[#B08D57]">✦</span> {projects.length}+ Signature Projects
               </span>
               <span className="text-gray-300">•</span>
               <span className="inline-flex items-center gap-1.5 text-gray-800">

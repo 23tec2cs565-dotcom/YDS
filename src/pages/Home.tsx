@@ -229,7 +229,7 @@ const Hero: React.FC = () => {
           <Reveal delay={0.4}>
             <div className="flex items-center gap-8 pt-8 border-t border-gray-200/80">
               <div>
-                <div className="text-3xl font-serif text-[#0B1220]">150+</div>
+                <div className="text-3xl font-serif text-[#0B1220]">{projects.length}+</div>
                 <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Projects</p>
               </div>
               <div>
@@ -323,12 +323,12 @@ const About: React.FC = () => {
             <Reveal delay={0.2}>
               <div className="flex gap-8">
                 <div>
-                  <h3 className="text-4xl font-serif mb-1">7+</h3>
+                  <h3 className="text-4xl font-serif mb-1">8+</h3>
                   <p className="text-xs uppercase tracking-wider text-gray-500">Years Exp.</p>
                 </div>
                 <div className="w-px bg-gray-200 h-12" />
                 <div>
-                  <h3 className="text-4xl font-serif mb-1">80+</h3>
+                  <h3 className="text-4xl font-serif mb-1">120+</h3>
                   <p className="text-xs uppercase tracking-wider text-gray-500">Happy Clients</p>
                 </div>
               </div>
@@ -685,17 +685,17 @@ const LeadershipSection: React.FC = () => {
 
 // Stats
 const StatsSection: React.FC = () => {
-  const STATS = [
+  const stats = [
     { id: "s1", value: `${projects.length}+`, label: "Projects", subLabel: "Residential & commercial" },
-    { id: "s2", value: "30+", label: "Repeat clients", subLabel: "Relationship first" },
-    { id: "s3", value: "7+", label: "Years in practice", subLabel: "Built expertise" },
-    { id: "s4", value: "98%", label: "Satisfaction", subLabel: "Post handover surveys" },
+    { id: "s2", value: "120+", label: "Happy Clients", subLabel: "Relationship first" },
+    { id: "s3", value: "8+", label: "Years in practice", subLabel: "Built expertise" },
+    { id: "s4", value: "100%", label: "Satisfaction", subLabel: "Post handover surveys" },
   ];
 
   return (
     <section className="py-12 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-        {STATS.map((stat, i) => (
+        {stats.map((stat, i) => (
           <Reveal key={stat.id} delay={i * 0.1} className="text-center">
             <h3 className="text-4xl font-serif text-[#0B1220] mb-1">{stat.value}</h3>
             <p className="text-xs font-bold text-[#E6B566] uppercase tracking-wider">{stat.label}</p>
