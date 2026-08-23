@@ -34,4 +34,11 @@ startTransition(() => {
       <App />
     )
   );
+
+  // Guarantee pre-render shell dismissal immediately upon React mounting
+  const shell = document.getElementById("pre-render-shell");
+  if (shell) {
+    shell.classList.add("fade-out");
+    setTimeout(() => shell.remove(), 350);
+  }
 });

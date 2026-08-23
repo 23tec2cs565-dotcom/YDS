@@ -195,19 +195,29 @@
       #pre-render-shell img { width: 48px; height: 48px; filter: brightness(1.6) saturate(0.5); }
     </style>
     <div id="pre-render-shell" aria-hidden="true">
-      <img src="/younick-logo.PNG" alt="" width="48" height="48" />
+      <img src="/younick-crest.png" alt="" width="48" height="48" onerror="this.style.display='none'" />
     </div>
     <script>
-      // Remove shell once React has painted (first meaningful content in #root)
+      function dismissPreRenderShell() {
+        var shell = document.getElementById('pre-render-shell');
+        if (shell && !shell.classList.contains('fade-out')) {
+          shell.classList.add('fade-out');
+          setTimeout(function() { if (shell && shell.parentNode) shell.parentNode.removeChild(shell); }, 350);
+        }
+      }
+      // Remove shell once React has painted into #root (seo-fallback replaced or children attached)
       var _obs = new MutationObserver(function() {
         var root = document.getElementById('root');
-        if (root && root.childElementCount > 1) {
-          var shell = document.getElementById('pre-render-shell');
-          if (shell) { shell.classList.add('fade-out'); setTimeout(function(){ shell.remove(); }, 350); }
+        if (root && (!document.getElementById('seo-fallback') || root.childElementCount > 1)) {
+          dismissPreRenderShell();
           _obs.disconnect();
         }
       });
       _obs.observe(document.getElementById('root') || document.body, { childList: true, subtree: true });
+      // Safety auto-dismiss fallback: never block user under any circumstance
+      setTimeout(dismissPreRenderShell, 400);
+      window.addEventListener('DOMContentLoaded', function() { setTimeout(dismissPreRenderShell, 200); });
+      window.addEventListener('load', dismissPreRenderShell);
     </script>
 
     <div id="root">
