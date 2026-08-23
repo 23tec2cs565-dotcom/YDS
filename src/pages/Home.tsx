@@ -42,6 +42,7 @@ import type { Project } from "../data/projects";
 import type { Service } from "../data/services";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
+import { BeforeAfterSlider } from "../components/BeforeAfterSlider";
 
 const cn = (...args: Array<string | false | null | undefined>) =>
   args.filter(Boolean).join(" ");
@@ -214,7 +215,8 @@ const Hero: React.FC = () => {
 
           <Reveal delay={0.3}>
             <div className="flex flex-wrap items-center gap-4 mb-12">
-              <Button onClick={() => navigate("/contact")} withIcon>
+              <Button onClick={() => navigate("/contact")} withIcon
+                className="bg-[#0B3528] hover:bg-[#0B3528]/90 text-white shadow-xl">
                 Start a Conversation
               </Button>
               <Link
@@ -335,6 +337,33 @@ const About: React.FC = () => {
             </Reveal>
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+const TransformationSection: React.FC = () => {
+  return (
+    <section className="py-16 sm:py-24 bg-white relative overflow-hidden border-t border-gray-100 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] text-[#E6B566] text-xs font-bold tracking-widest uppercase mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
+              Before & After Transformations
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#0B1220] mb-6 leading-tight">
+              Witness the Art of <span className="italic text-[#8C6226] font-angelone">Turnkey Execution</span>
+            </h2>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+              From raw masonry shells and outdated layouts to luminous, mastercrafted interiors. Drag the slider to explore the precision of our on-site transformations.
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal delay={0.15}>
+          <BeforeAfterSlider />
+        </Reveal>
       </div>
     </section>
   );
@@ -716,6 +745,7 @@ const Home: React.FC = () => {
           <Hero />
           <StatsSection />
           <About />
+          <TransformationSection />
           <ProjectsSection />
           <ServicesSection />
           <TestimonialsSection />
