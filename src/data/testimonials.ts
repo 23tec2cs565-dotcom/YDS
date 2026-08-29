@@ -16,7 +16,7 @@ export const testimonials: Testimonial[] = [
     role: "Client",
     quote: "Nikhil ji, everything came out really beautiful and elegant, thank you so much for all your efforts and to the team also.. looking forward to working in future also..",
     avatarUrl:
-      "https://images.unsplash.com/photo-1545996124-5b9c9b3dd7a9?q=80&w=512&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=512&auto=format&fit=crop",
     rating: 5,
     location: "Jaipur"
   },
@@ -26,7 +26,7 @@ export const testimonials: Testimonial[] = [
     role: "Interior Designer",
     quote: "Great process, clear communication and beautiful finishes.",
     avatarUrl:
-      "https://images.unsplash.com/photo-1545996124-5b9c9b3dd7a9?q=80&w=512&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=512&auto=format&fit=crop",
     rating: 5,
     location: "Jaipur"
   }

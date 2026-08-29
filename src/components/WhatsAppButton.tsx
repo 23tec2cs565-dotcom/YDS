@@ -90,7 +90,8 @@ export const WhatsAppButton: React.FC = () => {
                   <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-1.5 border border-[#1E3A5F]/20 shadow-md flex items-center justify-center">
                     <img
                       src="/younick-logo.PNG"
-                      alt="Younick Design Studio"
+                      alt="Younick Design Studio Logo"
+                      title="Younick Design Studio — Official WhatsApp Support"
                       className="w-full h-full object-contain"
                       onError={(e) => {
                         (e.currentTarget as HTMLElement).style.display = "none";
@@ -116,7 +117,7 @@ export const WhatsAppButton: React.FC = () => {
             <div className="p-4 sm:p-5 space-y-4">
               <div className="bg-white/85 border border-[#adc4d6] p-3.5 rounded-2xl shadow-sm">
                 <div className="flex items-center gap-2 text-[#1E3A5F] text-xs font-bold uppercase tracking-wider mb-1">
-                  <img src="/icons/whatsapp-logo new.png" alt="WhatsApp" className="w-4 h-4 object-contain" />
+                  <img src="/icons/whatsapp-logo new.png" alt="WhatsApp Official" title="Chat with Younick Design Studio on WhatsApp" className="w-4 h-4 object-contain" />
                   <span>Direct WhatsApp Line</span>
                 </div>
                 <p className="text-xs text-slate-700 leading-relaxed font-normal">
@@ -213,7 +214,8 @@ export const WhatsAppButton: React.FC = () => {
 
               <img
                 src="/icons/whatsapp-logo new.png"
-                alt="WhatsApp"
+                alt="WhatsApp Chat"
+                title="Direct WhatsApp Consultation with Younick Design Studio"
                 className="w-40 h-40 sm:w-10 sm:h-10 object-contain drop-shadow-md transition-transform group-hover:scale-110"
                 onError={(e) => {
                   (e.currentTarget as HTMLElement).style.display = "none";

@@ -286,7 +286,8 @@ const Footer: React.FC = () => {
               <a href="/" className="inline-flex items-center gap-2.5 sm:gap-3">
                 <img
                   src="/younick-logo.PNG"
-                  alt="Younick Design Studio"
+                  alt="Younick Design Studio Logo"
+                  title="Younick Design Studio — Luxury Turnkey Interior Architecture Jaipur"
                   width="54"
                   height="54"
                   className="h-10 sm:h-[3.375rem] w-auto brightness-110"

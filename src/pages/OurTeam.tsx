@@ -275,7 +275,8 @@ const OurTeam: React.FC = () => {
                     <Link to="/projects" className="group relative block h-[220px] sm:h-full overflow-hidden rounded-2xl shadow-sm">
                       <img
                         src="/assets/optimized/gallery/g1-768.jpeg"
-                        alt="Workspace detail"
+                        alt="Younick Design Studio workspace and architectural planning desk"
+                        title="Younick Design Studio architectural workspace in Jaipur"
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                         onError={handleImgError}
@@ -293,7 +294,8 @@ const OurTeam: React.FC = () => {
                       <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
                         <img
                           src="/assets/optimized/gallery/g2-768.jpeg"
-                          alt="Material samples"
+                          alt="Material samples, veneers, and Italian marble swatches"
+                          title="Curated luxury interior material samples at Younick Design Studio"
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                           onError={handleImgError}
@@ -304,7 +306,8 @@ const OurTeam: React.FC = () => {
                       <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
                         <img
                           src="/assets/optimized/gallery/g3-768.jpeg"
-                          alt="Model draft"
+                          alt="3D architectural scale model drafts and structural drawings"
+                          title="3D architectural scale models and CAD working drawings"
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                           onError={handleImgError}

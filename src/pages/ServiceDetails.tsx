@@ -79,7 +79,8 @@ const ServiceDetails: React.FC = () => {
           <div className="absolute inset-0">
             <img
               src={service.image || "/assets/placeholder-rect.jpg"}
-              alt={`${service.title} — hero`}
+              alt={`${service.title} — Professional Architecture and Interior Service`}
+              title={`${service.title} — Younick Design Studio Jaipur`}
               className="w-full h-full object-cover opacity-60"
               loading="lazy"
               decoding="async"
@@ -220,7 +221,8 @@ const ServiceDetails: React.FC = () => {
                     <div className="relative aspect-[4/3] bg-gray-800 mb-3 rounded-lg overflow-hidden">
                       <img
                         src={p.image || "/assets/placeholder-rect.jpg"}
-                        alt={p.title}
+                        alt={`${p.title} — ${p.category || "Architecture"} in ${p.location || "Jaipur"}`}
+                        title={`${p.title} — ${p.category || "Architecture"} by Younick Design Studio`}
                         className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                         loading="lazy"
                         decoding="async"

@@ -328,7 +328,8 @@ const ServicesPage: React.FC = () => {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
-            alt="Services Background"
+            alt="Younick Design Studio Services and Architectural Expertise"
+            title="Comprehensive Interior Design and Turnkey Architecture Services in Jaipur"
             className="w-full h-full object-cover opacity-40 grayscale-[20%]"
             onError={handleImgError}
           />
@@ -426,7 +427,8 @@ const ServicesPage: React.FC = () => {
                 <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                   <img
                     src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop"
-                    alt="Process"
+                    alt="Precision craftsmanship and interior architecture process"
+                    title="Precision Interior Execution Process by Younick Design Studio"
                     className="w-full h-full object-cover"
                     onError={handleImgError}
                   />

@@ -165,6 +165,7 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
             <img
               src={activeItem.afterImage}
               alt={`${activeItem.title} - After Execution`}
+              title={`${activeItem.title} - After Execution by Younick Design Studio`}
               className="absolute inset-0 w-full h-full object-cover pointer-events-none"
               loading="eager"
             />
@@ -179,6 +180,7 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
               <img
                 src={activeItem.beforeImage}
                 alt={`${activeItem.title} - Before Renovation`}
+                title={`${activeItem.title} - Before Renovation State`}
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                 loading="eager"
               />

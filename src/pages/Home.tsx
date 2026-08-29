@@ -80,7 +80,7 @@ const TESTIMONIALS = [
     role: "Client",
     quote: "Nikhil ji, everything came out really beautiful and elegant, thank you so much for all your efforts and to the team also.. looking forward to working in future also..",
     avatarUrl:
-      "https://images.unsplash.com/photo-1545996124-5b9c9b3dd7a9?q=80&w=512&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=512&auto=format&fit=crop",
   },
   {
     id: "t2",
@@ -88,7 +88,7 @@ const TESTIMONIALS = [
     role: "Client",
     quote: "Great process, clear communication and beautiful finishes.",
     avatarUrl:
-      "https://images.unsplash.com/photo-1545996124-5b9c9b3dd7a9?q=80&w=512&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=512&auto=format&fit=crop",
   },
 ];
 
@@ -247,7 +247,8 @@ const Hero: React.FC = () => {
             <div className="w-full h-full rounded-tr-[100px] rounded-bl-[40px] overflow-hidden shadow-2xl">
               <img
                 src={heroBackImg}
-                alt="Luxury Interior"
+                alt="Luxury Interior Living Space by Younick Design Studio"
+                title="Luxury Interior Architecture — Younick Design Studio Jaipur"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
                 onError={handleImgError}
                 loading="eager"
@@ -296,10 +297,10 @@ const About: React.FC = () => {
             <Reveal>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4 mt-12">
-                  <img src={aboutImg1} alt="Premium materials and finishes used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
+                  <img src={aboutImg1} alt="Premium materials and finishes used in Younick Studio projects" title="Premium materials, Italian marble and custom woodwork used in Younick Studio projects" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
                 <div className="space-y-4">
-                  <img src={aboutImg2} alt="Interior design showcase by Younick Studio" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
+                  <img src={aboutImg2} alt="Interior design showcase by Younick Studio" title="Award-winning interior design showcase by Younick Studio Jaipur" className="rounded-2xl shadow-lg w-full aspect-[3/4] object-cover" onError={handleImgError} loading="lazy" decoding="async" />
                 </div>
               </div>
               <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-[#F7F7F9] rounded-full blur-3xl opacity-60" />
@@ -437,7 +438,7 @@ const ProjectsSection: React.FC = () => {
                         View Project
                       </span>
                     </div>
-                    <img src={img} alt={project.title ?? "Project"} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={handleImgError} loading="lazy" decoding="async" />
+                    <img src={img} alt={`${project.title} — ${project.category || "Interior Architecture"} in ${project.location || "Jaipur"}`} title={`${project.title} — ${project.category || "Interior Architecture"} in ${project.location || "Jaipur"}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={handleImgError} loading="lazy" decoding="async" />
                   </div>
                   <h3 className="text-2xl font-serif text-[#0B1220] group-hover:text-[#E6B566] transition-colors">{project.title}</h3>
                   <p className="text-gray-500 text-sm mt-1">{project.location} : {project.category}</p>
@@ -460,7 +461,7 @@ const ProjectsSection: React.FC = () => {
               <button onClick={() => setSelectedProject(null)} aria-label="Close modal" className="absolute top-4 right-4 z-50 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"><X size={20} /></button>
 
               <div className="w-full md:w-1/2 h-64 md:h-auto relative bg-gray-100">
-                <img src={(selectedProject as ExtendedProject)?.imageUrl ?? selectedProject.image ?? ""} alt={selectedProject.title} className="w-full h-full object-cover" onError={handleImgError} />
+                <img src={(selectedProject as ExtendedProject)?.imageUrl ?? selectedProject.image ?? ""} alt={`${selectedProject.title} — ${selectedProject.category || "Architecture"}`} title={`${selectedProject.title} — ${selectedProject.category || "Architecture"} in ${selectedProject.location || "Jaipur"}`} className="w-full h-full object-cover" onError={handleImgError} />
               </div>
 
               <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
@@ -549,7 +550,8 @@ const ServicesSection: React.FC = () => {
                   <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-xl">
                       <img
                         src={img}
-                        alt={s?.title}
+                        alt={`${s?.title} — Architecture & Turnkey Service`}
+                        title={`${s?.title} — Younick Design Studio Services Jaipur`}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         onError={handleImgError}
                         loading="lazy"
@@ -640,7 +642,7 @@ const TestimonialsSection: React.FC = () => {
               </div>
               <p className="text-2xl md:text-3xl font-serif text-[#0B1220] leading-relaxed italic mb-8">"{TESTIMONIALS[index].quote}"</p>
               <div className="flex flex-col items-center">
-                <img src={TESTIMONIALS[index].avatarUrl} alt={TESTIMONIALS[index].name} className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" loading="lazy" decoding="async" onError={(e) => {
+                <img src={TESTIMONIALS[index].avatarUrl} alt={`${TESTIMONIALS[index].name} — Client Review`} title={`${TESTIMONIALS[index].name} — Client Review for Younick Design Studio`} className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" loading="lazy" decoding="async" onError={(e) => {
                   const img = e.currentTarget;
                   img.onerror = null;
                   img.src = `data:image/svg+xml;utf8,${encodeURIComponent(
@@ -680,7 +682,8 @@ const LeadershipSection: React.FC = () => {
                 <div className="relative w-64 h-64 mx-auto mb-8 overflow-hidden rounded-full border-4 border-white shadow-xl">
                   <img
                     src={member.image || member.image480 || member.image768}
-                    alt={member.name}
+                    alt={`${member.name} — ${member.role} at Younick Design Studio`}
+                    title={`${member.name} — ${member.role} at Younick Design Studio`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                     loading="lazy"
                     decoding="async"

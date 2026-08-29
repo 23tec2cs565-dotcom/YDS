@@ -325,7 +325,8 @@ const NotFound: React.FC = () => {
               {/* Sofa image */}
               <img
                 src="/assets/404/luxury-sofa.png"
-                alt="Luxury interior setup"
+                alt="Luxury Italian Leather Sofa by Younick Design Studio"
+                title="Page Not Found — Younick Design Studio Luxury Interior"
                 onError={handleImgError}
                 className="relative z-10 mx-auto w-[180px] sm:w-[220px] md:w-[260px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-105"
                 loading="eager"

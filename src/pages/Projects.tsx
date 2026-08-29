@@ -125,7 +125,8 @@ const BentoCard: React.FC<{
         )}
         <img
           src={project.image}
-          alt={project.title}
+          alt={`${project.title} — ${project.category || "Architecture"} in ${project.location || "Jaipur"}`}
+          title={`${project.title} — ${project.category || "Architecture"} by Younick Design Studio`}
           className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
@@ -871,7 +872,8 @@ const Projects: React.FC = () => {
                             <div className="sm:w-48 h-40 sm:h-auto overflow-hidden flex-shrink-0">
                               <img
                                 src={proj.image}
-                                alt={proj.title}
+                                alt={`${proj.title} — Architectural Case Study`}
+                                title={`${proj.title} — Architecture and Interior Design by Younick Design Studio`}
                                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 loading="lazy"
                                 onError={handleImgError}

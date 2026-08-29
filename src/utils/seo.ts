@@ -32,7 +32,7 @@ const SITE = {
 };
 
 export const defaultSEO: SEOData = {
-  title: "Best Interior Designer in Jaipur, Rajasthan | Younick Design Studio",
+  title: "Best Interior Designer in Jaipur | Younick Design Studio",
   description:
     "Younick Design Studio — Premier luxury interior design, turnkey construction, and 3D architectural visualization studio in Jaipur, Rajasthan. Transform your residential and commercial spaces with expert designers.",
   keywords:
@@ -178,7 +178,7 @@ export const structuredData = {
  */
 export const pageSEO: Record<string, SEOData> = {
   home: {
-    title: "Best Interior Designer in Jaipur — Turnkey Construction & Design | Younick Studio",
+    title: "Best Interior Designer in Jaipur | Younick Design Studio",
     description:
       "Looking for the best interior designer in Jaipur? Younick Design Studio delivers award-winning luxury residential, office & commercial interior design & turnkey construction across Rajasthan.",
     keywords:
@@ -188,7 +188,7 @@ export const pageSEO: Record<string, SEOData> = {
     author: SITE.name,
   },
   projects: {
-    title: `${SITE.name} — Projects | Portfolio`,
+    title: "Interior Design & Architecture Portfolio | Younick Studio",
     description:
       "Explore our portfolio of residential and commercial projects — villas, apartments, offices and boutique hotels designed and executed by Younick Design Studio.",
     url: `${SITE.url}/projects`,
@@ -196,7 +196,7 @@ export const pageSEO: Record<string, SEOData> = {
     author: SITE.name,
   },
   team: {
-    title: `${SITE.name} — Our Team`,
+    title: "Our Team — Interior Designers & Architects | Younick",
     description:
       "Meet the designers, architects and construction professionals behind Younick Design Studio.",
     url: `${SITE.url}/team`,
@@ -204,7 +204,7 @@ export const pageSEO: Record<string, SEOData> = {
     author: SITE.name,
   },
   contact: {
-    title: `${SITE.name} — Contact`,
+    title: "Contact Our Interior Design Studio Jaipur | Younick",
     description:
       "Get in touch with Younick Design Studio for interior design, construction, and visualization services. We are based in Jaipur, Rajasthan.",
     url: `${SITE.url}/contact`,
@@ -219,7 +219,7 @@ export const pageSEO: Record<string, SEOData> = {
     keywords: "about, younick design, interior design studio, rajasthan"
   },
   services: {
-    title: "Our Services — Interior Design, Turnkey & 3D Visualization | Younick Design Studio",
+    title: "Turnkey Interior & Architecture Services | Younick Studio",
     description: "Explore our range of bespoke services including interior design, turnkey construction, renovation, 3D rendering and consultation services across Rajasthan.",
     url: `${SITE.url}/services`,
     image: SITE.logo,

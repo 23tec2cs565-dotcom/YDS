@@ -292,7 +292,8 @@ const Career: React.FC = () => {
               <div className="relative rounded-sm overflow-hidden h-[450px]">
                 <img 
                   src="https://images.unsplash.com/photo-1503387762-592dedb80256?auto=format&fit=crop&q=80&w=800" 
-                  alt="Architecture work desk" 
+                  alt="Architecture and interior design workspace at Younick Design Studio" 
+                  title="Architecture and Interior Design Careers at Younick Design Studio Jaipur"
                   className="w-full h-full object-cover grayscale brightness-90 contrast-110"
                   onError={handleImgError}
                 />
@@ -500,7 +501,8 @@ const Career: React.FC = () => {
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
-                alt="Stone and materials checking"
+                alt="Stone and luxury interior materials checking at Younick Design Studio"
+                title="Material Sourcing and Quality Inspection — Younick Design Studio"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />
@@ -514,7 +516,8 @@ const Career: React.FC = () => {
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
                 src="https://images.unsplash.com/photo-1503387762-592dedb80256?auto=format&fit=crop&q=80&w=800"
-                alt="Drafting blueprints"
+                alt="Drafting architectural blueprints and 3D visual models"
+                title="Drafting CAD Blueprints & 3D Architectural Visuals"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />
@@ -528,7 +531,8 @@ const Career: React.FC = () => {
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
                 src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800"
-                alt="Bespoke furniture joinery"
+                alt="Bespoke furniture joinery and civil site execution"
+                title="Bespoke Woodwork Craft and Turnkey Site Execution"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />

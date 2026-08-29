@@ -38,8 +38,10 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="theme-color" content="#0D0D0D" />
       <meta
         name="robots"
-        content={noIndex ? "noindex, nofollow" : "index, follow"}
+        content={noIndex ? "noindex, nofollow, noarchive" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}
       />
+      {noIndex && <meta name="googlebot" content="noindex, nofollow, noarchive" />}
+      {noIndex && <meta name="prerender-status-code" content="404" />}
 
       {/* Open Graph */}
       <meta property="og:type" content={type} />

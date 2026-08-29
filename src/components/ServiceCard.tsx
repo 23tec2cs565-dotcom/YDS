@@ -52,7 +52,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <div className="relative h-48 overflow-hidden">
           <img
             src={service.image}
-            alt={service.title}
+            alt={`${service.title} — Professional Interior & Architecture Service`}
+            title={`${service.title} — Younick Design Studio Services Jaipur`}
             loading="lazy"
             onError={handleImgError}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -111,7 +112,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       <div className="w-full md:w-1/2 bg-gray-100">
         <img
           src={service.image}
-          alt={service.title}
+          alt={`${service.title} — Younick Design Studio Architectural Execution`}
+          title={`${service.title} — Younick Design Studio Services Jaipur`}
           loading="lazy"
           onError={handleImgError}
           className="w-full h-[360px] md:h-full object-cover"

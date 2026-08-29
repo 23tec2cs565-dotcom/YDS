@@ -153,6 +153,7 @@ const AboutContent = () => {
                 <img 
                   src="/younick-about-hero.jpg" 
                   alt="Younick Design Studio main workspace and creative environment" 
+                  title="Younick Design Studio main workspace and creative studio in Jaipur"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   onError={handleImgError}
                   loading="eager"
@@ -166,6 +167,7 @@ const AboutContent = () => {
                  <img 
                   src="/younick-thumb3.jpg" 
                   alt="Detailed view of design materials at Younick Studio" 
+                  title="Detailed view of design materials and bespoke craft at Younick Studio"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   onError={handleImgError}
                   loading="lazy"
@@ -282,8 +284,8 @@ const AboutContent = () => {
             <div className="md:w-1/2 relative">
                <div className="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-20 sm:w-32 h-20 sm:h-32 border-l-2 border-t-2 border-[#B08D57] opacity-50" />
                <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                 <img src="/younick-thumb1.jpg" onError={handleImgError} className="w-full h-40 sm:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm" alt="Younick Design Studio team collaborating on a project" loading="lazy" />
-                 <img src="/younick-thumb2.jpg" onError={handleImgError} className="w-full h-40 sm:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm translate-y-4 sm:translate-y-8" alt="Younick Design Studio team meeting and planning session" loading="lazy" />
+                 <img src="/younick-thumb1.jpg" onError={handleImgError} className="w-full h-40 sm:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm" alt="Younick Design Studio team collaborating on a project" title="Younick Design Studio team collaborating on an interior project in Jaipur" loading="lazy" />
+                 <img src="/younick-thumb2.jpg" onError={handleImgError} className="w-full h-40 sm:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm translate-y-4 sm:translate-y-8" alt="Younick Design Studio team meeting and planning session" title="Younick Design Studio team meeting and planning session" loading="lazy" />
                </div>
             </div>
             <div className="md:w-1/2">
@@ -406,7 +408,8 @@ const AboutContent = () => {
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img
                     src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800"
-                    alt="Teak Joinery"
+                    alt="Bespoke Teak Joinery Woodwork by Younick Design Studio"
+                    title="Bespoke Teak Joinery Woodwork Craftsmanship by Younick Design Studio"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={handleImgError}
                     loading="lazy"
@@ -430,7 +433,8 @@ const AboutContent = () => {
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img
                     src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800"
-                    alt="Brass Detailing"
+                    alt="Hand-Polished Brass Hardware Detailing by Younick Design Studio"
+                    title="Hand-Polished Brass Hardware Detailing by Younick Design Studio"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={handleImgError}
                     loading="lazy"
@@ -454,7 +458,8 @@ const AboutContent = () => {
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img
                     src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800"
-                    alt="Stone Joints"
+                    alt="Book-Matched Stone and Italian Marble by Younick Design Studio"
+                    title="Book-Matched Stone and Italian Marble Masonry by Younick Design Studio"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     onError={handleImgError}
                     loading="lazy"
