@@ -26,7 +26,11 @@ function AppContent() {
   // Track page views in Google Analytics on route changes
   useEffect(() => {
     if (typeof window !== "undefined" && typeof (window as unknown as { gtag?: Function }).gtag === "function") {
-      (window as unknown as { gtag: Function }).gtag("config", "G-PZK8FJJXT4", {
+      const g = (window as unknown as { gtag: Function }).gtag;
+      g("config", "G-EMDN6BRDJH", {
+        page_path: location.pathname + location.search,
+      });
+      g("config", "G-PZK8FJJXT4", {
         page_path: location.pathname + location.search,
       });
     }
