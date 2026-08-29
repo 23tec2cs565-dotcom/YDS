@@ -19,7 +19,7 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   if (!img.dataset.fallback) {
     img.dataset.fallback = "1";
     img.onerror = null;
-    img.src = "/assets/optimized/hero-480.webp";
+    img.src = "/assets/Hero/hero-480.webp";
     img.alt = "Younick studio fallback image";
   }
 }

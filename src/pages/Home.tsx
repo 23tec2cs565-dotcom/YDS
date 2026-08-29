@@ -152,20 +152,20 @@ const Hero: React.FC = () => {
 
   // Detailing Devils video playlist for hero front panel
   const heroVideos = [
-    "/assets/optimized/Projects/Detailing devils/video-1.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-2.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-3.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-4.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-5.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-6.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-7.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-8.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-9.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-10.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-11.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-12.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-13.mp4",
-    "/assets/optimized/Projects/Detailing devils/video-14.mp4",
+    "/assets/Projects/Detailing devils/video-1.mp4",
+    "/assets/Projects/Detailing devils/video-2.mp4",
+    "/assets/Projects/Detailing devils/video-3.mp4",
+    "/assets/Projects/Detailing devils/video-4.mp4",
+    "/assets/Projects/Detailing devils/video-5.mp4",
+    "/assets/Projects/Detailing devils/video-6.mp4",
+    "/assets/Projects/Detailing devils/video-7.mp4",
+    "/assets/Projects/Detailing devils/video-8.mp4",
+    "/assets/Projects/Detailing devils/video-9.mp4",
+    "/assets/Projects/Detailing devils/video-10.mp4",
+    "/assets/Projects/Detailing devils/video-11.mp4",
+    "/assets/Projects/Detailing devils/video-12.mp4",
+    "/assets/Projects/Detailing devils/video-13.mp4",
+    "/assets/Projects/Detailing devils/video-14.mp4",
   ];
   const videoIdxRef = useRef(0);
   const videoRef = useRef<HTMLVideoElement>(null);

@@ -541,7 +541,7 @@ const Projects: React.FC = () => {
     description:
       "Explore our portfolio of interior design and construction projects across Rajasthan — residential, commercial and bespoke spaces crafted by Younick Design Studio.",
     url: "/projects",
-    image: "/assets/optimized/hero-480.jpg",
+    image: "/assets/Hero/hero-480.jpg",
     datePublished: "2025-11-01",
     dateModified: "2025-11-10",
   };
