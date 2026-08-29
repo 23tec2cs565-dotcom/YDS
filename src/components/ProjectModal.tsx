@@ -426,7 +426,7 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                   )}
                 </div>
 
-                <h2 className="text-3xl font-serif text-white mb-2">{project.title}</h2>
+                <div className="text-3xl font-serif text-white mb-2">{project.title}</div>
                 <div className="flex items-center gap-2 text-sm">
                   <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 ${getLocationStyles()}`}>
                     <MapPin size={14} /> {project.location}

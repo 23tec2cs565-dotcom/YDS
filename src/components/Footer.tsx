@@ -329,9 +329,9 @@ const Footer: React.FC = () => {
 
             {/* Col 2: Services — 2 cols × 3 rows */}
             <div>
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
                 Services
-              </h3>
+              </p>
               <nav className="mt-3 sm:mt-4 grid grid-cols-2 gap-x-3 gap-y-0.5">
                 {serviceList.map((service) => (
                   <Link
@@ -348,9 +348,9 @@ const Footer: React.FC = () => {
 
             {/* Col 3: Company — 2 cols × 4 rows */}
             <div>
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
                 Company
-              </h3>
+              </p>
               <nav className="mt-3 sm:mt-4 grid grid-cols-2 gap-x-3 gap-y-0.5">
                 {companyLinks.map((link) => (
                   <Link
@@ -367,9 +367,9 @@ const Footer: React.FC = () => {
 
             {/* Col 4: Contact */}
             <div>
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#E6B566]">
                 Get In Touch
-              </h3>
+              </p>
               <div className="mt-3 sm:mt-4 space-y-2.5 sm:space-y-3">
                 <a
                   href="https://maps.google.com/?q=Orbit+Mall+Civil+Lines+Jaipur"

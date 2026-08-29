@@ -164,13 +164,13 @@ const BentoCard: React.FC<{
             {project.subtitle}
           </p>
         )}
-        <h3
+        <p
           className={`font-serif font-medium text-white leading-tight mb-1 sm:mb-2 ${
             large ? "text-base sm:text-3xl lg:text-4xl" : "text-sm sm:text-2xl"
           }`}
         >
           {project.title}
-        </h3>
+        </p>
         <p
           className={`text-white/60 leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-75 hidden sm:block ${
             large ? "text-sm sm:text-base line-clamp-3" : "text-sm line-clamp-2"

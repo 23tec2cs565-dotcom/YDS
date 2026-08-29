@@ -326,12 +326,12 @@ const About: React.FC = () => {
             <Reveal delay={0.2}>
               <div className="flex gap-8">
                 <div>
-                  <h3 className="text-4xl font-serif mb-1">8+</h3>
+                  <div className="text-4xl font-serif mb-1">8+</div>
                   <p className="text-xs uppercase tracking-wider text-gray-500">Years Exp.</p>
                 </div>
                 <div className="w-px bg-gray-200 h-12" />
                 <div>
-                  <h3 className="text-4xl font-serif mb-1">120+</h3>
+                  <div className="text-4xl font-serif mb-1">120+</div>
                   <p className="text-xs uppercase tracking-wider text-gray-500">Happy Clients</p>
                 </div>
               </div>
@@ -466,7 +466,7 @@ const ProjectsSection: React.FC = () => {
 
               <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
                 <span className="inline-block px-3 py-1 bg-[#E6B566]/10 text-[#E6B566] rounded-full text-xs font-bold uppercase tracking-wider mb-4">{selectedProject.category}</span>
-                <h3 className="text-4xl font-serif text-[#0B1220] mb-6">{selectedProject.title}</h3>
+                <div className="text-4xl font-serif text-[#0B1220] mb-6">{selectedProject.title}</div>
 
                 <div className="grid grid-cols-2 gap-6 py-6 border-y border-gray-100 mb-8">
                   <div>
@@ -649,7 +649,7 @@ const TestimonialsSection: React.FC = () => {
                     `<svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' fill='#B08D57'>${TESTIMONIALS[index].name.charAt(0)}</text></svg>`
                   )}`;
                 }} />
-                <h3 className="font-bold text-[#0B1220]">{TESTIMONIALS[index].name}</h3>
+                <div className="font-bold text-[#0B1220]">{TESTIMONIALS[index].name}</div>
                 <p className="text-sm text-gray-500">{TESTIMONIALS[index].role}</p>
               </div>
             </MotionDiv>
@@ -668,7 +668,7 @@ const LeadershipSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6">
         <Reveal>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif mb-4">The Leadership</h2>
+            <div className="text-4xl font-serif mb-4">The Leadership</div>
             <p className="text-gray-500">
               Founders & core leadership shaping our design language.
             </p>
@@ -696,9 +696,9 @@ const LeadershipSection: React.FC = () => {
                     }}
                   />
                 </div>
-                <h3 className="text-xl font-bold text-[#0B1220]">
+                <div className="text-xl font-bold text-[#0B1220]">
                   {member.name}
-                </h3>
+                </div>
                 <p className="text-xs uppercase tracking-widest text-[#E6B566] font-bold mt-1 mb-4">
                   {member.role}
                 </p>
@@ -729,7 +729,7 @@ const StatsSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat, i) => (
           <Reveal key={stat.id} delay={i * 0.1} className="text-center">
-            <h3 className="text-4xl font-serif text-[#0B1220] mb-1">{stat.value}</h3>
+            <div className="text-4xl font-serif text-[#0B1220] mb-1">{stat.value}</div>
             <p className="text-xs font-bold text-[#E6B566] uppercase tracking-wider">{stat.label}</p>
             <p className="text-[10px] text-gray-400 mt-1">{stat.subLabel}</p>
           </Reveal>
