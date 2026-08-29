@@ -23,8 +23,8 @@ export const COMPARISONS_DATA: ComparisonItem[] = [
     title: "Entrance Foyer Renovation",
     category: "Turnkey Renovation",
     location: "New Light Colony, Tonk Road, Jaipur",
-    beforeImage: "/assets/optimized/Projects/Foyer/2.webp",
-    afterImage: "/assets/optimized/Projects/Foyer/1.webp",
+    beforeImage: "/assets/Projects/Foyer/2.webp",
+    afterImage: "/assets/Projects/Foyer/1.webp",
     beforeLabel: "RAW SITE / BEFORE",
     afterLabel: "YOUNICK EXECUTION / AFTER",
     description:
@@ -40,8 +40,8 @@ export const COMPARISONS_DATA: ComparisonItem[] = [
     title: "Mr. Goyal's Residential Renovation",
     category: "Complete Overhaul",
     location: "Jaipur, Rajasthan",
-    beforeImage: "/assets/optimized/Projects/Mr. Goyal's renovation project/2.webp",
-    afterImage: "/assets/optimized/Projects/Mr. Goyal's renovation project/1.webp",
+    beforeImage: "/assets/Projects/Mr. Goyal's renovation project/2.webp",
+    afterImage: "/assets/Projects/Mr. Goyal's renovation project/1.webp",
     beforeLabel: "STRUCTURAL DEMOLITION",
     afterLabel: "FINAL LIVING INTERIOR",
     description:
@@ -57,8 +57,8 @@ export const COMPARISONS_DATA: ComparisonItem[] = [
     title: "Chhoti Bai Jewellers Showroom",
     category: "Commercial Turnkey",
     location: "City Center, Sansar Chandra Road, Jaipur",
-    beforeImage: "/assets/optimized/Projects/Chhoti bai jewellers/2.webp",
-    afterImage: "/assets/optimized/Projects/Chhoti bai jewellers/1.webp",
+    beforeImage: "/assets/Projects/Chhoti bai jewellers/2.webp",
+    afterImage: "/assets/Projects/Chhoti bai jewellers/1.webp",
     beforeLabel: "BARE RETAIL SHELL",
     afterLabel: "LUXURY SHOWROOM",
     description:

@@ -25,9 +25,9 @@ export const teamMembers: TeamMember[] = [
     id: "founder",
     name: "Nikhil Sain",
     role: "Founder & Lead Designer",
-    image: "/assets/optimized/team/Nikhil/Nikhil-1024.jpeg?v=2",
-    image768: "/assets/optimized/team/Nikhil/Nikhil-1024.jpeg?v=2",
-    image480: "/assets/optimized/team/Nikhil/Nikhil-1024.jpeg?v=2",
+    image: "/assets/team/Nikhil/Nikhil-1024.jpeg?v=2",
+    image768: "/assets/team/Nikhil/Nikhil-1024.jpeg?v=2",
+    image480: "/assets/team/Nikhil/Nikhil-1024.jpeg?v=2",
     description:
       "Nikhil Sain is an experienced and dynamic interior designer who pursued his Master's at Arch College of Interior and Business in 2017. His philosophy centers on incorporating the client's needs into the design with a creative flair. He focuses on finishes, furnishings, materials and practical solutions that last.",
     expertise: [
@@ -53,9 +53,9 @@ export const teamMembers: TeamMember[] = [
     id: "co-founder",
     name: "Kamal Rajoriya",
     role: "Co-Founder",
-    image: "/assets/optimized/team/Kamal/Kamal-1024.jpg",
-    image768: "/assets/optimized/team/Kamal/Kamal-768.jpg",
-    image480: "/assets/optimized/team/Kamal/Kamal-480.jpg",
+    image: "/assets/team/Kamal/Kamal-1024.jpg",
+    image768: "/assets/team/Kamal/Kamal-768.jpg",
+    image480: "/assets/team/Kamal/Kamal-480.jpg",
     description:
       "Kamal Kumawat is an expert civil engineer who graduated from the University of Engineering and Management, Jaipur. His client-centric approach and technical knowledge ensure projects are built to high standards with efficient execution.",
     expertise: [
@@ -79,9 +79,9 @@ export const teamMembers: TeamMember[] = [
     id: "pooja-sain",
     name: "Pooja Sain",
     role: "Interior Designer",
-    image: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
-    image768: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
-    image480: "/assets/optimized/team/Pooja/Pooja-1024.png?v=2",
+    image: "/assets/team/Pooja/Pooja-1024.png?v=2",
+    image768: "/assets/team/Pooja/Pooja-1024.png?v=2",
+    image480: "/assets/team/Pooja/Pooja-1024.png?v=2",
     description:
       "Pooja leads design thinking and operations, bringing sustainable architecture and refined detailing to every project.",
     expertise: [
@@ -103,9 +103,9 @@ export const teamMembers: TeamMember[] = [
     id: "nikhil-verma",
     name: "Nikhil Verma",
     role: "Interior Designer",
-    image: "/assets/optimized/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
-    image768: "/assets/optimized/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
-    image480: "/assets/optimized/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
+    image: "/assets/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
+    image768: "/assets/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
+    image480: "/assets/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
     description:
       "Nikhil Verma is a Jaipur-based Interior Designer with a creative mind and a passion for transforming spaces. He is continuously learning and exploring new design ideas, focusing on creating interiors that are functional, aesthetic, and unique.",
     expertise: [
@@ -128,9 +128,9 @@ export const teamMembers: TeamMember[] = [
     id: "keshav-sain",
     name: "Keshav Sain",
     role: "Technical Assistant",
-    image: "/assets/optimized/team/Keshav/Keshav-768.jpeg?v=2",
-    image768: "/assets/optimized/team/Keshav/Keshav-768.jpeg?v=2",
-    image480: "/assets/optimized/team/Keshav/Keshav-480.jpeg?v=2",
+    image: "/assets/team/Keshav/Keshav-768.jpeg?v=2",
+    image768: "/assets/team/Keshav/Keshav-768.jpeg?v=2",
+    image480: "/assets/team/Keshav/Keshav-480.jpeg?v=2",
     description:
       "Keshav supports design thinking and operations, ensuring technical excellence in every project.",
     expertise: [
@@ -153,9 +153,9 @@ export const teamMembers: TeamMember[] = [
     id: "rahul-kumawat",
     name: "Rahul Kumawat",
     role: "Member",
-    image: "/assets/optimized/team/Rahul/Rahul-768.jpeg?v=2",
-    image768: "/assets/optimized/team/Rahul/Rahul-768.jpeg?v=2",
-    image480: "/assets/optimized/team/Rahul/Rahul-480.jpeg?v=2",
+    image: "/assets/team/Rahul/Rahul-768.jpeg?v=2",
+    image768: "/assets/team/Rahul/Rahul-768.jpeg?v=2",
+    image480: "/assets/team/Rahul/Rahul-480.jpeg?v=2",
     description:
       "Rahul supports design thinking and operations, ensuring technical excellence in every project.",
     expertise: [

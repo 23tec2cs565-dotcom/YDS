@@ -19,7 +19,7 @@ function handleImgError(ev: React.SyntheticEvent<HTMLImageElement>) {
   const el = ev.currentTarget;
   if (!el.dataset.fallback) {
     el.dataset.fallback = "1";
-    el.src = "/assets/placeholder-rect.jpg"; // keep or replace with your optimized fallback
+    el.src = "/assets/Placeholder/placeholder-rect.jpg"; // keep or replace with your optimized fallback
   }
 }
 
@@ -78,7 +78,7 @@ const ServiceDetails: React.FC = () => {
         <header className="relative h-[60vh] min-h-[420px] bg-[#0F0F10] text-white flex items-end" role="region" aria-label={`${service.title} hero`}>
           <div className="absolute inset-0">
             <img
-              src={service.image || "/assets/placeholder-rect.jpg"}
+              src={service.image || "/assets/Placeholder/placeholder-rect.jpg"}
               alt={`${service.title} — Professional Architecture and Interior Service`}
               title={`${service.title} — Younick Design Studio Jaipur`}
               className="w-full h-full object-cover opacity-60"
@@ -220,7 +220,7 @@ const ServiceDetails: React.FC = () => {
                   <Link to={`/projects?project=${encodeURIComponent(p.id)}`} className="block rounded-lg overflow-hidden" aria-label={`Open project ${p.title}`}>
                     <div className="relative aspect-[4/3] bg-gray-800 mb-3 rounded-lg overflow-hidden">
                       <img
-                        src={p.image || "/assets/placeholder-rect.jpg"}
+                        src={p.image || "/assets/Placeholder/placeholder-rect.jpg"}
                         alt={`${p.title} — ${p.category || "Architecture"} in ${p.location || "Jaipur"}`}
                         title={`${p.title} — ${p.category || "Architecture"} by Younick Design Studio`}
                         className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"

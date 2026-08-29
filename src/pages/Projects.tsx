@@ -20,7 +20,7 @@ const handleImgError = (e: React.SyntheticEvent<HTMLImageElement>) => {
   const img = e.currentTarget;
   if (!img.dataset.fallback) {
     img.dataset.fallback = "1";
-    img.src = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"; 
+    img.src = "/assets/Placeholder/Mock-9.avif"; 
     img.alt = "Younick studio image fallback";
   }
 };
@@ -271,21 +271,21 @@ const heroSlides = {
       titleLine1: "Bespoke Interiors,",
       titleLine2: "Crafted Comfort",
       desc: "Timeless residential and commercial spaces designed with luxury finishes, customized furniture, and sophisticated lighting layouts.",
-      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=75",
+      image: "/assets/Placeholder/Mock-1.avif",
     },
     {
       badge: "Civil Construction",
       titleLine1: "Structural Mastery,",
       titleLine2: "Solid Foundations",
       desc: "Turnkey structural engineering and civil construction built to safety standards, featuring natural ventilation and modern planning.",
-      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=75",
+      image: "/assets/Placeholder/Mock-2.avif",
     },
     {
       badge: "Space Renovation",
       titleLine1: "Revitalized Spaces,",
       titleLine2: "Reimagined Flows",
       desc: "Upgrading spatial flows, circulation, and finishes to revitalize existing structures into highly functional modern environments.",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=75",
+      image: "/assets/Placeholder/Mock-3.avif",
     },
   ],
   "Interior Design": {
@@ -293,35 +293,35 @@ const heroSlides = {
     titleLine1: "Bespoke Interiors,",
     titleLine2: "Crafted Comfort",
     desc: "Timeless residential and commercial spaces designed with luxury finishes, customized furniture, and sophisticated lighting layouts.",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=75",
+    image: "/assets/Placeholder/Mock-1.avif",
   },
   "Construction": {
     badge: "Civil Construction",
     titleLine1: "Structural Mastery,",
     titleLine2: "Solid Foundations",
     desc: "Turnkey structural engineering and civil construction built to safety standards, featuring natural ventilation and modern planning.",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=75",
+    image: "/assets/Placeholder/Mock-1.avif",
   },
   "Renovation": {
     badge: "Space Renovation",
     titleLine1: "Revitalized Spaces,",
     titleLine2: "Reimagined Flows",
     desc: "Upgrading spatial flows, circulation, and finishes to revitalize existing structures into highly functional modern environments.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=75",
+    image: "/assets/Placeholder/Mock-6.avif",
   },
   "3D Visualization": {
     badge: "3D Visualization",
     titleLine1: "Virtual Concepts,",
     titleLine2: "Visualized Realities",
     desc: "Photorealistic 3D modeling and rendering to help visualize materials, lighting, and layout before construction begins.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75",
+    image: "/assets/Placeholder/Mock-7.avif",
   },
   "Consultation": {
     badge: "Design Consultation",
     titleLine1: "Expert Guidance,",
     titleLine2: "Strategic Planning",
     desc: "Professional consultation on space planning, material choices, structural viability, and design direction.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=75",
+    image: "/assets/Placeholder/Mock-8.avif",
   }
 };
 

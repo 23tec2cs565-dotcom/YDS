@@ -17,7 +17,7 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
   if (!img.dataset.fallback) {
     img.dataset.fallback = "1";
-    img.src = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"; 
+    img.src = "/assets/Placeholder/placeholder.jpg"; 
     img.alt = "Younick studio image fallback";
   }
 }
@@ -407,7 +407,7 @@ const AboutContent = () => {
                 <div className="relative flex-1 overflow-hidden">
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img
-                    src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800"
+                    src="/assets/About/About-1.avif"
                     alt="Bespoke Teak Joinery Woodwork by Younick Design Studio"
                     title="Bespoke Teak Joinery Woodwork Craftsmanship by Younick Design Studio"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -432,7 +432,7 @@ const AboutContent = () => {
                 <div className="relative flex-1 overflow-hidden">
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800"
+                    src="/assets/About/About-2.avif"
                     alt="Hand-Polished Brass Hardware Detailing by Younick Design Studio"
                     title="Hand-Polished Brass Hardware Detailing by Younick Design Studio"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -457,7 +457,7 @@ const AboutContent = () => {
                 <div className="relative flex-1 overflow-hidden">
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
                   <img
-                    src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800"
+                    src="/assets/About/About-3.avif"
                     alt="Book-Matched Stone and Italian Marble by Younick Design Studio"
                     title="Book-Matched Stone and Italian Marble Masonry by Younick Design Studio"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

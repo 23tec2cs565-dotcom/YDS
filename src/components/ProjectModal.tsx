@@ -545,7 +545,7 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                             onError={(e) => {
                               const img = e.currentTarget;
                               img.onerror = null;
-                              img.src = "/assets/placeholder.jpg";
+                              img.src = "/assets/Placeholder/placeholder.jpg";
                             }}
                           />
                           <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/70 text-[9px] font-mono text-white/80">
@@ -655,7 +655,7 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                             onError={(e) => {
                               const img = e.currentTarget;
                               img.onerror = null;
-                              img.src = "/assets/placeholder.jpg";
+                              img.src = "/assets/Placeholder/placeholder.jpg";
                             }}
                           />
                         </div>

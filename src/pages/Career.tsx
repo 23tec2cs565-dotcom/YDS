@@ -21,7 +21,7 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
   if (!img.dataset.fallback) {
     img.dataset.fallback = "1";
-    img.src = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"; 
+    img.src = "/assets/Placeholder/Mock-9.avif"; 
     img.alt = "Younick studio image fallback";
   }
 }
@@ -291,7 +291,7 @@ const Career: React.FC = () => {
               <div className="absolute -top-10 -left-10 w-32 h-32 border-l-2 border-t-2 border-[#B08D57]/30 pointer-events-none" />
               <div className="relative rounded-sm overflow-hidden h-[450px]">
                 <img 
-                  src="https://images.unsplash.com/photo-1503387762-592dedb80256?auto=format&fit=crop&q=80&w=800" 
+                  src="/assets/Career/Career-1.avif" 
                   alt="Architecture and interior design workspace at Younick Design Studio" 
                   title="Architecture and Interior Design Careers at Younick Design Studio Jaipur"
                   className="w-full h-full object-cover grayscale brightness-90 contrast-110"
@@ -500,7 +500,7 @@ const Career: React.FC = () => {
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
+                src="/assets/Career/Career-1.avif"
                 alt="Stone and luxury interior materials checking at Younick Design Studio"
                 title="Material Sourcing and Quality Inspection — Younick Design Studio"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -515,7 +515,7 @@ const Career: React.FC = () => {
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
-                src="https://images.unsplash.com/photo-1503387762-592dedb80256?auto=format&fit=crop&q=80&w=800"
+                src="/assets/Placeholder/Mock-7.avif"
                 alt="Drafting architectural blueprints and 3D visual models"
                 title="Drafting CAD Blueprints & 3D Architectural Visuals"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -530,7 +530,7 @@ const Career: React.FC = () => {
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img
-                src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800"
+                src="/assets/Career/Career-3.avif"
                 alt="Bespoke furniture joinery and civil site execution"
                 title="Bespoke Woodwork Craft and Turnkey Site Execution"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

@@ -48,7 +48,7 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
   if (!img.dataset.fallback) {
     img.dataset.fallback = "1";
-    img.src = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"; 
+    img.src = "/assets/Placeholder/Mock-9.avif"; 
     img.alt = "Younick studio image fallback";
   }
 }
@@ -327,7 +327,7 @@ const ServicesPage: React.FC = () => {
       <header className="mt-24 relative bg-[#0F0F10] text-white overflow-hidden min-h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
+            src="/assets/services/Service-1.avif"
             alt="Younick Design Studio Services and Architectural Expertise"
             title="Comprehensive Interior Design and Turnkey Architecture Services in Jaipur"
             className="w-full h-full object-cover opacity-40 grayscale-[20%]"
@@ -426,7 +426,7 @@ const ServicesPage: React.FC = () => {
                 <div className="absolute inset-0 bg-[#B08D57] transform translate-x-3 translate-y-3 rounded-2xl" />
                 <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                   <img
-                    src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop"
+                    src="/assets/services/Service-2.avif"
                     alt="Precision craftsmanship and interior architecture process"
                     title="Precision Interior Execution Process by Younick Design Studio"
                     className="w-full h-full object-cover"

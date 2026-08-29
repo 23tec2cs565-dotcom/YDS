@@ -8,9 +8,9 @@ const HeroGradientMesh: React.FC<{ className?: string }> = ({ className = "" }) 
   
   // High-Resolution 2.5K Unsplash Photography (optimizes automatically, retina-ready)
   const images = [
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1440&q=75",
-    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1440&q=75",
-    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1440&q=75",
+    "/assets/HGM/HGM-1.avif", // PCP Sikar (Interior Design)
+    "/assets/HGM/HGM-2.avif", // Bright School (Construction)
+    "/assets/HGM/HGM-3.avif", // JK LON Hospital (Renovation)
   ];
   
   const [currentIndex, setCurrentIndex] = useState(0);

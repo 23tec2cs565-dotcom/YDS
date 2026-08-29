@@ -22,7 +22,7 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
   if (!img.dataset.fallback) {
     img.dataset.fallback = "1";
-    img.src = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"; 
+    img.src = "/assets/Placeholder/Mock-4.jpg"; 
     img.alt = "Younick studio image fallback";
   }
 }

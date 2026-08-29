@@ -26,11 +26,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
     project.image ||
     (Array.isArray(project.images) && project.images.length > 0
       ? project.images[0]
-      : "/assets/placeholder.jpg");
+      : "/assets/Placeholder/placeholder.jpg");
 
   const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.currentTarget;
-    img.src = "/assets/placeholder.jpg";
+    img.src = "/assets/Placeholder/placeholder.jpg";
   };
 
   return (

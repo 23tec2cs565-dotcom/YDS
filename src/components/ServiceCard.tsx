@@ -40,7 +40,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.currentTarget as HTMLImageElement;
     img.onerror = null;
-    img.src = "/assets/placeholder.jpg";
+    img.src = "/assets/Placeholder/placeholder.jpg";
   };
 
   /* =========================

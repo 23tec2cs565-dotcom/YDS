@@ -66,7 +66,7 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
   if (!img.dataset.fallback) {
     img.dataset.fallback = "1";
-    img.src = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800"; 
+    img.src = "/assets/Placeholder/Mock-9.avif";
     img.alt = "Younick studio image fallback";
   }
 }
@@ -182,7 +182,7 @@ const Hero: React.FC = () => {
   // Back panel static image from first featured project
   const featuredProjects = projects.filter((p) => p.featured);
   const heroProject = featuredProjects[0] ?? projects[0];
-  const heroBackImg = (heroProject as ExtendedProject)?.imageUrl ?? heroProject?.image ?? "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
+  const heroBackImg = (heroProject as ExtendedProject)?.imageUrl ?? heroProject?.image ?? "/assets/Hero/hero-1920.webp";
 
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-[#FAFAFB]">

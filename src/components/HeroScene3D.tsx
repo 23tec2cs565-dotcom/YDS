@@ -14,9 +14,9 @@ const HeroScene3D: React.FC<HeroSceneProps> = ({ className = "", activeIndex, cu
   
   // High-Resolution 2.5K Unsplash Photography (optimizes automatically, retina-ready)
   const defaultImages = [
-    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2560&q=85", // PCP Sikar (Interior Design)
-    "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2560&q=85", // Bright School (Construction)
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2560&q=85", // JK LON Hospital (Renovation)
+    "/assets/HeroScreen3D/HS3D-1.avif", // PCP Sikar (Interior Design)
+    "/assets/HeroScreen3D/HS3D-2.avif", // Bright School (Construction)
+    "/assets/HeroScreen3D/HS3D-3.avif", // JK LON Hospital (Renovation)
   ];
 
   const images = customImages && customImages.length > 0 ? customImages : defaultImages;
