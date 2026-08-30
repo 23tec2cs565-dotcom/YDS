@@ -123,10 +123,12 @@ const BentoCard: React.FC<{
         {!loaded && (
           <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 animate-pulse" />
         )}
-        <img
+        <img decoding="async"
           src={project.image}
           alt={`${project.title} — ${project.category || "Architecture"} in ${project.location || "Jaipur"}`}
           title={`${project.title} — ${project.category || "Architecture"} by Younick Design Studio`}
+          width="1000"
+          height="750"
           className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
@@ -495,8 +497,9 @@ const Projects: React.FC = () => {
   );
 
   const applyCategory = (value: string) => {
-    setCategory(value);
-    updateParams({ filter: value });
+    const cleanValue = value === "all" ? "all" : slugify(value);
+    setCategory(cleanValue);
+    updateParams({ filter: cleanValue === "all" ? undefined : cleanValue });
   };
 
   const clearAll = () => {
@@ -870,10 +873,12 @@ const Projects: React.FC = () => {
                           <div className="flex flex-col sm:flex-row">
                             {/* Thumbnail */}
                             <div className="sm:w-48 h-40 sm:h-auto overflow-hidden flex-shrink-0">
-                              <img
+                              <img decoding="async"
                                 src={proj.image}
                                 alt={`${proj.title} — Architectural Case Study`}
                                 title={`${proj.title} — Architecture and Interior Design by Younick Design Studio`}
+                                width="400"
+                                height="300"
                                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 loading="lazy"
                                 onError={handleImgError}

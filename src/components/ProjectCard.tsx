@@ -73,6 +73,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           alt={`${project.title} — ${project.category || "Architecture & Interior Design"} in ${project.location || "Jaipur"}`}
           title={`${project.title} — ${project.category || "Architecture & Interior Design"} in ${project.location || "Jaipur"}`}
+          width="800"
+          height="1000"
           className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}

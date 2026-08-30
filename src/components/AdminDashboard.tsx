@@ -1225,9 +1225,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex items-center gap-3.5">
                             <div className="relative overflow-hidden rounded-xl w-14 h-14 border border-white/10 flex-shrink-0 bg-black/50">
-                              <img
+                              <img decoding="async" loading="lazy"
                                 src={p.image}
                                 alt=""
+                                width="56"
+                                height="56"
                                 onError={handleImgError}
                                 className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                               />
@@ -1309,9 +1311,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                       className="bg-black/10 border border-white/5 rounded-xl p-4 flex items-center justify-between gap-4 opacity-75 hover:opacity-100 transition duration-300"
                     >
                       <div className="flex items-center gap-3">
-                        <img
+                        <img decoding="async" loading="lazy"
                           src={p.image}
                           alt=""
+                          width="44"
+                          height="44"
                           onError={handleImgError}
                           className="w-11 h-11 object-cover rounded-lg border border-white/5"
                         />

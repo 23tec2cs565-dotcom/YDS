@@ -290,10 +290,12 @@ const Career: React.FC = () => {
             <div className="lg:col-span-5 relative hidden lg:block">
               <div className="absolute -top-10 -left-10 w-32 h-32 border-l-2 border-t-2 border-[#B08D57]/30 pointer-events-none" />
               <div className="relative rounded-sm overflow-hidden h-[450px]">
-                <img 
+                <img decoding="async" loading="lazy" 
                   src="/assets/Career/Career-1.avif" 
                   alt="Architecture and interior design workspace at Younick Design Studio" 
                   title="Architecture and Interior Design Careers at Younick Design Studio Jaipur"
+                  width="1200"
+                  height="800"
                   className="w-full h-full object-cover grayscale brightness-90 contrast-110"
                   onError={handleImgError}
                 />
@@ -499,10 +501,12 @@ const Career: React.FC = () => {
             {/* Card 1 */}
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
-              <img
+              <img decoding="async" loading="lazy"
                 src="/assets/Career/Career-1.avif"
                 alt="Stone and luxury interior materials checking at Younick Design Studio"
                 title="Material Sourcing and Quality Inspection — Younick Design Studio"
+                width="600"
+                height="400"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />
@@ -514,10 +518,12 @@ const Career: React.FC = () => {
             {/* Card 2 */}
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
-              <img
+              <img decoding="async" loading="lazy"
                 src="/assets/Placeholder/Mock-7.avif"
                 alt="Drafting architectural blueprints and 3D visual models"
                 title="Drafting CAD Blueprints & 3D Architectural Visuals"
+                width="600"
+                height="400"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />
@@ -529,10 +535,12 @@ const Career: React.FC = () => {
             {/* Card 3 */}
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
-              <img
+              <img decoding="async" loading="lazy"
                 src="/assets/Career/Career-3.avif"
                 alt="Bespoke furniture joinery and civil site execution"
                 title="Bespoke Woodwork Craft and Turnkey Site Execution"
+                width="600"
+                height="400"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={handleImgError}
               />

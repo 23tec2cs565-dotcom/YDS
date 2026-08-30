@@ -326,10 +326,12 @@ const ServicesPage: React.FC = () => {
       {/* Hero */}
       <header className="mt-24 relative bg-[#0F0F10] text-white overflow-hidden min-h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
-          <img
+          <img decoding="async" loading="lazy"
             src="/assets/services/Service-1.avif"
             alt="Younick Design Studio Services and Architectural Expertise"
             title="Comprehensive Interior Design and Turnkey Architecture Services in Jaipur"
+            width="1920"
+            height="800"
             className="w-full h-full object-cover opacity-40 grayscale-[20%]"
             onError={handleImgError}
           />
@@ -425,10 +427,12 @@ const ServicesPage: React.FC = () => {
               <div className="relative">
                 <div className="absolute inset-0 bg-[#B08D57] transform translate-x-3 translate-y-3 rounded-2xl" />
                 <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
-                  <img
+                  <img decoding="async" loading="lazy"
                     src="/assets/services/Service-2.avif"
                     alt="Precision craftsmanship and interior architecture process"
                     title="Precision Interior Execution Process by Younick Design Studio"
+                    width="800"
+                    height="600"
                     className="w-full h-full object-cover"
                     onError={handleImgError}
                   />

@@ -229,6 +229,9 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
           <NavLink to="/" end className="flex items-center space-x-2.5 sm:space-x-3 group">
             <img
               src="/younick-crest.png"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               alt="Younick Design Studio Logo"
               title="Younick Design Studio — Luxury Interior Design & Turnkey Architecture Jaipur"
               width="44"

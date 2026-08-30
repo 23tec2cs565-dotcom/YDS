@@ -50,10 +50,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     return (
       <article className="group relative bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-xl transition-transform duration-300">
         <div className="relative h-48 overflow-hidden">
-          <img
+          <img decoding="async"
             src={service.image}
             alt={`${service.title} — Professional Interior & Architecture Service`}
             title={`${service.title} — Younick Design Studio Services Jaipur`}
+            width="600"
+            height="400"
             loading="lazy"
             onError={handleImgError}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -110,10 +112,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     >
       {/* Image */}
       <div className="w-full md:w-1/2 bg-gray-100">
-        <img
+        <img decoding="async"
           src={service.image}
           alt={`${service.title} — Younick Design Studio Architectural Execution`}
           title={`${service.title} — Younick Design Studio Services Jaipur`}
+          width="800"
+          height="600"
           loading="lazy"
           onError={handleImgError}
           className="w-full h-[360px] md:h-full object-cover"

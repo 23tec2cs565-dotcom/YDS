@@ -81,6 +81,8 @@ const ServiceDetails: React.FC = () => {
               src={service.image || "/assets/Placeholder/placeholder-rect.jpg"}
               alt={`${service.title} — Professional Architecture and Interior Service`}
               title={`${service.title} — Younick Design Studio Jaipur`}
+              width="1920"
+              height="800"
               className="w-full h-full object-cover opacity-60"
               loading="lazy"
               decoding="async"
@@ -269,6 +271,8 @@ const ServiceDetails: React.FC = () => {
                         src={p.image || "/assets/Placeholder/placeholder-rect.jpg"}
                         alt={`${p.title} — ${p.category || "Architecture"} in ${p.location || "Jaipur"}`}
                         title={`${p.title} — ${p.category || "Architecture"} by Younick Design Studio`}
+                        width="800"
+                        height="600"
                         className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                         loading="lazy"
                         decoding="async"

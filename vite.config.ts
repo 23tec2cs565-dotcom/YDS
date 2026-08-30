@@ -12,13 +12,31 @@ export default defineConfig({
     cssCodeSplit: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom", "react-router-dom", "react-helmet-async"],
-          motion: ["framer-motion"],
-          lucide: ["lucide-react"],
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("react-dom") || id.includes("react/")) {
+              return "vendor-react";
+            }
+            if (id.includes("react-router")) {
+              return "vendor-router";
+            }
+            if (id.includes("framer-motion")) {
+              return "vendor-motion";
+            }
+            if (id.includes("lucide-react")) {
+              return "vendor-lucide";
+            }
+            if (id.includes("react-helmet")) {
+              return "vendor-helmet";
+            }
+            return "vendor-libs";
+          }
+          if (id.includes("/src/data/projects")) {
+            return "data-projects";
+          }
         },
       },
     },
-    chunkSizeWarningLimit: 650,
+    chunkSizeWarningLimit: 500,
   },
 });

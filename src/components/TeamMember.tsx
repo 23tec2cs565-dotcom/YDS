@@ -75,6 +75,8 @@ const TeamMember: React.FC<TeamMemberProps> = ({ member, index = 0 }) => {
           sizes={srcSet ? sizes : undefined}
           alt={`${member.name} — ${member.role} at Younick Design Studio`}
           title={`${member.name} — ${member.role} at Younick Design Studio`}
+          width="600"
+          height="800"
           loading="lazy"
           decoding="async"
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

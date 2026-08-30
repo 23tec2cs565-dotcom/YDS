@@ -308,6 +308,8 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                     loop
                     muted
                     playsInline
+                    width="1200"
+                    height="900"
                     className="max-h-full max-w-full object-contain rounded-lg md:rounded-xl shadow-2xl bg-black"
                   />
                   <div className="absolute bottom-3 left-3 z-20 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md border border-white/10 text-[11px] text-[#E6B566] flex items-center gap-1.5 font-medium">
@@ -322,6 +324,8 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                     src={imagesList[activePhotoIndex]}
                     alt={`${project.title} — Architectural Photo ${activePhotoIndex + 1}`}
                     title={`${project.title} — Photo ${activePhotoIndex + 1} by Younick Design Studio`}
+                    width="1200"
+                    height="900"
                     className="max-h-full max-w-full object-contain rounded-lg md:rounded-xl shadow-xl"
                     loading="lazy"
                     decoding="async"
@@ -537,10 +541,12 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                               : "border-white/10 opacity-70 hover:opacity-100 hover:border-white/30"
                           }`}
                         >
-                          <img
+                          <img decoding="async" loading="lazy"
                             src={src}
                             alt={`${project.title} photo ${i + 1}`}
                             title={`${project.title} — Photo ${i + 1}`}
+                            width="160"
+                            height="120"
                             className="h-full w-full object-cover"
                             onError={(e) => {
                               const img = e.currentTarget;
@@ -595,6 +601,8 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                           <div className="relative aspect-video w-full bg-black flex items-center justify-center overflow-hidden">
                             <video
                               src={videoSrc}
+                              width="320"
+                              height="180"
                               className="h-full w-full object-cover opacity-50 group-hover/vid:opacity-75 transition-opacity"
                               muted
                               preload="metadata"
@@ -648,9 +656,11 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                         className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 p-3 text-left hover:border-[#E6B566]/60 transition"
                       >
                         <div className="h-12 w-16 overflow-hidden rounded-md bg-black/40 flex-shrink-0">
-                          <img
+                          <img decoding="async" loading="lazy"
                             src={p.image}
                             alt={p.title}
+                            width="64"
+                            height="48"
                             className="h-full w-full object-cover"
                             onError={(e) => {
                               const img = e.currentTarget;
@@ -684,7 +694,7 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                   rel="noopener noreferrer"
                   className="rounded-md border border-[#25D366]/40 bg-[#25D366]/10 px-3.5 py-2 text-sm text-[#25D366] hover:bg-[#25D366] hover:text-black font-medium transition flex items-center gap-1.5"
                 >
-                  <img src="/icons/whatsapp-logo-new.png" alt="WhatsApp Consultation" title="Chat on WhatsApp with Younick Design Studio" className="w-6 h-6 object-contain" />
+                  <img decoding="async" loading="lazy" src="/icons/whatsapp-logo-new.png" alt="WhatsApp Consultation" title="Chat on WhatsApp with Younick Design Studio" width="24" height="24" className="w-6 h-6 object-contain" />
                   <span>WhatsApp</span>
                 </a>
                 <a href="/contact" className="rounded-md bg-[#E6B566] px-4 py-2 text-sm text-[#1b1b1b] font-semibold shadow-lg shadow-[#E6B566]/20">

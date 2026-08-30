@@ -88,10 +88,12 @@ export const WhatsAppButton: React.FC = () => {
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-1.5 border border-[#1E3A5F]/20 shadow-md flex items-center justify-center">
-                    <img
+                    <img decoding="async" loading="lazy"
                       src="/younick-logo.PNG"
                       alt="Younick Design Studio Logo"
                       title="Younick Design Studio — Official WhatsApp Support"
+                      width="48"
+                      height="48"
                       className="w-full h-full object-contain"
                       onError={(e) => {
                         (e.currentTarget as HTMLElement).style.display = "none";
@@ -117,7 +119,7 @@ export const WhatsAppButton: React.FC = () => {
             <div className="p-4 sm:p-5 space-y-4">
               <div className="bg-white/85 border border-[#adc4d6] p-3.5 rounded-2xl shadow-sm">
                 <div className="flex items-center gap-2 text-[#1E3A5F] text-xs font-bold uppercase tracking-wider mb-1">
-                  <img src="/icons/whatsapp-logo-new.png" alt="WhatsApp Official" title="Chat with Younick Design Studio on WhatsApp" className="w-4 h-4 object-contain" />
+                  <img decoding="async" loading="lazy" src="/icons/whatsapp-logo-new.png" alt="WhatsApp Official" title="Chat with Younick Design Studio on WhatsApp" width="16" height="16" className="w-4 h-4 object-contain" />
                   <span>Direct WhatsApp Line</span>
                 </div>
                 <p className="text-xs text-slate-700 leading-relaxed font-normal">
@@ -212,10 +214,12 @@ export const WhatsAppButton: React.FC = () => {
               {/* Subtle Outer Glow Wave */}
               <span className="absolute inset-0 rounded-full bg-[#25D366]/35 animate-ping pointer-events-none -z-10" />
 
-              <img
+              <img decoding="async" loading="lazy"
                 src="/icons/whatsapp-logo-new.png"
                 alt="WhatsApp Chat"
                 title="Direct WhatsApp Consultation with Younick Design Studio"
+                width="40"
+                height="40"
                 className="w-40 h-40 sm:w-10 sm:h-10 object-contain drop-shadow-md transition-transform group-hover:scale-110"
                 onError={(e) => {
                   (e.currentTarget as HTMLElement).style.display = "none";

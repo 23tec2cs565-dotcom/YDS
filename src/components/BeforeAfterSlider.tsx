@@ -162,10 +162,12 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
             className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl select-none cursor-ew-resize bg-[#0B1220] border-4 border-white"
           >
             {/* After Image (Background Layer) */}
-            <img
+            <img decoding="async"
               src={activeItem.afterImage}
               alt={`${activeItem.title} - After Execution`}
               title={`${activeItem.title} - After Execution by Younick Design Studio`}
+              width="1200"
+              height="750"
               className="absolute inset-0 w-full h-full object-cover pointer-events-none"
               loading="eager"
             />
@@ -177,10 +179,12 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
                 clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
               }}
             >
-              <img
+              <img decoding="async"
                 src={activeItem.beforeImage}
                 alt={`${activeItem.title} - Before Renovation`}
                 title={`${activeItem.title} - Before Renovation State`}
+                width="1200"
+                height="750"
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                 loading="eager"
               />

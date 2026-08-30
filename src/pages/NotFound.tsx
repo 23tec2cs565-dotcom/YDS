@@ -258,10 +258,12 @@ const NotFound: React.FC = () => {
                 backgroundSize: "40px 40px",
               }}
             />
-            <img
+            <img decoding="async" loading="lazy"
               src="/assets/404/floorplan-overlay.png"
               alt=""
               aria-hidden="true"
+              width="1920"
+              height="1080"
               onError={handleImgError}
               className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 object-cover opacity-[0.02] invert blur-[2px]"
             />
@@ -278,17 +280,21 @@ const NotFound: React.FC = () => {
                   backgroundSize: "40px 40px",
                 }}
               />
-              <img
+              <img decoding="async" loading="lazy"
                 src="/assets/404/floorplan-overlay.png"
                 alt=""
                 aria-hidden="true"
+                width="1920"
+                height="1080"
                 onError={handleImgError}
                 className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 object-cover opacity-[0.05] invert mix-blend-screen blur-[0.5px]"
               />
-              <img
+              <img decoding="async" loading="lazy"
                 src="/assets/404/blueprint-collage.png"
                 alt=""
                 aria-hidden="true"
+                width="768"
+                height="500"
                 onError={handleImgError}
                 className="absolute left-1/2 top-[15%] w-[48rem] -translate-x-1/2 opacity-[0.06] invert mix-blend-screen blur-[1px]"
               />
@@ -323,10 +329,12 @@ const NotFound: React.FC = () => {
               <div className="absolute bottom-[1.4rem] left-1/2 h-[1rem] w-[50%] -translate-x-1/2 rounded-full bg-[#B08D57]/30 blur-[14px] pointer-events-none" />
 
               {/* Sofa image */}
-              <img
+              <img decoding="async"
                 src="/assets/404/luxury-sofa.png"
                 alt="Luxury Italian Leather Sofa by Younick Design Studio"
                 title="Page Not Found — Younick Design Studio Luxury Interior"
+                width="260"
+                height="180"
                 onError={handleImgError}
                 className="relative z-10 mx-auto w-[180px] sm:w-[220px] md:w-[260px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-105"
                 loading="eager"

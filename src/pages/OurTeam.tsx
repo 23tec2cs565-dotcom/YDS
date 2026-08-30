@@ -273,10 +273,12 @@ const OurTeam: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-auto sm:h-[340px]">
                   <Reveal className="h-full">
                     <Link to="/projects" className="group relative block h-[220px] sm:h-full overflow-hidden rounded-2xl shadow-sm">
-                      <img
+                      <img decoding="async"
                         src="/assets/gallery/g1-768.jpeg"
                         alt="Younick Design Studio workspace and architectural planning desk"
                         title="Younick Design Studio architectural workspace in Jaipur"
+                        width="768"
+                        height="500"
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                         onError={handleImgError}
@@ -292,10 +294,12 @@ const OurTeam: React.FC = () => {
                   <div className="grid grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 gap-4 h-[120px] sm:h-full">
                     <Reveal className="h-full">
                       <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
-                        <img
+                        <img decoding="async"
                           src="/assets/gallery/g2-768.jpeg"
                           alt="Material samples, veneers, and Italian marble swatches"
                           title="Curated luxury interior material samples at Younick Design Studio"
+                          width="768"
+                          height="300"
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                           onError={handleImgError}
@@ -304,10 +308,12 @@ const OurTeam: React.FC = () => {
                     </Reveal>
                     <Reveal className="h-full">
                       <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
-                        <img
+                        <img decoding="async"
                           src="/assets/gallery/g3-768.jpeg"
                           alt="3D architectural scale model drafts and structural drawings"
                           title="3D architectural scale models and CAD working drawings"
+                          width="768"
+                          height="300"
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                           onError={handleImgError}
