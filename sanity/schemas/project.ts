@@ -2,27 +2,36 @@ export const projectSchema = {
   name: "project",
   title: "Projects",
   type: "document",
+  groups: [
+    { name: "main", title: "📌 Overview" },
+    { name: "media", title: "📸 Photos & Media" },
+    { name: "specs", title: "📐 Specifications" },
+    { name: "seo", title: "🔍 Google SEO & Ranking" },
+  ],
   fields: [
     {
       name: "title",
       title: "Project Title",
       type: "string",
-      validation: (Rule: any) => Rule.required()
+      group: "main",
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "slug",
-      title: "Slug",
+      title: "Slug (URL identifier)",
       type: "slug",
+      group: "main",
       options: {
         source: "title",
-        maxLength: 96
+        maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required()
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "category",
       title: "Category",
       type: "string",
+      group: "main",
       options: {
         list: [
           { title: "Architecture", value: "Architecture" },
@@ -30,97 +39,154 @@ export const projectSchema = {
           { title: "Construction", value: "Construction" },
           { title: "Renovation", value: "Renovation" },
           { title: "3D Visualization", value: "3D Visualization" },
-          { title: "Consultation", value: "Consultation" }
-        ]
+          { title: "Consultation", value: "Consultation" },
+        ],
       },
-      validation: (Rule: any) => Rule.required()
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "location",
-      title: "Location",
+      title: "Project Location / City",
       type: "string",
-      initialValue: "Jaipur, Rajasthan"
+      group: "main",
+      initialValue: "Jaipur, Rajasthan",
     },
     {
       name: "featured",
-      title: "Featured on Homepage",
+      title: "Featured on Homepage Carousel",
       type: "boolean",
-      initialValue: false
-    },
-    {
-      name: "image",
-      title: "Main Cover Image",
-      type: "image",
-      options: { hotspot: true },
-      validation: (Rule: any) => Rule.required()
-    },
-    {
-      name: "images",
-      title: "Photo Gallery",
-      type: "array",
-      of: [{ type: "image", options: { hotspot: true } }]
-    },
-    {
-      name: "videos",
-      title: "Video URLs or paths",
-      type: "array",
-      of: [{ type: "string" }]
+      group: "main",
+      initialValue: false,
     },
     {
       name: "subtitle",
-      title: "Subtitle / Tagline",
-      type: "string"
+      title: "Subtitle / Short Tagline",
+      type: "string",
+      group: "main",
     },
     {
       name: "description",
-      title: "Short Description",
+      title: "Short Description (Card view)",
       type: "text",
-      rows: 3
+      group: "main",
+      rows: 3,
     },
     {
       name: "longDescription",
       title: "Detailed Architectural Scope & Story",
       type: "text",
-      rows: 5
+      group: "main",
+      rows: 5,
     },
     {
       name: "outcome",
       title: "Project Outcome / Result",
       type: "text",
-      rows: 2
+      group: "main",
+      rows: 2,
     },
+
+    /* --- Media Group --- */
+    {
+      name: "image",
+      title: "Main Cover Image",
+      type: "image",
+      group: "media",
+      options: { hotspot: true },
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "images",
+      title: "Photo Gallery",
+      type: "array",
+      group: "media",
+      of: [{ type: "image", options: { hotspot: true } }],
+    },
+    {
+      name: "videos",
+      title: "Video URLs or Embeds",
+      type: "array",
+      group: "media",
+      of: [{ type: "string" }],
+    },
+
+    /* --- Specs Group --- */
     {
       name: "workScope",
       title: "Work Scope Checklist",
       type: "array",
-      of: [{ type: "string" }]
+      group: "specs",
+      of: [{ type: "string" }],
     },
     {
       name: "area",
       title: "Built-up Area (e.g. 4,500 sq ft)",
-      type: "string"
+      type: "string",
+      group: "specs",
     },
     {
       name: "budget",
-      title: "Budget / Execution Tier",
-      type: "string"
+      title: "Execution Tier / Budget",
+      type: "string",
+      group: "specs",
     },
     {
       name: "completionDate",
-      title: "Completion Date",
-      type: "string"
+      title: "Completion Date / Year",
+      type: "string",
+      group: "specs",
     },
     {
       name: "clientContact",
       title: "Client / Landmark Reference",
-      type: "string"
-    }
+      type: "string",
+      group: "specs",
+    },
+
+    /* --- Google SEO & Ranking Group --- */
+    {
+      name: "seoTitle",
+      title: "Google Search Title (Meta Title)",
+      type: "string",
+      group: "seo",
+      description: "Appears as the blue headline on Google search (Recommended: 50-60 characters, include location e.g. 'Best Luxury Interior in Civil Lines Jaipur')",
+    },
+    {
+      name: "seoDescription",
+      title: "Google Search Description (Meta Description)",
+      type: "text",
+      group: "seo",
+      rows: 3,
+      description: "Appears beneath the headline on Google search results (Recommended: 120-160 characters).",
+    },
+    {
+      name: "seoKeywords",
+      title: "Target Search Keywords",
+      type: "array",
+      group: "seo",
+      of: [{ type: "string" }],
+      description: "List of keywords to target for this project (e.g. 'luxury villa interior jaipur', 'modern modular kitchen civil lines').",
+    },
+    {
+      name: "seoLocality",
+      title: "Specific Locality / Landmark",
+      type: "string",
+      group: "seo",
+      description: "E.g. Civil Lines, Mansarovar, Vaishali Nagar, C-Scheme, Jagatpura.",
+    },
+    {
+      name: "imageAlt",
+      title: "Image Alt Text (For Google Images SEO)",
+      type: "string",
+      group: "seo",
+      description: "Descriptive keywords for search engine image crawlers.",
+    },
   ],
   preview: {
     select: {
       title: "title",
       subtitle: "category",
-      media: "image"
-    }
-  }
+      media: "image",
+    },
+  },
 };

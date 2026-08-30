@@ -74,7 +74,7 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
 
 
 
-const TESTIMONIALS = [
+const TESTIMONIALS_FALLBACK = [
   {
     id: "t1",
     name: "Arpit Agarwal",
@@ -290,9 +290,11 @@ const Hero: React.FC = () => {
 };
 
 const About: React.FC = () => {
-  const featuredProjects = projects.filter((p) => p.featured);
-  const aboutImg1 = (featuredProjects[0] as ExtendedProject)?.imageUrl ?? featuredProjects[0]?.image ?? (projects[0] as ExtendedProject)?.imageUrl ?? projects[0]?.image ?? "";
-  const aboutImg2 = (featuredProjects[1] as ExtendedProject)?.imageUrl ?? featuredProjects[1]?.image ?? (projects[1] as ExtendedProject)?.imageUrl ?? projects[1]?.image ?? "";
+  const { projects } = useProjects();
+  const projectList = (projects && projects.length > 0) ? projects : defaultProjects;
+  const featuredProjects = projectList.filter((p) => p.featured);
+  const aboutImg1 = (featuredProjects[0] as ExtendedProject)?.imageUrl ?? featuredProjects[0]?.image ?? (projectList[0] as ExtendedProject)?.imageUrl ?? projectList[0]?.image ?? "/assets/Placeholder/Mock-4.jpg";
+  const aboutImg2 = (featuredProjects[1] as ExtendedProject)?.imageUrl ?? featuredProjects[1]?.image ?? (projectList[1] as ExtendedProject)?.imageUrl ?? projectList[1]?.image ?? "/assets/Placeholder/Mock-9.avif";
 
   return (
     <section id="about" className="py-24 bg-white relative">
@@ -623,10 +625,11 @@ const ServicesSection: React.FC = () => {
 const TestimonialsSection: React.FC = () => {
   const { testimonials: TESTIMONIALS } = useTestimonials();
   const [index, setIndex] = useState(0);
-  const total = TESTIMONIALS.length || 1;
+  const list = (TESTIMONIALS && TESTIMONIALS.length > 0) ? TESTIMONIALS : TESTIMONIALS_FALLBACK;
+  const total = list.length || 1;
   const next = () => setIndex((p) => (p + 1) % total);
   const prev = () => setIndex((p) => (p - 1 + total) % total);
-  const current = TESTIMONIALS[index] || TESTIMONIALS[0];
+  const current = list[index] || list[0];
 
   if (!current) return null;
 
@@ -654,17 +657,17 @@ const TestimonialsSection: React.FC = () => {
               <div className="flex justify-center gap-1 mb-6">
                 {[...Array(5)].map((_, i) => <Star key={i} size={16} className="text-[#E6B566]" />)}
               </div>
-              <p className="text-2xl md:text-3xl font-serif text-[#0B1220] leading-relaxed italic mb-8">"{current.quote}"</p>
+              <p className="text-2xl md:text-3xl font-serif text-[#0B1220] leading-relaxed italic mb-8">"{current?.quote || 'Exceptional craftsmanship and attention to detail.'}"</p>
               <div className="flex flex-col items-center">
-                <img src={current.avatarUrl} alt={`${current.name} — Client Review`} title={`${current.name} — Client Review for Younick Design Studio`} width="64" height="64" className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" loading="lazy" decoding="async" onError={(e) => {
+                <img src={current?.avatarUrl || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=512&auto=format&fit=crop"} alt={`${current?.name || 'Client'} — Client Review`} title={`${current?.name || 'Client'} — Client Review for Younick Design Studio`} width="64" height="64" className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" loading="lazy" decoding="async" onError={(e) => {
                   const img = e.currentTarget;
                   img.onerror = null;
                   img.src = `data:image/svg+xml;utf8,${encodeURIComponent(
-                    `<svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' fill='#B08D57'>${current.name.charAt(0)}</text></svg>`
+                    `<svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' fill='#B08D57'>${(current?.name || 'C').charAt(0)}</text></svg>`
                   )}`;
                 }} />
-                <div className="font-bold text-[#0B1220]">{current.name}</div>
-                <p className="text-sm text-gray-500">{current.role}</p>
+                <div className="font-bold text-[#0B1220]">{current?.name || 'Satisfied Client'}</div>
+                <p className="text-sm text-gray-500">{current?.role || 'Homeowner'}</p>
               </div>
             </MotionDiv>
           </AnimatePresence>
@@ -676,7 +679,8 @@ const TestimonialsSection: React.FC = () => {
 
 const LeadershipSection: React.FC = () => {
   const { teamMembers } = useTeam();
-  const leadership = teamMembers.filter((member) => member.isFounder);
+  const members = (teamMembers && teamMembers.length > 0) ? teamMembers : defaultTeam;
+  const leadership = members.filter((member) => member.isFounder);
 
   return (
     <section id="team" className="py-24 bg-white">
@@ -691,12 +695,12 @@ const LeadershipSection: React.FC = () => {
         </Reveal>
 
         <div className="grid md:grid-cols-3 gap-12">
-          {leadership.slice(0, 3).map((member, i) => (
-            <Reveal key={member.id} delay={i * 0.1}>
+          {(leadership.length > 0 ? leadership : members).slice(0, 3).map((member, i) => (
+            <Reveal key={member.id || i} delay={i * 0.1}>
               <div className="group text-center">
                 <div className="relative w-64 h-64 mx-auto mb-8 overflow-hidden rounded-full border-4 border-white shadow-xl">
                   <img
-                    src={member.image || member.image480 || member.image768}
+                    src={member.image || "/assets/team/Nikhil/Nikhil-1024.jpeg"}
                     alt={`${member.name} — ${member.role} at Younick Design Studio`}
                     title={`${member.name} — ${member.role} at Younick Design Studio`}
                     width="256"
@@ -708,7 +712,7 @@ const LeadershipSection: React.FC = () => {
                       const img = e.currentTarget;
                       img.onerror = null;
                       img.src = `data:image/svg+xml;utf8,${encodeURIComponent(
-                        `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='96' fill='#B08D57'>${member.name.charAt(0)}</text></svg>`
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='96' fill='#B08D57'>${(member?.name || 'Y').charAt(0)}</text></svg>`
                       )}`;
                     }}
                   />
@@ -731,11 +735,12 @@ const LeadershipSection: React.FC = () => {
   );
 };
 
-
 // Stats
 const StatsSection: React.FC = () => {
+  const { projects } = useProjects();
+  const projectCount = projects?.length || defaultProjects.length || 15;
   const stats = [
-    { id: "s1", value: `${projects.length}+`, label: "Projects", subLabel: "Residential & commercial" },
+    { id: "s1", value: `${projectCount}+`, label: "Projects", subLabel: "Residential & commercial" },
     { id: "s2", value: "120+", label: "Happy Clients", subLabel: "Relationship first" },
     { id: "s3", value: "8+", label: "Years in practice", subLabel: "Built expertise" },
     { id: "s4", value: "100%", label: "Satisfaction", subLabel: "Post handover surveys" },

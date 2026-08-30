@@ -51,7 +51,12 @@ export function useProjects() {
       featured,
       subtitle,
       link,
-      tech
+      tech,
+      seoTitle,
+      seoDescription,
+      seoKeywords,
+      seoLocality,
+      imageAlt
     }`;
 
     sanityClient
@@ -79,7 +84,12 @@ export function useProjects() {
             featured: Boolean(p.featured),
             subtitle: p.subtitle,
             link: p.link,
-            tech: p.tech
+            tech: p.tech,
+            seoTitle: p.seoTitle,
+            seoDescription: p.seoDescription,
+            seoKeywords: p.seoKeywords,
+            seoLocality: p.seoLocality,
+            imageAlt: p.imageAlt
           }));
           cachedProjects = mapped;
           setData(mapped);
@@ -135,7 +145,10 @@ export function useServices() {
       video,
       features,
       keywords,
-      timeline
+      timeline,
+      seoTitle,
+      seoDescription,
+      seoKeywords
     }`;
 
     sanityClient
@@ -152,7 +165,10 @@ export function useServices() {
             video: s.video,
             features: s.features || [],
             keywords: s.keywords || [],
-            timeline: s.timeline
+            timeline: s.timeline,
+            seoTitle: s.seoTitle,
+            seoDescription: s.seoDescription,
+            seoKeywords: s.seoKeywords
           }));
           cachedServices = mapped;
           setData(mapped);

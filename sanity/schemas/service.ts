@@ -2,52 +2,87 @@ export const serviceSchema = {
   name: "service",
   title: "Services",
   type: "document",
+  groups: [
+    { name: "main", title: "📌 Overview" },
+    { name: "seo", title: "🔍 Google SEO" },
+  ],
   fields: [
     {
       name: "title",
       title: "Service Title",
       type: "string",
-      validation: (Rule: any) => Rule.required()
+      group: "main",
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
-      options: { source: "title" }
+      group: "main",
+      options: { source: "title" },
     },
     {
       name: "description",
       title: "Short Description",
       type: "text",
-      rows: 3
+      group: "main",
+      rows: 3,
     },
     {
       name: "icon",
       title: "Icon Name (e.g. Home, Building, Wrench, Sparkles)",
       type: "string",
-      initialValue: "Home"
+      group: "main",
+      initialValue: "Home",
     },
     {
       name: "image",
       title: "Cover Image",
       type: "image",
-      options: { hotspot: true }
+      group: "main",
+      options: { hotspot: true },
     },
     {
       name: "video",
       title: "Video URL / Path",
-      type: "string"
+      type: "string",
+      group: "main",
     },
     {
       name: "features",
       title: "Key Service Deliverables / Features",
       type: "array",
-      of: [{ type: "string" }]
+      group: "main",
+      of: [{ type: "string" }],
     },
     {
       name: "timeline",
       title: "Standard Timeline (e.g. 4 - 8 Weeks)",
-      type: "string"
-    }
-  ]
+      type: "string",
+      group: "main",
+    },
+
+    /* --- SEO Group --- */
+    {
+      name: "seoTitle",
+      title: "Google Search Title",
+      type: "string",
+      group: "seo",
+      description: "E.g. Turnkey Construction & Architecture in Jaipur | Younick",
+    },
+    {
+      name: "seoDescription",
+      title: "Google Search Description",
+      type: "text",
+      group: "seo",
+      rows: 3,
+    },
+    {
+      name: "seoKeywords",
+      title: "Target Search Keywords",
+      type: "array",
+      group: "seo",
+      of: [{ type: "string" }],
+    },
+  ],
 };
