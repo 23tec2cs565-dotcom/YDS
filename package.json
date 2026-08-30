@@ -30,6 +30,8 @@
   "dependencies": {
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^9.3.0",
+    "@sanity/client": "^8.4.0",
+    "@sanity/image-url": "^2.1.1",
     "@vercel/analytics": "^2.0.1",
     "country-state-city": "^3.2.1",
     "framer-motion": "^12.23.24",

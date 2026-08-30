@@ -11,7 +11,8 @@ import {
   ArrowRight,
   ArrowUpRight,
 } from "lucide-react";
-import { teamMembers } from "../data/team";
+import { teamMembers as defaultTeam } from "../data/team";
+import { useTeam } from "../hooks/useSanityData";
 import { projects } from "../data/projects";
 import TeamMember from "../components/TeamMember";
 import SEOHead from "../components/SEOHead";
@@ -92,6 +93,7 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
    ══════════════════════════════════════════════════ */
 const OurTeam: React.FC = () => {
   const loc = useLocation();
+  const { teamMembers } = useTeam();
 
   // Hash-based scroll to member
   useEffect(() => {

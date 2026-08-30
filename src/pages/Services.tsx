@@ -39,7 +39,8 @@ const ESTIMATOR_ICON_MAP: Record<string, React.ComponentType<{ size?: number }>>
   HelpCircle,
   Home,
 };
-import { services as SERVICES } from "../data/services";
+import { services as defaultServices } from "../data/services";
+import { useServices } from "../hooks/useSanityData";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
 import { useNavigate } from "react-router-dom";
@@ -183,6 +184,7 @@ const ALL_INDIA_LOCATIONS = [
 ];
 
 const ServicesPage: React.FC = () => {
+  const { services: SERVICES } = useServices();
   const visibleServices = (SERVICES || []).filter((s) => allowedIds.has(s.id));
   const navigate = useNavigate();
   const servicesRef = useRef<HTMLElement | null>(null);

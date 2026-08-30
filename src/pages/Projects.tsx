@@ -3,7 +3,8 @@ import React, { useState, useEffect, useMemo, useCallback, useRef } from "react"
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Search, Grid, List, Filter, SlidersHorizontal, ChevronDown, X, MapPin, Calendar, ArrowUpRight } from "lucide-react";
-import { projects as ALL_PROJECTS } from "../data/projects";
+import { projects as defaultProjects, type Project } from "../data/projects";
+import { useProjects } from "../hooks/useSanityData";
 import ProjectCard from "../components/ProjectCard";
 const ProjectModal = React.lazy(() => import('../components/ProjectModal'));
 import SEOHead from "../components/SEOHead";
@@ -101,7 +102,7 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
 
 /* ── Featured bento card ────────────────────────── */
 const BentoCard: React.FC<{
-  project: (typeof ALL_PROJECTS)[0];
+  project: Project;
   large?: boolean;
   onClick: () => void;
   delay?: number;
@@ -333,8 +334,9 @@ const heroSlides = {
 const Projects: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { projects: ALL_PROJECTS } = useProjects();
 
-  // Load dynamic projects from localStorage and merge with static ones
+  // Load dynamic projects from localStorage and merge with Sanity / static ones
   const combinedProjects = useMemo(() => {
     try {
       const stored = localStorage.getItem("younick_dynamic_projects");
@@ -348,10 +350,10 @@ const Projects: React.FC = () => {
       console.error("Failed to load dynamic projects:", e);
     }
     return ALL_PROJECTS;
-  }, []);
+  }, [ALL_PROJECTS]);
 
-  const [filtered, setFiltered] = useState<typeof ALL_PROJECTS>(combinedProjects);
-  const [selected, setSelected] = useState<null | (typeof ALL_PROJECTS)[0]>(null);
+  const [filtered, setFiltered] = useState<Project[]>(combinedProjects);
+  const [selected, setSelected] = useState<null | Project>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   const [category, setCategory] = useState<string>(searchParams.get("filter") || "all");
@@ -523,7 +525,7 @@ const Projects: React.FC = () => {
     }, 350);
   };
 
-  const openProject = (proj: (typeof ALL_PROJECTS)[0]) => {
+  const openProject = (proj: Project) => {
     setSelected(proj);
     setModalOpen(true);
     updateParams({ project: proj.id });

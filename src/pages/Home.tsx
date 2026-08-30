@@ -34,10 +34,11 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
   Eye
 };
 
-// -- Data imports (these files are present in your project)
-import { projects } from "../data/projects";
-import { services } from "../data/services";
-import { teamMembers } from "../data/team";
+// -- Data imports with Sanity / local fallback
+import { projects as defaultProjects } from "../data/projects";
+import { services as defaultServices } from "../data/services";
+import { teamMembers as defaultTeam } from "../data/team";
+import { useProjects, useServices, useTeam, useTestimonials } from "../hooks/useSanityData";
 import type { Project } from "../data/projects";
 import type { Service } from "../data/services";
 import SEOHead from "../components/SEOHead";
@@ -178,6 +179,8 @@ const Hero: React.FC = () => {
       vid.play().catch(() => {});
     }
   }, [heroVideos]);
+
+  const { projects } = useProjects();
 
   // Back panel static image from first featured project
   const featuredProjects = projects.filter((p) => p.featured);
@@ -374,6 +377,7 @@ const TransformationSection: React.FC = () => {
 
 const ProjectsSection: React.FC = () => {
   const navigate = useNavigate();
+  const { projects } = useProjects();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
   const filtered = (
@@ -505,6 +509,7 @@ const ProjectsSection: React.FC = () => {
 };
 
 const ServicesSection: React.FC = () => {
+  const { services } = useServices();
   return (
     <section id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -616,9 +621,14 @@ const ServicesSection: React.FC = () => {
 };
 
 const TestimonialsSection: React.FC = () => {
+  const { testimonials: TESTIMONIALS } = useTestimonials();
   const [index, setIndex] = useState(0);
-  const next = () => setIndex((p) => (p + 1) % TESTIMONIALS.length);
-  const prev = () => setIndex((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  const total = TESTIMONIALS.length || 1;
+  const next = () => setIndex((p) => (p + 1) % total);
+  const prev = () => setIndex((p) => (p - 1 + total) % total);
+  const current = TESTIMONIALS[index] || TESTIMONIALS[0];
+
+  if (!current) return null;
 
   return (
     <section className="py-24 bg-[#FAFAFB] border-y border-white">
@@ -644,17 +654,17 @@ const TestimonialsSection: React.FC = () => {
               <div className="flex justify-center gap-1 mb-6">
                 {[...Array(5)].map((_, i) => <Star key={i} size={16} className="text-[#E6B566]" />)}
               </div>
-              <p className="text-2xl md:text-3xl font-serif text-[#0B1220] leading-relaxed italic mb-8">"{TESTIMONIALS[index].quote}"</p>
+              <p className="text-2xl md:text-3xl font-serif text-[#0B1220] leading-relaxed italic mb-8">"{current.quote}"</p>
               <div className="flex flex-col items-center">
-                <img src={TESTIMONIALS[index].avatarUrl} alt={`${TESTIMONIALS[index].name} — Client Review`} title={`${TESTIMONIALS[index].name} — Client Review for Younick Design Studio`} width="64" height="64" className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" loading="lazy" decoding="async" onError={(e) => {
+                <img src={current.avatarUrl} alt={`${current.name} — Client Review`} title={`${current.name} — Client Review for Younick Design Studio`} width="64" height="64" className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" loading="lazy" decoding="async" onError={(e) => {
                   const img = e.currentTarget;
                   img.onerror = null;
                   img.src = `data:image/svg+xml;utf8,${encodeURIComponent(
-                    `<svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' fill='#B08D57'>${TESTIMONIALS[index].name.charAt(0)}</text></svg>`
+                    `<svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' fill='#B08D57'>${current.name.charAt(0)}</text></svg>`
                   )}`;
                 }} />
-                <div className="font-bold text-[#0B1220]">{TESTIMONIALS[index].name}</div>
-                <p className="text-sm text-gray-500">{TESTIMONIALS[index].role}</p>
+                <div className="font-bold text-[#0B1220]">{current.name}</div>
+                <p className="text-sm text-gray-500">{current.role}</p>
               </div>
             </MotionDiv>
           </AnimatePresence>
@@ -665,6 +675,7 @@ const TestimonialsSection: React.FC = () => {
 };
 
 const LeadershipSection: React.FC = () => {
+  const { teamMembers } = useTeam();
   const leadership = teamMembers.filter((member) => member.isFounder);
 
   return (
