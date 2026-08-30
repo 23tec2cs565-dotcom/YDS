@@ -151,6 +151,10 @@
       }
     </style>
 
+    <!-- Preload critical above-the-fold hero assets (High-Priority LCP Discovery) -->
+    <link rel="preload" as="image" href="/younick-crest.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/Hero/hero-480.webp" media="(max-width: 640px)" fetchpriority="high" />
+
     <!-- Google tag (gtag.js) - Deferred Non-blocking Performance Strategy -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -169,14 +173,14 @@
       }
       if ('requestIdleCallback' in window) {
         window.addEventListener('load', function() {
-          requestIdleCallback(function() { setTimeout(initGtag, 1000); });
+          requestIdleCallback(function() { setTimeout(initGtag, 3500); });
         });
       } else {
         window.addEventListener('load', function() {
-          setTimeout(initGtag, 1500);
+          setTimeout(initGtag, 4000);
         });
       }
-      ['scroll', 'touchstart', 'click', 'mousemove'].forEach(function(ev) {
+      ['scroll', 'touchstart', 'click', 'keydown'].forEach(function(ev) {
         window.addEventListener(ev, initGtag, { once: true, passive: true });
       });
     </script>

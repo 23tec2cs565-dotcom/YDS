@@ -29,9 +29,9 @@ export const projects: Project[] = [
     title: "Hera Mahal",
     category: "Construction",
     location: "Jaipur, Rajasthan",
-    image: "/assets/Projects/Hera Mahal/1.jpg",
+    image: "/assets/Projects/Hera Mahal/1.webp",
     images: [
-      "/assets/Projects/Hera Mahal/1.jpg"
+      "/assets/Projects/Hera Mahal/1.webp"
     ],
     videos: [
       "/assets/Projects/Hera Mahal/Video-1.mp4",
