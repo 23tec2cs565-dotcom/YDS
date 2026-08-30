@@ -298,7 +298,21 @@ const ContactUs: React.FC = () => {
                             if (item.title.startsWith("Phone")) {
                               const rawNumber = line.includes("88548") ? "+918854883058" : "+919166776697";
                               return (
-                                <a key={i} href={`tel:${rawNumber}`} className="block text-xs sm:text-sm text-white/90 font-light hover:text-[#E6B566] transition-colors">
+                                <a
+                                  key={i}
+                                  href={`tel:${rawNumber}`}
+                                  onClick={() => {
+                                    if (typeof window !== "undefined" && (window as unknown as { dataLayer?: unknown[] }).dataLayer) {
+                                      (window as unknown as { dataLayer: unknown[] }).dataLayer.push({
+                                        event: "phone_call_clicked",
+                                        phone_number: rawNumber,
+                                        lead_type: "phone_call",
+                                        page_location: window.location.href,
+                                      });
+                                    }
+                                  }}
+                                  className="block text-xs sm:text-sm text-white/90 font-light hover:text-[#E6B566] transition-colors"
+                                >
                                   {line}
                                 </a>
                               );

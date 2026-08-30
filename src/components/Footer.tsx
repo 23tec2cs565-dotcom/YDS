@@ -387,6 +387,16 @@ const Footer: React.FC = () => {
 
                 <a
                   href="tel:+918854883058"
+                  onClick={() => {
+                    if (typeof window !== "undefined" && (window as unknown as { dataLayer?: unknown[] }).dataLayer) {
+                      (window as unknown as { dataLayer: unknown[] }).dataLayer.push({
+                        event: "phone_call_clicked",
+                        phone_number: "+918854883058",
+                        lead_type: "phone_call",
+                        page_location: window.location.href,
+                      });
+                    }
+                  }}
                   className="group flex items-start gap-2.5 transition-colors duration-300"
                 >
                   <Phone size={14} className="mt-0.5 shrink-0 text-[#E6B566]" />

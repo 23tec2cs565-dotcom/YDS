@@ -57,6 +57,17 @@ export const WhatsAppButton: React.FC = () => {
   const handleOpenWhatsApp = (messageText: string) => {
     const textToSend = messageText.trim() || "Hi Younick Design Studio! I saw your portfolio and would like to discuss an interior project.";
     const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(textToSend)}`;
+
+    // Push reliable custom event to Google Tag Manager dataLayer
+    if (typeof window !== "undefined" && (window as unknown as { dataLayer?: unknown[] }).dataLayer) {
+      (window as unknown as { dataLayer: unknown[] }).dataLayer.push({
+        event: "whatsapp_clicked",
+        lead_type: "whatsapp",
+        message_preset: textToSend,
+        page_location: window.location.href,
+      });
+    }
+
     window.open(url, "_blank", "noopener,noreferrer");
     setIsOpen(false);
   };
