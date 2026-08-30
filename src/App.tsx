@@ -52,7 +52,6 @@ function AppContent() {
     "/projects",
     "/team",
     "/contact",
-    "/faq",
     "/services",
     "/career",
     "/admin",

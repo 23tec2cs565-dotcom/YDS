@@ -684,7 +684,7 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
                   rel="noopener noreferrer"
                   className="rounded-md border border-[#25D366]/40 bg-[#25D366]/10 px-3.5 py-2 text-sm text-[#25D366] hover:bg-[#25D366] hover:text-black font-medium transition flex items-center gap-1.5"
                 >
-                  <img src="/icons/whatsapp-logo new.png" alt="WhatsApp Consultation" title="Chat on WhatsApp with Younick Design Studio" className="w-6 h-6 object-contain" />
+                  <img src="/icons/whatsapp-logo-new.png" alt="WhatsApp Consultation" title="Chat on WhatsApp with Younick Design Studio" className="w-6 h-6 object-contain" />
                   <span>WhatsApp</span>
                 </a>
                 <a href="/contact" className="rounded-md bg-[#E6B566] px-4 py-2 text-sm text-[#1b1b1b] font-semibold shadow-lg shadow-[#E6B566]/20">

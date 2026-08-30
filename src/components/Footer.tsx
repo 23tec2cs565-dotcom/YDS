@@ -143,22 +143,21 @@ const socials = [
 
 // 5 items → grid-cols-2 → 3 rows × 2 cols
 const serviceList = [
-  { href: "/projects?filter=Interior%20Design", label: "Interior Design" },
-  { href: "/projects?filter=Construction", label: "Construction" },
-  { href: "/projects?filter=Renovation", label: "Renovation" },
-  { href: "/projects?filter=Consultation", label: "Consultation" },
-  { href: "/projects?filter=3D%20Visualization", label: "3D Visualization" },
+  { href: "/services/interior-design", label: "Luxury Interior Design" },
+  { href: "/services/construction", label: "Turnkey Construction" },
+  { href: "/services/renovation", label: "Space Renovation" },
+  { href: "/services/consultation", label: "Design Consultation" },
+  { href: "/services/3d-visualization", label: "3D Architectural Visualization" },
 ];
 
-// 7 items → grid-cols-2 → 4 rows × 2 cols
+// 6 items → grid-cols-2 → 3 rows × 2 cols
 const companyLinks = [
   { label: "About Us", href: "/about" },
   { label: "Our Portfolio", href: "/projects" },
   { label: "Our Process", href: "/services" },
   { label: "Our Team", href: "/team" },
-  { label: "Careers", href: "/career" },
+  { label: "Career Opportunities", href: "/career" },
   { label: "Contact Us", href: "/contact" },
-  { label: "FAQ", href: "/faq" },
 ];
 
 const Footer: React.FC = () => {
@@ -420,11 +419,11 @@ const Footer: React.FC = () => {
               © {new Date().getFullYear()} Younick Design Studio. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 sm:gap-5 font-mono">
-              <Link to="/privacy" className="transition-colors duration-300 hover:text-[#E6B566]">
-                Privacy Policy
+              <Link to="/contact" className="transition-colors duration-300 hover:text-[#E6B566]">
+                Design Inquiries
               </Link>
-              <Link to="/terms" className="transition-colors duration-300 hover:text-[#E6B566]">
-                Terms of Service
+              <Link to="/services" className="transition-colors duration-300 hover:text-[#E6B566]">
+                Turnkey Solutions
               </Link>
             </div>
           </div>

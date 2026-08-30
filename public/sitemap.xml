@@ -1,98 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- Core Main Pages -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 1. Homepage -->
   <url>
     <loc>https://yds-liart.vercel.app/</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/Hero/hero-1920.webp</image:loc>
+      <image:title>Younick Design Studio — Architecture and Luxury Interiors in Jaipur</image:title>
+      <image:caption>Award-winning architecture and interior design studio in Jaipur, Rajasthan.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/younick-crest.png</image:loc>
+      <image:title>Younick Design Studio Emblem</image:title>
+    </image:image>
   </url>
+
+  <!-- 2. Projects Portfolio -->
   <url>
     <loc>https://yds-liart.vercel.app/projects</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/Projects/Hera%20Mahal/hera1.jpg</image:loc>
+      <image:title>Hera Mahal Luxury Heritage Interior Execution Jaipur</image:title>
+      <image:caption>Luxury residential and heritage space design by Younick Design Studio.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/Projects/Six%20Eleven%20Gym/Gym1.jpg</image:loc>
+      <image:title>Six Eleven Fitness Club Commercial Interior Jaipur</image:title>
+    </image:image>
   </url>
+
+  <!-- 3. All Services Overview -->
   <url>
     <loc>https://yds-liart.vercel.app/services</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/services/hero.jpg</image:loc>
+      <image:title>Turnkey Architectural and Interior Design Services</image:title>
+    </image:image>
   </url>
+
+  <!-- 4. About Us -->
   <url>
     <loc>https://yds-liart.vercel.app/about</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/About/Craftsmanship.webp</image:loc>
+      <image:title>Bespoke Craftsmanship and Design Philosophy</image:title>
+    </image:image>
   </url>
+
+  <!-- 5. Our Team -->
   <url>
     <loc>https://yds-liart.vercel.app/team</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/team/Nikhil/Nikhil-1024.jpeg</image:loc>
+      <image:title>Nikhil Sain — Founder and Lead Designer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/team/Kamal/Kamal-1024.jpg</image:loc>
+      <image:title>Kamal Rajoriya — Co-Founder</image:title>
+    </image:image>
   </url>
+
+  <!-- 6. Contact Us -->
   <url>
     <loc>https://yds-liart.vercel.app/contact</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 7. Career Opportunities -->
   <url>
     <loc>https://yds-liart.vercel.app/career</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yds-liart.vercel.app/faq</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Service Detail Pages -->
+  <!-- 8. Service Detail: Interior Design -->
   <url>
     <loc>https://yds-liart.vercel.app/services/interior-design</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yds-liart.vercel.app/services/construction</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yds-liart.vercel.app/services/renovation</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yds-liart.vercel.app/services/consultation</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yds-liart.vercel.app/services/3d-visualization</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/services/interior-design3.jpg</image:loc>
+      <image:title>Luxury Interior Design Services Jaipur</image:title>
+    </image:image>
   </url>
 
-  <!-- Legal & Utility Pages -->
+  <!-- 9. Service Detail: Turnkey Construction -->
   <url>
-    <loc>https://yds-liart.vercel.app/privacy</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://yds-liart.vercel.app/services/construction</loc>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/services/construction.avif</image:loc>
+      <image:title>Turnkey Civil Construction Services Jaipur</image:title>
+    </image:image>
   </url>
+
+  <!-- 10. Service Detail: Space Renovation -->
   <url>
-    <loc>https://yds-liart.vercel.app/terms</loc>
-    <lastmod>2026-08-16T23:55:00+05:30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://yds-liart.vercel.app/services/renovation</loc>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/services/renovation.jpg</image:loc>
+      <image:title>Residential and Commercial Renovation Services Jaipur</image:title>
+    </image:image>
   </url>
+
+  <!-- 11. Service Detail: Design Consultation -->
+  <url>
+    <loc>https://yds-liart.vercel.app/services/consultation</loc>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/services/consultation.jpg</image:loc>
+      <image:title>Architectural Layout and Design Consultation Jaipur</image:title>
+    </image:image>
+  </url>
+
+  <!-- 12. Service Detail: 3D Visualization -->
+  <url>
+    <loc>https://yds-liart.vercel.app/services/3d-visualization</loc>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://yds-liart.vercel.app/assets/services/3d.avif</image:loc>
+      <image:title>Photorealistic 3D Architectural Visualization and Walkthroughs</image:title>
+    </image:image>
+  </url>
+
 </urlset>

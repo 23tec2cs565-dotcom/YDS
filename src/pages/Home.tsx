@@ -599,7 +599,7 @@ const ServicesSection: React.FC = () => {
                     to={`/services/${s?.id || activeTab}`}
                     className="inline-flex items-center text-[#0B1220] font-semibold border-b border-[#0B1220] pb-1 hover:text-[#E6B566] hover:border-[#E6B566] transition-colors"
                   >
-                    Learn More <ArrowRight size={16} className="ml-2" />
+                    Explore {s?.title || "Service"} Details <ArrowRight size={16} className="ml-2" />
                   </Link>
                 </motion.div>
               </div>

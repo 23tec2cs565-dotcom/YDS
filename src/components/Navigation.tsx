@@ -25,20 +25,20 @@ type Suggest =
 const DEBOUNCE = 250;
 
 const navItems = [
-  { path: "/", label: "Home", icon: Home },
-  { path: "/projects", label: "Projects", icon: FolderOpen },
-  { path: "/services", label: "Services", icon: Briefcase },
-  { path: "/contact", label: "Contact", icon: MessageSquare },
-  { path: "/about", label: "About", icon: Info },
+  { path: "/", label: "Home", icon: Home, title: "Younick Design Studio Home" },
+  { path: "/projects", label: "Projects", icon: FolderOpen, title: "View Architecture & Interior Projects Portfolio" },
+  { path: "/services", label: "Services", icon: Briefcase, title: "Turnkey Interior Design & Construction Services" },
+  { path: "/about", label: "About", icon: Info, title: "About Younick Design Studio Jaipur" },
+  { path: "/contact", label: "Contact", icon: MessageSquare, title: "Contact Our Jaipur Design Studio" },
 ];
 
 const gridItems = [
-  { path: "/team", label: "Our Team", icon: Users },
-  { path: "/career", label: "Career", icon: Clipboard },
-  { path: "/projects", label: "Projects", icon: FolderOpen },
-  { path: "/services", label: "Services", icon: Briefcase },
-  { path: "/contact", label: "Contact Us", icon: MessageSquare },
-  { path: "/about", label: "About", icon: Info },
+  { path: "/team", label: "Our Team", icon: Users, title: "Meet Our Architects and Interior Designers" },
+  { path: "/career", label: "Careers", icon: Clipboard, title: "Explore Career Opportunities at Younick Studio" },
+  { path: "/projects", label: "Portfolio", icon: FolderOpen, title: "View Our Completed Architecture & Interior Projects" },
+  { path: "/services", label: "Services", icon: Briefcase, title: "Explore Turnkey Interior & Construction Services" },
+  { path: "/about", label: "About Us", icon: Info, title: "Learn About Younick Design Studio Philosophy" },
+  { path: "/contact", label: "Contact Us", icon: MessageSquare, title: "Get in Touch with Our Jaipur Studio" },
 ];
 
 const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
@@ -207,7 +207,6 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       "/projects",
       "/team",
       "/contact",
-      "/faq",
       "/services",
       "/career",
       "/admin",
@@ -253,13 +252,15 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6">
-            {navItems.map(({ path, label }) => {
+            {navItems.map(({ path, label, title }) => {
               const isActive = path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
               return (
                 <NavLink
                   key={path}
                   to={path}
                   end={path === "/"}
+                  title={title}
+                  aria-label={title}
                   className={`group relative flex items-center px-3 py-2 rounded-md text-sm transition-all duration-200 ${
                     isActive
                       ? "text-[#0B1220] after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-[2px] after:bg-[#E6B566] after:rounded-full font-medium"
@@ -348,10 +349,12 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                   className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 p-3 z-50"
                 >
                   <div className="grid grid-cols-3 gap-3">
-                    {gridItems.map(({ path, label, icon: Icon }) => (
+                    {gridItems.map(({ path, label, title, icon: Icon }) => (
                       <NavLink
                         key={path}
                         to={path}
+                        title={title}
+                        aria-label={title}
                         onClick={() => setDeskOpen(false)}
                         className={({ isActive }) =>
                           `flex flex-col items-center justify-center gap-1 p-2 rounded-lg transition-all ${
@@ -394,12 +397,14 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
         >
           <div className="bg-white/95 backdrop-blur rounded-lg mx-2 p-4 border border-gray-100 shadow-lg">
             <div className="grid grid-cols-3 gap-3 mb-4">
-              {gridItems.map(({ path, label, icon: Icon }) => {
+              {gridItems.map(({ path, label, title, icon: Icon }) => {
                 const isActive = path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
                 return (
                   <NavLink
                     key={path}
                     to={path}
+                    title={title}
+                    aria-label={title}
                     onClick={() => setOpen(false)}
                     className={`group flex flex-col items-center justify-center gap-2 p-3 rounded-lg text-center transition-all duration-300 ${
                       isActive

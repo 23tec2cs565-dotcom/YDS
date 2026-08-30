@@ -200,6 +200,52 @@ const ServiceDetails: React.FC = () => {
           </div>
         </div>
 
+        {/* EXPLORE ALL STUDIO SERVICES (High-Value Internal Backlinks) */}
+        <section className="bg-[#18181B] py-12 text-white border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+              <div>
+                <span className="text-[#B08D57] font-bold tracking-widest uppercase text-xs block mb-1">
+                  Comprehensive Capabilities
+                </span>
+                <h2 className="text-xl sm:text-2xl font-serif text-white">
+                  Explore All Studio Services
+                </h2>
+              </div>
+              <Link
+                to="/services"
+                className="text-xs font-mono uppercase tracking-widest text-[#E6B566] hover:text-white transition-colors inline-flex items-center gap-1.5"
+              >
+                All Services <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              {services.map((s) => {
+                const isCurrent = s.id === service.id;
+                return (
+                  <Link
+                    key={s.id}
+                    to={`/services/${s.id}`}
+                    className={`p-3.5 rounded-xl border transition-all duration-300 flex flex-col justify-between ${
+                      isCurrent
+                        ? "bg-[#E6B566]/15 border-[#E6B566] text-white"
+                        : "bg-white/[0.03] border-white/10 text-gray-300 hover:bg-white/[0.08] hover:border-white/20 hover:text-white"
+                    }`}
+                  >
+                    <span className="text-xs font-semibold block mb-1">
+                      {s.title}
+                    </span>
+                    <span className="text-[10px] font-mono text-[#B08D57] uppercase tracking-wider">
+                      {isCurrent ? "Current Service" : "Learn More →"}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* RELATED PROJECTS */}
         <section className="bg-[#0F0F10] py-16 text-white">
           <div className="max-w-7xl mx-auto px-6">

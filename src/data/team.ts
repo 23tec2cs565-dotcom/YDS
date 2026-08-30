@@ -103,9 +103,9 @@ export const teamMembers: TeamMember[] = [
     id: "nikhil-verma",
     name: "Nikhil Verma",
     role: "Interior Designer",
-    image: "/assets/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
-    image768: "/assets/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
-    image480: "/assets/team/NIKHIL VERMA/NIKHIL VERMA.jpeg",
+    image: "/assets/team/Nikhil-Verma/Nikhil-Verma.jpeg",
+    image768: "/assets/team/Nikhil-Verma/Nikhil-Verma.jpeg",
+    image480: "/assets/team/Nikhil-Verma/Nikhil-Verma.jpeg",
     description:
       "Nikhil Verma is a Jaipur-based Interior Designer with a creative mind and a passion for transforming spaces. He is continuously learning and exploring new design ideas, focusing on creating interiors that are functional, aesthetic, and unique.",
     expertise: [

@@ -90,7 +90,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               to={`/services/${service.id}`}
               className="text-sm text-gray-600 hover:text-gray-900"
             >
-              Learn more →
+              Explore {service.title} →
             </Link>
           </div>
         </div>
@@ -158,7 +158,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             to={`/services/${service.id}`}
             className="text-sm text-gray-600 hover:text-gray-900"
           >
-            Learn more →
+            Explore {service.title} Details →
           </Link>
         </div>
       </div>
