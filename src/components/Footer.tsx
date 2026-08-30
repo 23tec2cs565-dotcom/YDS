@@ -175,7 +175,7 @@ const Footer: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E6B566] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B08D57]" />
               </span>
-              <span className="font-semibold tracking-widest text-gray-800">Younick Design Studio</span>
+              <strong className="font-semibold tracking-widest text-gray-800">Younick Design Studio</strong>
               <span className="text-gray-300 hidden sm:inline">•</span>
               <span className="text-gray-500 lowercase tracking-normal italic font-serif text-xs sm:text-sm">Jaipur • Architecture & Luxury Interiors</span>
             </div>
@@ -284,8 +284,8 @@ const Footer: React.FC = () => {
             <div className="sm:col-span-2 lg:col-span-1">
               <a href="/" className="inline-flex items-center gap-2.5 sm:gap-3">
                 <img
-                  src="/younick-logo.PNG"
-                  alt="Younick Design Studio Logo"
+                  src="/younick-logo.webp"
+                  alt="Younick Design Studio Signature Monogram Branding Footer"
                   title="Younick Design Studio — Luxury Turnkey Interior Architecture Jaipur"
                   width="54"
                   height="54"
@@ -419,11 +419,17 @@ const Footer: React.FC = () => {
               © {new Date().getFullYear()} Younick Design Studio. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 sm:gap-5 font-mono">
-              <Link to="/contact" className="transition-colors duration-300 hover:text-[#E6B566]">
-                Design Inquiries
+              <Link to="/faq" className="transition-colors duration-300 hover:text-[#E6B566]">
+                FAQs
               </Link>
-              <Link to="/services" className="transition-colors duration-300 hover:text-[#E6B566]">
-                Turnkey Solutions
+              <Link to="/privacy" className="transition-colors duration-300 hover:text-[#E6B566]">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="transition-colors duration-300 hover:text-[#E6B566]">
+                Terms of Service
+              </Link>
+              <Link to="/contact" className="transition-colors duration-300 hover:text-[#E6B566]">
+                Inquiries
               </Link>
             </div>
           </div>

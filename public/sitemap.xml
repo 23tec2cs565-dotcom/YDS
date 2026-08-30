@@ -153,4 +153,28 @@
     </image:image>
   </url>
 
+  <!-- 13. Frequently Asked Questions -->
+  <url>
+    <loc>https://yds-liart.vercel.app/faq</loc>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 14. Privacy Policy -->
+  <url>
+    <loc>https://yds-liart.vercel.app/privacy</loc>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- 15. Terms of Service -->
+  <url>
+    <loc>https://yds-liart.vercel.app/terms</loc>
+    <lastmod>2026-08-30T15:30:00+05:30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>

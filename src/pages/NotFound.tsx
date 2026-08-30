@@ -168,7 +168,7 @@ const NotFound: React.FC = () => {
     title: "404 — Page Not Found | Younick Design Studio",
     description: "The page you are looking for may have been moved, redesigned, or no longer exists.",
     url: "/404",
-    image: "/assets/404/luxury-sofa.png",
+    image: "/assets/404/luxury-sofa.webp",
   };
 
   return (
@@ -259,9 +259,8 @@ const NotFound: React.FC = () => {
               }}
             />
             <img decoding="async" loading="lazy"
-              src="/assets/404/floorplan-overlay.png"
-              alt=""
-              aria-hidden="true"
+              src="/assets/404/floorplan-overlay.webp"
+              alt="Architectural floorplan blueprint background overlay"
               width="1920"
               height="1080"
               onError={handleImgError}
@@ -281,18 +280,16 @@ const NotFound: React.FC = () => {
                 }}
               />
               <img decoding="async" loading="lazy"
-                src="/assets/404/floorplan-overlay.png"
-                alt=""
-                aria-hidden="true"
+                src="/assets/404/floorplan-overlay.webp"
+                alt="Interactive architectural CAD layout spotlight blueprint"
                 width="1920"
                 height="1080"
                 onError={handleImgError}
                 className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 object-cover opacity-[0.05] invert mix-blend-screen blur-[0.5px]"
               />
               <img decoding="async" loading="lazy"
-                src="/assets/404/blueprint-collage.png"
-                alt=""
-                aria-hidden="true"
+                src="/assets/404/blueprint-collage.webp"
+                alt="Architectural drafting blueprint collage overlay"
                 width="768"
                 height="500"
                 onError={handleImgError}
@@ -330,7 +327,7 @@ const NotFound: React.FC = () => {
 
               {/* Sofa image */}
               <img decoding="async"
-                src="/assets/404/luxury-sofa.png"
+                src="/assets/404/luxury-sofa.webp"
                 alt="Luxury Italian Leather Sofa by Younick Design Studio"
                 title="Page Not Found — Younick Design Studio Luxury Interior"
                 width="260"
@@ -346,7 +343,7 @@ const NotFound: React.FC = () => {
               This space is <span className="italic text-[#E6B566] font-normal">undefined</span>.
             </h1>
             <p className="mx-auto mt-3 sm:mt-4 max-w-xl text-xs sm:text-sm leading-relaxed text-gray-300 font-light">
-              Every great space starts with an empty canvas. Explore our portfolio of luxury residences, or collaborate with our architects on your vision.
+              Every great space starts with an empty canvas. Explore our <strong>portfolio of luxury residences</strong>, or collaborate with <strong>Younick Design Studio architects</strong> on your vision.
             </p>
 
             {/* ──────── SINGLE CLEAN BUTTON ROW (Zero Overlap / Congestion) ──────── */}
@@ -381,9 +378,9 @@ const NotFound: React.FC = () => {
         {/* ──────── BOTTOM CURATED DESTINATIONS (Lucrative Quick-Access) ──────── */}
         <div className="w-full max-w-7xl mx-auto px-5 sm:px-6 pt-4 z-40 relative">
           <div className="text-center mb-3">
-            <span className="text-[9px] font-mono uppercase tracking-[0.25em] text-gray-500">
+            <h2 className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-gray-400 font-semibold">
               Popular Studio Destinations
-            </span>
+            </h2>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">

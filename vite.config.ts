@@ -29,14 +29,26 @@ export default defineConfig({
             if (id.includes("react-helmet")) {
               return "vendor-helmet";
             }
-            return "vendor-libs";
+            if (id.includes("@sanity") || id.includes("groq")) {
+              return "vendor-sanity";
+            }
+            if (id.includes("@vercel")) {
+              return "vendor-analytics";
+            }
+            return "vendor-utils";
           }
           if (id.includes("/src/data/projects")) {
             return "data-projects";
           }
+          if (id.includes("/src/data/services")) {
+            return "data-services";
+          }
+          if (id.includes("/src/data/team")) {
+            return "data-team";
+          }
         },
       },
     },
-    chunkSizeWarningLimit: 500,
+    chunkSizeWarningLimit: 400,
   },
 });

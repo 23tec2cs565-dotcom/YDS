@@ -92,7 +92,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
 
         {/* Logo */}
         <motion.img
-          src="/younick-logo.PNG"
+          src="/younick-logo.webp"
           alt="Younick Design Studio"
           width="56"
           height="56"

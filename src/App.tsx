@@ -14,6 +14,9 @@ const About = React.lazy(() => import("./pages/About"));
 const Services = React.lazy(() => import("./pages/Services"));
 const Career = React.lazy(() => import("./pages/Career"));
 const ServiceDetails = React.lazy(() => import("./pages/ServiceDetails"));
+const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = React.lazy(() => import("./pages/TermsOfService"));
+const FAQ = React.lazy(() => import("./pages/FAQ"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Admin = React.lazy(() => import("./pages/Admin"));
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -55,6 +58,12 @@ function AppContent() {
     "/services",
     "/career",
     "/admin",
+    "/privacy",
+    "/privacy-policy",
+    "/terms",
+    "/terms-of-service",
+    "/faq",
+    "/faqs",
   ];
   const is404Page =
     cleanPath === "/404" ||
@@ -94,6 +103,14 @@ function AppContent() {
             <Route path="/services" element={<Services />} />
             <Route path="/career" element={<Career />} />
             <Route path="/admin" element={<Admin />} />
+
+            {/* Compliance & FAQ pages */}
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/faqs" element={<Navigate to="/faq" replace />} />
 
             {/* 404 */}
             <Route path="/404" element={<NotFound />} />

@@ -151,7 +151,7 @@ const AboutContent = () => {
               <div className="col-span-12 md:col-span-8 relative rounded-sm overflow-hidden group">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500 z-10" />
                 <img decoding="async" 
-                  src="/younick-about-hero.jpg" 
+                  src="/younick-about-hero.webp" 
                   alt="Younick Design Studio main workspace and creative environment" 
                   title="Younick Design Studio main workspace and creative studio in Jaipur"
                   width="1000"
@@ -167,7 +167,7 @@ const AboutContent = () => {
               <div className="hidden md:block md:col-span-4 relative rounded-sm overflow-hidden group">
                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500 z-10" />
                  <img decoding="async" 
-                  src="/younick-thumb3.jpg" 
+                  src="/younick-thumb3.webp" 
                   alt="Detailed view of design materials at Younick Studio" 
                   title="Detailed view of design materials and bespoke craft at Younick Studio"
                   width="500"
@@ -288,8 +288,8 @@ const AboutContent = () => {
             <div className="md:w-1/2 relative">
                <div className="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-20 sm:w-32 h-20 sm:h-32 border-l-2 border-t-2 border-[#B08D57] opacity-50" />
                <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                 <img decoding="async" src="/younick-thumb1.jpg" width="500" height="500" onError={handleImgError} className="w-full h-40 sm:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm" alt="Younick Design Studio team collaborating on a project" title="Younick Design Studio team collaborating on an interior project in Jaipur" loading="lazy" />
-                 <img decoding="async" src="/younick-thumb2.jpg" width="500" height="500" onError={handleImgError} className="w-full h-40 sm:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm translate-y-4 sm:translate-y-8" alt="Younick Design Studio team meeting and planning session" title="Younick Design Studio team meeting and planning session" loading="lazy" />
+                 <img decoding="async" src="/younick-thumb1.webp" width="500" height="500" onError={handleImgError} className="w-full h-40 sm:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm" alt="Younick Design Studio team collaborating on a project" title="Younick Design Studio team collaborating on an interior project in Jaipur" loading="lazy" />
+                 <img decoding="async" src="/younick-thumb2.webp" width="500" height="500" onError={handleImgError} className="w-full h-40 sm:h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm translate-y-4 sm:translate-y-8" alt="Younick Design Studio team meeting and planning session" title="Younick Design Studio team meeting and planning session" loading="lazy" />
                </div>
             </div>
             <div className="md:w-1/2">

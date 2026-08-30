@@ -16,6 +16,10 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   noIndex = false,
 }) => {
   const meta = { ...defaultSEO, ...seo };
+  const cleanDescription =
+    meta.description && meta.description.length > 155
+      ? meta.description.slice(0, 152).trim() + "..."
+      : meta.description || defaultSEO.description;
   const url = meta.url?.startsWith("http")
     ? meta.url
     : `https://yds-liart.vercel.app${meta.url || ""}`;
@@ -31,7 +35,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <title>{meta.title}</title>
 
       {/* Primary Meta */}
-      <meta name="description" content={meta.description} />
+      <meta name="description" content={cleanDescription} />
       {meta.keywords && <meta name="keywords" content={meta.keywords} />}
       <meta name="author" content="Younick Design Studio" />
       <meta name="theme-color" content="#0D0D0D" />
@@ -46,7 +50,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Younick Design Studio" />
       <meta property="og:title" content={meta.title} />
-      <meta property="og:description" content={meta.description} />
+      <meta property="og:description" content={cleanDescription} />
       {meta.image && (
         <>
           <meta property="og:image" content={meta.image} />
@@ -81,17 +85,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         {JSON.stringify(schemaData, null, 2)}
       </script>
 
-      {/* Application / Site Name */}
-      <meta name="application-name" content="Younick Design Studio" />
-      <meta name="apple-mobile-web-app-title" content="Younick Design Studio" />
-
-      {/* Favicons & PWA */}
+      {/* Canonical URL */}
       <link rel="canonical" href={url} />
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="manifest" href="/site.webmanifest" />
     </Helmet>
   );
 };

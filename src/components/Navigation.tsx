@@ -228,11 +228,11 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
           {/* Logo */}
           <NavLink to="/" end className="flex items-center space-x-2.5 sm:space-x-3 group">
             <img
-              src="/younick-crest.png"
+              src="/younick-crest.webp"
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              alt="Younick Design Studio Logo"
+              alt="Younick Design Studio Crest Emblem Navigation Header"
               title="Younick Design Studio — Luxury Interior Design & Turnkey Architecture Jaipur"
               width="44"
               height="52"
@@ -240,7 +240,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
               onError={(e) => {
                 const img = e.currentTarget;
                 img.onerror = null;
-                img.src = "/younick-logo.PNG";
+                img.src = "/younick-logo.webp";
               }}
             />
             <div className="flex flex-col justify-center leading-none">

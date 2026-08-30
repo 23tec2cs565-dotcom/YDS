@@ -212,7 +212,7 @@ const Hero: React.FC = () => {
 
           <Reveal delay={0.2}>
             <p className="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
-              Architecture, craft and human-centred spatial thinking — from concept and visualization to turnkey delivery. Spaces people truly want to live in.
+              <strong>Architecture</strong>, craft and <strong>human-centred spatial thinking</strong> — from concept and visualization to <strong>turnkey delivery</strong>. Spaces people truly want to live in.
             </p>
           </Reveal>
 
@@ -323,10 +323,10 @@ const About: React.FC = () => {
 
             <Reveal delay={0.1}>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                We design thoughtful interiors that balance material honesty with timeless form. Listening is our primary tool we then layer craft, light, and curated materials to create rooms that feel lived-in and intentional.
+                We design <strong>thoughtful interiors</strong> that balance <strong>material honesty</strong> with timeless form. Listening is our primary tool we then layer craft, light, and curated materials to create rooms that feel lived-in and intentional.
               </p>
               <p className="text-base text-gray-500 mb-10 leading-relaxed">
-                From full-scale renovations to bespoke fit-outs, we manage concept, visualization and delivery with transparency. Clients choose us for clear communication, material expertise and the quiet confidence of built work.
+                From <strong>full-scale renovations</strong> to bespoke commercial fit-outs, <strong>Younick Design Studio</strong> manages concept, visualization and delivery with transparency. Clients choose us for clear communication, material expertise and the quiet confidence of built work.
               </p>
             </Reveal>
 

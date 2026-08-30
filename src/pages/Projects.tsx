@@ -426,12 +426,29 @@ const Projects: React.FC = () => {
     [combinedProjects]
   );
 
-  // Filter + sort logic
+  // Filter + sort logic with strict lowercase slug URL normalization
   useEffect(() => {
     const appliedSearch = searchParams.get("search") || searchParams.get("navSearch") || "";
-    const appliedFilter = searchParams.get("filter") || "all";
-    const appliedLocation = searchParams.get("location") || "all";
-    const appliedSort = searchParams.get("sort") || "newest";
+    const rawFilter = searchParams.get("filter") || "all";
+    const rawLocation = searchParams.get("location") || "all";
+    const rawSort = searchParams.get("sort") || "newest";
+
+    const appliedFilter = rawFilter === "all" ? "all" : slugify(rawFilter);
+    const appliedLocation = rawLocation === "all" ? "all" : slugify(rawLocation);
+    const appliedSort = rawSort.toLowerCase();
+
+    // Silently normalize uppercase or unslugified URL parameters to clean lowercase slugs
+    if (rawFilter !== appliedFilter || rawLocation !== appliedLocation || rawSort !== appliedSort) {
+      const cleanParams = new URLSearchParams(searchParams.toString());
+      if (appliedFilter && appliedFilter !== "all") cleanParams.set("filter", appliedFilter);
+      else cleanParams.delete("filter");
+      if (appliedLocation && appliedLocation !== "all") cleanParams.set("location", appliedLocation);
+      else cleanParams.delete("location");
+      if (appliedSort && appliedSort !== "newest") cleanParams.set("sort", appliedSort);
+      else cleanParams.delete("sort");
+      navigate(`/projects?${cleanParams.toString()}`, { replace: true });
+      return;
+    }
 
     setCategory(appliedFilter);
     setLocationFilter(appliedLocation);
@@ -468,7 +485,7 @@ const Projects: React.FC = () => {
     }
 
     setFiltered(results);
-  }, [searchParams, combinedProjects]);
+  }, [searchParams, combinedProjects, navigate]);
 
   // Auto-open modal if 'project' or 'id' query parameter is present in URL
   useEffect(() => {
@@ -544,9 +561,9 @@ const Projects: React.FC = () => {
   const seoForPage = {
     title: "Projects — Younick Design Studio",
     description:
-      "Explore our portfolio of interior design and construction projects across Rajasthan — residential, commercial and bespoke spaces crafted by Younick Design Studio.",
+      "Explore our portfolio of luxury residential and commercial architecture, villas, and turnkey spaces executed by Younick Design Studio in Jaipur.",
     url: "/projects",
-    image: "/assets/Hero/hero-480.jpg",
+    image: "/assets/Hero/hero-480.webp",
     datePublished: "2025-11-01",
     dateModified: "2025-11-10",
   };

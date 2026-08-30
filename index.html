@@ -3,10 +3,19 @@
   <head>
     <meta charset="UTF-8" />
 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KBNVQNPZ');</script>
+    <!-- End Google Tag Manager -->
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Best Interior Designer in Jaipur | Younick Design Studio</title>
+    <meta name="description" content="Award-winning interior design, turnkey construction, and 3D architectural visualization studio in Civil Lines, Jaipur. Contact Younick Design Studio." />
     <meta name="author" content="Younick Design Studio" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
@@ -103,25 +112,19 @@
     }
     </script>
 
-
     <!-- Preload self-hosted fonts -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/ovelion-font/Ovelion-Zpjqx.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/fonts/cormorant-garamond/CormorantGaramond-Regular.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/fonts/cormorant-garamond/CormorantGaramond-Italic.woff2" crossorigin>
 
-    <!-- Favicon, Icons, Manifest & Sitemap (Google Search Favicon format included) -->
+    <!-- Favicon, Icons, Manifest & Sitemap -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-
-    <!-- Critical inline CSS: above-fold paint + hide SEO fallback from visual users.
-         This lets the browser render something useful before index.css arrives. -->
+    <!-- Critical inline CSS -->
     <style>
       /* SEO fallback hidden from sighted users */
       #seo-fallback {
@@ -138,7 +141,6 @@
       html { font-size: 16px; -webkit-text-size-adjust: 100%; }
       body { margin: 0; background: #FAFAFB; color: #0B1220; font-family: sans-serif; }
       #root { min-height: 100vh; }
-      /* Prevent invisible text during font load */
       @font-face {
         font-family: 'CormorantGaramond'; font-display: swap;
         src: url('/fonts/cormorant-garamond/CormorantGaramond-Regular.woff2') format('woff2');
@@ -150,7 +152,7 @@
     </style>
 
     <!-- Preload critical above-the-fold hero assets (High-Priority LCP Discovery) -->
-    <link rel="preload" as="image" href="/younick-crest.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/younick-crest.webp" fetchpriority="high" />
     <link rel="preload" as="image" href="/assets/Hero/hero-480.webp" media="(max-width: 640px)" fetchpriority="high" />
 
     <!-- Google tag (gtag.js) - Deferred Non-blocking Performance Strategy -->
@@ -185,9 +187,12 @@
   </head>
 
   <body>
-    <!-- Pre-render shell: paints instantly before React or CSS loads.
-         Eliminates blank filmstrip frames. React mounts into #root and
-         replaces this with the full app. -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBNVQNPZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Pre-render shell: paints instantly before React or CSS loads -->
     <style>
       #pre-render-shell {
         position: fixed; inset: 0; z-index: 99999;
@@ -199,7 +204,7 @@
       #pre-render-shell img { width: 48px; height: 48px; filter: brightness(1.6) saturate(0.5); }
     </style>
     <div id="pre-render-shell" aria-hidden="true">
-      <img src="/younick-crest.png" alt="" width="48" height="48" onerror="this.style.display='none'" />
+      <img src="/younick-crest.webp" alt="" width="48" height="48" onerror="this.style.display='none'" />
     </div>
     <script>
       function dismissPreRenderShell() {
@@ -209,7 +214,6 @@
           setTimeout(function() { if (shell && shell.parentNode) shell.parentNode.removeChild(shell); }, 350);
         }
       }
-      // Remove shell once React has painted into #root (seo-fallback replaced or children attached)
       var _obs = new MutationObserver(function() {
         var root = document.getElementById('root');
         if (root && (!document.getElementById('seo-fallback') || root.childElementCount > 1)) {
@@ -218,7 +222,6 @@
         }
       });
       _obs.observe(document.getElementById('root') || document.body, { childList: true, subtree: true });
-      // Safety auto-dismiss fallback: never block user under any circumstance
       setTimeout(dismissPreRenderShell, 400);
       window.addEventListener('DOMContentLoaded', function() { setTimeout(dismissPreRenderShell, 200); });
       window.addEventListener('load', dismissPreRenderShell);
@@ -237,54 +240,137 @@
             <a href="/contact">Contact Us</a>
             <a href="/career">Careers</a>
             <a href="/team">Our Team</a>
+            <a href="/faq">FAQs</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
           </nav>
         </header>
 
         <main>
           <article>
-            <h1>Best Interior Designer in Jaipur — Younick Design Studio | Turnkey Architecture & Luxury Interiors</h1>
+            <h1>Best Interior Designer in Jaipur — Younick Design Studio | Turnkey Architecture &amp; Luxury Interiors</h1>
             <p>
-              Welcome to Younick Design Studio, an award-winning interior design, turnkey construction, home renovation, and 3D architectural visualization practice headquartered in Civil Lines, Jaipur, Rajasthan.
+              Welcome to <strong>Younick Design Studio</strong>, an award-winning interior design, turnkey civil construction, luxury home renovation, and 3D photorealistic architectural visualization practice headquartered in Civil Lines, Jaipur, Rajasthan. Under the leadership of Nikhil Sain and Kamal Rajoriya, our studio delivers bespoke spatial architecture for high-end residences, luxury villas, commercial showrooms, corporate offices, and healthcare facilities across Rajasthan and pan-India.
+            </p>
+            <p>
+              Our design philosophy balances material honesty, timeless aesthetics, and uncompromising engineering precision. From bespoke teak joinery, Italian marble floorings, and smart home automation to structural civil alterations and turnkey project management, we transform raw spaces into timeless environments built for living.
             </p>
 
             <section>
-              <h2>Turnkey Interior & Architectural Services</h2>
+              <h2>Comprehensive Turnkey Interior &amp; Architectural Services in Jaipur</h2>
               <p>
-                From initial space planning and photorealistic 3D rendering to meticulous civil construction, custom carpentry, and on-site handover.
+                Younick Design Studio provides end-to-end design and build solutions with single-point accountability. Our turnkey services eliminate contractor coordination hassles for homeowners and commercial clients alike.
               </p>
+              
               <div>
-                <a href="/services/interior-design">Luxury Residential Interior Design</a>
-                <a href="/services/construction">Turnkey Civil Construction & Execution</a>
-                <a href="/services/renovation">Full-Scale Home & Structural Renovation</a>
-                <a href="/services/consultation">Spatial Design & Budget Consultation</a>
-                <a href="/services/3d-visualization">3D Architectural Visualization & Walkthroughs</a>
+                <h3>1. Luxury Residential &amp; Villa Interior Design</h3>
+                <p>
+                  Specializing in 3BHK, 4BHK, 5BHK luxury apartments, penthouses, and bespoke heritage bungalows in Civil Lines, C-Scheme, Vaishali Nagar, Mansarovar, Malviya Nagar, and Jagatpura. We design custom modular kitchens with Blum/Hettich hardware, designer false ceilings with warm ambient lighting profiles, curated living rooms, and boutique master suites.
+                </p>
+                <a href="/services/interior-design">Explore Residential Interior Design Services</a>
+              </div>
+
+              <div>
+                <h3>2. Turnkey Civil Construction &amp; On-Site Execution</h3>
+                <p>
+                  Complete civil engineering and material execution using certified IS-grade steel, cement, boiling waterproof (BWP/BWR) plywood, and premium stone. Our experienced project managers supervise daily site operations, ensuring 100% adherence to architectural drawings, safety codes, and strict timeline milestones.
+                </p>
+                <a href="/services/construction">Explore Turnkey Civil Construction Services</a>
+              </div>
+
+              <div>
+                <h3>3. Full-Scale Renovation &amp; Structural Transformation</h3>
+                <p>
+                  Rejuvenating outdated homes, ancestral havelis, and commercial spaces through structural wall modifications, plumbing retrofitting, premium Italian marble cladding, and spatial layout optimization.
+                </p>
+                <a href="/services/renovation">Explore Home &amp; Space Renovation Services</a>
+              </div>
+
+              <div>
+                <h3>4. 3D Architectural Visualization &amp; Photorealistic Walkthroughs</h3>
+                <p>
+                  High-fidelity 3D modeling, lighting simulation, VR walkthroughs, and CAD construction blueprints that allow clients to experience their dream space with exact materials, lighting, and textures before on-site construction begins.
+                </p>
+                <a href="/services/3d-visualization">Explore 3D Architectural Visualization Services</a>
+              </div>
+
+              <div>
+                <h3>5. Architectural Layout &amp; Design Consultation</h3>
+                <p>
+                  Expert spatial planning, Vastu compliance integration, material selection consultancy, and bill of quantities (BOQ) cost estimation for private homeowners and commercial property developers.
+                </p>
+                <a href="/services/consultation">Explore Design Consultation Services</a>
               </div>
             </section>
 
             <section>
-              <h2>Signature Featured Projects in Rajasthan</h2>
+              <h2>Our Structured 5-Step Architectural Design Process</h2>
+              <p>
+                We follow a rigorous five-stage methodology to ensure every residential and commercial project is delivered on time, within budget, and with mastercrafted quality:
+              </p>
+              <ol>
+                <li><strong>Discovery &amp; Space Consultation:</strong> On-site laser measurement, lifestyle requirements assessment, and architectural feasibility study.</li>
+                <li><strong>Spatial Layouts &amp; Mood Boards:</strong> 2D zoning, furniture layouts, circulation pathways, and curated material color palettes.</li>
+                <li><strong>High-Fidelity 3D Visualizations:</strong> Photorealistic interior and exterior renderings showing lighting, custom woodwork, and stone textures.</li>
+                <li><strong>BOQ Estimation &amp; Material Procurement:</strong> Transparent itemized budgeting, factory-crafted joinery, and direct material sourcing from certified vendors.</li>
+                <li><strong>Turnkey Site Execution &amp; Handover:</strong> Meticulous contractor management, quality checks, deep cleaning, and defect liability warranty handover.</li>
+              </ol>
+            </section>
+
+            <section>
+              <h2>Signature Featured Architectural Projects Across Rajasthan</h2>
+              <p>
+                Explore our landmark portfolio of completed residential, commercial, and healthcare interior transformations:
+              </p>
+              <ul>
+                <li><strong>Hera Mahal, Jaipur:</strong> Luxury heritage residential interior execution blending traditional Rajputana grandeur with modern minimalism.</li>
+                <li><strong>Six Eleven Fitness Club, Jaipur:</strong> Commercial fitness centre interior featuring acoustic treatment, dynamic zonal LED lighting, and industrial aesthetics.</li>
+                <li><strong>Chhoti Bai Jewellers, Jaipur:</strong> High-end luxury jewellery boutique with custom brass display vitrines and velvet acoustic wall paneling.</li>
+                <li><strong>Devi Lal Memorial Eye Hospital (DLMEH):</strong> Clinical space planning and soothing healthcare interiors optimized for patient flow and hygienic standards.</li>
+                <li><strong>Detailing Devils Studio, Jaipur:</strong> State-of-the-art automotive studio with high-CRI tunnel lighting and epoxy flooring.</li>
+                <li><strong>Dharmendra Luxury Villa, Jaipur:</strong> Modern 4BHK residence with double-height living foyer and custom Italian marble feature walls.</li>
+                <li><strong>PCP Sikar Educational Campus:</strong> Academic reception and administrative suites designed for collaborative learning.</li>
+              </ul>
+              <a href="/projects">View Full Architectural Portfolio</a>
+            </section>
+
+            <section>
+              <h2>Frequently Asked Questions (FAQ)</h2>
               <div>
-                <a href="/projects">Hera Mahal Jaipur</a>
-                <a href="/projects">Six Eleven Gym Jaipur</a>
-                <a href="/projects">Chhoti Bai Jewellers Jaipur</a>
-                <a href="/projects">Devi Lal Memorial Eye Hospital</a>
-                <a href="/projects">Dharmendra Villa Jaipur</a>
-                <a href="/projects">Detailing Devils Jaipur</a>
+                <h3>How much does interior design cost in Jaipur?</h3>
+                <p>
+                  Turnkey residential interior design in Jaipur typically ranges from ₹1,200 to ₹2,500+ per sq. ft. for premium homes (including custom woodwork, modular kitchen, false ceilings, lighting, and premium paint). Luxury villa executions scale based on Italian marble, automation, and bespoke furniture.
+                </p>
+              </div>
+              <div>
+                <h3>What are the advantages of turnkey interior execution?</h3>
+                <p>
+                  Turnkey execution provides single-point responsibility where Younick Design Studio handles design, 3D visualization, material procurement, carpentry, civil work, electrical, plumbing, and site management with guaranteed timelines and transparent pricing.
+                </p>
+              </div>
+              <div>
+                <h3>Do you undertake interior projects outside Jaipur?</h3>
+                <p>
+                  Yes, while our headquarters is located in Civil Lines, Jaipur, we regularly execute projects across Sikar, Udaipur, Jodhpur, Kota, and all of Rajasthan, as well as providing pan-India 3D visualization and design consultation.
+                </p>
               </div>
             </section>
 
             <section>
-              <h2>Visit Our Jaipur Studio</h2>
+              <h2>Visit Our Jaipur Design Studio</h2>
               <p>
-                Address: 3008, Third Floor, Orbit Mall, Civil Lines, Jaipur, Rajasthan 302001.<br>
-                Phone: <a href="tel:+918854883058">+91 8854883058</a> | Email: <a href="mailto:studioyounick@gmail.com">studioyounick@gmail.com</a>
+                <strong>Studio Address:</strong> 3008, Third Floor, Orbit Mall, Civil Lines, Jaipur, Rajasthan 302001, India.<br>
+                <strong>Phone Consultation:</strong> <a href="tel:+918854883058">+91 88548 83058</a><br>
+                <strong>Email Inquiries:</strong> <a href="mailto:studioyounick@gmail.com">studioyounick@gmail.com</a><br>
+                <strong>Studio Hours:</strong> Monday – Saturday: 10:00 AM – 7:00 PM (Sunday by Appointment).
               </p>
+              <a href="/contact">Schedule an Architectural Consultation</a>
             </section>
           </article>
         </main>
 
         <footer>
-          <p>© 2026 Younick Design Studio. All rights reserved. Jaipur, Rajasthan, India.</p>
+          <p>© 2026 Younick Design Studio. All rights reserved. Registered Architectural &amp; Interior Design Practice in Jaipur, Rajasthan, India.</p>
         </footer>
       </div>
     </div>
