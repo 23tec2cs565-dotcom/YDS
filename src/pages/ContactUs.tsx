@@ -211,6 +211,15 @@ const ContactUs: React.FC = () => {
       setFormStatus("sending");
       await new Promise((res) => setTimeout(res, 1500));
       setFormStatus("success");
+
+      // Push custom event to Google Tag Manager dataLayer
+      if (typeof window !== "undefined" && (window as unknown as { dataLayer?: unknown[] }).dataLayer) {
+        (window as unknown as { dataLayer: unknown[] }).dataLayer.push({
+          event: "contact_form_submitted",
+          form_name: "Contact Consultation Form",
+          page_location: window.location.href,
+        });
+      }
     } catch {
       setFormStatus("error");
     } finally {
