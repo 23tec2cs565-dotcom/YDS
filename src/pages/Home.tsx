@@ -147,9 +147,6 @@ Button.displayName = "Button";
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
 
   // Detailing Devils video playlist for hero front panel
   const heroVideos = [
@@ -236,7 +233,7 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="lg:col-span-6 relative h-[600px] hidden md:block">
-          <MotionDiv style={{ y: y1 }} className="absolute top-0 right-0 w-4/5 h-4/5 z-10">
+          <div className="absolute top-0 right-0 w-4/5 h-4/5 z-10">
             <div className="w-full h-full rounded-tr-[100px] rounded-bl-[40px] overflow-hidden shadow-2xl">
               <img decoding="async"
                 src={heroBackImg}
@@ -249,9 +246,9 @@ const Hero: React.FC = () => {
                 loading="eager"
               />
             </div>
-          </MotionDiv>
+          </div>
 
-          <MotionDiv style={{ y: y2 }} className="absolute bottom-0 left-0 w-3/5 h-1/2 z-20">
+          <div className="absolute bottom-0 left-0 w-3/5 h-1/2 z-20">
             <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB]">
               <video
                 ref={videoRef}
@@ -272,7 +269,7 @@ const Hero: React.FC = () => {
               </div>
               <p className="text-xs font-medium text-[#0B1220]">"The attention to detail is unlike anything else."</p>
             </div>
-          </MotionDiv>
+          </div>
         </div>
       </div>
     </section>
