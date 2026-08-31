@@ -150,11 +150,10 @@ const isSearchBotOrCrawler = (): boolean => {
 };
 
 function App() {
-  // Show intro only once per browser session for human users; bypass immediately for Googlebot & crawlers
+  // Show intro only if explicitly requested via ?intro=true for optimal Core Web Vitals & instantaneous LCP
   const [showIntro, setShowIntro] = useState<boolean>(() => {
-    if (isSearchBotOrCrawler()) return false;
-    const hasIntroParam = window.location.search.includes("intro=true") || window.location.hash.includes("intro");
-    return hasIntroParam || !sessionStorage.getItem(STORAGE_KEY);
+    if (typeof window === "undefined") return false;
+    return window.location.search.includes("intro=true") || window.location.hash.includes("intro");
   });
 
   useEffect(() => {

@@ -194,55 +194,45 @@ const Hero: React.FC = () => {
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B3528] border border-emerald-500/40 shadow-md text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
-              <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
-              Jaipur, Rajasthan
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B3528] border border-emerald-500/40 shadow-md text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
+            <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
+            Jaipur, Rajasthan
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-8">
+            Interiors that <br />
+            <span className="italic text-[#8C6226] font-angelone">feel curated</span>
+            <br />
+            modern & warm.
+          </h1>
+
+          <p className="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
+            <strong>Architecture</strong>, craft and <strong>human-centred spatial thinking</strong> — from concept and visualization to <strong>turnkey delivery</strong>. Spaces people truly want to live in.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4 mb-12">
+            <Button onClick={() => navigate("/contact")} withIcon
+              className="bg-[#0B3528] hover:bg-[#0B3528]/90 text-white shadow-xl">
+              Start a Conversation
+            </Button>
+            <Link
+              to="/projects"
+              className="px-6 py-3 rounded-full text-sm font-medium text-gray-700 hover:text-[#0B1220] hover:bg-gray-100 transition-colors"
+            >
+              View Selected Work
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-8 pt-8 border-t border-gray-200/80">
+            <div>
+              <div className="text-3xl font-serif text-[#0B1220]">{projects.length}+</div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Projects</p>
             </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-8">
-              Interiors that <br />
-              <span className="italic text-[#8C6226] font-angelone">feel curated</span>
-              <br />
-              modern & warm.
-            </h1>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <p className="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
-              <strong>Architecture</strong>, craft and <strong>human-centred spatial thinking</strong> — from concept and visualization to <strong>turnkey delivery</strong>. Spaces people truly want to live in.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.3}>
-            <div className="flex flex-wrap items-center gap-4 mb-12">
-              <Button onClick={() => navigate("/contact")} withIcon
-                className="bg-[#0B3528] hover:bg-[#0B3528]/90 text-white shadow-xl">
-                Start a Conversation
-              </Button>
-              <Link
-                to="/projects"
-                className="px-6 py-3 rounded-full text-sm font-medium text-gray-700 hover:text-[#0B1220] hover:bg-gray-100 transition-colors"
-              >
-                View Selected Work
-              </Link>
+            <div>
+              <div className="text-3xl font-serif text-[#0B1220]">100%</div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Commitment</p>
             </div>
-          </Reveal>
-
-          <Reveal delay={0.4}>
-            <div className="flex items-center gap-8 pt-8 border-t border-gray-200/80">
-              <div>
-                <div className="text-3xl font-serif text-[#0B1220]">{projects.length}+</div>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Projects</p>
-              </div>
-              <div>
-                <div className="text-3xl font-serif text-[#0B1220]">100%</div>
-                <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Commitment</p>
-              </div>
-            </div>
-          </Reveal>
+          </div>
         </div>
 
         <div className="lg:col-span-6 relative h-[600px] hidden md:block">

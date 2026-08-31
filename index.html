@@ -192,41 +192,6 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Pre-render shell: paints instantly before React or CSS loads -->
-    <style>
-      #pre-render-shell {
-        position: fixed; inset: 0; z-index: 99999;
-        background: #0C1018;
-        display: flex; align-items: center; justify-content: center;
-        transition: opacity 0.3s ease;
-      }
-      #pre-render-shell.fade-out { opacity: 0; pointer-events: none; }
-      #pre-render-shell img { width: 48px; height: 48px; filter: brightness(1.6) saturate(0.5); }
-    </style>
-    <div id="pre-render-shell" aria-hidden="true">
-      <img src="/younick-crest.webp" alt="" width="48" height="48" onerror="this.style.display='none'" />
-    </div>
-    <script>
-      function dismissPreRenderShell() {
-        var shell = document.getElementById('pre-render-shell');
-        if (shell && !shell.classList.contains('fade-out')) {
-          shell.classList.add('fade-out');
-          setTimeout(function() { if (shell && shell.parentNode) shell.parentNode.removeChild(shell); }, 350);
-        }
-      }
-      var _obs = new MutationObserver(function() {
-        var root = document.getElementById('root');
-        if (root && (!document.getElementById('seo-fallback') || root.childElementCount > 1)) {
-          dismissPreRenderShell();
-          _obs.disconnect();
-        }
-      });
-      _obs.observe(document.getElementById('root') || document.body, { childList: true, subtree: true });
-      setTimeout(dismissPreRenderShell, 400);
-      window.addEventListener('DOMContentLoaded', function() { setTimeout(dismissPreRenderShell, 200); });
-      window.addEventListener('load', dismissPreRenderShell);
-    </script>
-
     <div id="root">
       <!-- Semantic HTML for SEO crawlers (Seobility, Googlebot, Bing).
            Visually hidden from users. React replaces #root on mount. -->
