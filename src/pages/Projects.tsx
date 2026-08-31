@@ -553,20 +553,27 @@ const Projects: React.FC = () => {
     setTimeout(() => setSelected(null), 150);
   };
 
-  const hasActiveFilters =
-    (category && category !== "all") ||
-    (locationFilter && locationFilter !== "all") ||
-    !!searchText;
-
-  const seoForPage = {
-    title: "Projects — Younick Design Studio",
-    description:
-      "Explore our portfolio of luxury residential and commercial architecture, villas, and turnkey spaces executed by Younick Design Studio in Jaipur.",
-    url: "/projects",
-    image: "/assets/Hero/hero-480.webp",
-    datePublished: "2025-11-01",
-    dateModified: "2025-11-10",
-  };
+  const seoForPage = useMemo(() => {
+    if (selected) {
+      const desc = selected.description || selected.longDescription || "";
+      const trimmedDesc = desc.length > 155 ? `${desc.slice(0, 152)}...` : desc;
+      return {
+        title: `${selected.title} — Interior & Architecture Jaipur | Younick`,
+        description: trimmedDesc || `Explore ${selected.title} in ${selected.location} by Younick Design Studio.`,
+        url: `/projects?project=${selected.id}`,
+        image: selected.image || "/assets/Hero/hero-480.webp",
+      };
+    }
+    return {
+      title: "Interior Design & Architecture Projects in Jaipur | Younick Studio",
+      description:
+        "Explore our portfolio of luxury residential villas, commercial fit-outs, and turnkey spaces executed by Younick Design Studio in Jaipur, Rajasthan.",
+      url: "/projects",
+      image: "/assets/Hero/hero-480.webp",
+      datePublished: "2025-11-01",
+      dateModified: "2025-11-10",
+    };
+  }, [selected]);
 
   return (
     <>

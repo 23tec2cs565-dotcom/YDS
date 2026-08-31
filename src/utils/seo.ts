@@ -178,80 +178,86 @@ export const structuredData = {
  */
 export const pageSEO: Record<string, SEOData> = {
   home: {
-    title: "Best Interior Designer in Jaipur | Younick Design Studio",
+    title: "Luxury Interior Designers & Architects in Jaipur | Younick",
     description:
-      "Looking for the best interior designer in Jaipur? Younick Design Studio crafts luxury residential, commercial interiors and turnkey projects in Rajasthan.",
+      "Award-winning luxury interior design, architecture, and turnkey construction studio in Jaipur. From 3D rendering to handover. Book a consultation.",
     keywords:
-      "best interior designer in jaipur, interior design studio jaipur, luxury villa interior design jaipur, turnkey interior contractor jaipur, 3d interior rendering rajasthan",
+      "interior designers in jaipur, best interior designer jaipur, luxury villa interior design jaipur, turnkey interior contractor jaipur, 3d architectural rendering rajasthan",
     url: `${SITE.url}/`,
     image: SITE.logo,
     author: SITE.name,
   },
   projects: {
-    title: "Interior Design & Architecture Portfolio | Younick Studio",
+    title: "Interior Design & Architecture Projects in Jaipur | Younick",
     description:
-      "Explore our portfolio of luxury residential and commercial architecture, villas, and turnkey spaces executed by Younick Design Studio in Jaipur.",
+      "Explore our portfolio of luxury residential villas, turnkey commercial spaces, and bespoke interior renovations executed by Younick Studio in Jaipur.",
     url: `${SITE.url}/projects`,
     image: SITE.logo,
     author: SITE.name,
   },
   team: {
-    title: "Our Team — Interior Designers & Architects | Younick",
+    title: "Our Architects & Interior Designers in Jaipur | Younick",
     description:
-      "Meet the lead architects, interior designers, and project managers behind Younick Design Studio in Jaipur, Rajasthan.",
+      "Meet the principal architects, interior designers, 3D visualizers, and turnkey civil engineers behind Younick Design Studio in Civil Lines, Jaipur.",
     url: `${SITE.url}/team`,
     image: SITE.logo,
     author: SITE.name,
   },
   contact: {
-    title: "Contact Our Interior Design Studio Jaipur | Younick",
+    title: "Contact Luxury Interior Designers in Jaipur | Younick Studio",
     description:
-      "Get in touch with Younick Design Studio for luxury interior design, turnkey civil construction, and 3D visualization in Civil Lines, Jaipur.",
+      "Connect with Younick Design Studio for villa interior design, turnkey construction, and 3D architectural rendering in Orbit Mall, Civil Lines, Jaipur.",
     url: `${SITE.url}/contact`,
     image: SITE.logo,
     author: SITE.name,
   },
   about: {
-    title: "About Younick Design Studio — Our Story, Values & Team",
-    description: "Learn about Younick Design Studio — our philosophy, turnkey craftsmanship and the architects who bring luxury design to life across Rajasthan.",
+    title: "About Our Luxury Architecture & Interior Studio in Jaipur",
+    description:
+      "Learn about Younick Design Studio in Jaipur — our turnkey craftsmanship, architectural philosophy, and the interior designers crafting luxury spaces.",
     url: `${SITE.url}/about`,
     image: `${SITE.url}/younick-about-hero.webp`,
-    keywords: "about, younick design, interior design studio, rajasthan"
+    keywords: "about younick design studio, interior designer profile jaipur, luxury architects rajasthan"
   },
   services: {
-    title: "Turnkey Interior & Architecture Services | Younick Studio",
-    description: "Bespoke interior design, turnkey construction, renovation, 3D rendering and spatial architectural consultation services across Jaipur, Rajasthan.",
+    title: "Turnkey Interior Design & Construction Services in Jaipur",
+    description:
+      "Bespoke residential interior design, turnkey civil construction, villa renovation, 3D visualization, and architectural consultation in Jaipur, Rajasthan.",
     url: `${SITE.url}/services`,
     image: SITE.logo,
-    keywords: "interior design services, turnkey construction, renovation jaipur, 3d design, architectural consultation"
+    keywords: "interior design services jaipur, turnkey construction rajasthan, home renovation jaipur, 3d visualization studio"
   },
   career: {
-    title: 'Career Opportunities — Younick Design Studio',
-    description: 'Join our team at Younick Design Studio. Explore career opportunities in interior design, architecture, and 3D visualization in Jaipur, Rajasthan.',
-    keywords: 'interior design careers, design jobs Jaipur, architecture careers Rajasthan, Younick Design Studio careers',
+    title: "Careers in Interior Design & Architecture | Younick Jaipur",
+    description:
+      "Explore job openings and career opportunities for interior designers, architects, and 3D visualizers at Younick Design Studio in Civil Lines, Jaipur.",
+    keywords: "interior design careers jaipur, architecture jobs rajasthan, 3d visualizer vacancy jaipur",
     url: `${SITE.url}/career`,
     image: `${SITE.url}/younick-about-hero.webp`,
   },
   privacy: {
     title: "Privacy Policy | Younick Design Studio Jaipur",
-    description: "Read the privacy policy of Younick Design Studio regarding client data protection, architectural blueprints, and project confidentiality.",
+    description:
+      "Read the privacy policy of Younick Design Studio regarding client data protection, architectural blueprints, and project confidentiality.",
     url: `${SITE.url}/privacy`,
     image: SITE.logo,
     keywords: "privacy policy, client confidentiality, data protection, younick design studio"
   },
   terms: {
     title: "Terms of Service & Project Contracts | Younick Studio",
-    description: "Review the terms of service, architectural copyright standards, material quality commitments, and turnkey execution guidelines for Younick Studio.",
+    description:
+      "Review the terms of service, architectural copyright standards, material quality commitments, and turnkey execution guidelines for Younick Studio.",
     url: `${SITE.url}/terms`,
     image: SITE.logo,
     keywords: "terms of service, interior design agreement, turnkey contract terms jaipur"
   },
   faq: {
-    title: "Interior Design & Architecture FAQs | Younick Studio Jaipur",
-    description: "Frequently asked questions about interior design costs per sq ft, turnkey timelines, 3D visualizations, and execution in Jaipur and Rajasthan.",
+    title: "Interior Design & Turnkey Cost FAQs | Younick Studio Jaipur",
+    description:
+      "Answers to common questions about interior design costs per sq ft, turnkey construction timelines, material warranties, and 3D renders in Jaipur.",
     url: `${SITE.url}/faq`,
     image: SITE.logo,
-    keywords: "interior design faq, interior design cost jaipur, turnkey interior process, 3d visualization timeline"
+    keywords: "interior design faq jaipur, interior design cost per sq ft jaipur, turnkey timeline rajasthan"
   }
 };
 

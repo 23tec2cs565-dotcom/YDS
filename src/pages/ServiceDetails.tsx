@@ -65,11 +65,11 @@ const ServiceDetails: React.FC = () => {
     <>
       <SEOHead
         seo={{
-          ...pageSEO.home,
-          title: `${service.title} — Younick Design Studio`,
-          description: service.description || pageSEO.home.description,
-          url: `https://yds-liart.vercel.app/services/${service.id}`
-          // optionally add open graph image if service.image exists
+          title: `${service.title} in Jaipur | Younick Studio`,
+          description: service.description,
+          url: `https://yds-liart.vercel.app/services/${service.id}`,
+          keywords: service.keywords?.join(", "),
+          image: service.image
         }}
       />
 
