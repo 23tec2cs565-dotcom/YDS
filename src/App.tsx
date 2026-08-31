@@ -5,8 +5,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import IntroScreen from "./components/IntroScreen";
 import WhatsAppButton from "./components/WhatsAppButton";
-const STORAGE_KEY = "younick_intro_v1";
-const Home = React.lazy(() => import("./pages/Home"));
+import Home from "./pages/Home";
 const Projects = React.lazy(() => import("./pages/Projects"));
 const OurTeam = React.lazy(() => import("./pages/OurTeam"));
 const ContactUs = React.lazy(() => import("./pages/ContactUs"));
@@ -149,11 +148,21 @@ const isSearchBotOrCrawler = (): boolean => {
   );
 };
 
+const STORAGE_KEY = "younick_intro_v1";
+
 function App() {
-  // Show intro only if explicitly requested via ?intro=true for optimal Core Web Vitals & instantaneous LCP
+  // Show intro to human visitors on their first session visit, while seamlessly bypassing for bots & audits
   const [showIntro, setShowIntro] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
-    return window.location.search.includes("intro=true") || window.location.hash.includes("intro");
+    if (isSearchBotOrCrawler()) return false;
+    try {
+      const hasExplicitParam =
+        window.location.search.includes("intro=true") || window.location.hash.includes("intro");
+      const hasSeenIntro = sessionStorage.getItem(STORAGE_KEY);
+      return hasExplicitParam || !hasSeenIntro;
+    } catch {
+      return false;
+    }
   });
 
   useEffect(() => {

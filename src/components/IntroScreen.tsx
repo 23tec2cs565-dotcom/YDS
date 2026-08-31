@@ -19,14 +19,14 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
         sessionStorage.setItem(STORAGE_KEY, "1");
       } catch {}
       onComplete();
-    }, 500);
+    }, 450);
   }, [onComplete]);
 
-  // Counter: 0 → 100 over ~2.0s with smooth ease-out
+  // Counter: 0 → 100 over ~1.4s with smooth ease-out
   useEffect(() => {
     let raf: number;
     const start = performance.now();
-    const duration = 2000;
+    const duration = 1400;
 
     const tick = (now: number) => {
       const elapsed = now - start;
@@ -38,7 +38,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
         raf = requestAnimationFrame(tick);
       } else {
         // Brief crisp hold then exit
-        setTimeout(triggerExit, 250);
+        setTimeout(triggerExit, 150);
       }
     };
 
@@ -52,7 +52,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
     visible: {
       scaleX: 1,
       opacity: 1,
-      transition: { duration: 0.9, ease: [0.25, 0, 0, 1] as [number, number, number, number], delay: 0.2 },
+      transition: { duration: 0.6, ease: [0.25, 0, 0, 1] as [number, number, number, number], delay: 0.1 },
     },
   };
 
@@ -60,10 +60,11 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-[#0C1018]"
+      onClick={triggerExit}
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-[#0C1018] cursor-pointer"
       // Cinematic shutter-up exit
       animate={{ y: isExiting ? "-100%" : "0%" }}
-      transition={{ duration: 0.88, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
     >
       {/* Radial warm glow behind centre */}
       <div
@@ -100,7 +101,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
           style={{ filter: "brightness(1.8) saturate(0.6)" }}
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.75, ease: [0.25, 0, 0, 1] }}
+          transition={{ delay: 0.2, duration: 0.5, ease: [0.25, 0, 0, 1] }}
         />
 
         {/* Studio wordmark */}
@@ -108,7 +109,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
           className="mt-5 text-center"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.65, ease: "easeOut" }}
+          transition={{ delay: 0.35, duration: 0.5, ease: "easeOut" }}
         >
           <p className="font-serif text-[2.6rem] font-medium tracking-tight text-white leading-none">
             Younick
@@ -123,7 +124,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete }) => {
           className="mt-9 text-[10px] uppercase tracking-[0.32em] text-white/25"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
+          transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
         >
           Architecture&nbsp;&nbsp;·&nbsp;&nbsp;Interiors&nbsp;&nbsp;·&nbsp;&nbsp;Jaipur
         </motion.p>
