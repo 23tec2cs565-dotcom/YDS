@@ -94,7 +94,7 @@ const GlassBtn: React.FC<GlassBtnProps> = ({ href, variant, children, className 
       />
 
       {href.startsWith("/") ? (
-        <Link to={href} {...(btnProps as unknown as React.ComponentProps<typeof Link>)}>
+        <Link to={href} ref={ref} onMouseMove={onMove} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={btnProps.style} className={btnProps.className}>
           {innerContent}
         </Link>
       ) : (

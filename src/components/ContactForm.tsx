@@ -67,13 +67,15 @@ const ContactForm: React.FC = () => {
       return;
     }
     // 🔥 TRACK CONTACT FORM SUBMISSION
-    posthog.capture("contact_submitted", {
-      name: form.name,
-      email: form.email,
-      phone: form.phone || null,
-      service: form.service || null,
-      message_length: form.message.length,
-    });
+    if (typeof posthog !== "undefined" && posthog && typeof (posthog as any).capture === "function") {
+      (posthog as any).capture("contact_submitted", {
+        name: form.name,
+        email: form.email,
+        phone: form.phone || null,
+        service: form.service || null,
+        message_length: form.message.length,
+      });
+    }
 
     setSubmitting(true);
     setStatusMsg(null);

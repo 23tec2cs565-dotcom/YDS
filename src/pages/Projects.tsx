@@ -552,6 +552,10 @@ const Projects: React.FC = () => {
     updateParams({ project: undefined, id: undefined });
     setTimeout(() => setSelected(null), 150);
   };
+  const hasActiveFilters =
+    (category && category !== "all") ||
+    (locationFilter && locationFilter !== "all") ||
+    !!searchText;
 
   const seoForPage = useMemo(() => {
     if (selected) {

@@ -555,8 +555,9 @@ const ServicesSection: React.FC = () => {
                         loading="lazy"
                         decoding="async"
                       />
-                      <div className="absolute top-4 left-4 sm:top-5 sm:left-5 w-12 h-12 sm:w-14 sm:h-14 bg-[#0B3528]/95 backdrop-blur-md rounded-2xl border border-emerald-500/40 flex items-center justify-center shadow-xl text-[#E6B566] z-10 shadow-emerald-950/40">                      {Icon ? (
-                        <Icon size={28} strokeWidth={1.5} />
+                      <div className="absolute top-4 left-4 sm:top-5 sm:left-5 w-12 h-12 sm:w-14 sm:h-14 bg-[#0B3528]/95 backdrop-blur-md rounded-2xl border border-emerald-500/40 flex items-center justify-center shadow-xl text-[#E6B566] z-10 shadow-emerald-950/40">
+                      {Icon ? (
+                        <Icon size={28} />
                       ) : (
                         <svg width="28" height="28" aria-hidden />
                       )}
@@ -594,7 +595,7 @@ const ServicesSection: React.FC = () => {
                   </div>
 
                   <Link
-                    to={`/services/${s?.id || activeTab}`}
+                    to={`/services/${s?.id || "interior-design"}`}
                     className="inline-flex items-center text-[#0B1220] font-semibold border-b border-[#0B1220] pb-1 hover:text-[#E6B566] hover:border-[#E6B566] transition-colors"
                   >
                     Explore {s?.title || "Service"} Details <ArrowRight size={16} className="ml-2" />
