@@ -259,7 +259,7 @@ const Footer: React.FC = () => {
                   </span>
                 </h2>
                 <p className="mt-2.5 sm:mt-4 text-xs sm:text-sm md:text-base leading-relaxed text-gray-300 max-w-xl">
-                  From architectural concept to meticulous execution — we bring clarity, high-end material selection, and timeless sophistication to every space.
+                  From architectural concept to meticulous execution we bring clarity, high end material selection, and timeless sophistication to every space.
                 </p>
               </div>
 
@@ -267,7 +267,6 @@ const Footer: React.FC = () => {
               <div className="flex shrink-0 flex-col gap-4 sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center">
                 <GlassBtn href="/contact" variant="gold" className="shadow-lg shadow-[#E6B566]/10">
                   Start Your Project
-                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </GlassBtn>
 
                 <GlassBtn href="/projects" variant="neutral">
@@ -300,7 +299,7 @@ const Footer: React.FC = () => {
               </a>
 
               <p className="mt-3 sm:mt-4 max-w-xs text-[11px] sm:text-xs leading-relaxed text-gray-400">
-                Interior design, construction, renovation and 3D visualization — crafted
+                Interior design, construction, renovation and 3D visualization crafted
                 with calm precision from Jaipur.
               </p>
 
