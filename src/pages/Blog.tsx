@@ -23,6 +23,7 @@ import {
 import SEOHead from "../components/SEOHead";
 import { useBlogPosts } from "../hooks/useSanityData";
 import { type BlogPost } from "../data/blogs";
+import { urlFor } from "../lib/sanity";
 
 const CATEGORIES = [
   "All Guides",
@@ -218,7 +219,7 @@ const Blog: React.FC = () => {
 
                     <div className="flex items-center gap-2.5 text-xs text-gray-400">
                       <img
-                        src={featuredPost.author.image || "/assets/team/Nikhil/Nikhil-480.jpeg"}
+                        src={urlFor(featuredPost.author.image) || "/assets/team/Nikhil/Nikhil-480.jpeg"}
                         alt={featuredPost.author.name}
                         className="w-7 h-7 rounded-full object-cover border border-[#E6B566]/40"
                       />
@@ -230,7 +231,7 @@ const Blog: React.FC = () => {
                 <div className="lg:col-span-5 relative">
                   <Link to={`/blog/${featuredPost.slug}`} className="block overflow-hidden rounded-xl aspect-[16/10] border border-white/10">
                     <img
-                      src={featuredPost.coverImage}
+                      src={urlFor(featuredPost.coverImage) || "/assets/services/interior-design3.jpg"}
                       alt={featuredPost.coverImageAlt || featuredPost.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
@@ -273,7 +274,7 @@ const Blog: React.FC = () => {
                     {/* Cover image */}
                     <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden bg-black/40">
                       <img
-                        src={post.coverImage}
+                        src={urlFor(post.coverImage) || "/assets/services/interior-design3.jpg"}
                         alt={post.coverImageAlt || post.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
@@ -311,7 +312,7 @@ const Blog: React.FC = () => {
                       <div className="pt-4 border-t border-white/5 flex items-center justify-between">
                         <div className="flex items-center gap-2 text-xs text-gray-400">
                           <img
-                            src={post.author.image || "/assets/team/Nikhil/Nikhil-480.jpeg"}
+                            src={urlFor(post.author.image) || "/assets/team/Nikhil/Nikhil-480.jpeg"}
                             alt={post.author.name}
                             className="w-5 h-5 rounded-full object-cover border border-[#E6B566]/30"
                           />

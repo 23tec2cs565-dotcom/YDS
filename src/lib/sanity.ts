@@ -1,7 +1,7 @@
 import { createClient, type ClientConfig } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
-export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || "";
+export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || "b0rnzdhr";
 export const dataset = import.meta.env.VITE_SANITY_DATASET || "production";
 export const apiVersion = import.meta.env.VITE_SANITY_API_VERSION || "2024-01-01";
 
@@ -10,10 +10,10 @@ export const isSanityConfigured = Boolean(
 );
 
 const config: ClientConfig = {
-  projectId: isSanityConfigured ? projectId : "mock-project-id",
+  projectId: isSanityConfigured ? projectId : "b0rnzdhr",
   dataset,
   apiVersion,
-  useCdn: true,
+  useCdn: false, // Ensures published changes in Sanity reflect INSTANTLY on the site
 };
 
 export const sanityClient = createClient(config);

@@ -24,6 +24,7 @@ import {
 import SEOHead from "../components/SEOHead";
 import { useBlogPosts } from "../hooks/useSanityData";
 import { blogs as defaultBlogs, type BlogPost } from "../data/blogs";
+import { urlFor } from "../lib/sanity";
 
 const BlogPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -232,7 +233,7 @@ const BlogPostPage: React.FC = () => {
           <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-white/10">
             <div className="flex items-center gap-3">
               <img
-                src={post.author.image}
+                src={urlFor(post.author.image) || "/assets/team/Nikhil/Nikhil-480.jpeg"}
                 alt={post.author.name}
                 className="w-11 h-11 rounded-full object-cover border border-[#E6B566]/40"
               />
@@ -269,7 +270,7 @@ const BlogPostPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="rounded-2xl overflow-hidden aspect-[16/9] border border-white/10 relative bg-black/40 shadow-2xl">
             <img
-              src={post.coverImage}
+              src={urlFor(post.coverImage) || "/assets/services/interior-design3.jpg"}
               alt={post.coverImageAlt || post.title}
               className="w-full h-full object-cover"
               loading="eager"
@@ -380,7 +381,7 @@ const BlogPostPage: React.FC = () => {
                 {post.galleryImages.map((img, gIdx) => (
                   <figure key={gIdx} className="rounded-xl overflow-hidden border border-white/10 bg-white/[0.02] group">
                     <img
-                      src={img.url}
+                      src={urlFor(img.url)}
                       alt={img.alt || `${post.title} render ${gIdx + 1}`}
                       className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
@@ -399,7 +400,7 @@ const BlogPostPage: React.FC = () => {
           {/* ── Author Bio Box ── */}
           <div className="mt-14 p-6 sm:p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
             <img
-              src={post.author.image || "/assets/team/Nikhil/Nikhil-480.jpeg"}
+              src={urlFor(post.author.image) || "/assets/team/Nikhil/Nikhil-480.jpeg"}
               alt={post.author.name}
               className="w-20 h-20 rounded-full object-cover border-2 border-[#E6B566]/50 shrink-0"
             />
