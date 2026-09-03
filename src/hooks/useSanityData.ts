@@ -378,7 +378,34 @@ export function useBlogPosts() {
       seoTitle,
       seoDescription,
       seoKeywords,
-      "coverImage": coalesce(coverImage.asset->url, coverImage)
+      "coverImage": coalesce(coverImage.asset->url, coverImageUrl, coverImage),
+      "coverImageAlt": coverImage.alt,
+      "coverImageCaption": coverImage.caption,
+      "galleryImages": galleryImages[] {
+        "url": coalesce(asset->url, url),
+        alt,
+        caption
+      },
+      "author": coalesce(
+        author->{
+          name,
+          role,
+          "image": coalesce(image.asset->url, "/assets/team/Nikhil/Nikhil-480.jpeg"),
+          "bio": description
+        },
+        customAuthor{
+          name,
+          role,
+          "image": coalesce(image.asset->url, imageUrl, "/assets/team/Nikhil/Nikhil-480.jpeg"),
+          bio
+        },
+        {
+          "name": "Nikhil Sain",
+          "role": "Lead Architect & Interior Designer",
+          "image": "/assets/team/Nikhil/Nikhil-480.jpeg",
+          "bio": "Lead Architect & Interior Designer at Younick Design Studio, specializing in turnkey civil construction, luxury residential architecture, and climate-responsive interior engineering across Jaipur and Rajasthan."
+        }
+      )
     }`;
 
     sanityClient
@@ -403,10 +430,16 @@ export function useBlogPosts() {
             seoDescription: b.seoDescription,
             seoKeywords: b.seoKeywords,
             coverImage: b.coverImage || "/assets/services/interior-design3.jpg",
+            coverImageAlt: b.coverImageAlt || b.title,
+            coverImageCaption: b.coverImageCaption || "",
+            galleryImages: Array.isArray(b.galleryImages)
+              ? b.galleryImages.filter((img: any) => img && img.url)
+              : [],
             author: {
-              name: "Nikhil Sain",
-              role: "Lead Architect & Interior Designer",
-              image: "/assets/team/Nikhil/Nikhil-480.jpeg",
+              name: b.author?.name || "Nikhil Sain",
+              role: b.author?.role || "Lead Architect & Interior Designer",
+              image: b.author?.image || "/assets/team/Nikhil/Nikhil-480.jpeg",
+              bio: b.author?.bio || "Lead Architect & Interior Designer at Younick Design Studio.",
             },
           }));
 

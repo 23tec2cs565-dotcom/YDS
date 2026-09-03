@@ -154,7 +154,7 @@ const serviceList = [
 const companyLinks = [
   { label: "About Us", href: "/about" },
   { label: "Our Portfolio", href: "/projects" },
-  { label: "Knowledge Center", href: "/blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Our Services", href: "/services" },
   { label: "Our Team", href: "/team" },
   { label: "Career Opportunities", href: "/career" },

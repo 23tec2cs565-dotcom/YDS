@@ -144,7 +144,7 @@ const BlogPostPage: React.FC = () => {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Knowledge Center",
+            name: "Blog",
             item: `${siteUrl}/blog`,
           },
           {
@@ -201,7 +201,7 @@ const BlogPostPage: React.FC = () => {
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 mb-6 flex-wrap">
             <Link to="/" className="hover:text-[#E6B566] transition-colors">Home</Link>
             <ChevronRight size={12} />
-            <Link to="/blog" className="hover:text-[#E6B566] transition-colors">Knowledge Center</Link>
+            <Link to="/blog" className="hover:text-[#E6B566] transition-colors">Blog</Link>
             <ChevronRight size={12} />
             <span className="text-[#E6B566] truncate max-w-[200px] sm:max-w-xs">{post.category}</span>
           </nav>
@@ -270,11 +270,16 @@ const BlogPostPage: React.FC = () => {
           <div className="rounded-2xl overflow-hidden aspect-[16/9] border border-white/10 relative bg-black/40 shadow-2xl">
             <img
               src={post.coverImage}
-              alt={post.title}
+              alt={post.coverImageAlt || post.title}
               className="w-full h-full object-cover"
               loading="eager"
             />
           </div>
+          {post.coverImageCaption && (
+            <p className="mt-2.5 text-center text-xs text-gray-400 italic font-light">
+              {post.coverImageCaption}
+            </p>
+          )}
         </div>
 
         {/* ── Main Article Body ── */}
@@ -365,10 +370,36 @@ const BlogPostPage: React.FC = () => {
             </section>
           )}
 
+          {/* ── Photo Gallery / Architectural Visuals ── */}
+          {post.galleryImages && post.galleryImages.length > 0 && (
+            <section className="mt-14 pt-10 border-t border-white/10" aria-label="Project Visuals Gallery">
+              <h2 className="text-2xl font-serif font-bold text-white mb-6">
+                Project Visuals &amp; Architectural Renders
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {post.galleryImages.map((img, gIdx) => (
+                  <figure key={gIdx} className="rounded-xl overflow-hidden border border-white/10 bg-white/[0.02] group">
+                    <img
+                      src={img.url}
+                      alt={img.alt || `${post.title} render ${gIdx + 1}`}
+                      className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    {img.caption && (
+                      <figcaption className="p-3 text-xs text-gray-300 border-t border-white/5 bg-black/40">
+                        {img.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* ── Author Bio Box ── */}
           <div className="mt-14 p-6 sm:p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-transparent flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
             <img
-              src={post.author.image}
+              src={post.author.image || "/assets/team/Nikhil/Nikhil-480.jpeg"}
               alt={post.author.name}
               className="w-20 h-20 rounded-full object-cover border-2 border-[#E6B566]/50 shrink-0"
             />
@@ -380,7 +411,7 @@ const BlogPostPage: React.FC = () => {
                 {post.author.name}
               </h3>
               <p className="text-xs text-gray-300 leading-relaxed mb-4">
-                {post.author.role} at Younick Design Studio, specializing in turnkey civil construction, luxury residential architecture, and climate-responsive interior engineering across Jaipur, Sikar, and Rajasthan.
+                {post.author.bio || `${post.author.role} at Younick Design Studio, specializing in turnkey civil construction, luxury residential architecture, and climate-responsive interior engineering across Jaipur, Sikar, and Rajasthan.`}
               </p>
               <Link
                 to="/team"
@@ -418,7 +449,7 @@ const BlogPostPage: React.FC = () => {
           <aside className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-12 border-t border-white/10" aria-label="Related Architectural Guides">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-xl sm:text-2xl font-serif font-bold text-white">
-                Related Knowledge Center Guides
+                Related Blog Guides
               </h2>
               <Link
                 to="/blog"

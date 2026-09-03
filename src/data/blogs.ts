@@ -17,11 +17,19 @@ export interface BlogPost {
     name: string;
     role: string;
     image: string;
+    bio?: string;
   };
   publishedAt: string;
   readingTime: string;
   featured: boolean;
   coverImage: string;
+  coverImageAlt?: string;
+  coverImageCaption?: string;
+  galleryImages?: Array<{
+    url: string;
+    alt?: string;
+    caption?: string;
+  }>;
   tags: string[];
   content: string; // Rich semantic HTML/Markdown content
   faqs: BlogFAQ[];

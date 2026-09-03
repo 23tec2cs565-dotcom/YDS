@@ -70,7 +70,7 @@ const Blog: React.FC = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Architectural Knowledge Center & Guides | Younick Design Studio Jaipur",
+    name: "Architectural Blog & Guides | Younick Design Studio Jaipur",
     description:
       "Expert architectural guides, turnkey construction cost breakdowns, modular kitchen materials, and Vastu guidelines for Jaipur and Rajasthan homeowners.",
     url: "https://yds-liart.vercel.app/blog",
@@ -95,7 +95,7 @@ const Blog: React.FC = () => {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Knowledge Center",
+          name: "Blog",
           item: "https://yds-liart.vercel.app/blog",
         },
       ],
@@ -105,7 +105,7 @@ const Blog: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Interior & Architecture Knowledge Center | Younick Design Studio Jaipur"
+        title="Interior & Architecture Blog | Younick Design Studio Jaipur"
         description="Comprehensive 2026 cost guides, material comparisons, Vastu rules, and turnkey civil construction insights for luxury homes and commercial spaces in Jaipur."
         keywords="interior design cost jaipur, modular kitchen material jaipur, vastu guidelines luxury villa jaipur, turnkey civil contractor jaipur, 3d architectural rendering jaipur, architecture blog jaipur"
         canonicalUrl="https://yds-liart.vercel.app/blog"
@@ -123,7 +123,7 @@ const Blog: React.FC = () => {
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 mb-6">
               <Link to="/" className="hover:text-[#E6B566] transition-colors">Home</Link>
               <ChevronRight size={12} />
-              <span className="text-white font-medium">Knowledge Center</span>
+              <span className="text-white font-medium">Blog</span>
             </nav>
 
             <div className="max-w-3xl">
@@ -132,7 +132,7 @@ const Blog: React.FC = () => {
                 Architectural Insights &amp; Cost Guides
               </span>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight leading-tight mb-4">
-                The Jaipur Interior &amp; Construction <span className="text-[#E6B566]">Knowledge Center</span>
+                The Jaipur Interior &amp; Construction <span className="text-[#E6B566]">Blog</span>
               </h1>
               <p className="text-base sm:text-lg text-gray-300 font-light leading-relaxed">
                 Objective per-square-foot cost breakdowns, material durability tests for Rajasthan’s climate, and modern Vastu engineering written by practicing architects.
@@ -218,7 +218,7 @@ const Blog: React.FC = () => {
 
                     <div className="flex items-center gap-2.5 text-xs text-gray-400">
                       <img
-                        src={featuredPost.author.image}
+                        src={featuredPost.author.image || "/assets/team/Nikhil/Nikhil-480.jpeg"}
                         alt={featuredPost.author.name}
                         className="w-7 h-7 rounded-full object-cover border border-[#E6B566]/40"
                       />
@@ -231,7 +231,7 @@ const Blog: React.FC = () => {
                   <Link to={`/blog/${featuredPost.slug}`} className="block overflow-hidden rounded-xl aspect-[16/10] border border-white/10">
                     <img
                       src={featuredPost.coverImage}
-                      alt={featuredPost.title}
+                      alt={featuredPost.coverImageAlt || featuredPost.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -274,7 +274,7 @@ const Blog: React.FC = () => {
                     <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden bg-black/40">
                       <img
                         src={post.coverImage}
-                        alt={post.title}
+                        alt={post.coverImageAlt || post.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
@@ -311,7 +311,7 @@ const Blog: React.FC = () => {
                       <div className="pt-4 border-t border-white/5 flex items-center justify-between">
                         <div className="flex items-center gap-2 text-xs text-gray-400">
                           <img
-                            src={post.author.image}
+                            src={post.author.image || "/assets/team/Nikhil/Nikhil-480.jpeg"}
                             alt={post.author.name}
                             className="w-5 h-5 rounded-full object-cover border border-[#E6B566]/30"
                           />

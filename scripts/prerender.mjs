@@ -677,7 +677,7 @@ function createBlogRoute(b) {
       },
       createBreadcrumbs([
         { name: "Home", url: "/" },
-        { name: "Knowledge Center", url: "/blog" },
+        { name: "Blog", url: "/blog" },
         { name: b.title, url: `/blog/${b.slug}` }
       ]),
       ...(b.faqs && b.faqs.length > 0 ? [{
@@ -707,7 +707,7 @@ function createBlogRoute(b) {
       <article style="max-width: 900px; margin: 0 auto; padding: 40px 24px;">
         <nav aria-label="Breadcrumb" style="font-size: 12px; color: #888; margin-bottom: 20px;">
           <a href="/" style="color: #E6B566; text-decoration: none;">Home</a> &gt; 
-          <a href="/blog" style="color: #E6B566; text-decoration: none;">Knowledge Center</a> &gt; 
+          <a href="/blog" style="color: #E6B566; text-decoration: none;">Blog</a> &gt; 
           <span>${b.category}</span>
         </nav>
 
@@ -794,7 +794,29 @@ async function fetchSanityBlogPosts() {
     seoTitle,
     seoDescription,
     seoKeywords,
-    "coverImage": coalesce(coverImage.asset->url, coverImage)
+    "coverImage": coalesce(coverImage.asset->url, coverImageUrl, coverImage),
+    "coverImageAlt": coverImage.alt,
+    "coverImageCaption": coverImage.caption,
+    "author": coalesce(
+      author->{
+        name,
+        role,
+        "image": coalesce(image.asset->url, "/assets/team/Nikhil/Nikhil-480.jpeg"),
+        "bio": description
+      },
+      customAuthor{
+        name,
+        role,
+        "image": coalesce(image.asset->url, imageUrl, "/assets/team/Nikhil/Nikhil-480.jpeg"),
+        bio
+      },
+      {
+        "name": "Nikhil Sain",
+        "role": "Lead Architect & Interior Designer",
+        "image": "/assets/team/Nikhil/Nikhil-480.jpeg",
+        "bio": "Lead Architect & Interior Designer at Younick Design Studio."
+      }
+    )
   }`;
 
   const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?query=${encodeURIComponent(query)}`;
@@ -811,10 +833,12 @@ async function fetchSanityBlogPosts() {
           subtitle: b.subtitle || "",
           category: b.category || "Cost & Budgeting",
           excerpt: b.excerpt || "",
-          author: { name: "Nikhil Sain", role: "Lead Architect & Interior Designer" },
+          author: b.author || { name: "Nikhil Sain", role: "Lead Architect & Interior Designer" },
           publishedAt: b.publishedAt || "2026-08-01",
           readingTime: b.readingTime || "7 min read",
           coverImage: b.coverImage || "/assets/services/interior-design3.jpg",
+          coverImageAlt: b.coverImageAlt || b.title,
+          coverImageCaption: b.coverImageCaption || "",
           tags: b.tags || ["Architecture", "Interior Design"],
           seoTitle: b.seoTitle,
           seoDescription: b.seoDescription,
@@ -1538,10 +1562,10 @@ function getRoutes(projectItems, blogItems = []) {
   // INDIVIDUAL PROJECT CASE-STUDY ROUTES (SSG PRE-RENDERED)
   ...projectItems.map(createProjectRoute),
 
-  // 9b. KNOWLEDGE CENTER & BLOG HUB
+  // 9b. BLOG HUB
   {
     path: "/blog",
-    title: "Interior & Architecture Knowledge Center | Younick Design Studio Jaipur",
+    title: "Interior & Architecture Blog | Younick Design Studio Jaipur",
     description: "Comprehensive 2026 cost guides, material comparisons, Vastu rules, and turnkey civil construction insights for luxury homes and commercial spaces in Jaipur.",
     keywords: "interior design cost jaipur, modular kitchen material jaipur, vastu guidelines luxury villa jaipur, turnkey civil contractor jaipur, 3d architectural rendering jaipur, architecture blog jaipur",
     image: DEFAULT_IMAGE,
@@ -1549,18 +1573,18 @@ function getRoutes(projectItems, blogItems = []) {
     schema: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      name: "Architectural Knowledge Center & Guides | Younick Design Studio Jaipur",
+      name: "Architectural Blog & Guides | Younick Design Studio Jaipur",
       description: "Expert architectural guides, turnkey construction cost breakdowns, modular kitchen materials, and Vastu guidelines for Jaipur and Rajasthan homeowners.",
       url: `${SITE_URL}/blog`,
       breadcrumb: createBreadcrumbs([
         { name: "Home", url: "/" },
-        { name: "Knowledge Center", url: "/blog" }
+        { name: "Blog", url: "/blog" }
       ])
     },
     renderBody: () => `
       <article style="max-width: 1200px; margin: 0 auto; padding: 40px 24px;">
         <h1 style="font-size: 36px; color: #E6B566; margin-bottom: 16px;">
-          The Jaipur Interior &amp; Construction Knowledge Center
+          The Jaipur Interior &amp; Construction Blog
         </h1>
         <p style="font-size: 18px; color: #bbb; line-height: 1.8; margin-bottom: 32px;">
           Architect-verified per-square-foot cost breakdowns, material durability tests for Rajasthan’s climate, and modern Vastu engineering.

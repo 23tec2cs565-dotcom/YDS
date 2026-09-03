@@ -771,17 +771,17 @@ const InsightsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#E6B566] mb-3 block">
-              Architectural Knowledge Center
+              Architecture &amp; Interior Blog
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white">
-              Cost Intelligence &amp; <span className="text-[#E6B566]">Planning Guides</span>
+              Design Intelligence &amp; <span className="text-[#E6B566]">Blog Guides</span>
             </h2>
           </div>
           <Link
             to="/blog"
             className="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#E6B566] hover:text-white transition-colors"
           >
-            Explore All Guides <ArrowRight size={14} />
+            Explore All Blog Articles <ArrowRight size={14} />
           </Link>
         </div>
 

@@ -2,10 +2,12 @@
 
 export const blogPostSchema = {
   name: "blogPost",
-  title: "Knowledge Center & Blog",
+  title: "Blog",
   type: "document",
   groups: [
     { name: "main", title: "📌 Overview" },
+    { name: "media", title: "🖼️ Cover & Gallery" },
+    { name: "author", title: "👤 Author Details" },
     { name: "content", title: "✍️ Article Body" },
     { name: "seo", title: "🔍 Google SEO & Ranking" },
   ],
@@ -60,12 +62,79 @@ export const blogPostSchema = {
     },
     {
       name: "coverImage",
-      title: "Cover Image",
+      title: "Cover Image (Upload)",
       type: "image",
-      group: "main",
+      group: "media",
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt Text (Accessibility & SEO)",
+          type: "string",
+        },
+        {
+          name: "caption",
+          title: "Photo Caption / Credits",
+          type: "string",
+        },
+      ],
+    },
+    {
+      name: "coverImageUrl",
+      title: "Cover Image URL (Direct / Fallback)",
+      type: "string",
+      group: "media",
+      description: "Optional web URL or local path (e.g. /assets/services/interior-design3.jpg) if not uploading an image file directly",
+    },
+    {
+      name: "galleryImages",
+      title: "Article Photo Gallery / Supporting Renders",
+      type: "array",
+      group: "media",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            { name: "alt", title: "Alt Text", type: "string" },
+            { name: "caption", title: "Caption / Description", type: "string" },
+          ],
+        },
+      ],
+    },
+    {
+      name: "author",
+      title: "Select Team Member Author",
+      type: "reference",
+      group: "author",
+      description: "Pick an existing architect or designer from the team list",
+      to: [{ type: "teamMember" }],
+    },
+    {
+      name: "customAuthor",
+      title: "Or Custom / Guest Author",
+      type: "object",
+      group: "author",
+      description: "Use this to specify a custom author name, title, and portrait without creating a team member record",
+      fields: [
+        { name: "name", title: "Author Full Name", type: "string" },
+        { name: "role", title: "Designation / Role", type: "string" },
+        {
+          name: "image",
+          title: "Author Portrait Photo",
+          type: "image",
+          options: { hotspot: true },
+        },
+        {
+          name: "imageUrl",
+          title: "Author Portrait URL",
+          type: "string",
+          description: "Direct URL to author photo if not uploading an image file",
+        },
+        { name: "bio", title: "Author Short Biography", type: "text", rows: 3 },
+      ],
     },
     {
       name: "readingTime",
