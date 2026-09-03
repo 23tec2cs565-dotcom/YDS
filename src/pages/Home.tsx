@@ -38,7 +38,8 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
 import { projects as defaultProjects } from "../data/projects";
 import { services as defaultServices } from "../data/services";
 import { teamMembers as defaultTeam } from "../data/team";
-import { useProjects, useServices, useTeam, useTestimonials } from "../hooks/useSanityData";
+import { blogs as defaultBlogs } from "../data/blogs";
+import { useProjects, useServices, useTeam, useTestimonials, useBlogPosts } from "../hooks/useSanityData";
 import type { Project } from "../data/projects";
 import type { Service } from "../data/services";
 import SEOHead from "../components/SEOHead";
@@ -220,14 +221,18 @@ const Hero: React.FC = () => {
             </Link>
           </div>
 
-          <div className="flex items-center gap-8 pt-8 border-t border-gray-200/80">
+          <div className="flex items-center gap-6 sm:gap-8 pt-8 border-t border-gray-200/80 flex-wrap">
             <div>
               <div className="text-3xl font-serif text-[#0B1220]">{projects.length}+</div>
-              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Projects</p>
+              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Signature Projects</p>
             </div>
             <div>
-              <div className="text-3xl font-serif text-[#0B1220]">100%</div>
-              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Commitment</p>
+              <div className="text-3xl font-serif text-[#0B1220]">5</div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Turnkey Services</p>
+            </div>
+            <div>
+              <div className="text-3xl font-serif text-[#0B1220]">4.9<span className="text-lg text-[#E6B566]">★</span></div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Client Rating</p>
             </div>
           </div>
         </div>
@@ -416,28 +421,33 @@ const ProjectsSection: React.FC = () => {
           <AnimatePresence mode="popLayout">
             {filtered.map((project, idx) => {
               const img = (project as ExtendedProject)?.imageUrl ?? project.image ?? "";
+              const projSlug = project.slug || project.id;
               return (
-                <MotionDiv
-                  layout
+                <Link
                   key={project.id ?? idx}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: idx * 0.05 }}
-                  onClick={() => setSelectedProject(project)}
-                  className="group cursor-pointer"
+                  to={`/projects/${projSlug}`}
+                  className="block no-underline text-inherit"
                 >
-                  <div className="relative aspect-[4/5] mb-4 overflow-hidden rounded-2xl">
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity z-20 flex items-center justify-center">
-                      <span className="bg-white/90 backdrop-blur-md text-[#0B1220] px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        View Project
-                      </span>
+                  <MotionDiv
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                    className="group cursor-pointer"
+                  >
+                    <div className="relative aspect-[4/5] mb-4 overflow-hidden rounded-2xl">
+                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity z-20 flex items-center justify-center">
+                        <span className="bg-white/90 backdrop-blur-md text-[#0B1220] px-6 py-3 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                          View Project
+                        </span>
+                      </div>
+                      <img src={img} alt={`${project.title} — ${project.category || "Interior Architecture"} in ${project.location || "Jaipur"}`} title={`${project.title} — ${project.category || "Interior Architecture"} in ${project.location || "Jaipur"}`} width="600" height="750" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={handleImgError} loading="lazy" decoding="async" />
                     </div>
-                    <img src={img} alt={`${project.title} — ${project.category || "Interior Architecture"} in ${project.location || "Jaipur"}`} title={`${project.title} — ${project.category || "Interior Architecture"} in ${project.location || "Jaipur"}`} width="600" height="750" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={handleImgError} loading="lazy" decoding="async" />
-                  </div>
-                  <h3 className="text-2xl font-serif text-[#0B1220] group-hover:text-[#E6B566] transition-colors">{project.title}</h3>
-                  <p className="text-gray-500 text-sm mt-1">{project.location} : {project.category}</p>
-                </MotionDiv>
+                    <h3 className="text-2xl font-serif text-[#0B1220] group-hover:text-[#E6B566] transition-colors">{project.title}</h3>
+                    <p className="text-gray-500 text-sm mt-1">{project.location} : {project.category}</p>
+                  </MotionDiv>
+                </Link>
               );
             })}
           </AnimatePresence>
@@ -749,6 +759,77 @@ const StatsSection: React.FC = () => {
   );
 };
 
+// Insights & Knowledge Center Section for SEO & Client Education
+const InsightsSection: React.FC = () => {
+  const { posts } = useBlogPosts();
+  const guides = (posts && posts.length > 0) ? posts.slice(0, 3) : defaultBlogs.slice(0, 3);
+
+  return (
+    <section className="py-24 bg-[#070D18] text-white border-t border-white/10 relative overflow-hidden">
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#E6B566]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#E6B566] mb-3 block">
+              Architectural Knowledge Center
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white">
+              Cost Intelligence &amp; <span className="text-[#E6B566]">Planning Guides</span>
+            </h2>
+          </div>
+          <Link
+            to="/blog"
+            className="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#E6B566] hover:text-white transition-colors"
+          >
+            Explore All Guides <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {guides.map((g) => (
+            <Link
+              key={g.id}
+              to={`/blog/${g.slug}`}
+              className="group flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-[#E6B566]/40 hover:bg-white/[0.05] transition-all duration-300"
+            >
+              <div className="aspect-[16/10] overflow-hidden bg-black/40 relative">
+                <img
+                  src={g.coverImage}
+                  alt={g.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#070D18]/80 backdrop-blur-md border border-white/10 text-[10px] font-bold text-[#E6B566] uppercase tracking-wider">
+                  {g.category}
+                </div>
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-2.5">
+                    <span>{g.readingTime}</span>
+                    <span>•</span>
+                    <span>By {g.author.name}</span>
+                  </div>
+                  <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#E6B566] transition-colors line-clamp-2 leading-snug mb-2">
+                    {g.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
+                    {g.excerpt}
+                  </p>
+                </div>
+                <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-[#E6B566]">
+                  <span>Read Guide</span>
+                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Home: React.FC = () => {
   return (
     <>
@@ -763,6 +844,7 @@ const Home: React.FC = () => {
           <ServicesSection />
           <TestimonialsSection />
           <LeadershipSection />
+          <InsightsSection />
         </main>
         {/* FooterSection intentionally not rendered on the Home page per request */}
       </div>

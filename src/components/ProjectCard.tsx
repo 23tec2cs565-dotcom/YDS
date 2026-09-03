@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { MapPin, ArrowUpRight, User, IndianRupee, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Project } from "../data/projects";
@@ -33,16 +34,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
     img.src = "/assets/Placeholder/placeholder.jpg";
   };
 
+  const projectSlug = project.slug || project.id;
+
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative h-full overflow-hidden rounded-2xl bg-[#0B1220] shadow-lg transition-shadow duration-500 hover:shadow-2xl hover:shadow-black/20 ${
-        onClick ? "cursor-pointer" : "cursor-default"
-      }`}
+    <Link
+      to={`/projects/${projectSlug}`}
+      className="block h-full text-inherit no-underline focus:outline-none"
+      aria-label={`View project details for ${project.title}`}
       onClick={() => {
         safeCapture("project_viewed", {
           project_id: project.id,
@@ -51,17 +49,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
         });
         if (onClick) onClick();
       }}
-      role={onClick ? "button" : undefined}
-      tabIndex={onClick ? 0 : undefined}
-      aria-label={onClick ? `View project details for ${project.title}` : undefined}
-      onKeyDown={(e) => {
-        if (!onClick) return;
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onClick();
-        }
-      }}
     >
+      <motion.div
+        layout
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="group relative h-full overflow-hidden rounded-2xl bg-[#0B1220] shadow-lg transition-shadow duration-500 hover:shadow-2xl hover:shadow-black/20 cursor-pointer"
+      >
       {/* Image */}
       <div className="relative aspect-[3/4] sm:aspect-[4/5] overflow-hidden">
         {!imageLoaded && (
@@ -164,6 +160,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
         </div>
       </div>
     </motion.div>
+    </Link>
   );
 };
 

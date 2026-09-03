@@ -180,7 +180,7 @@ export const pageSEO: Record<string, SEOData> = {
   home: {
     title: "Luxury Interior Designers & Architects in Jaipur | Younick",
     description:
-      "Award-winning luxury interior design, architecture, and turnkey construction studio in Jaipur. From 3D rendering to handover. Book a consultation.",
+      "14+ projects delivered, 4.9★ rated. Luxury interior design, architecture & turnkey construction in Jaipur. 5 services from ₹1,200/sq.ft. Book now.",
     keywords:
       "interior designers in jaipur, best interior designer jaipur, luxury villa interior design jaipur, turnkey interior contractor jaipur, 3d architectural rendering rajasthan",
     url: `${SITE.url}/`,

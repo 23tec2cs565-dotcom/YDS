@@ -8,6 +8,7 @@ import {
   Hammer,
   Sparkles,
   Layout,
+  BookOpen,
 } from "lucide-react";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
@@ -23,6 +24,39 @@ function handleImgError(ev: React.SyntheticEvent<HTMLImageElement>) {
   }
 }
 
+const SERVICE_GUIDE_MAP: Record<string, { slug: string; title: string; subtitle: string; category: string }> = {
+  "interior-design": {
+    slug: "interior-design-cost-jaipur-2026",
+    title: "Cost of Interior Design in Jaipur (2026 Price Guide)",
+    subtitle: "Complete per-sq.ft rate breakdown for 1BHK, 2BHK, 3BHK, and luxury villas in Jaipur.",
+    category: "Cost & Budgeting",
+  },
+  "construction": {
+    slug: "turnkey-construction-vs-local-contractors-jaipur",
+    title: "Turnkey Civil Construction vs Local Labor Contractors in Jaipur",
+    subtitle: "Detailed comparison explaining why turnkey contracts prevent 30% cost overruns.",
+    category: "Turnkey Construction",
+  },
+  "renovation": {
+    slug: "best-modular-kitchen-materials-rajasthan-hot-climate",
+    title: "Best Materials for Modular Kitchens in Rajasthan's Climate",
+    subtitle: "How to choose substrates that withstand 45°C+ summer heat and desert dust.",
+    category: "Materials & Climate",
+  },
+  "consultation": {
+    slug: "vastu-guidelines-luxury-villa-design-jaipur",
+    title: "Vastu Guidelines for Luxury Villa Entrances & Spatial Planning",
+    subtitle: "Harmonizing ancient Vedic orientation science with contemporary architecture.",
+    category: "Vastu & Planning",
+  },
+  "3d-visualization": {
+    slug: "why-3d-architectural-renders-save-construction-cost",
+    title: "Why 3D Architectural Renders Save 20% on Construction",
+    subtitle: "How photorealistic CGI visualization prevents expensive on-site structural rework.",
+    category: "3D Visualization",
+  },
+};
+
 const ServiceDetails: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
   const navigate = useNavigate();
@@ -34,6 +68,8 @@ const ServiceDetails: React.FC = () => {
     () => services.find((s) => s.id === activeId),
     [activeId]
   );
+
+  const relatedGuide = activeId ? SERVICE_GUIDE_MAP[activeId] : null;
 
   const relatedProjects = useMemo(() => {
     if (!service) return ALL_PROJECTS.slice(0, 3);
@@ -265,7 +301,7 @@ const ServiceDetails: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedProjects.map((p) => (
                 <article key={p.id} className="group">
-                  <Link to={`/projects?project=${encodeURIComponent(p.id)}`} className="block rounded-lg overflow-hidden" aria-label={`Open project ${p.title}`}>
+                  <Link to={`/projects/${p.slug || p.id}`} className="block rounded-lg overflow-hidden" aria-label={`Open project ${p.title}`}>
                     <div className="relative aspect-[4/3] bg-gray-800 mb-3 rounded-lg overflow-hidden">
                       <img
                         src={p.image || "/assets/Placeholder/placeholder-rect.jpg"}
@@ -296,6 +332,35 @@ const ServiceDetails: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* RELATED KNOWLEDGE GUIDE CALLOUT */}
+        {relatedGuide && (
+          <section className="bg-[#070D18] py-14 text-white border-t border-white/10">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="rounded-2xl border border-[#E6B566]/30 bg-gradient-to-r from-[#E6B566]/10 via-white/[0.02] to-transparent p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="max-w-2xl">
+                  <div className="flex items-center gap-2 text-xs text-[#E6B566] font-bold uppercase tracking-wider mb-2">
+                    <BookOpen size={14} />
+                    <span>Recommended Architectural Guide</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-2">
+                    {relatedGuide.title}
+                  </h3>
+                  <p className="text-sm text-gray-300">
+                    {relatedGuide.subtitle}
+                  </p>
+                </div>
+                <Link
+                  to={`/blog/${relatedGuide.slug}`}
+                  className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#E6B566] text-[#070D18] text-xs font-bold uppercase tracking-wider hover:bg-[#D4A054] transition-all shadow-md shadow-[#E6B566]/20"
+                >
+                  <span>Read Full Guide</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
       </main>
     </>
   );

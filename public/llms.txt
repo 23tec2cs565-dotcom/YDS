@@ -1,23 +1,70 @@
 # Younick Design Studio
 
-> Premier Interior Design, Construction, Renovation, and 3D Visualization Studio in Rajasthan, India.
+> Luxury interior design, architecture, and turnkey construction studio in Jaipur, Rajasthan, India.
 
-Younick Design Studio (YDS) creates spaces of distinction and refined beauty. Led by a team of experienced architects and interior designers, we specialize in residential, commercial, hospitality, and educational architecture.
+Younick Design Studio is a premier luxury interior design, architecture, and turnkey construction firm based in Civil Lines, Jaipur. We specialize in transforming residential villas, apartments, commercial offices, healthcare facilities, gyms, and retail boutiques into bespoke, timeless environments.
 
-## Core Services
-- [Interior Design Services](https://yds-liart.vercel.app/services)
-- [Architecture & Construction](https://yds-liart.vercel.app/services)
-- [Space Planning & 3D Visualization](https://yds-liart.vercel.app/services)
-- [Renovation & Restoration](https://yds-liart.vercel.app/services)
+## Key Facts
 
-## Featured Portfolio & Projects
-- [Explore Selected Portfolio Projects](https://yds-liart.vercel.app/projects)
-- [PCP Sikar Villa Interior](https://yds-liart.vercel.app/projects)
-- [Bright School Educational Campus](https://yds-liart.vercel.app/projects)
-- [JK LON Hospital Healthcare Upgrade](https://yds-liart.vercel.app/projects)
+- Founded and led by Nikhil Sain (Lead Interior Designer & Architect)
+- Studio location: 3008, Third Floor, Orbit Mall, Civil Lines, Jaipur, Rajasthan 302001
+- Phone: +91 88548 83058
+- Email: studioyounick@gmail.com
+- Operating hours: Monday–Saturday, 10:00 AM – 7:00 PM
+- 14+ signature projects delivered across Jaipur and Rajasthan
+- 5 core turnkey services offered
+- 4.9★ average client rating from 128+ reviews
+- Residential interior pricing starts from ₹1,200/sq.ft
+- Areas served: Jaipur (Civil Lines, C-Scheme, Vaishali Nagar, Mansarovar, Malviya Nagar, Jagatpura, Pratap Nagar, Tonk Road), Sikar, Udaipur, Jodhpur, Kota, and all of Rajasthan
 
-## Contact & Studio Info
-- [Contact Us & Inquiries](https://yds-liart.vercel.app/contact)
-- [About Younick Design Studio](https://yds-liart.vercel.app/about)
-- [Meet Our Leadership & Team](https://yds-liart.vercel.app/team)
-- [Frequently Asked Questions (FAQ)](https://yds-liart.vercel.app/faq)
+## Services
+
+1. **Luxury Residential & Villa Interior Design**: Bespoke spatial layouts, custom modular kitchens (Blum/Hettich hardware), Italian marble finishes, false ceilings, and curated master suites. Timeline: 4–8 weeks. Starting from ₹1,200/sq.ft.
+2. **Turnkey Civil Construction & Execution**: Foundation-to-finish structural engineering using IS-grade steel, BWP plywood, and premium stone. Full project management and on-site supervision. Timeline: 4–8 months.
+3. **Architectural Renovation & Remodeling**: Structural wall modifications, plumbing retrofitting, contemporary interior revamps, and energy-efficient upgrades for homes, havelis, and commercial spaces. Timeline: 3–6 weeks.
+4. **Architectural & Interior Consultation**: Feasibility analysis, 2D floor plans, Vastu-aligned spatial guidance, accurate BOQ cost estimation, and material advisory. Timeline: 3–7 days.
+5. **3D Architectural Visualization & Walkthroughs**: Photorealistic interior/exterior renders, lighting simulation, VR walkthroughs, and CAD construction drawings. Timeline: 5–10 working days.
+
+## Signature Projects
+
+- Hera Mahal, Jaipur — Luxury heritage residential interior
+- Six Eleven Fitness Club, Jaipur — Commercial gym interior with acoustic treatment
+- Chhoti Bai Jewellers, Jaipur — High-end jewellery boutique with brass display vitrines
+- Devi Lal Memorial Eye Hospital (DLMEH) — Clinical space planning and healthcare interiors
+- Detailing Devils Studio, Jaipur — Automotive studio with high-CRI tunnel lighting
+- Dharmendra Luxury Villa, Jaipur — Modern 4BHK with double-height living foyer
+- PCP Sikar Educational Campus — Academic reception and administrative suites
+
+## Pages
+
+- Homepage: https://yds-liart.vercel.app/
+- Projects Portfolio: https://yds-liart.vercel.app/projects
+- Services Overview: https://yds-liart.vercel.app/services
+- Interior Design: https://yds-liart.vercel.app/services/interior-design
+- Turnkey Construction: https://yds-liart.vercel.app/services/construction
+- Renovation: https://yds-liart.vercel.app/services/renovation
+- Design Consultation: https://yds-liart.vercel.app/services/consultation
+- 3D Visualization: https://yds-liart.vercel.app/services/3d-visualization
+- About Us: https://yds-liart.vercel.app/about
+- Our Team: https://yds-liart.vercel.app/team
+- Contact Us: https://yds-liart.vercel.app/contact
+- Careers: https://yds-liart.vercel.app/career
+- FAQ: https://yds-liart.vercel.app/faq
+- Privacy Policy: https://yds-liart.vercel.app/privacy
+- Terms of Service: https://yds-liart.vercel.app/terms
+- Knowledge Center & Blog: https://yds-liart.vercel.app/blog
+
+## Knowledge Center & Foundational Guides
+
+1. **Cost of Interior Design in Jaipur (2026 Price Guide)**: Comprehensive per-sq.ft rate breakdown for 1BHK, 2BHK, 3BHK, 4BHK, and luxury villas. Essential (₹1,200–₹1,800/sq.ft), Premium (₹1,800–₹2,800/sq.ft), Luxury (₹2,800–₹4,500+/sq.ft). URL: https://yds-liart.vercel.app/blog/interior-design-cost-jaipur-2026
+2. **Best Modular Kitchen Materials for Rajasthan's Climate**: Thermal delamination and dust resistance guide. Comparing IS:710 BWP Marine Plywood, HDHMR, Acrylic shutters, and Quartz countertops against 45°C+ summer heat. URL: https://yds-liart.vercel.app/blog/best-modular-kitchen-materials-rajasthan-hot-climate
+3. **Vastu Guidelines for Luxury Villa Entrances & Spatial Planning**: Harmonizing traditional Vedic orientations (Ishanya, Agni, Nairutya) with contemporary open-plan luxury villa architecture in Jaipur. URL: https://yds-liart.vercel.app/blog/vastu-guidelines-luxury-villa-design-jaipur
+4. **Turnkey Construction vs Local Labor Contractors in Jaipur**: Detailed financial risk analysis explaining why fragmented contractor hiring causes 30% cost overruns versus single-point turnkey accountability. URL: https://yds-liart.vercel.app/blog/turnkey-construction-vs-local-contractors-jaipur
+5. **Why 3D Architectural Renders Save 20% on Villa Construction**: Preventing on-site demolition, HVAC/false ceiling clashes, and color mistakes through physically-based 3D CGI simulations. URL: https://yds-liart.vercel.app/blog/why-3d-architectural-renders-save-construction-cost
+
+## Social
+
+- Instagram: https://www.instagram.com/studio.younick
+- Facebook: https://www.facebook.com/studioyounick
+- YouTube: https://www.youtube.com/@Younickdesignstudio
+- WhatsApp: https://wa.me/918854883058

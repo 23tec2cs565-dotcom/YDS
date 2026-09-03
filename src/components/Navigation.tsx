@@ -13,6 +13,7 @@ import {
   Users,
   Clipboard,
   LayoutGrid,
+  BookOpen,
 } from "lucide-react";
 interface NavigationProps {
   onSearch: (query: string) => void;
@@ -33,6 +34,7 @@ const navItems = [
 ];
 
 const gridItems = [
+  { path: "/blog", label: "Knowledge Center", icon: BookOpen, title: "Architectural Guides & Cost Insights" },
   { path: "/team", label: "Our Team", icon: Users, title: "Meet Our Architects and Interior Designers" },
   { path: "/career", label: "Careers", icon: Clipboard, title: "Explore Career Opportunities at Younick Studio" },
   { path: "/projects", label: "Portfolio", icon: FolderOpen, title: "View Our Completed Architecture & Interior Projects" },
@@ -169,7 +171,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
 
   const selectSuggestion = (s: Suggest) => {
     if (s.type === "project") {
-      navigate(`/projects?project=${encodeURIComponent(s.projectId)}`);
+      navigate(`/projects/${encodeURIComponent(s.projectId)}`);
     } else {
       navigate(`/team#${s.memberId}`);
     }
@@ -210,16 +212,22 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       "/services",
       "/career",
       "/admin",
+      "/blog",
+      "/insights",
     ].includes(location.pathname) &&
-    !location.pathname.startsWith("/services/")
+    !location.pathname.startsWith("/services/") &&
+    !location.pathname.startsWith("/projects/") &&
+    !location.pathname.startsWith("/blog/")
   );
+
+  const isSolid = scrolled || is404 || location.pathname !== "/";
 
   return (
     <nav
       aria-label="Main Navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || is404
-          ? "bg-white/90 backdrop-blur-md py-2 sm:py-3 shadow-md border-b border-gray-100"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isSolid
+          ? "bg-white/95 backdrop-blur-md py-2 sm:py-3 shadow-md border-b border-gray-100"
           : "bg-transparent py-3 sm:py-5"
       }`}
     >

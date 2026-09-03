@@ -7,6 +7,7 @@ import IntroScreen from "./components/IntroScreen";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Home from "./pages/Home";
 const Projects = React.lazy(() => import("./pages/Projects"));
+const ProjectDetail = React.lazy(() => import("./pages/ProjectDetail"));
 const OurTeam = React.lazy(() => import("./pages/OurTeam"));
 const ContactUs = React.lazy(() => import("./pages/ContactUs"));
 const About = React.lazy(() => import("./pages/About"));
@@ -16,6 +17,8 @@ const ServiceDetails = React.lazy(() => import("./pages/ServiceDetails"));
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = React.lazy(() => import("./pages/TermsOfService"));
 const FAQ = React.lazy(() => import("./pages/FAQ"));
+const Blog = React.lazy(() => import("./pages/Blog"));
+const BlogPost = React.lazy(() => import("./pages/BlogPost"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Admin = React.lazy(() => import("./pages/Admin"));
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -63,10 +66,16 @@ function AppContent() {
     "/terms-of-service",
     "/faq",
     "/faqs",
+    "/blog",
+    "/insights",
+    "/knowledge-center",
   ];
   const is404Page =
     cleanPath === "/404" ||
-    (!validRoutes.includes(cleanPath) && !cleanPath.startsWith("/services/"));
+    (!validRoutes.includes(cleanPath) &&
+      !cleanPath.startsWith("/services/") &&
+      !cleanPath.startsWith("/projects/") &&
+      !cleanPath.startsWith("/blog/"));
 
   const handleSearch = () => {
     // No-op: search is handled via url searchParams navigation inside Navigation component
@@ -95,6 +104,7 @@ function AppContent() {
             <Route path="/services/:id" element={<ServiceDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/team" element={<OurTeam />} />
             <Route path="/contact" element={<ContactUs />} />
 
@@ -110,6 +120,12 @@ function AppContent() {
             <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/faqs" element={<Navigate to="/faq" replace />} />
+
+            {/* Knowledge Center & Blog */}
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/insights" element={<Navigate to="/blog" replace />} />
+            <Route path="/knowledge-center" element={<Navigate to="/blog" replace />} />
 
             {/* 404 */}
             <Route path="/404" element={<NotFound />} />

@@ -150,13 +150,15 @@ const serviceList = [
   { href: "/services/3d-visualization", label: "3D Architectural Visualization" },
 ];
 
-// 6 items → grid-cols-2 → 3 rows × 2 cols
+// 8 items → grid-cols-2 → 4 rows × 2 cols
 const companyLinks = [
   { label: "About Us", href: "/about" },
   { label: "Our Portfolio", href: "/projects" },
-  { label: "Our Process", href: "/services" },
+  { label: "Knowledge Center", href: "/blog" },
+  { label: "Our Services", href: "/services" },
   { label: "Our Team", href: "/team" },
   { label: "Career Opportunities", href: "/career" },
+  { label: "FAQ & Pricing", href: "/faq" },
   { label: "Contact Us", href: "/contact" },
 ];
 

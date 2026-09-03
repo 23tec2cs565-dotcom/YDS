@@ -487,16 +487,15 @@ const Projects: React.FC = () => {
     setFiltered(results);
   }, [searchParams, combinedProjects, navigate]);
 
-  // Auto-open modal if 'project' or 'id' query parameter is present in URL
+  // Auto-redirect to dedicated case-study page if 'project' or 'id' query parameter is present
   useEffect(() => {
     const projId = searchParams.get("project") || searchParams.get("id");
     if (projId) {
       const found = combinedProjects.find(
-        (p) => p.id === projId || slugify(p.title) === slugify(projId)
+        (p) => p.id === projId || (p.slug && p.slug === projId) || slugify(p.title) === slugify(projId)
       );
       if (found) {
-        setSelected(found);
-        setModalOpen(true);
+        navigate(`/projects/${found.slug || found.id}`, { replace: true });
       } else {
         navigate("/404", { replace: true });
       }
@@ -543,9 +542,7 @@ const Projects: React.FC = () => {
   };
 
   const openProject = (proj: Project) => {
-    setSelected(proj);
-    setModalOpen(true);
-    updateParams({ project: proj.id });
+    navigate(`/projects/${proj.slug || proj.id}`);
   };
   const closeProject = () => {
     setModalOpen(false);

@@ -3,3 +3,6 @@ Allow: /
 Disallow: /admin
 
 Sitemap: https://yds-liart.vercel.app/sitemap.xml
+
+# AI Crawler Summary
+# See https://yds-liart.vercel.app/llms.txt for a structured overview of this site.
