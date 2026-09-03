@@ -254,6 +254,7 @@ const AboutContent = () => {
                 >
                     <div className="flex items-center gap-1.5 sm:gap-2">
                        <span className="font-mono text-xs sm:text-sm uppercase tracking-widest font-bold">Meet The Team</span>
+                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                  </Link>
               </div>
