@@ -29,7 +29,6 @@ const navItems = [
   { path: "/", label: "Home", icon: Home, title: "Younick Design Studio Home" },
   { path: "/projects", label: "Projects", icon: FolderOpen, title: "View Architecture & Interior Projects Portfolio" },
   { path: "/services", label: "Services", icon: Briefcase, title: "Turnkey Interior Design & Construction Services" },
-  { path: "/blog", label: "Blog", icon: BookOpen, title: "Architectural & Interior Design Blog" },
   { path: "/about", label: "About", icon: Info, title: "About Younick Design Studio Jaipur" },
   { path: "/contact", label: "Contact", icon: MessageSquare, title: "Contact Our Jaipur Design Studio" },
 ];
