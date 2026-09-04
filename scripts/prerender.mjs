@@ -2041,7 +2041,7 @@ function syncSitemapWithContent(projectItems, blogItems = []) {
   for (const p of projectItems) {
     const loc = `${SITE_URL}/projects/${p.slug}`;
     if (!content.includes(`<loc>${loc}</loc>`)) {
-      const entry = `  <url>\n       <loc>${loc}</loc>\n       <lastmod>${now}</lastmod>\n       <priority>0.8500</priority>\n  </url>\n`;
+      const entry = `  <url>\n       <loc>${loc}</loc>\n       <lastmod>${now}</lastmod>\n       <changefreq>daily</changefreq>\n       <priority>0.8500</priority>\n  </url>\n`;
       content = content.replace("</urlset>", `${entry}</urlset>`);
       addedCount++;
     }
@@ -2050,7 +2050,7 @@ function syncSitemapWithContent(projectItems, blogItems = []) {
   // Ensure /blog hub is in sitemap
   const blogHubLoc = `${SITE_URL}/blog`;
   if (!content.includes(`<loc>${blogHubLoc}</loc>`)) {
-    const entry = `  <url>\n       <loc>${blogHubLoc}</loc>\n       <lastmod>${now}</lastmod>\n       <priority>0.8500</priority>\n  </url>\n`;
+    const entry = `  <url>\n       <loc>${blogHubLoc}</loc>\n       <lastmod>${now}</lastmod>\n       <changefreq>daily</changefreq>\n       <priority>0.8500</priority>\n  </url>\n`;
     content = content.replace("</urlset>", `${entry}</urlset>`);
     addedCount++;
   }
@@ -2059,7 +2059,7 @@ function syncSitemapWithContent(projectItems, blogItems = []) {
   for (const b of blogItems) {
     const loc = `${SITE_URL}/blog/${b.slug}`;
     if (!content.includes(`<loc>${loc}</loc>`)) {
-      const entry = `  <url>\n       <loc>${loc}</loc>\n       <lastmod>${now}</lastmod>\n       <priority>0.8000</priority>\n  </url>\n`;
+      const entry = `  <url>\n       <loc>${loc}</loc>\n       <lastmod>${now}</lastmod>\n       <changefreq>daily</changefreq>\n       <priority>0.8000</priority>\n  </url>\n`;
       content = content.replace("</urlset>", `${entry}</urlset>`);
       addedCount++;
     }

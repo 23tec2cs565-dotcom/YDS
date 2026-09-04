@@ -82,6 +82,8 @@
   ],
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/((?!assets/|fonts/|icons/|.*\\..*).*)", "destination": "/index.html" }
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/((?!assets/|fonts/|icons/|api/|.*\\..*).*)", "destination": "/index.html" }
   ]
 }
