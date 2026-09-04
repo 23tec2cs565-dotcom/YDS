@@ -19,7 +19,8 @@ import {
   Film,
   Building2,
   IndianRupee,
-  Maximize2
+  Maximize2,
+  X
 } from "lucide-react";
 import SEOHead from "../components/SEOHead";
 import { projects as defaultProjects, type Project } from "../data/projects";
@@ -100,6 +101,22 @@ const ProjectDetail: React.FC = () => {
       window.scrollTo(0, 0);
     }
   }, [project]);
+
+  // Lightbox keyboard shortcuts (Escape, Left, Right)
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowLeft") {
+        setActivePhotoIdx((prev) => (prev === 0 ? imagesList.length - 1 : prev - 1));
+      }
+      if (e.key === "ArrowRight") {
+        setActivePhotoIdx((prev) => (prev === imagesList.length - 1 ? 0 : prev + 1));
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen, imagesList.length]);
 
   // Related projects (same category or nearby)
   const relatedProjects = useMemo(() => {
@@ -309,15 +326,24 @@ const ProjectDetail: React.FC = () => {
             {/* Photo Gallery View */}
             {activeMediaTab === "photos" && (
               <div className="space-y-4">
-                {/* Main Active Image Viewport */}
-                <div className="relative aspect-[16/10] sm:aspect-[16/9] max-h-[680px] w-full rounded-3xl overflow-hidden bg-black/40 border border-white/10 shadow-2xl group">
+                {/* Main Active Image Viewport (Reduced Aspect Ratio & Height) */}
+                <div className="relative aspect-[16/10] sm:aspect-[16/9] md:aspect-[21/10] max-h-[360px] sm:max-h-[420px] md:max-h-[460px] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-black/70 border border-white/10 shadow-2xl group flex items-center justify-center">
+                  {/* Ambient Backdrop Blur */}
+                  <img
+                    src={imagesList[activePhotoIdx]}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 scale-105 pointer-events-none select-none"
+                  />
+
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={imagesList[activePhotoIdx]}
                       src={imagesList[activePhotoIdx]}
                       alt={`${project.title} photo ${activePhotoIdx + 1}`}
                       title={`${project.title} by Younick Design Studio`}
-                      className="w-full h-full object-cover select-none"
+                      className="relative z-10 w-full h-full object-cover select-none cursor-pointer"
+                      onClick={() => setLightboxOpen(true)}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -325,6 +351,16 @@ const ProjectDetail: React.FC = () => {
                       onError={handleImgError}
                     />
                   </AnimatePresence>
+
+                  {/* Top-Right Fullscreen Expand Action */}
+                  <button
+                    onClick={() => setLightboxOpen(true)}
+                    className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/10 transition opacity-0 group-hover:opacity-100 focus:opacity-100"
+                    title="View Fullscreen"
+                    aria-label="View Fullscreen"
+                  >
+                    <Maximize2 size={16} />
+                  </button>
 
                   {/* Prev / Next Arrows */}
                   {imagesList.length > 1 && (
@@ -335,7 +371,7 @@ const ProjectDetail: React.FC = () => {
                             prev === 0 ? imagesList.length - 1 : prev - 1
                           )
                         }
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/10 transition opacity-0 group-hover:opacity-100"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/10 transition opacity-0 group-hover:opacity-100"
                         aria-label="Previous image"
                       >
                         <ChevronLeft size={20} />
@@ -346,7 +382,7 @@ const ProjectDetail: React.FC = () => {
                             prev === imagesList.length - 1 ? 0 : prev + 1
                           )
                         }
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/10 transition opacity-0 group-hover:opacity-100"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md border border-white/10 transition opacity-0 group-hover:opacity-100"
                         aria-label="Next image"
                       >
                         <ChevronRight size={20} />
@@ -355,7 +391,7 @@ const ProjectDetail: React.FC = () => {
                   )}
 
                   {/* Photo Counter Pill */}
-                  <div className="absolute bottom-4 right-4 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-white/90 text-xs font-mono border border-white/10">
+                  <div className="absolute bottom-4 right-4 z-20 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-white/90 text-xs font-mono border border-white/10">
                     {activePhotoIdx + 1} / {imagesList.length}
                   </div>
                 </div>
@@ -387,10 +423,10 @@ const ProjectDetail: React.FC = () => {
               </div>
             )}
 
-            {/* Video Viewport */}
+            {/* Video Viewport (Reduced Aspect Ratio & Height) */}
             {activeMediaTab === "videos" && videosList.length > 0 && (
               <div className="space-y-4">
-                <div className="relative aspect-[16/9] max-h-[650px] w-full rounded-3xl overflow-hidden bg-black border border-white/10 shadow-2xl">
+                <div className="relative aspect-[16/9] md:aspect-[21/10] max-h-[360px] sm:max-h-[420px] md:max-h-[460px] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-black border border-white/10 shadow-2xl">
                   <video
                     key={videosList[activeVideoIdx]}
                     controls
@@ -598,6 +634,73 @@ const ProjectDetail: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Fullscreen Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-8"
+            onClick={() => setLightboxOpen(false)}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setLightboxOpen(false)}
+              className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition z-50"
+              aria-label="Close fullscreen view"
+            >
+              <X size={22} />
+            </button>
+
+            {/* Main Lightbox Image */}
+            <div
+              className="relative max-w-6xl max-h-[85vh] flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={imagesList[activePhotoIdx]}
+                alt={`${project.title} photo ${activePhotoIdx + 1}`}
+                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
+              />
+
+              {/* Lightbox Prev / Next Arrows */}
+              {imagesList.length > 1 && (
+                <>
+                  <button
+                    onClick={() =>
+                      setActivePhotoIdx((prev) =>
+                        prev === 0 ? imagesList.length - 1 : prev - 1
+                      )
+                    }
+                    className="absolute left-2 sm:-left-16 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 hover:bg-black/90 text-white border border-white/10 transition"
+                    aria-label="Previous photo"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button
+                    onClick={() =>
+                      setActivePhotoIdx((prev) =>
+                        prev === imagesList.length - 1 ? 0 : prev + 1
+                      )
+                    }
+                    className="absolute right-2 sm:-right-16 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 hover:bg-black/90 text-white border border-white/10 transition"
+                    aria-label="Next photo"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Lightbox Caption & Counter */}
+            <div className="mt-4 text-center text-xs text-gray-400">
+              <span className="text-white font-medium">{project.title}</span> — Photo {activePhotoIdx + 1} of {imagesList.length} (Press Esc to close)
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
