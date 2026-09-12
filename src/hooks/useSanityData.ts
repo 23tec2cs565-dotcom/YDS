@@ -386,26 +386,12 @@ export function useBlogPosts() {
         alt,
         caption
       },
-      "author": coalesce(
-        author->{
-          name,
-          role,
-          "image": coalesce(image.asset->url, "/assets/team/Nikhil/Nikhil-480.jpeg"),
-          "bio": description
-        },
-        customAuthor{
-          name,
-          role,
-          "image": coalesce(image.asset->url, imageUrl, "/assets/team/Nikhil/Nikhil-480.jpeg"),
-          bio
-        },
-        {
-          "name": "Nikhil Sain",
-          "role": "Lead Architect & Interior Designer",
-          "image": "/assets/team/Nikhil/Nikhil-480.jpeg",
-          "bio": "Lead Architect & Interior Designer at Younick Design Studio, specializing in turnkey civil construction, luxury residential architecture, and climate-responsive interior engineering across Jaipur and Rajasthan."
-        }
-      )
+      "author": {
+        "name": coalesce(authorName, author->name, customAuthor.name, "Nikhil Sain"),
+        "role": coalesce(authorRole, author->role, customAuthor.role, "Lead Architect & Interior Designer"),
+        "image": coalesce(authorImage.asset->url, authorImageUrl, author->image.asset->url, customAuthor.image.asset->url, customAuthor.imageUrl, "/assets/team/Nikhil/Nikhil-480.jpeg"),
+        "bio": coalesce(authorBio, author->description, customAuthor.bio, "Lead Architect & Interior Designer at Younick Design Studio, specializing in turnkey civil construction, luxury residential architecture, and climate-responsive interior engineering across Jaipur and Rajasthan.")
+      }
     }`;
 
     sanityClient
