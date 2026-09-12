@@ -116,13 +116,6 @@ export const structuredData = {
       { "@type": "City", name: "Kota" },
       { "@type": "State", name: "Rajasthan" }
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "128",
-      bestRating: "5",
-      worstRating: "1"
-    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Interior Design, Architecture & Turnkey Services",

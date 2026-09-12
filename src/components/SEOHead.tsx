@@ -25,7 +25,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     : `https://yds-liart.vercel.app${meta.url || ""}`;
   const schemaData =
     schema && Object.keys(schema).length > 0
-      ? { ...structuredData.organization, ...schema }
+      ? schema
       : structuredData.organization;
 
   return (
