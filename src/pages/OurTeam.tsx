@@ -18,6 +18,7 @@ import TeamMember from "../components/TeamMember";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
 import HeroGradientMesh from "../components/HeroGradientMesh";
+import { YEARS_OF_EXPERIENCE } from "../utils/constants";
 
 function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
@@ -195,7 +196,7 @@ const OurTeam: React.FC = () => {
               <div className="w-px h-10 bg-white/15" />
               <Counter value={120} label="Happy Clients" suffix="+" />
               <div className="w-px h-10 bg-white/15" />
-              <Counter value={8} label="Years" suffix="+" />
+              <Counter value={YEARS_OF_EXPERIENCE} label="Years" suffix="+" />
             </div>
           </Reveal>
         </motion.div>

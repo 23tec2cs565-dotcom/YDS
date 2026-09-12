@@ -45,6 +45,7 @@ import type { Service } from "../data/services";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
 import { BeforeAfterSlider } from "../components/BeforeAfterSlider";
+import { YEARS_OF_EXPERIENCE } from "../utils/constants";
 
 const cn = (...args: Array<string | false | null | undefined>) =>
   args.filter(Boolean).join(" ");
@@ -227,8 +228,8 @@ const Hero: React.FC = () => {
               <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Signature Projects</p>
             </div>
             <div>
-              <div className="text-3xl font-serif text-[#0B1220]">5</div>
-              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Turnkey Services</p>
+              <div className="text-3xl font-serif text-[#0B1220]">{YEARS_OF_EXPERIENCE}+</div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Years Experience</p>
             </div>
             <div>
               <div className="text-3xl font-serif text-[#0B1220]">4.9<span className="text-lg text-[#E6B566]">★</span></div>
@@ -325,7 +326,7 @@ const About: React.FC = () => {
             <Reveal delay={0.2}>
               <div className="flex gap-8">
                 <div>
-                  <div className="text-4xl font-serif mb-1">8+</div>
+                  <div className="text-4xl font-serif mb-1">{YEARS_OF_EXPERIENCE}+</div>
                   <p className="text-xs uppercase tracking-wider text-gray-500">Years Exp.</p>
                 </div>
                 <div className="w-px bg-gray-200 h-12" />
@@ -733,32 +734,6 @@ const LeadershipSection: React.FC = () => {
   );
 };
 
-// Stats
-const StatsSection: React.FC = () => {
-  const { projects } = useProjects();
-  const projectCount = projects?.length || defaultProjects.length || 15;
-  const stats = [
-    { id: "s1", value: `${projectCount}+`, label: "Projects", subLabel: "Residential & commercial" },
-    { id: "s2", value: "120+", label: "Happy Clients", subLabel: "Relationship first" },
-    { id: "s3", value: "8+", label: "Years in practice", subLabel: "Built expertise" },
-    { id: "s4", value: "100%", label: "Satisfaction", subLabel: "Post handover surveys" },
-  ];
-
-  return (
-    <section className="py-12 bg-white border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((stat, i) => (
-          <Reveal key={stat.id} delay={i * 0.1} className="text-center">
-            <div className="text-4xl font-serif text-[#0B1220] mb-1">{stat.value}</div>
-            <p className="text-xs font-bold text-[#E6B566] uppercase tracking-wider">{stat.label}</p>
-            <p className="text-[10px] text-gray-400 mt-1">{stat.subLabel}</p>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 // Insights & Knowledge Center Section for SEO & Client Education
 const InsightsSection: React.FC = () => {
   const { posts } = useBlogPosts();
@@ -837,7 +812,6 @@ const Home: React.FC = () => {
       <div className="min-h-screen bg-[#FAFAFB] text-[#0B1220] font-sans selection:bg-[#E6B566] selection:text-white">
         <main>
           <Hero />
-          <StatsSection />
           <About />
           <TransformationSection />
           <ProjectsSection />
