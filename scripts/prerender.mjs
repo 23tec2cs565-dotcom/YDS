@@ -12,7 +12,7 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const DIST_DIR = path.resolve(ROOT_DIR, "dist");
 const BASE_HTML_PATH = path.resolve(DIST_DIR, "index.html");
 
-const SITE_URL = "https://yds-liart.vercel.app";
+const SITE_URL = "https://studioyounick.vercel.app";
 const STUDIO_NAME = "Younick Design Studio";
 const DEFAULT_IMAGE = `${SITE_URL}/assets/og/hero-1200.webp`;
 const LOGO_URL = `${SITE_URL}/android-chrome-512x512.png`;

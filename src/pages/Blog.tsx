@@ -74,13 +74,13 @@ const Blog: React.FC = () => {
     name: "Architectural Blog & Guides | Younick Design Studio Jaipur",
     description:
       "Expert architectural guides, turnkey construction cost breakdowns, modular kitchen materials, and Vastu guidelines for Jaipur and Rajasthan homeowners.",
-    url: "https://yds-liart.vercel.app/blog",
+    url: "https://studioyounick.vercel.app/blog",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: posts.map((post, idx) => ({
         "@type": "ListItem",
         position: idx + 1,
-        url: `https://yds-liart.vercel.app/blog/${post.slug}`,
+        url: `https://studioyounick.vercel.app/blog/${post.slug}`,
         name: post.title,
       })),
     },
@@ -91,13 +91,13 @@ const Blog: React.FC = () => {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://yds-liart.vercel.app/",
+          item: "https://studioyounick.vercel.app/",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Blog",
-          item: "https://yds-liart.vercel.app/blog",
+          item: "https://studioyounick.vercel.app/blog",
         },
       ],
     },
@@ -109,7 +109,7 @@ const Blog: React.FC = () => {
         title="Interior & Architecture Blog | Younick Design Studio Jaipur"
         description="Comprehensive 2026 cost guides, material comparisons, Vastu rules, and turnkey civil construction insights for luxury homes and commercial spaces in Jaipur."
         keywords="interior design cost jaipur, modular kitchen material jaipur, vastu guidelines luxury villa jaipur, turnkey civil contractor jaipur, 3d architectural rendering jaipur, architecture blog jaipur"
-        canonicalUrl="https://yds-liart.vercel.app/blog"
+        canonicalUrl="https://studioyounick.vercel.app/blog"
         schema={schema}
       />
 

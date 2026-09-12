@@ -4,7 +4,7 @@ export function StudioLogo(props: any) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "4px 8px" }}>
       <img
-        src="https://yds-liart.vercel.app/younick-crest.png"
+        src="https://studioyounick.vercel.app/younick-crest.png"
         alt="Younick Crest"
         style={{
           width: "28px",

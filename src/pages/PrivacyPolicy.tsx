@@ -42,7 +42,7 @@ const PrivacyPolicy: React.FC = () => {
                 <Lock size={18} className="text-[#E6B566]" /> 1. Commitment to Privacy
               </h2>
               <p>
-                At <strong>Younick Design Studio</strong>, we respect your privacy and are committed to protecting the personal and project-related data you share with us. This Privacy Policy explains how we collect, use, and protect your information when you interact with our website (<a href="https://yds-liart.vercel.app" className="text-[#E6B566] underline">yds-liart.vercel.app</a>) and our studio consultation services.
+                At <strong>Younick Design Studio</strong>, we respect your privacy and are committed to protecting the personal and project-related data you share with us. This Privacy Policy explains how we collect, use, and protect your information when you interact with our website (<a href="https://studioyounick.vercel.app" className="text-[#E6B566] underline">studioyounick.vercel.app</a>) and our studio consultation services.
               </p>
             </section>
 

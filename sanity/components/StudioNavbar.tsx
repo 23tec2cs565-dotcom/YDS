@@ -49,7 +49,7 @@ export function StudioNavbar(props: any) {
             Local Preview ↗
           </a>
           <a
-            href="https://yds-liart.vercel.app"
+            href="https://studioyounick.vercel.app"
             target="_blank"
             rel="noreferrer"
             style={{

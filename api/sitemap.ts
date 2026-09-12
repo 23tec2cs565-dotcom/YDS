@@ -1,7 +1,7 @@
 // api/sitemap.ts
 // Dynamic Serverless XML Sitemap generated live from Sanity CMS
 
-const SITE_URL = process.env.VITE_SITE_URL || "https://yds-liart.vercel.app";
+const SITE_URL = process.env.VITE_SITE_URL || "https://studioyounick.vercel.app";
 const SANITY_PROJECT_ID = process.env.VITE_SANITY_PROJECT_ID || "b0rnzdhr";
 const SANITY_DATASET = process.env.VITE_SANITY_DATASET || "production";
 const SANITY_API_VERSION = process.env.VITE_SANITY_API_VERSION || "2024-01-01";

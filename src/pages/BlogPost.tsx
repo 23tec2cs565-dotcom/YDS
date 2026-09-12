@@ -91,7 +91,7 @@ const BlogPostPage: React.FC = () => {
     return <Navigate to="/404" replace />;
   }
 
-  const siteUrl = "https://yds-liart.vercel.app";
+  const siteUrl = "https://studioyounick.vercel.app";
   const canonicalUrl = `${siteUrl}/blog/${post.slug}`;
   const ogImage = post.coverImage.startsWith("http")
     ? post.coverImage

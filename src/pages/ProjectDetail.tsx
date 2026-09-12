@@ -162,7 +162,7 @@ const ProjectDetail: React.FC = () => {
     return <Navigate to="/404" replace />;
   }
 
-  const siteUrl = "https://yds-liart.vercel.app";
+  const siteUrl = "https://studioyounick.vercel.app";
   const canonicalUrl = `${siteUrl}/projects/${project.slug || project.id}`;
   const ogImage = project.image?.startsWith("http")
     ? project.image

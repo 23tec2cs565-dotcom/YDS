@@ -9,7 +9,7 @@
 
 | Asset / Service | URL / Destination | Description |
 | :--- | :--- | :--- |
-| **🌐 Live Public Website** | [https://yds-liart.vercel.app](https://yds-liart.vercel.app) | Production customer-facing portfolio & platform |
+| **🌐 Live Public Website** | [https://studioyounick.vercel.app](https://studioyounick.vercel.app) | Production customer-facing portfolio & platform |
 | **📱 Live Cloud Admin Studio** | [https://younickdesignstudio-admin.sanity.studio](https://younickdesignstudio-admin.sanity.studio) | Cloud CMS accessible from any phone, tablet, or laptop |
 | **⚙️ Sanity Cloud Dashboard** | [https://www.sanity.io/manage/project/b0rnzdhr](https://www.sanity.io/manage/project/b0rnzdhr) | Project billing, team members, CORS, & API tokens |
 | **💻 Local Website (Dev)** | `http://localhost:5173` | Local frontend development server |

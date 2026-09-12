@@ -12,8 +12,8 @@ export interface SEOData {
 
 const SITE = {
   name: "Younick Design Studio",
-  url: "https://yds-liart.vercel.app",
-  logo: "https://yds-liart.vercel.app/younick-logo.webp",
+  url: "https://studioyounick.vercel.app",
+  logo: "https://studioyounick.vercel.app/younick-logo.webp",
   telephone: "+91 8854883058",
   email: "studioyounick@gmail.com",
   address: {
@@ -55,7 +55,7 @@ export const structuredData = {
     description: "Award-winning interior design, turnkey construction, and 3D spatial visualization studio based in Civil Lines, Jaipur, Rajasthan.",
     image: SITE.logo,
     url: SITE.url,
-    logo: "https://yds-liart.vercel.app/android-chrome-512x512.png",
+    logo: "https://studioyounick.vercel.app/android-chrome-512x512.png",
     telephone: SITE.telephone,
     email: SITE.email,
     priceRange: "₹₹₹",

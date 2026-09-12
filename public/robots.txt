@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://yds-liart.vercel.app/sitemap.xml
+Sitemap: https://studioyounick.vercel.app/sitemap.xml
 
 # AI Crawler Summary
-# See https://yds-liart.vercel.app/llms.txt for a structured overview of this site.
+# See https://studioyounick.vercel.app/llms.txt for a structured overview of this site.
