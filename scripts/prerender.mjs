@@ -1892,33 +1892,91 @@ function getRoutes(projectItems, blogItems = []) {
           Frequently Asked Questions About Interior Design &amp; Construction in Jaipur
         </h1>
         <p style="font-size: 16px; line-height: 1.8; color: #ddd; margin-bottom: 32px;">
-          Find answers to common questions about interior design costs per square foot, turnkey civil construction timelines, material warranties, and on-site supervision standards in Jaipur.
+          Find answers to common questions about interior design costs per square foot, turnkey civil construction timelines, material warranties, payment milestones, Vastu compliance, and on-site supervision standards in Jaipur.
         </p>
 
         <div style="display: flex; flex-direction: column; gap: 20px;">
+
+          <h2 style="color: #fff; font-size: 22px; margin-top: 16px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 8px;">Pricing &amp; Costs</h2>
+
           <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <h2 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">How much does interior design &amp; turnkey execution cost in Jaipur?</h2>
-            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Interior design costs in Jaipur typically range from ₹1,200 to ₹2,500+ per sq. ft. for premium turnkey residential projects (including woodwork, false ceiling, lighting, paint, and modular kitchen). Luxury and bespoke villa executions range upwards based on Italian marble, automation, and designer fixtures.</p>
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">How much does interior design &amp; turnkey execution cost in Jaipur?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Interior design costs in Jaipur typically range from ₹1,200 to ₹2,500+ per sq. ft. for premium turnkey residential projects (including woodwork, false ceiling, lighting, paint, and modular kitchen). Luxury and bespoke villa executions range upwards based on Italian marble, automation, and designer fixtures. We offer transparent estimates via our online calculator.</p>
           </div>
           <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <h2 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">What is included in a Turnkey Interior project by Younick Studio?</h2>
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Do you charge a design consultation fee?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">We offer a complimentary initial consultation — either at our studio in Civil Lines, Jaipur or via video call — to understand your vision, space, and budget. Detailed design work, including 3D renderings and floor plans, begins after a formal project agreement and booking advance.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">What payment milestones do you follow?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">We follow a transparent milestone-based payment structure: 10-20% booking advance to initiate design, 20-30% upon 3D render and layout approval, 30-40% during on-site execution phases, and the remaining balance before final handover and styling. All milestones are clearly documented in your project agreement.</p>
+          </div>
+
+          <h2 style="color: #fff; font-size: 22px; margin-top: 16px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 8px;">Turnkey Execution</h2>
+
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">What is included in a Turnkey Interior project by Younick Studio?</h3>
             <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Turnkey execution means end-to-end responsibility. We handle space planning, 3D visualizations, material procurement (plywood, laminates, hardware, stone), civil modifications, electrical, plumbing, carpentry, painting, and deep cleaning before final handover.</p>
           </div>
           <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <h2 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">What is the typical timeline for a complete residential interior project?</h2>
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Do you handle government approvals and building permits?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">While our core expertise is in interior design and construction, we assist clients with the documentation and coordination required for building permits, municipal approvals, and structural NOCs through our network of licensed architects and structural engineers.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">What brands and grades of materials do you use?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">We use only branded, certified materials — IS:710 Marine Grade BWP plywood, premium laminates from Merino/Century/Greenlam, Hettich/Hafele hardware, Finolex/Havells electrical wiring, and Jaquar/Kohler sanitary fittings. Clients are invited to material selection meetings to make informed choices.</p>
+          </div>
+
+          <h2 style="color: #fff; font-size: 22px; margin-top: 16px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 8px;">Project Process &amp; Timeline</h2>
+
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">What is the typical timeline for a complete residential interior project?</h3>
             <p style="color: #bbb; font-size: 15px; line-height: 1.7;">A 3BHK to 4BHK apartment or villa typically requires 6 to 12 weeks from finalized 3D renders to final handover. Commercial fit-outs and retail spaces are fast-tracked within 4 to 8 weeks depending on floor plate size.</p>
           </div>
           <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <h2 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Do you provide 3D photorealistic visualizations before starting on-site work?</h2>
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">How do I start a project with Younick Studio?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Starting is simple: reach out via our contact form, WhatsApp (+91 88548 83058), or visit our studio at Orbit Mall, Civil Lines, Jaipur. We'll schedule a free consultation to understand your space and vision, followed by a detailed proposal with 3D renders, BOQ, and timeline.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">How many design revisions are included?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Each project includes up to 2 rounds of design revisions within the approved scope at no additional cost. Additional revisions beyond the included rounds are charged at a per-revision rate communicated in your project agreement.</p>
+          </div>
+
+          <h2 style="color: #fff; font-size: 22px; margin-top: 16px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 8px;">Design &amp; Visualization</h2>
+
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Do you provide 3D photorealistic visualizations before starting on-site work?</h3>
             <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Yes! Every project begins with high-fidelity 3D renderings and walkthroughs showing exact materials, textures, lighting, and spatial flow so you experience your space before physical execution begins.</p>
           </div>
           <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <h2 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Do you take projects outside Jaipur?</h2>
-            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Yes! While our primary design studio is located in Civil Lines, Jaipur, we regularly execute luxury villas, commercial gyms, and hospital projects across Sikar, Udaipur, Jodhpur, Kota, and all of Rajasthan, as well as pan-India design consultations.</p>
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Can you work with my existing furniture and fixtures?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Absolutely. We regularly design around clients' existing furniture, heirloom pieces, and fixtures they wish to retain. Our designers integrate these elements seamlessly into the new design concept, ensuring visual harmony while respecting sentimental or practical value.</p>
           </div>
           <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <h2 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">How do you ensure material quality and on-site supervision?</h2>
-            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Our founders and dedicated project managers conduct structured weekly quality inspections. We use only branded, boiling waterproof (BWR/BWP) plywood, certified electrical cabling, and premium hardware with full warranty documentation.</p>
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Do you offer Vastu-compliant designs?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Yes, we design with Vastu Shastra principles in mind when requested. Our team incorporates Vastu guidelines for room placement, entrance orientation, kitchen positioning, and color schemes while maintaining contemporary aesthetics and functionality.</p>
+          </div>
+
+          <h2 style="color: #fff; font-size: 22px; margin-top: 16px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 8px;">Warranty &amp; After-Sales Support</h2>
+
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">What warranty do you offer on completed work?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">We provide a 1-year comprehensive workmanship warranty from the date of project handover. This covers manufacturing defects in custom woodwork, faulty installation of modular kitchens and wardrobes, and plumbing/electrical defects arising from installation errors. Individual products carry their respective manufacturer warranties.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">What if I notice defects after project handover?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Report any defects within 48 hours of discovery via WhatsApp or email. Our maintenance team will inspect the issue within 3-5 working days and arrange repairs at no cost if the defect falls under warranty coverage. We maintain a dedicated after-sales support channel for all completed projects.</p>
+          </div>
+
+          <h2 style="color: #fff; font-size: 22px; margin-top: 16px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 8px;">Commercial Projects &amp; Service Area</h2>
+
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Do you design offices, retail stores, and restaurants?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Yes! We have extensive experience designing and executing commercial spaces including corporate offices, co-working spaces, retail showrooms, restaurants, cafés, gyms, clinics, and hospital interiors. Our commercial projects are fast-tracked with dedicated project managers and site supervisors.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #E6B566; font-size: 18px; margin-bottom: 10px;">Do you take projects outside Jaipur?</h3>
+            <p style="color: #bbb; font-size: 15px; line-height: 1.7;">Yes! While our primary design studio is located in Civil Lines, Jaipur, we regularly execute luxury villas, commercial gyms, and hospital projects across Sikar, Udaipur, Jodhpur, Kota, and all of Rajasthan, as well as pan-India design consultations.</p>
           </div>
         </div>
       </article>
