@@ -181,7 +181,7 @@ export const pageSEO: Record<string, SEOData> = {
     author: SITE.name,
   },
   projects: {
-    title: "Interior Design & Architecture Projects in Jaipur | Younick",
+    title: "Interior Design Projects in Jaipur | Younick Studio",
     description:
       "Explore our portfolio of luxury residential villas, turnkey commercial spaces, and bespoke interior renovations executed by Younick Studio in Jaipur.",
     url: `${SITE.url}/projects`,
@@ -189,7 +189,7 @@ export const pageSEO: Record<string, SEOData> = {
     author: SITE.name,
   },
   team: {
-    title: "Our Architects & Interior Designers in Jaipur | Younick",
+    title: "Architects & Interior Designers in Jaipur | Younick",
     description:
       "Meet the principal architects, interior designers, 3D visualizers, and turnkey civil engineers behind Younick Design Studio in Civil Lines, Jaipur.",
     url: `${SITE.url}/team`,
@@ -205,7 +205,7 @@ export const pageSEO: Record<string, SEOData> = {
     author: SITE.name,
   },
   about: {
-    title: "About Our Luxury Architecture & Interior Studio in Jaipur",
+    title: "About Luxury Interior Designers in Jaipur | Younick",
     description:
       "Learn about Younick Design Studio in Jaipur — our turnkey craftsmanship, architectural philosophy, and the interior designers crafting luxury spaces.",
     url: `${SITE.url}/about`,
@@ -213,7 +213,7 @@ export const pageSEO: Record<string, SEOData> = {
     keywords: "about younick design studio, interior designer profile jaipur, luxury architects rajasthan"
   },
   services: {
-    title: "Turnkey Interior Design & Construction Services in Jaipur",
+    title: "Turnkey Interior Design Services in Jaipur | Younick",
     description:
       "Bespoke residential interior design, turnkey civil construction, villa renovation, 3D visualization, and architectural consultation in Jaipur, Rajasthan.",
     url: `${SITE.url}/services`,
@@ -301,10 +301,43 @@ export const buildPageSchema = (opts: {
   return schema;
 };
 
+export const PROJECT_SEO_TITLES: Record<string, string> = {
+  "hera-mahal": "Hera Mahal — Turnkey Civil Construction | Younick Studio",
+  "six-eleven-gym": "Six Eleven Gym — Commercial Fitness | Younick Studio",
+  "dlmeh-hospital": "DLMEH Eye Hospital — Healthcare Design | Younick Studio",
+  "pcp-sikar": "PCP Sikar Campus — Institutional Design | Younick Studio",
+  "chhoti-bai-jewellers": "Chhoti Bai Jewellers — Luxury Showroom | Younick Studio",
+  "foyer": "Entrance Foyer Renovation in Jaipur | Younick Studio",
+  "himani-residence": "Himani Residence — Luxury Bedroom Design | Younick Studio",
+  "the-coffee-crust-caffe": "The Coffee Crust Caffe — Cafe Interior | Younick Studio",
+  "jk-lon": "JK LON Hospital — Healthcare Renovation | Younick Studio",
+  "home-dharmendra": "Dharmendra Villa — Luxury Residential | Younick Studio",
+  "detailing-devils": "Detailing Devils — Commercial Studio | Younick Studio",
+  "goyal-renovation": "Goyal Residence — Exterior Renovation | Younick Studio",
+  "rawat-light-studio": "Rawat Light Studio — Commercial Fitout | Younick Studio",
+  "sharma-residency": "Sharma Residency — Residential Design | Younick Studio",
+};
+
+export const getProjectSeoTitle = (slug?: string, title?: string, category?: string): string => {
+  if (slug && PROJECT_SEO_TITLES[slug]) {
+    return PROJECT_SEO_TITLES[slug];
+  }
+  const cleanTitle = (title || "Project").split("—")[0].trim();
+  const candidate = `${cleanTitle} — ${category || "Interior"} | Younick Studio`;
+  if (candidate.length >= 50 && candidate.length <= 60) return candidate;
+  if (candidate.length < 50) {
+    const longer = `${cleanTitle} — ${category || "Interior Design"} | Younick Studio`;
+    if (longer.length >= 50 && longer.length <= 60) return longer;
+  }
+  return candidate.length > 60 ? candidate.slice(0, 57).trim() + "..." : candidate;
+};
+
 export default {
   SITE,
   defaultSEO,
   structuredData,
   pageSEO,
   buildPageSchema,
+  PROJECT_SEO_TITLES,
+  getProjectSeoTitle,
 };

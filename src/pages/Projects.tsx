@@ -566,7 +566,7 @@ const Projects: React.FC = () => {
       };
     }
     return {
-      title: "Interior Design & Architecture Projects in Jaipur | Younick Studio",
+      title: "Interior Design Projects in Jaipur | Younick Studio",
       description:
         "Explore our portfolio of luxury residential villas, commercial fit-outs, and turnkey spaces executed by Younick Design Studio in Jaipur, Rajasthan.",
       url: "/projects",

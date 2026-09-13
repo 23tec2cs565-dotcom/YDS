@@ -129,12 +129,44 @@ function getFooterHtml() {
   `;
 }
 
+// Project SEO Titles mapped strictly between 50-60 characters for optimal SERP display
+const PROJECT_SEO_TITLES = {
+  "hera-mahal": "Hera Mahal — Turnkey Civil Construction | Younick Studio",
+  "six-eleven-gym": "Six Eleven Gym — Commercial Fitness | Younick Studio",
+  "dlmeh-hospital": "DLMEH Eye Hospital — Healthcare Design | Younick Studio",
+  "pcp-sikar": "PCP Sikar Campus — Institutional Design | Younick Studio",
+  "chhoti-bai-jewellers": "Chhoti Bai Jewellers — Luxury Showroom | Younick Studio",
+  "foyer": "Entrance Foyer Renovation in Jaipur | Younick Studio",
+  "himani-residence": "Himani Residence — Luxury Bedroom Design | Younick Studio",
+  "the-coffee-crust-caffe": "The Coffee Crust Caffe — Cafe Interior | Younick Studio",
+  "jk-lon": "JK LON Hospital — Healthcare Renovation | Younick Studio",
+  "home-dharmendra": "Dharmendra Villa — Luxury Residential | Younick Studio",
+  "detailing-devils": "Detailing Devils — Commercial Studio | Younick Studio",
+  "goyal-renovation": "Goyal Residence — Exterior Renovation | Younick Studio",
+  "rawat-light-studio": "Rawat Light Studio — Commercial Fitout | Younick Studio",
+  "sharma-residency": "Sharma Residency — Residential Design | Younick Studio",
+};
+
+function getProjectSeoTitle(slug, name, cat) {
+  if (slug && PROJECT_SEO_TITLES[slug]) {
+    return PROJECT_SEO_TITLES[slug];
+  }
+  const clean = (name || "Project").split("—")[0].trim();
+  const candidate = `${clean} — ${cat || "Interior"} | Younick Studio`;
+  if (candidate.length >= 50 && candidate.length <= 60) return candidate;
+  if (candidate.length < 50) {
+    const longer = `${clean} — ${cat || "Interior Design"} | Younick Studio`;
+    if (longer.length >= 50 && longer.length <= 60) return longer;
+  }
+  return candidate.length > 60 ? candidate.slice(0, 57).trim() + "..." : candidate;
+}
+
 // Fallback Project Manifest (used if Sanity API is unreachable during build)
 const defaultProjectItems = [
   {
     slug: "hera-mahal",
     name: "Hera Mahal",
-    title: "Hera Mahal — Turnkey Civil Construction Landmark in Jaipur | Younick Studio",
+    title: PROJECT_SEO_TITLES["hera-mahal"],
     subtitle: "Turnkey Construction & Civil Execution • 6,000 sq ft",
     category: "Construction",
     location: "Jaipur, Rajasthan",
@@ -150,7 +182,7 @@ const defaultProjectItems = [
   {
     slug: "six-eleven-gym",
     name: "Six Eleven Gym",
-    title: "Six Eleven Gym — High-Energy Fitness Interior Design in Jaipur | Younick",
+    title: PROJECT_SEO_TITLES["six-eleven-gym"],
     subtitle: "Design & Execution • Budget ₹18 Lakhs",
     category: "Interior Design",
     location: "Pratap Nagar, Jaipur",
@@ -166,7 +198,7 @@ const defaultProjectItems = [
   {
     slug: "dlmeh-hospital",
     name: "Devi Lal Memorial Eye Hospital",
-    title: "Devi Lal Memorial Eye Hospital — Healthcare Space Design in Jaipur | Younick",
+    title: PROJECT_SEO_TITLES["dlmeh-hospital"],
     subtitle: "Design Consultancy Project • 4,500 sq ft",
     category: "Consultation",
     location: "Chomu, Jaipur",
@@ -182,7 +214,7 @@ const defaultProjectItems = [
   {
     slug: "pcp-sikar",
     name: "PCP Sikar Educational Campus",
-    title: "PCP Sikar Educational Campus — Institutional Architecture in Sikar | Younick",
+    title: PROJECT_SEO_TITLES["pcp-sikar"],
     subtitle: "Design Consultancy Project • 4,500 sq ft",
     category: "Consultation",
     location: "Sikar, Rajasthan",
@@ -198,7 +230,7 @@ const defaultProjectItems = [
   {
     slug: "chhoti-bai-jewellers",
     name: "Chhoti Bai Jewellers",
-    title: "Chhoti Bai Jewellers — Turnkey Luxury Jewellery Showroom in Jaipur | Younick",
+    title: PROJECT_SEO_TITLES["chhoti-bai-jewellers"],
     subtitle: "Turnkey Project with Material • Budget ₹14 Lakhs",
     category: "Construction",
     location: "City Center, Sansar Chandra Road, Jaipur",
@@ -214,7 +246,7 @@ const defaultProjectItems = [
   {
     slug: "foyer",
     name: "Entrance Foyer Renovation",
-    title: "Entrance Foyer Renovation — Acoustic Wood Panelling in Jaipur | Younick Studio",
+    title: PROJECT_SEO_TITLES["foyer"],
     subtitle: "Foyer Renovation • Budget ₹15 Lakhs",
     category: "Renovation",
     location: "New Light Colony, Tonk Road, Jaipur",
@@ -230,7 +262,7 @@ const defaultProjectItems = [
   {
     slug: "himani-residence",
     name: "Mrs. Himani Residence",
-    title: "Mrs. Himani Residence — Luxury Bedroom Interior in Jaipur | Younick Studio",
+    title: PROJECT_SEO_TITLES["himani-residence"],
     subtitle: "Bedroom Interior • Design & Execution • Budget ₹2.5 Lakhs",
     category: "Interior Design",
     location: "Govindgarh, Jaipur",
@@ -246,7 +278,7 @@ const defaultProjectItems = [
   {
     slug: "the-coffee-crust-caffe",
     name: "The Coffee Crust Caffe",
-    title: "The Coffee Crust Caffe — Modern Cafe Interior in Jaipur | Younick Studio",
+    title: PROJECT_SEO_TITLES["the-coffee-crust-caffe"],
     subtitle: "Design & Execution • Budget ₹2.5 Lakhs",
     category: "Interior Design",
     location: "Vidyadhar Nagar, Jaipur",
@@ -262,7 +294,7 @@ const defaultProjectItems = [
   {
     slug: "jk-lon",
     name: "JK LON Hospital",
-    title: "JK LON Hospital — Pediatric Healthcare Ward Renovation in Jaipur | Younick",
+    title: PROJECT_SEO_TITLES["jk-lon"],
     subtitle: "Healthcare Reimagined • Renovation & Interior Upgrades",
     category: "Renovation",
     location: "Jaipur, Rajasthan",
@@ -278,7 +310,7 @@ const defaultProjectItems = [
   {
     slug: "home-dharmendra",
     name: "Dharmendra Villa",
-    title: "Dharmendra Villa — Luxury Residential Fit-Out in Jagatpura, Jaipur | Younick",
+    title: PROJECT_SEO_TITLES["home-dharmendra"],
     subtitle: "Design & Execution • Budget ₹45 Lakhs",
     category: "Interior Design",
     location: "Jagatpura, Jaipur",
@@ -294,7 +326,7 @@ const defaultProjectItems = [
   {
     slug: "detailing-devils",
     name: "Detailing Devils",
-    title: "Detailing Devils Studio — High-CRI Automotive Studio Design in Jaipur | Younick",
+    title: PROJECT_SEO_TITLES["detailing-devils"],
     subtitle: "Design Consultancy • 3,500 sq ft",
     category: "Consultation",
     location: "Vaishali Nagar, Jaipur",
@@ -310,7 +342,7 @@ const defaultProjectItems = [
   {
     slug: "goyal-renovation",
     name: "Exterior Renovation — Mr. Sampat Goyal",
-    title: "Exterior Renovation & Façade Elevation — Govindgarh, Jaipur | Younick",
+    title: PROJECT_SEO_TITLES["goyal-renovation"],
     subtitle: "Exterior Renovation • Design Consultancy",
     category: "Consultation",
     location: "Govindgarh, Jaipur",
@@ -326,7 +358,7 @@ const defaultProjectItems = [
   {
     slug: "rawat-light-studio",
     name: "Rawat Light Studio",
-    title: "Rawat Light Studio — Commercial Lighting Showroom Fitout in Jaipur | Younick",
+    title: PROJECT_SEO_TITLES["rawat-light-studio"],
     subtitle: "Design Consultancy Project • 1,800 sq ft",
     category: "Consultation",
     location: "Murlipura, Jaipur",
@@ -342,7 +374,7 @@ const defaultProjectItems = [
   {
     slug: "sharma-residency",
     name: "Sharma's Residency",
-    title: "Sharma Residency — Tailored Residential Architecture in Sikar | Younick Studio",
+    title: PROJECT_SEO_TITLES["sharma-residency"],
     subtitle: "Residential Consultancy Project • 4,200 sq ft",
     category: "Consultation",
     location: "Sikar, Rajasthan",
@@ -900,7 +932,7 @@ async function fetchSanityProjects() {
         return {
           slug,
           name,
-          title: `${name} — ${p.subtitle || cat} in Jaipur | Younick Studio`,
+          title: getProjectSeoTitle(slug, name, cat),
           subtitle: p.subtitle || `${cat} • ${loc}`,
           category: cat,
           location: loc,
@@ -1016,7 +1048,7 @@ function getRoutes(projectItems, blogItems = []) {
   // 2. ABOUT
   {
     path: "/about",
-    title: "About Our Luxury Architecture & Interior Studio in Jaipur | Younick",
+    title: "About Luxury Interior Designers in Jaipur | Younick",
     description: "Learn about Younick Design Studio in Jaipur — our turnkey craftsmanship, architectural philosophy, and the interior designers crafting luxury spaces in Rajasthan.",
     keywords: "about younick design studio, interior designer profile jaipur, luxury architects rajasthan, interior design firm civil lines jaipur",
     image: `${SITE_URL}/younick-about-hero.webp`,
@@ -1105,7 +1137,7 @@ function getRoutes(projectItems, blogItems = []) {
   // 3. SERVICES OVERVIEW
   {
     path: "/services",
-    title: "Turnkey Interior Design & Construction Services in Jaipur | Younick Studio",
+    title: "Turnkey Interior Design Services in Jaipur | Younick",
     description: "Bespoke residential interior design, turnkey civil construction, villa renovation, 3D visualization, and architectural consultation in Jaipur, Rajasthan.",
     keywords: "interior design services jaipur, turnkey construction rajasthan, home renovation jaipur, 3d visualization studio, interior styling civil lines",
     image: DEFAULT_IMAGE,
@@ -1259,7 +1291,7 @@ function getRoutes(projectItems, blogItems = []) {
   // 5. SERVICE DETAIL: /services/construction
   {
     path: "/services/construction",
-    title: "Turnkey Construction & Civil Works in Jaipur | Younick Studio",
+    title: "Turnkey Construction & Civil Works Jaipur | Younick",
     description: "End-to-end turnkey construction and civil contracting in Jaipur. Structural execution, foundation-to-finish precision, and premium material quality.",
     keywords: "turnkey construction jaipur, building contractors jaipur, civil work rajasthan, architectural build jaipur, structural civil engineering",
     image: `${SITE_URL}/assets/services/construction.avif`,
@@ -1317,7 +1349,7 @@ function getRoutes(projectItems, blogItems = []) {
   // 6. SERVICE DETAIL: /services/renovation
   {
     path: "/services/renovation",
-    title: "Architectural Renovation & Remodeling in Jaipur | Younick Studio",
+    title: "Home Renovation & Remodeling in Jaipur | Younick Studio",
     description: "Premium home, villa, and commercial renovation services in Jaipur. Structural remodeling, contemporary interior revamps, and turnkey execution.",
     keywords: "home renovation jaipur, villa remodeling rajasthan, commercial interior renovation, turnkey restoration jaipur, heritage haveli restoration",
     image: `${SITE_URL}/assets/services/renovation.avif`,
@@ -1375,7 +1407,7 @@ function getRoutes(projectItems, blogItems = []) {
   // 7. SERVICE DETAIL: /services/consultation
   {
     path: "/services/consultation",
-    title: "Architectural & Interior Design Consultation in Jaipur | Younick Studio",
+    title: "Interior Design Consultation in Jaipur | Younick Studio",
     description: "Expert architectural and spatial design consultation in Jaipur. Feasibility analysis, 2D floor plans, material guidance, and cost budgeting.",
     keywords: "interior design consultation jaipur, architect consultation rajasthan, spatial planning jaipur, interior cost estimate jaipur, vastu consultation jaipur",
     image: `${SITE_URL}/assets/services/consultation.avif`,
@@ -1433,7 +1465,7 @@ function getRoutes(projectItems, blogItems = []) {
   // 8. SERVICE DETAIL: /services/3d-visualization
   {
     path: "/services/3d-visualization",
-    title: "3D Architectural Visualization & Walkthroughs in Jaipur | Younick Studio",
+    title: "3D Architectural Visualization Jaipur | Younick Studio",
     description: "Photorealistic 3D interior renders, 3D exterior elevations, and immersive architectural video walkthroughs in Jaipur and Rajasthan.",
     keywords: "3d architectural rendering jaipur, 3d elevation design rajasthan, interior 3d walkthrough jaipur, cgi architectural rendering, 3d interior designer jaipur",
     image: `${SITE_URL}/assets/services/3d-visualization.jpg`,
@@ -1491,7 +1523,7 @@ function getRoutes(projectItems, blogItems = []) {
   // 9. PROJECTS PORTFOLIO
   {
     path: "/projects",
-    title: "Interior Design & Architecture Projects in Jaipur | Younick Studio Portfolio",
+    title: "Interior Design Projects in Jaipur | Younick Studio",
     description: "Explore our portfolio of luxury residential villas, turnkey commercial spaces, and bespoke interior renovations executed by Younick Studio in Jaipur.",
     keywords: "interior design portfolio jaipur, completed architecture projects rajasthan, luxury villa interior photos, commercial showroom design jaipur",
     image: DEFAULT_IMAGE,
@@ -1597,7 +1629,7 @@ function getRoutes(projectItems, blogItems = []) {
   // 10. TEAM
   {
     path: "/team",
-    title: "Our Architects & Interior Designers in Jaipur | Younick Studio",
+    title: "Architects & Interior Designers in Jaipur | Younick",
     description: "Meet the principal architects, interior designers, 3D visualizers, and turnkey civil engineers behind Younick Design Studio in Civil Lines, Jaipur.",
     keywords: "architects in jaipur, interior design team rajasthan, nikhil sain interior designer, kamal rajoriya civil engineer, younick studio team",
     image: `${SITE_URL}/assets/team/Nikhil/Nikhil-1024.jpeg?v=2`,

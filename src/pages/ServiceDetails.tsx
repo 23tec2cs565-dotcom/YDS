@@ -101,7 +101,7 @@ const ServiceDetails: React.FC = () => {
     <>
       <SEOHead
         seo={{
-          title: `${service.title} in Jaipur | Younick Studio`,
+          title: service.seoTitle || `${service.title} in Jaipur | Younick Studio`,
           description: service.description,
           url: `https://studioyounick.vercel.app/services/${service.id}`,
           keywords: service.keywords?.join(", "),

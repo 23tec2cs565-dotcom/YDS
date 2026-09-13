@@ -2,6 +2,7 @@
 export interface Service {
   id: string;
   title: string;
+  seoTitle?: string;
   description: string;
   icon: string; // lucide-react icon name (e.g. "Home", "Building", "Wrench")
   image: string;
@@ -15,6 +16,7 @@ export const services: Service[] = [
   {
     id: "interior-design",
     title: "Luxury Interior Design & Styling",
+    seoTitle: "Luxury Interior Design & Styling in Jaipur | Younick",
     description:
       "Transform your villa or home with bespoke luxury interior design in Jaipur. Smart spatial layouts, Italian marble finishes, and modular kitchens.",
     icon: "Home",
@@ -39,6 +41,7 @@ export const services: Service[] = [
   {
     id: "construction",
     title: "Turnkey Construction & Civil Works",
+    seoTitle: "Turnkey Construction & Civil Works Jaipur | Younick",
     description:
       "End-to-end turnkey construction and civil contracting in Jaipur. Structural execution, foundation-to-finish precision, and premium material quality.",
     icon: "Building",
@@ -61,6 +64,7 @@ export const services: Service[] = [
   {
     id: "renovation",
     title: "Architectural Renovation & Remodeling",
+    seoTitle: "Home Renovation & Remodeling in Jaipur | Younick Studio",
     description:
       "Premium home, villa, and commercial renovation services in Jaipur. Structural remodeling, contemporary interior revamps, and turnkey execution.",
     icon: "Wrench",
@@ -83,6 +87,7 @@ export const services: Service[] = [
   {
     id: "consultation",
     title: "Architectural & Interior Consultation",
+    seoTitle: "Interior Design Consultation in Jaipur | Younick Studio",
     description:
       "Expert architectural and spatial design consultation in Jaipur. Feasibility analysis, 2D floor plans, material guidance, and cost budgeting.",
     icon: "MessageCircle",
@@ -105,6 +110,7 @@ export const services: Service[] = [
   {
     id: "3d-visualization",
     title: "3D Architectural Visualization & Walkthroughs",
+    seoTitle: "3D Architectural Visualization Jaipur | Younick Studio",
     description:
       "Photorealistic 3D interior renders, 3D exterior elevations, and immersive architectural video walkthroughs in Jaipur and Rajasthan.",
     icon: "Eye",

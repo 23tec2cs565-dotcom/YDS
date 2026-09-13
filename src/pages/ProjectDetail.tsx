@@ -26,6 +26,7 @@ import SEOHead from "../components/SEOHead";
 import { projects as defaultProjects, type Project } from "../data/projects";
 import { useProjects } from "../hooks/useSanityData";
 import { safeCapture } from "../utils/analytics";
+import { getProjectSeoTitle } from "../utils/seo";
 
 function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
@@ -208,7 +209,7 @@ const ProjectDetail: React.FC = () => {
     <>
       <SEOHead
         seo={{
-          title: `${project.title} — ${project.category} Portfolio | Younick Studio Jaipur`,
+          title: getProjectSeoTitle(project.slug || project.id, project.title, project.category),
           description: `${project.description} Delivered by Younick Design Studio in ${project.location}. Explore photos, specifications, and execution details.`,
           url: `/projects/${project.slug || project.id}`,
           image: ogImage,
