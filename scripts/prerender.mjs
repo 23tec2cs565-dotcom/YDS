@@ -1958,9 +1958,36 @@ function getRoutes(projectItems, blogItems = []) {
         <h1 style="font-size: 32px; line-height: 1.3; margin-bottom: 20px; color: #E6B566;">
           Privacy Policy — Younick Design Studio
         </h1>
-        <p style="font-size: 15px; line-height: 1.8; color: #bbb;">
+        <p style="font-size: 15px; line-height: 1.8; color: #bbb; margin-bottom: 28px;">
           At Younick Design Studio, client trust, architectural blueprint confidentiality, and personal data privacy are paramount. Any floor plans, contact details, site photographs, or budget specifications shared with our studio are safeguarded under strict non-disclosure practices.
         </p>
+
+        <section style="margin-bottom: 28px;">
+          <h2 style="font-size: 20px; color: #fff; margin-bottom: 12px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 6px;">
+            1. Client Data Protection &amp; Information We Collect
+          </h2>
+          <p style="font-size: 14px; line-height: 1.7; color: #aaa;">
+            We collect contact details (name, email, telephone, site address) and architectural parameters (floor plans, square footage, budget intent) strictly to prepare customized interior design concepts, 3D renderings, and turnkey construction estimates.
+          </p>
+        </section>
+
+        <section style="margin-bottom: 28px;">
+          <h2 style="font-size: 20px; color: #fff; margin-bottom: 12px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 6px;">
+            2. Confidentiality of Architectural Blueprints &amp; Project Assets
+          </h2>
+          <p style="font-size: 14px; line-height: 1.7; color: #aaa;">
+            CAD drawings, custom joinery designs, 3D visualizations, and itemized bills of quantities (BOQ) are treated as strictly confidential client records. We never sell, lease, or distribute private blueprints or personal information to third parties.
+          </p>
+        </section>
+
+        <section style="margin-bottom: 28px;">
+          <h2 style="font-size: 20px; color: #fff; margin-bottom: 12px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 6px;">
+            3. Data Security Standards &amp; Contact Inquiries
+          </h2>
+          <p style="font-size: 14px; line-height: 1.7; color: #aaa;">
+            We maintain SSL/TLS encrypted transmission and secure data storage for all client project communication. If you have questions regarding data privacy or wish to update your records, please contact our studio at studioyounick@gmail.com or +91 88548 83058.
+          </p>
+        </section>
       </article>
     `
   },
@@ -1998,9 +2025,36 @@ function getRoutes(projectItems, blogItems = []) {
         <h1 style="font-size: 32px; line-height: 1.3; margin-bottom: 20px; color: #E6B566;">
           Terms of Service &amp; Project Execution Guidelines
         </h1>
-        <p style="font-size: 15px; line-height: 1.8; color: #bbb;">
+        <p style="font-size: 15px; line-height: 1.8; color: #bbb; margin-bottom: 28px;">
           All interior design concepts, 3D renderings, CAD blueprints, and turnkey construction works performed by Younick Design Studio are governed by our written architectural contracts, detailing itemized BOQ specifications, milestone payment schedules, and quality assurance warranties.
         </p>
+
+        <section style="margin-bottom: 28px;">
+          <h2 style="font-size: 20px; color: #fff; margin-bottom: 12px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 6px;">
+            1. Scope of Architectural &amp; Turnkey Services
+          </h2>
+          <p style="font-size: 14px; line-height: 1.7; color: #aaa;">
+            Younick Design Studio delivers residential interior design, commercial fit-outs, civil construction, 3D photorealistic rendering, and renovation services based on bilateral contracts and finalized floor layouts.
+          </p>
+        </section>
+
+        <section style="margin-bottom: 28px;">
+          <h2 style="font-size: 20px; color: #fff; margin-bottom: 12px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 6px;">
+            2. Intellectual Property Rights &amp; Blueprint Ownership
+          </h2>
+          <p style="font-size: 14px; line-height: 1.7; color: #aaa;">
+            All 3D CGI visuals, CAD architectural plans, and custom furniture designs authored by Younick Design Studio remain the creative property of the studio until full execution milestone settlement. Unauthorized commercial reproduction is prohibited.
+          </p>
+        </section>
+
+        <section style="margin-bottom: 28px;">
+          <h2 style="font-size: 20px; color: #fff; margin-bottom: 12px; border-bottom: 1px solid rgba(230,181,102,0.3); padding-bottom: 6px;">
+            3. Material Standards, BOQ Specifications &amp; Quality Commitments
+          </h2>
+          <p style="font-size: 14px; line-height: 1.7; color: #aaa;">
+            All turnkey projects adhere strictly to certified Indian Standards (IS), including IS:710 Marine Grade BWP Plywood and Fe 550D TMT steel. Defect liability and warranty coverage are defined in project execution agreements.
+          </p>
+        </section>
       </article>
     `
   },
