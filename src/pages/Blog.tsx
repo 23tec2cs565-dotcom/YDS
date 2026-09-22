@@ -106,6 +106,12 @@ const Blog: React.FC = () => {
   return (
     <>
       <SEOHead
+        seo={{
+          title: "Interior & Architecture Blog | Younick Design Studio Jaipur",
+          description: "Comprehensive 2026 cost guides, material comparisons, Vastu rules, and turnkey civil construction insights for luxury homes and commercial spaces in Jaipur.",
+          keywords: "interior design cost jaipur, modular kitchen material jaipur, vastu guidelines luxury villa jaipur, turnkey civil contractor jaipur, 3d architectural rendering jaipur, architecture blog jaipur",
+          url: "https://studioyounick.vercel.app/blog",
+        }}
         title="Interior & Architecture Blog | Younick Design Studio Jaipur"
         description="Comprehensive 2026 cost guides, material comparisons, Vastu rules, and turnkey civil construction insights for luxury homes and commercial spaces in Jaipur."
         keywords="interior design cost jaipur, modular kitchen material jaipur, vastu guidelines luxury villa jaipur, turnkey civil contractor jaipur, 3d architectural rendering jaipur, architecture blog jaipur"

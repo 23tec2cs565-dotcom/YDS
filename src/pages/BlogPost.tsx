@@ -178,6 +178,13 @@ const BlogPostPage: React.FC = () => {
   return (
     <>
       <SEOHead
+        seo={{
+          title: post.seoTitle || `${post.title} | Younick Studio Jaipur`,
+          description: post.seoDescription || post.excerpt,
+          keywords: post.seoKeywords || post.tags.join(", "),
+          url: canonicalUrl,
+          image: ogImage,
+        }}
         title={post.seoTitle || `${post.title} | Younick Studio Jaipur`}
         description={post.seoDescription || post.excerpt}
         keywords={post.seoKeywords || post.tags.join(", ")}

@@ -4,6 +4,12 @@ import { SEOData, defaultSEO, structuredData } from "../utils/seo";
 
 interface SEOHeadProps {
   seo?: Partial<SEOData>;
+  title?: string;
+  description?: string;
+  keywords?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
   type?: "website" | "article";
   schema?: object;
   noIndex?: boolean;
@@ -11,18 +17,42 @@ interface SEOHeadProps {
 
 const SEOHead: React.FC<SEOHeadProps> = ({
   seo,
+  title,
+  description,
+  keywords,
+  canonicalUrl,
+  ogImage,
+  ogType,
   type = "website",
   schema,
   noIndex = false,
 }) => {
-  const meta = { ...defaultSEO, ...seo };
+  const rawDescription = description || seo?.description || defaultSEO.description;
   const cleanDescription =
-    meta.description && meta.description.length > 155
-      ? meta.description.slice(0, 152).trim() + "..."
-      : meta.description || defaultSEO.description;
-  const url = meta.url?.startsWith("http")
-    ? meta.url
-    : `https://studioyounick.vercel.app${meta.url || ""}`;
+    rawDescription && rawDescription.length > 155
+      ? rawDescription.slice(0, 152).trim() + "..."
+      : rawDescription;
+  const resolvedType = ogType || type || "website";
+
+  // Resolve absolute canonical URL reliably
+  let rawUrl = canonicalUrl || seo?.url;
+  if (!rawUrl && typeof window !== "undefined") {
+    rawUrl = window.location.pathname;
+  }
+  const url = rawUrl?.startsWith("http")
+    ? rawUrl
+    : `https://studioyounick.vercel.app${rawUrl && !rawUrl.startsWith("/") ? `/${rawUrl}` : rawUrl || ""}`;
+
+  const meta: SEOData = {
+    ...defaultSEO,
+    ...seo,
+    title: title || seo?.title || defaultSEO.title,
+    description: cleanDescription,
+    keywords: keywords || seo?.keywords || defaultSEO.keywords,
+    image: ogImage || seo?.image || defaultSEO.image,
+    url,
+  };
+
   const schemaData =
     schema && Object.keys(schema).length > 0
       ? schema
@@ -47,7 +77,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {noIndex && <meta name="prerender-status-code" content="404" />}
 
       {/* Open Graph */}
-      <meta property="og:type" content={type} />
+      <meta property="og:type" content={resolvedType} />
       <meta property="og:site_name" content="Younick Design Studio" />
       <meta property="og:title" content={meta.title} />
       <meta property="og:description" content={cleanDescription} />
