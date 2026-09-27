@@ -596,7 +596,7 @@ const Projects: React.FC = () => {
  
         {/* Content */}
         <motion.div
-          className="relative z-10 max-w-7xl mx-auto px-6 h-full flex flex-col justify-center"
+          className="relative z-10 max-w-site mx-auto px-6 h-full flex flex-col justify-center"
           style={{ opacity: heroOpacity, y: heroY }}
         >
           <AnimatePresence mode="wait">
@@ -664,7 +664,7 @@ const Projects: React.FC = () => {
           ═══════════════════════════════════════════ */}
       {featuredProjects.length >= 3 && (
         <section className="bg-[#0B1220] pb-16 pt-8">
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-site mx-auto px-6">
             <Reveal>
               <div className="flex items-center justify-between mb-8">
                 <div>
@@ -704,7 +704,7 @@ const Projects: React.FC = () => {
           MAIN CONTENT
           ═══════════════════════════════════════════ */}
       <div className="bg-gradient-to-b from-[#F8F7F4] via-white to-[#F8F4EE] min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* ─── Floating Filter Toolbar ─── */}
           <Reveal>
             <div className="sticky top-20 z-30 mb-10">

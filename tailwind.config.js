@@ -8,6 +8,9 @@ export default {
       padding: { DEFAULT: '1rem', md: '2rem', lg: '3rem', xl: '4rem' },
     },
     extend: {
+      maxWidth: {
+        site: '1680px',  // Wide desktop container — fills 1920px monitors with ~120px gutter each side
+      },
       fontFamily: {
         sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
         serif: ['Ovelion', 'Cormorant Garamond', 'Playfair Display', 'Georgia', 'ui-serif', 'serif'],

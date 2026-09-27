@@ -167,7 +167,7 @@ const OurTeam: React.FC = () => {
 
         {/* Hero Content */}
         <motion.div
-          className="relative z-10 max-w-7xl mx-auto px-6 h-full flex flex-col justify-center"
+          className="relative z-10 max-w-site mx-auto px-6 h-full flex flex-col justify-center"
           style={{ opacity: heroOpacity }}
         >
           <Reveal>
@@ -204,7 +204,7 @@ const OurTeam: React.FC = () => {
 
       <main className="bg-gradient-to-b from-[#F8F7F4] via-white to-[#F8F4EE] min-h-screen">
         {/* Values Row — 2 columns x 2 rows on mobile, 4 columns on desktop */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+        <section className="max-w-site mx-auto px-4 sm:px-6 py-10 sm:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
             {values.map((v, idx) => (
               <Reveal key={idx} delay={idx * 0.1}>
@@ -227,7 +227,7 @@ const OurTeam: React.FC = () => {
         {/* ═══════════════════════════════════════════
             SECTION 2: THE STUDIO COLLECTIVE (Consolidated Grid)
             ═══════════════════════════════════════════ */}
-        <section className="max-w-7xl mx-auto px-6 py-12">
+        <section className="max-w-site mx-auto px-6 py-12">
           <Reveal>
             <div className="mb-12 text-center">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#E6B566] mb-3">
@@ -253,7 +253,7 @@ const OurTeam: React.FC = () => {
         {/* ═══════════════════════════════════════════
             SECTION 3: WORKSPACE & CULTURE (Consolidated Gallery + CTA)
             ═══════════════════════════════════════════ */}
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 pb-20 sm:pb-24">
+          <section className="max-w-site mx-auto px-4 sm:px-6 py-12 sm:py-16 pb-20 sm:pb-24">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
               
               {/* Left Column: Bento Workspace Gallery */}

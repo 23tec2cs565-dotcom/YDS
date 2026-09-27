@@ -363,7 +363,7 @@ const ServicesPage: React.FC = () => {
 <main className="bg-white">
         {/* Stats */}
         <div className="bg-[#0F0F10] border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="max-w-site mx-auto px-6 py-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 divide-x divide-white/10">
               {STATS.map((stat, idx) => (
                 <div key={idx} className="text-center px-2 sm:px-4">
@@ -377,7 +377,7 @@ const ServicesPage: React.FC = () => {
 
         {/* Services Grid */}
         <section ref={servicesRef} className="bg-[#FAFAFA] py-12 sm:py-20">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6">
+          <div className="max-w-site mx-auto px-5 sm:px-6">
             <div className="mb-8 sm:mb-12 md:flex items-end justify-between">
               <div className="max-w-xl">
                 <span className="text-[#8C6226] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">What We Do</span>
@@ -400,7 +400,7 @@ const ServicesPage: React.FC = () => {
 
         {/* Process Section */}
         <section className="py-12 sm:py-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6">
+          <div className="max-w-site mx-auto px-5 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
               <div>
                 <span className="text-[#8C6226] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">How It Works</span>
@@ -450,7 +450,7 @@ const ServicesPage: React.FC = () => {
 
         {/* Interactive Budget Estimator Section */}
         <section className="py-12 sm:py-24 px-5 sm:px-6 bg-gray-50 border-t border-gray-100">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-site mx-auto">
             {/* Header */}
             <div className="text-center mb-8 sm:mb-16">
               <span className="text-[#8C6226] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">

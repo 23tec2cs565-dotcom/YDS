@@ -232,7 +232,7 @@ export default function TermsOfService() {
     <main className="min-h-screen bg-[#070D18] pt-24 pb-20">
       <SEOHead seo={pageSEO.terms} />
       
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+      <div className="container mx-auto px-4 md:px-6 max-w-site">
         {/* Header Section */}
         <div className="mb-12 md:mb-16 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">

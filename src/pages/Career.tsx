@@ -265,7 +265,7 @@ const Career: React.FC = () => {
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
              style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-        <div className="max-w-[1400px] mx-auto px-6 w-full relative z-10 py-16">
+        <div className="max-w-site mx-auto px-6 w-full relative z-10 py-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-3 mb-6">
@@ -310,7 +310,7 @@ const Career: React.FC = () => {
 
       {/* --- SECTION: CORE PILLARS / VALUES BENTO --- */}
       <section className="bg-[#18181B] text-white py-24 px-6 border-t border-white/5">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-site mx-auto">
           <div className="mb-16 border-b border-white/10 pb-8">
             <span className="text-[#B08D57] font-mono font-bold tracking-widest text-xs mb-3 block uppercase">[ How We Work ]</span>
             <h2 className="text-4xl md:text-6xl font-serif text-white tracking-tight">Our Core Pillars</h2>
@@ -340,7 +340,7 @@ const Career: React.FC = () => {
 
       {/* --- SECTION: ROLES EXPLORER --- */}
       <section id="roles" className="py-24 px-6 bg-white border-t border-gray-100">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-site mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-8 border-b border-gray-100">
             <div>
               <span className="text-[#B08D57] font-mono font-bold tracking-widest text-xs mb-3 block uppercase">[ OPPORTUNITIES ]</span>
@@ -486,7 +486,7 @@ const Career: React.FC = () => {
 
       {/* --- SECTION: LIFE AT THE STUDIO (VISUAL GALLERY) --- */}
       <section className="bg-[#18181B] text-white py-24 px-6 relative overflow-hidden border-t border-white/5">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-site mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-white/10 pb-8">
             <div>
               <span className="text-[#B08D57] font-mono font-bold tracking-widest text-xs mb-3 block uppercase">[ STUDIO CULTURE ]</span>
@@ -554,7 +554,7 @@ const Career: React.FC = () => {
 
       {/* --- SECTION: PERKS & BENEFITS GRID --- */}
       <section className="py-24 px-6 bg-[#FAF9F6] border-t border-gray-100">
-        <div className="max-w-[1400px] mx-auto text-center">
+        <div className="max-w-site mx-auto text-center">
           <span className="text-[#B08D57] font-mono font-bold tracking-widest text-xs mb-4 block uppercase">
             [ STUDIO PERKS ]
           </span>

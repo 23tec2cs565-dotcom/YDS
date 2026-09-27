@@ -239,7 +239,7 @@ const ContactUs: React.FC = () => {
              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white rounded-full blur-[100px] -ml-20 -mb-20" />
           </div>
           
-          <div className="relative z-10 max-w-7xl mx-auto text-center">
+          <div className="relative z-10 max-w-site mx-auto text-center">
             <span className="inline-block px-2.5 sm:px-3 py-1 mb-4 sm:mb-6 text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase bg-[#E6B566]/10 text-[#E6B566] border border-[#E6B566]/20 rounded-sm">
               Get In Touch
             </span>
@@ -250,7 +250,7 @@ const ContactUs: React.FC = () => {
           </div>
         </header>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 -mt-10 sm:-mt-12 relative z-20 pb-12 sm:pb-20">
+        <div className="max-w-site mx-auto px-5 sm:px-6 -mt-10 sm:-mt-12 relative z-20 pb-12 sm:pb-20">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
             
@@ -371,7 +371,7 @@ const ContactUs: React.FC = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 pb-12 sm:pb-20">
+        <div className="max-w-site mx-auto px-5 sm:px-6 pb-12 sm:pb-20">
           <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-700 mb-3">
             <MapPin size={16} className="text-[#B08D57]" /> Book Your Appointment
           </div>

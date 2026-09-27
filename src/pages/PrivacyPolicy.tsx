@@ -87,7 +87,7 @@ export default function PrivacyPolicy() {
       <SEOHead seo={pageSEO?.privacy || { title: 'Privacy Policy | Younick Design Studio' }} />
       
       <div className="min-h-screen bg-[#070D18] pt-32 pb-24 font-sans text-gray-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
           <div className="max-w-3xl mb-16">
