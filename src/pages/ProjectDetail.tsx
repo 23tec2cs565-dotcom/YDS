@@ -220,7 +220,7 @@ const ProjectDetail: React.FC = () => {
       />
 
       <div className="min-h-screen bg-[#070D18] text-white selection:bg-[#E6B566] selection:text-[#070D18] pt-28 sm:pt-32 pb-20">
-        <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Top Breadcrumb & Actions */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8 text-sm">

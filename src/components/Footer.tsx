@@ -171,7 +171,7 @@ const Footer: React.FC = () => {
         <div className="bg-[#F6F4EE] py-3 sm:py-4 px-4 sm:px-6 border-t border-gray-200/60 relative">
           <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#18181B_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
-          <div className="relative mx-auto max-w-site flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-[10px] sm:text-xs tracking-wider uppercase text-gray-600 font-medium text-center md:text-left">
+          <div className="relative mx-auto max-w-[1680px] flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-[10px] sm:text-xs tracking-wider uppercase text-gray-600 font-medium text-center md:text-left">
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E6B566] opacity-75" />
@@ -239,7 +239,7 @@ const Footer: React.FC = () => {
           <div className="absolute left-[-3rem] bottom-0 h-64 w-64 rounded-full bg-[#E6B566]/5 blur-[70px]" />
         </div>
 
-        <div className="relative mx-auto max-w-site px-5 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-[1680px] px-5 sm:px-6 lg:px-8">
 
           {/* ── CTA Banner — Luxury Framed Card ── */}
           <section className="relative my-6 sm:my-8 md:my-12 rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-r from-[#1A1A1E] via-[#222228] to-[#1A1A1E] p-5 sm:p-8 md:p-12 lg:p-14 shadow-2xl overflow-hidden group">

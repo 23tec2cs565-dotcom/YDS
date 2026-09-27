@@ -125,7 +125,7 @@ const Blog: React.FC = () => {
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#E6B566]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-[#B08D57]/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 mb-6">
               <Link to="/" className="hover:text-[#E6B566] transition-colors">Home</Link>
@@ -185,7 +185,7 @@ const Blog: React.FC = () => {
 
         {/* ── Featured Guide Highlight (if showing all and no search) ── */}
         {selectedCategory === "All Guides" && !searchQuery && featuredPost && (
-          <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 border-b border-white/10">
+          <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 border-b border-white/10">
             <div className="flex items-center gap-2 mb-6">
               <Sparkles size={16} className="text-[#E6B566]" />
               <span className="text-xs uppercase tracking-widest text-[#E6B566] font-bold">
@@ -250,7 +250,7 @@ const Blog: React.FC = () => {
         )}
 
         {/* ── Main Guides Grid ── */}
-        <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-xl sm:text-2xl font-serif font-bold text-white">
               {selectedCategory === "All Guides" ? "All Knowledge Base Articles" : `${selectedCategory} Articles`}

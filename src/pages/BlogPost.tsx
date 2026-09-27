@@ -454,7 +454,7 @@ const BlogPostPage: React.FC = () => {
 
         {/* ── Related Guides Carousel ── */}
         {relatedPosts.length > 0 && (
-          <aside className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-12 border-t border-white/10" aria-label="Related Architectural Guides">
+          <aside className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-12 border-t border-white/10" aria-label="Related Architectural Guides">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-xl sm:text-2xl font-serif font-bold text-white">
                 Related Blog Guides

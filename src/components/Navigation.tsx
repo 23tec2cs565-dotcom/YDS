@@ -231,7 +231,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
           : "bg-transparent py-3 sm:py-5"
       }`}
     >
-      <div className="max-w-site mx-auto px-3 sm:px-6 lg:px-8 relative">
+      <div className="max-w-[1680px] mx-auto px-3 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-14 sm:h-16 relative">
           {/* Logo */}
           <NavLink to="/" end className="flex items-center space-x-2.5 sm:space-x-3 group">

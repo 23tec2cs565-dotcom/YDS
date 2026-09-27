@@ -198,7 +198,7 @@ const NotFound: React.FC = () => {
         />
 
         {/* ──────── TOP STATUS BAR (Below Navbar) ──────── */}
-        <div className="w-full max-w-site mx-auto px-5 sm:px-6 pt-2 pb-4 flex flex-wrap items-center justify-between gap-4 z-50 relative pointer-events-auto">
+        <div className="w-full max-w-[1680px] mx-auto px-5 sm:px-6 pt-2 pb-4 flex flex-wrap items-center justify-between gap-4 z-50 relative pointer-events-auto">
           <div className="flex items-center gap-3">
             <button
               onClick={(e) => {
@@ -376,7 +376,7 @@ const NotFound: React.FC = () => {
         </div>
 
         {/* ──────── BOTTOM CURATED DESTINATIONS (Lucrative Quick-Access) ──────── */}
-        <div className="w-full max-w-site mx-auto px-5 sm:px-6 pt-4 z-40 relative">
+        <div className="w-full max-w-[1680px] mx-auto px-5 sm:px-6 pt-4 z-40 relative">
           <div className="text-center mb-3">
             <h2 className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em] text-gray-400 font-semibold">
               Popular Studio Destinations

@@ -127,7 +127,7 @@ const ServiceDetails: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F10] via-[#0F0F10]/40 to-transparent" />
           </div>
 
-          <div className="relative z-10 max-w-site mx-auto px-6 pb-12 w-full">
+          <div className="relative z-10 max-w-[1680px] mx-auto px-6 pb-12 w-full">
             <button
               onClick={goBack}
               aria-label="Go back to services"
@@ -148,7 +148,7 @@ const ServiceDetails: React.FC = () => {
         </header>
 
         {/* MAIN */}
-        <div className="max-w-site mx-auto px-6 py-16 md:py-24">
+        <div className="max-w-[1680px] mx-auto px-6 py-16 md:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             {/* Left: content */}
             <div className="lg:col-span-7 space-y-12">
@@ -240,7 +240,7 @@ const ServiceDetails: React.FC = () => {
 
         {/* EXPLORE ALL STUDIO SERVICES (High-Value Internal Backlinks) */}
         <section className="bg-[#18181B] py-12 text-white border-t border-white/10">
-          <div className="max-w-site mx-auto px-6">
+          <div className="max-w-[1680px] mx-auto px-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
               <div>
                 <span className="text-[#B08D57] font-bold tracking-widest uppercase text-xs block mb-1">
@@ -286,7 +286,7 @@ const ServiceDetails: React.FC = () => {
 
         {/* RELATED PROJECTS */}
         <section className="bg-[#0F0F10] py-16 text-white">
-          <div className="max-w-site mx-auto px-6">
+          <div className="max-w-[1680px] mx-auto px-6">
             <div className="flex items-end justify-between mb-8">
               <div>
                 <span className="text-[#B08D57] font-bold tracking-widest uppercase text-xs">Our Portfolio</span>
@@ -336,7 +336,7 @@ const ServiceDetails: React.FC = () => {
         {/* RELATED KNOWLEDGE GUIDE CALLOUT */}
         {relatedGuide && (
           <section className="bg-[#070D18] py-14 text-white border-t border-white/10">
-            <div className="max-w-site mx-auto px-6">
+            <div className="max-w-[1680px] mx-auto px-6">
               <div className="rounded-2xl border border-[#E6B566]/30 bg-gradient-to-r from-[#E6B566]/10 via-white/[0.02] to-transparent p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="max-w-2xl">
                   <div className="flex items-center gap-2 text-xs text-[#E6B566] font-bold uppercase tracking-wider mb-2">

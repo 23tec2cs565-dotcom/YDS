@@ -127,7 +127,7 @@ const AboutContent = () => {
           <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
                style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-          <div className="max-w-site mx-auto w-full relative z-10">
+          <div className="max-w-[1680px] mx-auto w-full relative z-10">
             <div className="flex flex-col lg:flex-row gap-6 sm:gap-12 items-start lg:items-end mb-8 sm:mb-16">
               <div className="flex-1">
                 <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
@@ -184,7 +184,7 @@ const AboutContent = () => {
 
         {/* --- PHILOSOPHY: BENTO GRID STYLE --- */}
         <section className="bg-[#18181B] text-white py-12 sm:py-24 px-5 sm:px-6">
-          <div className="max-w-site mx-auto">
+          <div className="max-w-[1680px] mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-16 border-b border-white/10 pb-6 sm:pb-8">
               <h2 className="text-2xl sm:text-4xl md:text-6xl font-serif">Why We Build</h2>
               <Link to="/projects" className="group flex items-center gap-2 mt-4 md:mt-0 text-[#B08D57] font-mono text-sm uppercase tracking-widest hover:text-white transition-colors">
@@ -283,7 +283,7 @@ const AboutContent = () => {
 
         {/* --- TEAM TEASER: MAGAZINE STYLE --- */}
         <section className="py-16 sm:py-32 px-5 sm:px-6">
-          <div className="max-w-site mx-auto flex flex-col md:flex-row items-center gap-8 sm:gap-16">
+          <div className="max-w-[1680px] mx-auto flex flex-col md:flex-row items-center gap-8 sm:gap-16">
             <div className="md:w-1/2 relative">
                <div className="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-20 sm:w-32 h-20 sm:h-32 border-l-2 border-t-2 border-[#B08D57] opacity-50" />
                <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -306,7 +306,7 @@ const AboutContent = () => {
 
         {/* --- SECTION: YOUNICK BLUEPRINT --- */}
         <section className="py-14 sm:py-24 px-5 sm:px-6 bg-[#FAF9F6] border-t border-gray-100">
-          <div className="max-w-site mx-auto">
+          <div className="max-w-[1680px] mx-auto">
             <div className="mb-8 sm:mb-16">
               <span className="text-[#B08D57] font-mono font-bold tracking-widest text-[10px] sm:text-xs mb-2 sm:mb-3 block">[ THE PROCESS ]</span>
               <h2 className="text-2xl sm:text-4xl md:text-6xl font-serif text-[#18181B] tracking-tight">The Younick Blueprint</h2>
@@ -393,7 +393,7 @@ const AboutContent = () => {
 
         {/* --- SECTION: SIGNATURE CRAFTSMANSHIP DETAIL GALLERY --- */}
         <section className="bg-[#18181B] text-white py-12 sm:py-24 px-5 sm:px-6 relative overflow-hidden border-t border-white/5">
-          <div className="max-w-site mx-auto">
+          <div className="max-w-[1680px] mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-16 border-b border-white/10 pb-6 sm:pb-8">
               <div>
                 <span className="text-[#B08D57] font-mono font-bold tracking-widest text-[10px] sm:text-xs mb-2 sm:mb-3 block">[ MATERIALITY & DETAILS ]</span>
@@ -485,7 +485,7 @@ const AboutContent = () => {
 
         {/* --- SECTION: MONOCHROMATIC PRESS & RECOGNITION GRID --- */}
         <section className="py-12 sm:py-24 px-5 sm:px-6 bg-white border-t border-gray-100">
-          <div className="max-w-site mx-auto text-center">
+          <div className="max-w-[1680px] mx-auto text-center">
             <span className="text-[#B08D57] font-mono font-bold tracking-widest text-[10px] sm:text-xs mb-6 sm:mb-12 block uppercase">
               [ Selected Recognition ]
             </span>

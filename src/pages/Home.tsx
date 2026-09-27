@@ -191,7 +191,7 @@ const Hero: React.FC = () => {
       <div className="absolute top-0 right-0 w-[40vw] h-full bg-[#EAEAEA] rounded-l-[120px] -z-10 hidden lg:block opacity-50" />
       <div className="absolute top-20 left-20 w-64 h-64 bg-[#E6B566]/5 rounded-full blur-3xl -z-10 pointer-events-none" />
 
-      <div className="max-w-site mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
+      <div className="max-w-[1680px] mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B3528] border border-emerald-500/40 shadow-md text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
             <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
@@ -291,7 +291,7 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="py-24 bg-white relative">
-      <div className="max-w-site mx-auto px-6">
+      <div className="max-w-[1680px] mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
             <Reveal>
@@ -346,7 +346,7 @@ const About: React.FC = () => {
 const TransformationSection: React.FC = () => {
   return (
     <section className="py-16 sm:py-24 bg-white relative overflow-hidden border-t border-gray-100 w-full">
-      <div className="max-w-site mx-auto px-4 sm:px-6">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <Reveal>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] text-[#E6B566] text-xs font-bold tracking-widest uppercase mb-4">
@@ -393,7 +393,7 @@ const ProjectsSection: React.FC = () => {
 
   return (
     <section id="projects" className="py-24 bg-[#FAFAFB]">
-      <div className="max-w-site mx-auto px-6">
+      <div className="max-w-[1680px] mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <Reveal>
             <h2 className="text-4xl font-serif text-[#0B1220] mb-4">Selected Works</h2>
@@ -512,7 +512,7 @@ const ServicesSection: React.FC = () => {
   const { services } = useServices();
   return (
     <section id="services" className="py-24 bg-white">
-      <div className="max-w-site mx-auto px-6">
+      <div className="max-w-[1680px] mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-5xl font-serif text-[#0B1220] mb-6">
             Our Expertise
@@ -683,7 +683,7 @@ const LeadershipSection: React.FC = () => {
 
   return (
     <section id="team" className="py-24 bg-white">
-      <div className="max-w-site mx-auto px-6">
+      <div className="max-w-[1680px] mx-auto px-6">
         <Reveal>
           <div className="text-center mb-16">
             <div className="text-4xl font-serif mb-4">The Leadership</div>
@@ -742,7 +742,7 @@ const InsightsSection: React.FC = () => {
   return (
     <section className="py-24 bg-[#070D18] text-white border-t border-white/10 relative overflow-hidden">
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#E6B566]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="max-w-site mx-auto px-6 relative z-10">
+      <div className="max-w-[1680px] mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#E6B566] mb-3 block">
