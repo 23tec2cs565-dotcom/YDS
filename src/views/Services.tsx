@@ -1,4 +1,6 @@
+"use client";
 import React, { useRef, useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import {
   ChevronDown,
   ArrowRight,
@@ -43,7 +45,6 @@ import { services as defaultServices } from "../data/services";
 import { useServices } from "../hooks/useSanityData";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
-import { useNavigate } from "react-router-dom";
 
 function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
   const img = e.currentTarget;
@@ -187,7 +188,7 @@ const ALL_INDIA_LOCATIONS = [
 const ServicesPage: React.FC = () => {
   const { services: SERVICES } = useServices();
   const visibleServices = (SERVICES || []).filter((s) => allowedIds.has(s.id));
-  const navigate = useNavigate();
+  const router = useRouter();
   const servicesRef = useRef<HTMLElement | null>(null);
 
   const [selectedServices, setSelectedServices] = useState<string[]>(["interior-design"]);
@@ -315,11 +316,11 @@ const ServicesPage: React.FC = () => {
   };
 
   const goToService = (id: string) => {
-    navigate(`/services/${id}`);
+    router.push(`/services/${id}`);
   };
 
   const startProject = () => {
-    navigate("/contact");
+    router.push("/contact");
   };
 
   return (

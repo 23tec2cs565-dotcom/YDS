@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import { ArrowUpRight, ShieldCheck, Sparkles } from "lucide-react";
 import SEOHead from "../components/SEOHead";

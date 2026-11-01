@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
+import Link from "next/link";
 import { Sparkles, MoveHorizontal, ArrowRight, CheckCircle2, Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -6,6 +7,7 @@ const MotionDiv = motion.div as unknown as React.ComponentType<any>;
 
 export interface ComparisonItem {
   id: string;
+  projectSlug?: string;
   title: string;
   category: string;
   location: string;
@@ -20,6 +22,7 @@ export interface ComparisonItem {
 export const COMPARISONS_DATA: ComparisonItem[] = [
   {
     id: "foyer",
+    projectSlug: "foyer",
     title: "Entrance Foyer Renovation",
     category: "Turnkey Renovation",
     location: "New Light Colony, Tonk Road, Jaipur",
@@ -37,6 +40,7 @@ export const COMPARISONS_DATA: ComparisonItem[] = [
   },
   {
     id: "goyal",
+    projectSlug: "goyal-renovation",
     title: "Mr. Goyal's Residential Renovation",
     category: "Complete Overhaul",
     location: "Jaipur, Rajasthan",
@@ -54,6 +58,7 @@ export const COMPARISONS_DATA: ComparisonItem[] = [
   },
   {
     id: "chhoti-bai",
+    projectSlug: "chhoti-bai-jewellers",
     title: "Chhoti Bai Jewellers Showroom",
     category: "Commercial Turnkey",
     location: "City Center, Sansar Chandra Road, Jaipur",
@@ -274,8 +279,8 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-gray-200">
-                <div className="flex items-center gap-4 text-xs font-medium text-gray-500">
+              <div className="pt-5 border-t border-gray-200 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-medium text-gray-500">
                   <span className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     Turnkey Handover
@@ -285,6 +290,16 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
                     On-Time Delivery
                   </span>
                 </div>
+
+                {/* Compact View button right next to delivery indicators */}
+                <Link
+                  href={`/projects/${activeItem.projectSlug || activeItem.id}`}
+                  className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0B1220] hover:bg-[#1A2538] text-white text-xs font-mono uppercase tracking-wider font-semibold shadow-sm hover:shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shrink-0"
+                  title={`View ${activeItem.title} project`}
+                >
+                  <span>View</span>
+                  <ArrowRight size={13} className="text-[#E6B566] transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
               </div>
             </MotionDiv>
           </AnimatePresence>

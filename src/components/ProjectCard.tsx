@@ -1,5 +1,6 @@
+"use client";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { MapPin, ArrowUpRight, User, IndianRupee, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Project } from "../data/projects";
@@ -38,7 +39,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 
   return (
     <Link
-      to={`/projects/${projectSlug}`}
+      href={`/projects/${projectSlug}`}
       className="block h-full text-inherit no-underline focus:outline-none"
       aria-label={`View project details for ${project.title}`}
       onClick={() => {

@@ -1,8 +1,10 @@
+"use client";
 // src/pages/BlogPost.tsx
 // Dedicated Architectural Guide & Knowledge Center Article Page for Younick Design Studio
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, useRouter, notFound } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Calendar,
@@ -26,8 +28,10 @@ import { useBlogPosts } from "../hooks/useSanityData";
 import { blogs as defaultBlogs, type BlogPost } from "../data/blogs";
 import { urlFor } from "../lib/sanity";
 
-const BlogPostPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
+const BlogPostPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
+  const params = useParams();
+  const rawSlug = propSlug || (typeof params?.slug === "string" ? params.slug : Array.isArray(params?.slug) ? params.slug[0] : "");
+  const slug = rawSlug;
   const { posts, loading } = useBlogPosts();
   const [copied, setCopied] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
@@ -88,7 +92,10 @@ const BlogPostPage: React.FC = () => {
   }
 
   if (!post) {
-    return <Navigate to="/404" replace />;
+    if (!loading) {
+      notFound();
+    }
+    return null;
   }
 
   const siteUrl = "https://studioyounick.vercel.app";
@@ -114,6 +121,10 @@ const BlogPostPage: React.FC = () => {
           name: post.author.name,
           jobTitle: post.author.role,
           url: `${siteUrl}/team`,
+          sameAs: [
+            "https://www.linkedin.com/in/nikhil-sain-300351156",
+            "https://www.instagram.com/studio.younick",
+          ],
         },
         publisher: {
           "@type": "Organization",
@@ -207,9 +218,9 @@ const BlogPostPage: React.FC = () => {
         <header className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-12">
           {/* Breadcrumbs */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 mb-6 flex-wrap">
-            <Link to="/" className="hover:text-[#E6B566] transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#E6B566] transition-colors">Home</Link>
             <ChevronRight size={12} />
-            <Link to="/blog" className="hover:text-[#E6B566] transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-[#E6B566] transition-colors">Blog</Link>
             <ChevronRight size={12} />
             <span className="text-[#E6B566] truncate max-w-[200px] sm:max-w-xs">{post.category}</span>
           </nav>
@@ -422,7 +433,7 @@ const BlogPostPage: React.FC = () => {
                 {post.author.bio || `${post.author.role} at Younick Design Studio, specializing in turnkey civil construction, luxury residential architecture, and climate-responsive interior engineering across Jaipur, Sikar, and Rajasthan.`}
               </p>
               <Link
-                to="/team"
+                href="/team"
                 className="inline-flex items-center gap-1 text-xs font-bold text-[#E6B566] hover:text-white transition-colors"
               >
                 Meet the Full Architectural Team <ArrowRight size={12} />
@@ -460,7 +471,7 @@ const BlogPostPage: React.FC = () => {
                 Related Blog Guides
               </h2>
               <Link
-                to="/blog"
+                href="/blog"
                 className="text-xs font-semibold text-[#E6B566] hover:text-white transition-colors flex items-center gap-1"
               >
                 View All Guides <ArrowRight size={13} />
@@ -471,7 +482,7 @@ const BlogPostPage: React.FC = () => {
               {relatedPosts.map((rel) => (
                 <Link
                   key={rel.id}
-                  to={`/blog/${rel.slug}`}
+                  href={`/blog/${rel.slug}`}
                   className="group flex flex-col rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-[#E6B566]/40 transition-all duration-300"
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-black/40">

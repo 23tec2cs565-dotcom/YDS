@@ -1,8 +1,9 @@
+"use client";
 // src/pages/Blog.tsx
 // Knowledge Center & Architectural Guides Hub for Younick Design Studio
 
 import React, { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   BookOpen,
@@ -128,7 +129,7 @@ const Blog: React.FC = () => {
           <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400 mb-6">
-              <Link to="/" className="hover:text-[#E6B566] transition-colors">Home</Link>
+              <Link href="/" className="hover:text-[#E6B566] transition-colors">Home</Link>
               <ChevronRight size={12} />
               <span className="text-white font-medium">Blog</span>
             </nav>
@@ -206,7 +207,7 @@ const Blog: React.FC = () => {
                   </div>
 
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white mb-3 group-hover:text-[#E6B566] transition-colors leading-snug">
-                    <Link to={`/blog/${featuredPost.slug}`}>
+                    <Link href={`/blog/${featuredPost.slug}`}>
                       {featuredPost.title}
                     </Link>
                   </h2>
@@ -217,7 +218,7 @@ const Blog: React.FC = () => {
 
                   <div className="flex flex-wrap items-center gap-4">
                     <Link
-                      to={`/blog/${featuredPost.slug}`}
+                      href={`/blog/${featuredPost.slug}`}
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#E6B566] text-[#070D18] text-xs font-bold uppercase tracking-wider hover:bg-[#D4A054] transition-all"
                     >
                       Read Full Guide <ArrowRight size={14} />
@@ -235,7 +236,7 @@ const Blog: React.FC = () => {
                 </div>
 
                 <div className="lg:col-span-5 relative">
-                  <Link to={`/blog/${featuredPost.slug}`} className="block overflow-hidden rounded-xl aspect-[16/10] border border-white/10">
+                  <Link href={`/blog/${featuredPost.slug}`} className="block overflow-hidden rounded-xl aspect-[16/10] border border-white/10">
                     <img
                       src={urlFor(featuredPost.coverImage) || "/assets/services/interior-design3.jpg"}
                       alt={featuredPost.coverImageAlt || featuredPost.title}
@@ -278,7 +279,7 @@ const Blog: React.FC = () => {
                     className="flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:bg-white/[0.05] hover:border-[#E6B566]/40 transition-all duration-300 group"
                   >
                     {/* Cover image */}
-                    <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden bg-black/40">
+                    <Link href={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden bg-black/40">
                       <img
                         src={urlFor(post.coverImage) || "/assets/services/interior-design3.jpg"}
                         alt={post.coverImageAlt || post.title}
@@ -303,7 +304,7 @@ const Blog: React.FC = () => {
 
                         {/* Title */}
                         <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#E6B566] transition-colors line-clamp-2 leading-snug mb-2">
-                          <Link to={`/blog/${post.slug}`}>
+                          <Link href={`/blog/${post.slug}`}>
                             {post.title}
                           </Link>
                         </h3>
@@ -326,7 +327,7 @@ const Blog: React.FC = () => {
                         </div>
 
                         <Link
-                          to={`/blog/${post.slug}`}
+                          href={`/blog/${post.slug}`}
                           className="inline-flex items-center gap-1 text-xs font-semibold text-[#E6B566] hover:text-white transition-colors"
                         >
                           Read Guide <ArrowRight size={12} />
@@ -363,7 +364,7 @@ const Blog: React.FC = () => {
                   Chat with Architect on WhatsApp
                 </a>
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="px-6 py-3 rounded-xl border border-white/20 bg-white/5 text-white font-semibold text-xs uppercase tracking-wider hover:bg-white/10 transition-all"
                 >
                   Schedule Studio Meeting

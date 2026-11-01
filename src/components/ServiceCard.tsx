@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   ArrowRight,
   Dot,
@@ -82,14 +82,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
           <div className="flex items-center gap-3">
             <Link
-              to={`/projects?filter=${service.id}`}
+              href={`/projects?filter=${service.id}`}
               className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-gray-900 text-[#E6B566]"
             >
               View Projects <ArrowRight size={16} />
             </Link>
 
             <Link
-              to={`/services/${service.id}`}
+              href={`/services/${service.id}`}
               className="text-sm text-gray-600 hover:text-gray-900"
             >
               Explore {service.title} →
@@ -152,14 +152,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
         <div className="flex items-center gap-4">
           <Link
-            to={`/projects?filter=${service.id}`}
+            href={`/projects?filter=${service.id}`}
             className="px-5 py-3 bg-[#222831] text-[#E6B566] rounded-md inline-flex items-center gap-2"
           >
             View Projects <ArrowRight size={16} />
           </Link>
 
           <Link
-            to={`/services/${service.id}`}
+            href={`/services/${service.id}`}
             className="text-sm text-gray-600 hover:text-gray-900"
           >
             Explore {service.title} Details →

@@ -1,8 +1,10 @@
+"use client";
 // src/pages/ProjectDetail.tsx
 // Dedicated Case-Study Page for Younick Design Studio Projects
 
 import React, { useState, useMemo, useEffect, useCallback } from "react";
-import { useParams, useNavigate, Link, Navigate } from "react-router-dom";
+import Link from "next/link";
+import { useParams, useRouter, notFound } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
@@ -41,8 +43,9 @@ const slugify = (s?: string) =>
   (s || "").toString().trim().toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 
 const ProjectDetail: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
+  const params = useParams();
+  const slug = params?.slug as string;
+  const router = useRouter();
   const { projects: sanityProjects, loading } = useProjects();
 
   // Combine Sanity + local storage + default projects
@@ -73,13 +76,13 @@ const ProjectDetail: React.FC = () => {
   }, [slug, allProjects]);
 
   // Media lists
-  const imagesList = useMemo(() => {
+  const imagesList: string[] = useMemo(() => {
     if (project?.images && project.images.length > 0) return project.images;
     if (project?.image) return [project.image];
     return [];
   }, [project]);
 
-  const videosList = useMemo(() => {
+  const videosList: string[] = useMemo(() => {
     return project?.videos && project.videos.length > 0 ? project.videos : [];
   }, [project]);
 
@@ -160,7 +163,7 @@ const ProjectDetail: React.FC = () => {
   }
 
   if (!project) {
-    return <Navigate to="/404" replace />;
+    notFound();
   }
 
   const siteUrl = "https://studioyounick.vercel.app";
@@ -176,7 +179,7 @@ const ProjectDetail: React.FC = () => {
     name: `${project.title} — ${project.subtitle || project.category} in Jaipur`,
     description: project.longDescription || project.description,
     url: canonicalUrl,
-    image: imagesList.map((img) => img.startsWith("http") ? img : `${siteUrl}${img}`),
+    image: imagesList.map((img: string) => img.startsWith("http") ? img : `${siteUrl}${img}`),
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
@@ -225,9 +228,9 @@ const ProjectDetail: React.FC = () => {
           {/* Top Breadcrumb & Actions */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8 text-sm">
             <div className="flex items-center gap-2 text-gray-400">
-              <Link to="/" className="hover:text-[#E6B566] transition">Home</Link>
+              <Link href="/" className="hover:text-[#E6B566] transition">Home</Link>
               <span>/</span>
-              <Link to="/projects" className="hover:text-[#E6B566] transition">Projects</Link>
+              <Link href="/projects" className="hover:text-[#E6B566] transition">Projects</Link>
               <span>/</span>
               <span className="text-white truncate max-w-[200px] sm:max-w-xs">{project.title}</span>
             </div>
@@ -243,7 +246,7 @@ const ProjectDetail: React.FC = () => {
               </button>
 
               <Link
-                to="/projects"
+                href="/projects"
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-white/30 text-xs sm:text-sm font-medium transition text-gray-300"
               >
                 <ChevronLeft size={16} />
@@ -400,7 +403,7 @@ const ProjectDetail: React.FC = () => {
                 {/* Thumbnails Strip */}
                 {imagesList.length > 1 && (
                   <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-                    {imagesList.map((img, idx) => (
+                    {imagesList.map((img: string, idx: number) => (
                       <button
                         key={idx}
                         onClick={() => setActivePhotoIdx(idx)}
@@ -441,7 +444,7 @@ const ProjectDetail: React.FC = () => {
 
                 {videosList.length > 1 && (
                   <div className="flex gap-3 overflow-x-auto pb-2">
-                    {videosList.map((v, idx) => (
+                    {videosList.map((v: string, idx: number) => (
                       <button
                         key={idx}
                         onClick={() => setActiveVideoIdx(idx)}
@@ -481,7 +484,7 @@ const ProjectDetail: React.FC = () => {
                     Key Deliverables &amp; Execution Scope
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {project.workScope.map((scope, idx) => (
+                    {project.workScope.map((scope: string, idx: number) => (
                       <div
                         key={idx}
                         className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-white/5"
@@ -572,7 +575,7 @@ const ProjectDetail: React.FC = () => {
                   </a>
 
                   <Link
-                    to="/contact"
+                    href="/contact"
                     className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition"
                   >
                     <span>Schedule Design Consultation</span>
@@ -595,7 +598,7 @@ const ProjectDetail: React.FC = () => {
                   </p>
                 </div>
                 <Link
-                  to="/projects"
+                  href="/projects"
                   className="text-[#E6B566] hover:underline text-sm font-medium hidden sm:inline-block"
                 >
                   View All Projects &rarr;
@@ -606,7 +609,7 @@ const ProjectDetail: React.FC = () => {
                 {relatedProjects.map((rp) => (
                   <Link
                     key={rp.id}
-                    to={`/projects/${rp.slug || rp.id}`}
+                    href={`/projects/${rp.slug || rp.id}`}
                     className="group block bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-[#E6B566]/40 transition duration-300"
                   >
                     <div className="relative aspect-[4/3] overflow-hidden bg-black/40">

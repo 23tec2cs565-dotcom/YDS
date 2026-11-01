@@ -65,10 +65,20 @@ export const structuredData = {
       "@type": "Person",
       name: "Nikhil Sain",
       jobTitle: "Founder & Lead Interior Designer",
+      url: `${SITE.url}/team`,
+      image: `${SITE.url}/assets/team/Nikhil/Nikhil-1024.jpeg`,
+      sameAs: [
+        "https://www.linkedin.com/in/nikhil-sain-300351156",
+        "https://www.instagram.com/studio.younick",
+      ],
+      alumniOf: {
+        "@type": "EducationalOrganization",
+        name: "Arch College of Design and Business",
+      },
       worksFor: {
         "@type": "Organization",
-        name: SITE.name
-      }
+        name: SITE.name,
+      },
     },
     address: {
       "@type": "PostalAddress",
@@ -251,6 +261,14 @@ export const pageSEO: Record<string, SEOData> = {
     url: `${SITE.url}/faq`,
     image: SITE.logo,
     keywords: "interior design faq jaipur, interior design cost per sq ft jaipur, turnkey timeline rajasthan"
+  },
+  blog: {
+    title: "Interior & Architecture Blog | Younick Design Studio Jaipur",
+    description:
+      "Comprehensive 2026 cost guides, material comparisons, Vastu rules, and turnkey civil construction insights for luxury homes and commercial spaces in Jaipur.",
+    url: `${SITE.url}/blog`,
+    image: SITE.logo,
+    keywords: "interior design cost jaipur, modular kitchen material jaipur, vastu guidelines luxury villa jaipur, turnkey civil contractor jaipur, 3d architectural rendering jaipur, architecture blog jaipur"
   }
 };
 

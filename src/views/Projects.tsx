@@ -1,6 +1,7 @@
+"use client";
 // src/pages/Projects.tsx
 import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Search, Grid, List, Filter, SlidersHorizontal, ChevronDown, X, MapPin, Calendar, ArrowUpRight } from "lucide-react";
 import { projects as defaultProjects, type Project } from "../data/projects";
@@ -332,8 +333,8 @@ const heroSlides = {
    MAIN PROJECTS PAGE
    ══════════════════════════════════════════════════ */
 const Projects: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const { projects: ALL_PROJECTS } = useProjects();
 
   // Load dynamic projects from localStorage and merge with Sanity / static ones
@@ -356,12 +357,12 @@ const Projects: React.FC = () => {
   const [selected, setSelected] = useState<null | Project>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [category, setCategory] = useState<string>(searchParams.get("filter") || "all");
-  const [locationFilter, setLocationFilter] = useState<string>(searchParams.get("location") || "all");
-  const [sort, setSort] = useState<string>(searchParams.get("sort") || "newest");
+  const [category, setCategory] = useState<string>(searchParams?.get("filter") || "all");
+  const [locationFilter, setLocationFilter] = useState<string>(searchParams?.get("location") || "all");
+  const [sort, setSort] = useState<string>(searchParams?.get("sort") || "newest");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [searchText, setSearchText] = useState<string>(
-    searchParams.get("search") || searchParams.get("navSearch") || ""
+    searchParams?.get("search") || searchParams?.get("navSearch") || ""
   );
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -428,10 +429,10 @@ const Projects: React.FC = () => {
 
   // Filter + sort logic with strict lowercase slug URL normalization
   useEffect(() => {
-    const appliedSearch = searchParams.get("search") || searchParams.get("navSearch") || "";
-    const rawFilter = searchParams.get("filter") || "all";
-    const rawLocation = searchParams.get("location") || "all";
-    const rawSort = searchParams.get("sort") || "newest";
+    const appliedSearch = searchParams?.get("search") || searchParams?.get("navSearch") || "";
+    const rawFilter = searchParams?.get("filter") || "all";
+    const rawLocation = searchParams?.get("location") || "all";
+    const rawSort = searchParams?.get("sort") || "newest";
 
     const appliedFilter = rawFilter === "all" ? "all" : slugify(rawFilter);
     const appliedLocation = rawLocation === "all" ? "all" : slugify(rawLocation);
@@ -439,14 +440,14 @@ const Projects: React.FC = () => {
 
     // Silently normalize uppercase or unslugified URL parameters to clean lowercase slugs
     if (rawFilter !== appliedFilter || rawLocation !== appliedLocation || rawSort !== appliedSort) {
-      const cleanParams = new URLSearchParams(searchParams.toString());
+      const cleanParams = new URLSearchParams(searchParams ? searchParams.toString() : "");
       if (appliedFilter && appliedFilter !== "all") cleanParams.set("filter", appliedFilter);
       else cleanParams.delete("filter");
       if (appliedLocation && appliedLocation !== "all") cleanParams.set("location", appliedLocation);
       else cleanParams.delete("location");
       if (appliedSort && appliedSort !== "newest") cleanParams.set("sort", appliedSort);
       else cleanParams.delete("sort");
-      navigate(`/projects?${cleanParams.toString()}`, { replace: true });
+      router.replace(`/projects?${cleanParams.toString()}`);
       return;
     }
 
@@ -485,33 +486,34 @@ const Projects: React.FC = () => {
     }
 
     setFiltered(results);
-  }, [searchParams, combinedProjects, navigate]);
+  }, [searchParams, combinedProjects, router]);
 
   // Auto-redirect to dedicated case-study page if 'project' or 'id' query parameter is present
   useEffect(() => {
-    const projId = searchParams.get("project") || searchParams.get("id");
+    const projId = searchParams?.get("project") || searchParams?.get("id");
     if (projId) {
       const found = combinedProjects.find(
         (p) => p.id === projId || (p.slug && p.slug === projId) || slugify(p.title) === slugify(projId)
       );
       if (found) {
-        navigate(`/projects/${found.slug || found.id}`, { replace: true });
+        router.replace(`/projects/${found.slug || found.id}`);
       } else {
-        navigate("/404", { replace: true });
+        router.replace("/404");
       }
     }
-  }, [searchParams, combinedProjects, navigate]);
+  }, [searchParams, combinedProjects, router]);
 
   const updateParams = useCallback(
     (params: Record<string, string | undefined>) => {
-      const newParams = new URLSearchParams(searchParams.toString());
+      const current = searchParams ? searchParams.toString() : "";
+      const newParams = new URLSearchParams(current);
       Object.entries(params).forEach(([key, value]) => {
         if (value && value !== "all" && value !== "newest") newParams.set(key, value);
         else newParams.delete(key);
       });
-      setSearchParams(newParams);
+      router.replace(`/projects${newParams.toString() ? `?${newParams.toString()}` : ""}`);
     },
-    [searchParams, setSearchParams]
+    [searchParams, router]
   );
 
   const applyCategory = (value: string) => {
@@ -542,7 +544,7 @@ const Projects: React.FC = () => {
   };
 
   const openProject = (proj: Project) => {
-    navigate(`/projects/${proj.slug || proj.id}`);
+    router.push(`/projects/${proj.slug || proj.id}`);
   };
   const closeProject = () => {
     setModalOpen(false);

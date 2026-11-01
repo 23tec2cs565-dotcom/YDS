@@ -2,7 +2,45 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
+# AI Search & Generative Engine Crawlers
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /admin
+
 Sitemap: https://studioyounick.vercel.app/sitemap.xml
 
-# AI Crawler Summary
-# See https://studioyounick.vercel.app/llms.txt for a structured overview of this site.
+# AI Crawler & LLM Documentation
+# Concise Overview: https://studioyounick.vercel.app/llms.txt
+# Full Documentation & Guides: https://studioyounick.vercel.app/llms-full.txt

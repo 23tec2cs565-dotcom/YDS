@@ -1,5 +1,6 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { HelpCircle, MessageSquare, ArrowRight, Search, ThumbsUp, ThumbsDown, ArrowUp, ChevronDown } from "lucide-react";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
@@ -319,7 +320,7 @@ export default function FAQ() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                to="/contact"
+                href="/contact"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#E6B566] text-[#070D18] rounded-xl font-medium hover:bg-white transition-colors duration-300"
               >
                 Contact Us

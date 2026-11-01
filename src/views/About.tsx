@@ -1,5 +1,6 @@
+"use client";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { 
   ArrowRight, 
   CheckCircle2,
@@ -187,7 +188,7 @@ const AboutContent = () => {
           <div className="max-w-[1680px] mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-16 border-b border-white/10 pb-6 sm:pb-8">
               <h2 className="text-2xl sm:text-4xl md:text-6xl font-serif">Why We Build</h2>
-              <Link to="/projects" className="group flex items-center gap-2 mt-4 md:mt-0 text-[#B08D57] font-mono text-sm uppercase tracking-widest hover:text-white transition-colors">
+              <Link href="/projects" className="group flex items-center gap-2 mt-4 md:mt-0 text-[#B08D57] font-mono text-sm uppercase tracking-widest hover:text-white transition-colors">
                 View Portfolio <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
               </Link>
             </div>
@@ -249,7 +250,7 @@ const AboutContent = () => {
                     <span className="text-2xl sm:text-3xl font-serif font-medium truncate">Jaipur</span>
                  </div>
                  <Link
-                  to="/team"
+                  href="/team"
                   className="bg-white/5 border border-white/5 p-4 sm:p-6 flex items-center justify-center h-24 sm:h-32 hover:bg-[#B08D57] hover:text-[#18181B] transition-colors duration-300 group cursor-pointer"
                 >
                     <div className="flex items-center gap-1.5 sm:gap-2">
@@ -297,7 +298,7 @@ const AboutContent = () => {
                <p className="text-gray-600 text-sm sm:text-lg leading-relaxed mb-5 sm:mb-8">
                  We are a compact collective of designers, engineers, and project managers. Our process begins with listening—understanding how people live, move, and inhabit spaces—and ends with carefully detailed execution.
                </p>
-               <Link to="/team" className="inline-block border-b border-[#18181B] pb-1 text-[#18181B] font-medium hover:text-[#B08D57] hover:border-[#B08D57] transition-colors">
+               <Link href="/team" className="inline-block border-b border-[#18181B] pb-1 text-[#18181B] font-medium hover:text-[#B08D57] hover:border-[#B08D57] transition-colors">
                  Read Our Story
                </Link>
             </div>

@@ -1,5 +1,6 @@
+"use client";
 import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { 
   ArrowRight, 
   ArrowUpRight, 
@@ -349,7 +350,7 @@ const NotFound: React.FC = () => {
             {/* ──────── SINGLE CLEAN BUTTON ROW (Zero Overlap / Congestion) ──────── */}
             <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4 relative z-30">
               <Link
-                to="/projects"
+                href="/projects"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#E6B566] to-[#B08D57] text-[#08090A] px-6 sm:px-7 py-3 text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#E6B566]/20 hover:shadow-[#E6B566]/40 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
               >
                 <span>Explore Portfolio</span>
@@ -357,7 +358,7 @@ const NotFound: React.FC = () => {
               </Link>
 
               <Link
-                to="/services"
+                href="/services"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white hover:text-[#F9D2BA] hover:border-[#F9D2BA]/50 bg-white/[0.04] hover:bg-white/[0.08] px-5 sm:px-6 py-3 text-xs font-semibold uppercase tracking-widest backdrop-blur-xl transition-all duration-300 shadow-md cursor-pointer"
               >
                 <Calculator size={13} className="text-[#F9D2BA]" />
@@ -365,7 +366,7 @@ const NotFound: React.FC = () => {
               </Link>
 
               <Link
-                to="/"
+                href="/"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 text-white/70 hover:text-white hover:border-white/25 bg-white/[0.02] hover:bg-white/[0.06] px-5 py-3 text-xs font-semibold uppercase tracking-widest backdrop-blur-xl transition-all duration-300 cursor-pointer"
               >
                 <Home size={13} />
@@ -389,7 +390,7 @@ const NotFound: React.FC = () => {
               return (
                 <Link
                   key={idx}
-                  to={pill.path}
+                  href={pill.path}
                   className="group relative p-3 sm:p-4 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/10 hover:border-[#E6B566]/40 backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:shadow-black/40 flex flex-col justify-between"
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -459,7 +460,7 @@ const NotFound: React.FC = () => {
               }}
             >
               <Link
-                to={node.path}
+                href={node.path}
                 className="group relative flex flex-col items-center text-center cursor-pointer"
               >
                 {/* Pulsing ring indicator */}

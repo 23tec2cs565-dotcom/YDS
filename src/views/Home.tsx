@@ -1,6 +1,8 @@
+"use client";
 // src/pages/Home.tsx
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   motion,
   AnimatePresence,
@@ -42,6 +44,7 @@ import { blogs as defaultBlogs } from "../data/blogs";
 import { useProjects, useServices, useTeam, useTestimonials, useBlogPosts } from "../hooks/useSanityData";
 import type { Project } from "../data/projects";
 import type { Service } from "../data/services";
+import { urlFor } from "../lib/sanity";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
 import { BeforeAfterSlider } from "../components/BeforeAfterSlider";
@@ -148,7 +151,7 @@ Button.displayName = "Button";
 // ------------------ Sections ------------------
 
 const Hero: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Detailing Devils video playlist for hero front panel
   const heroVideos = [
@@ -188,6 +191,21 @@ const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-[#FAFAFB]">
+      {/* ── Architectural Drafting Grid Background ── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.045]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(11, 18, 32, 0.9) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(11, 18, 32, 0.9) 1px, transparent 1px)
+          `,
+          backgroundSize: "40px 40px",
+          maskImage: "radial-gradient(ellipse 85% 75% at 50% 40%, #000 55%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 85% 75% at 50% 40%, #000 55%, transparent 100%)",
+        }}
+      />
+
       <div className="absolute top-0 right-0 w-[40vw] h-full bg-[#EAEAEA] rounded-l-[120px] -z-10 hidden lg:block opacity-50" />
       <div className="absolute top-20 left-20 w-64 h-64 bg-[#E6B566]/5 rounded-full blur-3xl -z-10 pointer-events-none" />
 
@@ -210,12 +228,12 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 mb-12">
-            <Button onClick={() => navigate("/contact")} withIcon
+            <Button onClick={() => router.push("/contact")} withIcon
               className="bg-[#0B3528] hover:bg-[#0B3528]/90 text-white shadow-xl">
               Start a Conversation
             </Button>
             <Link
-              to="/projects"
+              href="/projects"
               className="px-6 py-3 rounded-full text-sm font-medium text-gray-700 hover:text-[#0B1220] hover:bg-gray-100 transition-colors"
             >
               View Selected Work
@@ -371,7 +389,7 @@ const TransformationSection: React.FC = () => {
 };
 
 const ProjectsSection: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { projects } = useProjects();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
@@ -426,7 +444,7 @@ const ProjectsSection: React.FC = () => {
               return (
                 <Link
                   key={project.id ?? idx}
-                  to={`/projects/${projSlug}`}
+                  href={`/projects/${projSlug}`}
                   className="block no-underline text-inherit"
                 >
                   <MotionDiv
@@ -455,7 +473,7 @@ const ProjectsSection: React.FC = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <Button onClick={() => navigate("/projects")} variant="outline" className="border-gray-300">View Full Portfolio</Button>
+          <Button onClick={() => router.push("/projects")} variant="outline" className="border-gray-300">View Full Portfolio</Button>
         </div>
       </div>
 
@@ -606,7 +624,7 @@ const ServicesSection: React.FC = () => {
                   </div>
 
                   <Link
-                    to={`/services/${s?.id || "interior-design"}`}
+                    href={`/services/${s?.id || "interior-design"}`}
                     className="inline-flex items-center text-[#0B1220] font-semibold border-b border-[#0B1220] pb-1 hover:text-[#E6B566] hover:border-[#E6B566] transition-colors"
                   >
                     Explore {s?.title || "Service"} Details <ArrowRight size={16} className="ml-2" />
@@ -753,7 +771,7 @@ const InsightsSection: React.FC = () => {
             </h2>
           </div>
           <Link
-            to="/blog"
+            href="/blog"
             className="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#E6B566] hover:text-white transition-colors"
           >
             Explore All Blog Articles <ArrowRight size={14} />
@@ -764,14 +782,15 @@ const InsightsSection: React.FC = () => {
           {guides.map((g) => (
             <Link
               key={g.id}
-              to={`/blog/${g.slug}`}
+              href={`/blog/${g.slug}`}
               className="group flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-[#E6B566]/40 hover:bg-white/[0.05] transition-all duration-300"
             >
               <div className="aspect-[16/10] overflow-hidden bg-black/40 relative">
                 <img
-                  src={g.coverImage}
+                  src={urlFor(g.coverImage) || "/assets/services/interior-design3.jpg"}
                   alt={g.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  onError={handleImgError}
                   loading="lazy"
                 />
                 <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#070D18]/80 backdrop-blur-md border border-white/10 text-[10px] font-bold text-[#E6B566] uppercase tracking-wider">

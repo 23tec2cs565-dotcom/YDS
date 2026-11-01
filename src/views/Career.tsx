@@ -1,3 +1,4 @@
+"use client";
 // src/pages/Career.tsx
 import React, { useState, useEffect } from "react";
 import SEOHead from "../components/SEOHead";

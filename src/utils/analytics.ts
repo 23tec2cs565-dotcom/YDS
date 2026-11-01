@@ -1,6 +1,9 @@
-// src/utils/analytics.ts
-const key = import.meta.env.VITE_POSTHOG_KEY || "";
-const host = import.meta.env.VITE_POSTHOG_HOST || "https://app.posthog.com";
+const key =
+  (typeof process !== "undefined" && (process.env.NEXT_PUBLIC_POSTHOG_KEY || process.env.VITE_POSTHOG_KEY)) ||
+  "";
+const host =
+  (typeof process !== "undefined" && (process.env.NEXT_PUBLIC_POSTHOG_HOST || process.env.VITE_POSTHOG_HOST)) ||
+  "https://app.posthog.com";
 
 let posthogInstance: { capture?: (event: string, properties?: Record<string, unknown>) => void } | null = null;
 

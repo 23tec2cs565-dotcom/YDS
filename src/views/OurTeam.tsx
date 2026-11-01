@@ -1,8 +1,9 @@
+"use client";
 // src/pages/OurTeam.tsx
 // Consolidated, High-Impact Team Page
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useLocation, Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Heart,
   Sparkles,
@@ -93,13 +94,14 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
    MAIN TEAM PAGE
    ══════════════════════════════════════════════════ */
 const OurTeam: React.FC = () => {
-  const loc = useLocation();
   const { teamMembers } = useTeam();
 
   // Hash-based scroll to member
   useEffect(() => {
-    if (!loc.hash) return;
-    const id = loc.hash.replace("#", "");
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash;
+    if (!hash) return;
+    const id = hash.replace("#", "");
     const el = document.getElementById(`member-${id}`);
     if (el) {
       setTimeout(() => {
@@ -116,7 +118,7 @@ const OurTeam: React.FC = () => {
         }
       }, 100);
     }
-  }, [loc.hash]);
+  }, []);
 
   // Hero parallax
   const heroRef = useRef<HTMLElement>(null);
@@ -149,9 +151,32 @@ const OurTeam: React.FC = () => {
     },
   ];
 
+  const teamSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "Our Team | Younick Design Studio",
+    description: "Principal architects, interior designers, and turnkey civil engineers at Younick Design Studio.",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: defaultTeam.map((member, idx) => ({
+        "@type": "Person",
+        position: idx + 1,
+        name: member.name,
+        jobTitle: member.role,
+        description: member.description,
+        ...(member.social?.linkedin ? { sameAs: [member.social.linkedin] } : {}),
+        worksFor: {
+          "@type": "Organization",
+          name: "Younick Design Studio",
+          url: "https://studioyounick.vercel.app",
+        },
+      })),
+    },
+  };
+
   return (
     <>
-      <SEOHead seo={pageSEO.team} />
+      <SEOHead seo={pageSEO.team} schema={teamSchema} />
 
       {/* ═══════════════════════════════════════════
           SECTION 1: HERO & VISION (Consolidated)
@@ -275,7 +300,7 @@ const OurTeam: React.FC = () => {
                 {/* Bento Grid with clean mobile & desktop heights */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-auto sm:h-[340px]">
                   <Reveal className="h-full">
-                    <Link to="/projects" className="group relative block h-[220px] sm:h-full overflow-hidden rounded-2xl shadow-sm">
+                    <Link href="/projects" className="group relative block h-[220px] sm:h-full overflow-hidden rounded-2xl shadow-sm">
                       <img decoding="async"
                         src="/assets/gallery/g1-768.jpeg"
                         alt="Younick Design Studio workspace and architectural planning desk"
@@ -296,7 +321,7 @@ const OurTeam: React.FC = () => {
                   </Reveal>
                   <div className="grid grid-cols-2 sm:grid-cols-1 sm:grid-rows-2 gap-4 h-[120px] sm:h-full">
                     <Reveal className="h-full">
-                      <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
+                      <Link href="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
                         <img decoding="async"
                           src="/assets/gallery/g2-768.jpeg"
                           alt="Material samples, veneers, and Italian marble swatches"
@@ -310,7 +335,7 @@ const OurTeam: React.FC = () => {
                       </Link>
                     </Reveal>
                     <Reveal className="h-full">
-                      <Link to="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
+                      <Link href="/projects" className="group relative block h-full overflow-hidden rounded-xl shadow-sm">
                         <img decoding="async"
                           src="/assets/gallery/g3-768.jpeg"
                           alt="3D architectural scale model drafts and structural drawings"

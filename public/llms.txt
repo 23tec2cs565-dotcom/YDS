@@ -4,6 +4,8 @@
 
 Younick Design Studio is a premier luxury interior design, architecture, and turnkey construction firm based in Civil Lines, Jaipur. We specialize in transforming residential villas, apartments, commercial offices, healthcare facilities, gyms, and retail boutiques into bespoke, timeless environments.
 
+For complete documentation including full-text architectural guides, see: https://studioyounick.vercel.app/llms-full.txt
+
 ## Key Facts
 
 - Founded and led by Nikhil Sain (Lead Interior Designer & Architect)
@@ -64,6 +66,7 @@ Younick Design Studio is a premier luxury interior design, architecture, and tur
 
 ## Social
 
+- LinkedIn: https://www.linkedin.com/in/nikhil-sain-300351156
 - Instagram: https://www.instagram.com/studio.younick
 - Facebook: https://www.facebook.com/studioyounick
 - YouTube: https://www.youtube.com/@Younickdesignstudio

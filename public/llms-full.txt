@@ -1,0 +1,243 @@
+# Younick Design Studio — Comprehensive LLM Knowledge Base & Full Documentation
+
+> Luxury interior design, architecture, and turnkey civil construction studio based in Civil Lines, Jaipur, Rajasthan, India.
+> Full site documentation, service breakdowns, material specifications, and complete architectural guides.
+
+For a condensed overview, see https://studioyounick.vercel.app/llms.txt.
+
+---
+
+## 1. Brand Identity & Essential Information
+
+- **Studio Name:** Younick Design Studio (also known as Younick Studio, YDS)
+- **Tagline:** Luxury Interior Design & Turnkey Architecture Studio
+- **Founder & Principal Designer:** Nikhil Sain (Master's from Arch College of Design and Business, 2017)
+- **Co-Founder & Civil Engineering Lead:** Kamal Rajoriya (Civil Engineering, University of Engineering & Management, Jaipur)
+- **Physical Studio Address:** 3008, Third Floor, Orbit Mall, Civil Lines, Jaipur, Rajasthan 302001, India
+- **Coordinates:** Latitude 26.9069° N, Longitude 75.7836° E
+- **Primary Phone & WhatsApp:** +91 88548 83058
+- **Official Email:** studioyounick@gmail.com
+- **Live Website:** https://studioyounick.vercel.app
+- **Sanity Admin Studio:** https://younickdesignstudio-admin.sanity.studio
+- **Operating Hours:** Monday to Saturday, 10:00 AM – 7:00 PM IST (Closed Sundays)
+- **Track Record:** 14+ delivered signature projects across Rajasthan
+- **Reputation:** 4.9★ average rating from 128+ verified client reviews
+- **Geographic Coverage:** Jaipur (Civil Lines, C-Scheme, Mansarovar, Vaishali Nagar, Malviya Nagar, Jagatpura, Pratap Nagar, Tonk Road, Raja Park, Bani Park), Sikar, Udaipur, Jodhpur, Kota, and all of Rajasthan; pan-India for design consultancy.
+
+### Official Social & Entity Links
+- LinkedIn: https://www.linkedin.com/in/nikhil-sain-300351156
+- Instagram: https://www.instagram.com/studio.younick
+- Facebook: https://www.facebook.com/studioyounick
+- YouTube: https://www.youtube.com/@Younickdesignstudio
+- WhatsApp Direct: https://wa.me/918854883058
+- Google Maps Location: https://maps.google.com/?q=Orbit+Mall+Civil+Lines+Jaipur
+
+---
+
+## 2. Core Turnkey Services
+
+1. **Luxury Residential & Villa Interior Design**
+   - *Description:* Bespoke spatial layouts, custom woodwork, floor-to-ceiling modular wardrobes, modular kitchens with Blum/Hettich hardware, Italian marble flooring, and smart lighting grids for apartments and luxury villas.
+   - *Pricing:* Starting from ₹1,200/sq.ft (Essential), ₹1,800–₹2,800/sq.ft (Premium), ₹2,800–₹4,500+/sq.ft (Ultra-Luxury Signature).
+   - *Execution Timeline:* 6 to 10 weeks from 3D approval.
+   - *URL:* https://studioyounick.vercel.app/services/interior-design
+
+2. **Turnkey Civil Construction & Execution**
+   - *Description:* Foundation-to-finish structural execution, RCC column-beam framing, IS-grade steel reinforcement (Tata Tiscon / Jindal Panther), UltraTech cement, Dr. Fixit multi-layer waterproofing, MEP engineering, and dedicated site supervisors.
+   - *Pricing:* Fixed BOQ with itemized transparent milestones.
+   - *Execution Timeline:* 4 to 8 months depending on built-up area.
+   - *Warranty:* 1-year comprehensive workmanship warranty + 5-year structural coverage.
+   - *URL:* https://studioyounick.vercel.app/services/construction
+
+3. **Architectural Renovation & Remodeling**
+   - *Description:* Structural wall modifications, retrofitting electrical wiring, modernizing plumbing pipelines, replacing tile/marble, and converting traditional havelis or outdated residences into contemporary spaces.
+   - *Execution Timeline:* 3 to 6 weeks.
+   - *URL:* https://studioyounick.vercel.app/services/renovation
+
+4. **Architectural & Interior Consultation**
+   - *Description:* Site feasibility audits, 2D functional layouts, Vastu Shastra spatial orientation alignment, and exact Bill of Quantities (BOQ) cost estimations before procurement.
+   - *Timeline:* 3 to 7 working days.
+   - *URL:* https://studioyounick.vercel.app/services/consultation
+
+5. **3D Photorealistic Architectural Visualization & VR Walkthroughs**
+   - *Description:* High-fidelity 4K CGI rendering, daylight simulation calibrated to solar angles in Rajasthan, night lighting studies, clash detection (HVAC, false ceiling, plumbing), and virtual reality walkthroughs.
+   - *Timeline:* 5 to 10 working days.
+   - *Accuracy:* 95%+ visual match to final physical construction.
+   - *URL:* https://studioyounick.vercel.app/services/3d-visualization
+
+---
+
+## 3. Signature Projects Portfolio
+
+- **Hera Mahal, Jaipur:** Heritage-inspired turnkey civil construction & luxury residential interiors with bespoke stone arches and customized brass detailing.
+- **Six Eleven Fitness Club, Jaipur:** High-energy commercial gym interior with specialized acoustic wall paneling, heavy-load rubberized flooring, and dynamic lighting.
+- **Chhoti Bai Jewellers, Jaipur:** Ultra-luxury jewellery retail showroom with custom security vitrines, anti-reflective display glass, and 3000K high-CRI accent illumination.
+- **Devi Lal Memorial Eye Hospital (DLMEH), Jaipur:** Clinical space planning, ergonomic reception circulation, and sanitary modular healthcare interiors.
+- **Detailing Devils Studio, Jaipur:** High-end automotive studio with high-CRI diffused inspection tunnel lighting and epoxy flooring.
+- **Dharmendra Luxury Villa, Jaipur:** Modern 4BHK private residence with double-height central living foyer, cantilevered wooden staircase, and landscaped courtyard.
+- **PCP Sikar Educational Campus:** Comprehensive institutional interior planning, auditorium acoustics, and administrative suites.
+
+---
+
+## 4. Frequently Asked Questions (FAQ Knowledge Graph)
+
+### Q: How much does interior design & turnkey execution cost in Jaipur?
+**A:** In Jaipur, interior design and turnkey execution costs generally range from ₹1,200 to ₹1,800/sq.ft for Essential Turnkey, ₹1,800 to ₹2,800/sq.ft for Premium Contemporary finishes, and ₹2,800 to ₹4,500+/sq.ft for Ultra-Luxury custom residential villas with Italian marble, custom brass hardware, and high-end veneer panelling. A typical 3BHK turnkey interior (1,600–2,000 sq.ft) costs between ₹18 Lakhs and ₹32 Lakhs.
+
+### Q: Do you charge an initial consultation fee?
+**A:** We offer a complimentary initial consultation either at our studio in Orbit Mall, Civil Lines, Jaipur or via video call to discuss floor plans, vision, and budgets. Detailed 3D rendering and technical drawings begin upon project agreement.
+
+### Q: What payment milestones do you follow?
+**A:** We follow a structured milestone schedule: 10–20% booking advance, 20–30% upon 3D render and layout approval, 30–40% during on-site execution phases, and the balance prior to final handover.
+
+### Q: What is included in a Turnkey Interior project by Younick Studio?
+**A:** Turnkey execution means complete single-point responsibility: space planning, 3D visualizations, material procurement (plywood, laminates, hardware, stone), civil modifications, electrical, plumbing, carpentry, false ceilings, painting, and deep cleaning before final handover.
+
+### Q: What brands and grades of materials do you use?
+**A:** We use only branded, certified materials: IS:710 Marine Grade BWP plywood, premium laminates from Merino/Century/Greenlam, German hardware from Blum and Hettich, Finolex and Havells copper electrical wiring, Saint-Gobain Gyproc false ceilings, and Jaquar/Kohler sanitary fittings.
+
+### Q: What warranty do you offer on completed work?
+**A:** We provide a 1-year comprehensive workmanship warranty from the date of project handover covering manufacturing defects in custom woodwork, modular kitchen installation, and plumbing/electrical joints, alongside individual manufacturer warranties.
+
+### Q: Do you offer Vastu-compliant designs?
+**A:** Yes. We integrate Vastu Shastra principles into modern architecture: optimizing solar angles, Northeast (Ishanya) water/meditation zones, Southeast (Agni) kitchen corners, Southwest (Nairutya) master suites, and open-to-sky central Brahmasthan courtyards without sacrificing contemporary minimalist aesthetics.
+
+---
+
+## 5. Full-Text Architectural & Interior Design Guides
+
+### Guide 1: Cost of Interior Design in Jaipur (2026 Price Guide)
+**By Nikhil Sain | Lead Architect & Interior Designer**
+*Published: August 15, 2026 | Category: Cost & Budgeting*
+*URL: https://studioyounick.vercel.app/blog/interior-design-cost-jaipur-2026*
+
+#### 1. Average Interior Design Cost per Sq. Ft. in Jaipur (2026 Benchmarks)
+Whether you have purchased an apartment in Vaishali Nagar, Jagatpura, or Mansarovar, or you are constructing an independent villa in Civil Lines or C-Scheme, interior costs are fundamentally categorized into three execution tiers:
+
+| Package Tier | Cost per Sq. Ft. | Typical 3BHK Budget | Key Inclusions |
+| :--- | :--- | :--- | :--- |
+| **Essential Turnkey** | ₹1,200 – ₹1,800 | ₹16L – ₹22L | Commercial BWR ply, 1mm laminate finishes, soft-close hardware, modular kitchen, basic cove lighting. |
+| **Premium Contemporary** | ₹1,800 – ₹2,800 | ₹24L – ₹35L | BWP Marine Ply (IS:710), acrylic/PU kitchen finishes, Blum/Hettich hardware, quartz countertops, designer false ceilings, profile lights. |
+| **Luxury Signature Villa** | ₹2,800 – ₹4,500+ | ₹45L – ₹80L+ | Italian marble flooring, natural smoked veneer panelling, metallic PVD profiles, architectural automation, custom acoustic bar, smart lighting grids. |
+
+#### 2. Room-by-Room Cost Breakdown for Jaipur Homes
+- **Modular Kitchen (₹2.5L – ₹6.5L):** The most cost-dense zone of any home. In Rajasthan’s climate, investing in IS:710 Marine Grade BWP plywood with German hardware (Blum or Hettich) is mandatory to prevent termite and moisture swelling.
+- **Master Bedroom (₹2.8L – ₹5.5L):** Floor-to-ceiling modular wardrobe with fluted panels, hydraulic storage king-size bed, upholstered headboard wall, and integrated bedside reading lights.
+- **Living & Dining Foyer (₹4L – ₹9L):** Large-format TV console, acoustic wood panelling, ambient warm 3000K cove lighting, and bespoke dining partitions.
+- **False Ceiling & Lighting (₹110 – ₹180 per sq ft):** Saint-Gobain Gyproc false ceiling channels with fire-resistant boards, magnetic track lights, and architectural COB spotlights.
+
+#### 3. 4 Hidden Contractor Traps to Watch for in Jaipur
+1. **Plywood Grade Ambiguity:** Ensure the contract explicitly specifies IS:710 BWP (Boiling Water Proof) rather than generic commercial ply for all wet zones and kitchens.
+2. **Hardware Exclusions:** Many budget quotes assume basic local telescopic channels. Upgrading to soft-close tandem boxes later adds ₹60,000–₹1,20,000 to your bill.
+3. **Electrical Chipping & Wiring:** Verify whether wall chasing, conduit pipes, and copper wiring are included in the contractor's scope.
+4. **Debris Clearance & Post-Cleaning:** Turnkey architectural firms include daily debris removal and deep cleaning before final handover.
+
+---
+
+### Guide 2: Best Materials for Modular Kitchens in Rajasthan’s Hot Climate
+**By Nikhil Sain | Lead Architect & Interior Designer**
+*Published: August 20, 2026 | Category: Materials & Climate*
+*URL: https://studioyounick.vercel.app/blog/best-modular-kitchen-materials-rajasthan-hot-climate*
+
+#### The Harsh Climate Reality of Kitchens in Rajasthan
+Jaipur and Rajasthan present unique structural challenges for modular kitchens that standard modular furniture brands from coastal regions fail to account for:
+- **Extreme Temperature Swings:** Kitchen ambient temperatures frequently surpass 46°C in May–June, causing inferior glues in low-grade particle boards to delaminate.
+- **Desert Dust (Fine Airborne Particulates):** Open-grain wood finishes and traditional drawer tracks trap micro-dust, causing roller failure within 18 months.
+- **High TDS Ground Water:** Jaipur water has elevated mineral salinity, causing rapid rust corrosion on ordinary zinc-plated iron hinges.
+
+#### 1. The Carcass: Core Substrate Comparison
+- **IS:710 Boiling Water Proof (BWP) Marine Plywood:** The gold standard. Bonded with synthetic phenol formaldehyde resin, it can withstand 72 hours in boiling water without ply separation. Essential for the sink cabinet and base storage.
+- **HDHMR (High Density High Moisture Resistance):** Denser than MDF and plywood (over 850 kg/m³). Great for overhead cabinetry and decorative fluted panels, but vulnerable to prolonged standing water if edge banding is damaged.
+- **PVC / WPC Boards:** Completely waterproof and termite-proof, but has lower screw-holding strength, meaning heavy pull-out drawers can sag over 3–5 years.
+
+#### 2. Shutter Finishes: Acrylic vs. PU Lacquer vs. Laminate
+- **Anti-Fingerprint Matte PU Lacquer:** The ultimate luxury finish. Provides seamless edges with zero edge-band lines, resisting grease and yellowing under UV radiation.
+- **High-Gloss Acrylic (2mm thick):** Provides a brilliant glass-like mirror sheen. High scratch resistance and completely non-porous, making oil stains wipe away effortlessly with a microfiber cloth.
+- **1mm Matte Laminates:** The most budget-friendly, highly durable daily choice with high thermal tolerance against boiling cookware.
+
+---
+
+### Guide 3: Vastu Guidelines for Luxury Villa Entrances & Spatial Planning in Jaipur
+**By Nikhil Sain | Lead Architect & Interior Designer**
+*Published: August 25, 2026 | Category: Vastu & Planning*
+*URL: https://studioyounick.vercel.app/blog/vastu-guidelines-luxury-villa-design-jaipur*
+
+#### Reconciling Vedic Science with Modern Architecture
+Many homeowners in Jaipur worry that adhering to Vastu Shastra requires sacrificing sleek contemporary aesthetics, expansive glass facades, and open floor plans. At Younick Design Studio, we view Vastu not as superstition, but as an empirical environmental planning framework designed for Rajasthan’s geographic orientation:
+
+#### 1. The Grand Entrance (Mahadwara)
+- **Auspicious Padas:** Entrances in the 3rd and 4th pada of the East (Jayanta, Indra) or North (Mukhya, Bhallat) channel prosperity and vibrant natural lighting.
+- **Threshold Materiality:** Elevate the foyer slightly above street level. Using natural Rajasthan granite or Makrana marble at the threshold acts as a visual and symbolic grounding element.
+- **Lighting:** Ensure the entrance foyer is illuminated with minimum 3000K warm ambient lighting, avoiding dark uninviting corners.
+
+#### 2. Zone-by-Zone Spatial Allocation
+- **Northeast (Ishanya — Water & Spirit):** Perfect for prayer rooms, shallow reflective water bodies, or serene meditation lounges. Must remain lightweight with minimal heavy structural masonry.
+- **Southeast (Agni — Fire Element):** The designated zone for your primary kitchen. Ensures cooking fumes and heat are expelled away from bedrooms by Jaipur’s prevailing winds.
+- **Southwest (Nairutya — Earth & Stability):** The ideal sector for the Master Suite. Being the highest and heaviest corner of the villa, it fosters restful deep sleep and executive authority.
+- **Center (Brahmasthan — Air & Space):** In luxury havelis and modern villas, leaving the central core open as a double-height skylit atrium or landscaped courtyard brings cross-ventilation and natural cooling.
+
+---
+
+### Guide 4: Turnkey Civil Construction vs Local Labor Contractors in Jaipur
+**By Nikhil Sain | Lead Architect & Interior Designer**
+*Published: August 28, 2026 | Category: Turnkey Construction*
+*URL: https://studioyounick.vercel.app/blog/turnkey-construction-vs-local-contractors-jaipur*
+
+#### The Real Cost Comparison
+
+| Factor | Separate Labor Contractors | Turnkey Architectural Execution |
+| :--- | :--- | :--- |
+| **Accountability** | Plumber blames mason; mason blames carpenter. Homeowner settles disputes. | Single architectural studio responsible from foundation to final polish. |
+| **Budget Predictability** | Vague estimates; unexpected bill shocks common (+25% to 40%). | Itemized BOQ with fixed material specs and milestone payments. |
+| **Timeline** | Frequent worker absenteeism during festivals & harvest seasons. | Contractually bound handover schedule with dedicated site managers. |
+| **Quality Assurance** | No slump tests, uncalibrated concrete mixing, missing waterproofing coats. | IS-standard material testing, Dr. Fixit multi-layer waterproofing, laser-level alignment. |
+
+#### What Is Included in a Younick Studio Turnkey Contract?
+1. **Structural Engineering & Architectural Drawings:** CAD floor plans, structural column-beam reinforcement drawings, and MEP blueprints.
+2. **Procurement Transparency:** Premium certified brands (Tata Tiscon or Jindal Panther steel, UltraTech cement, Finolex plumbing, Polycab copper wiring).
+3. **Daily Digital Site Reporting:** High-resolution progress photos, video walkthroughs, and quality checklists sent directly to your phone.
+4. **5-Year Workmanship Warranty:** Complete peace of mind covering plumbing joints, electrical circuits, and structural finishes.
+
+---
+
+### Guide 5: Why 3D Architectural Renders Save 20% on Villa Construction
+**By Nikhil Sain | Lead Architect & Interior Designer**
+*Published: September 01, 2026 | Category: 3D Visualization*
+*URL: https://studioyounick.vercel.app/blog/why-3d-architectural-renders-save-construction-cost*
+
+#### The 3 Biggest On-Site Mistakes 3D Renders Eliminate
+1. **False Ceiling & AC Duct Clashes:** Installing VRV/VRF air conditioning without 3D coordination frequently forces contractors to lower ceiling heights below 8.5 feet. 3D spatial modelling eliminates this entirely.
+2. **Color & Material Clashes:** A paint swatch or small wood sample looks radically different when applied across a 20-foot accent wall. 3D renders let you test dark charcoal vs beige micro-cement before purchasing materials.
+3. **Natural Sunlight & Heat Optimization:** In Jaipur’s scorching summers, 3D solar shadow studies show exactly where intense direct rays hit, allowing architects to add cantilevered pergolas and shading fins to lower air conditioning bills.
+
+#### What You Receive with Our 3D CGI Package
+1. **4K Photorealistic Still Renders:** High-resolution visual snapshots of your living foyer, master suites, kitchen, and exterior elevations.
+2. **Daylight & Night Mode Studies:** Seeing your villa under natural noon sunlight versus intimate ambient evening lighting.
+3. **Detailed Material Specs Sheet:** Exact brand, model, and RAL color codes matching the approved render.
+
+---
+
+## 6. Sitemaps & Complete URL Index
+
+- Homepage: https://studioyounick.vercel.app/
+- Projects: https://studioyounick.vercel.app/projects
+- Services: https://studioyounick.vercel.app/services
+- Interior Design Service: https://studioyounick.vercel.app/services/interior-design
+- Turnkey Construction Service: https://studioyounick.vercel.app/services/construction
+- Renovation Service: https://studioyounick.vercel.app/services/renovation
+- Consultation Service: https://studioyounick.vercel.app/services/consultation
+- 3D Visualization Service: https://studioyounick.vercel.app/services/3d-visualization
+- About Us: https://studioyounick.vercel.app/about
+- Team: https://studioyounick.vercel.app/team
+- Contact: https://studioyounick.vercel.app/contact
+- Career: https://studioyounick.vercel.app/career
+- FAQ: https://studioyounick.vercel.app/faq
+- Privacy Policy: https://studioyounick.vercel.app/privacy
+- Terms of Service: https://studioyounick.vercel.app/terms
+- Blog: https://studioyounick.vercel.app/blog
+- Blog Post 1: https://studioyounick.vercel.app/blog/interior-design-cost-jaipur-2026
+- Blog Post 2: https://studioyounick.vercel.app/blog/best-modular-kitchen-materials-rajasthan-hot-climate
+- Blog Post 3: https://studioyounick.vercel.app/blog/vastu-guidelines-luxury-villa-design-jaipur
+- Blog Post 4: https://studioyounick.vercel.app/blog/turnkey-construction-vs-local-contractors-jaipur
+- Blog Post 5: https://studioyounick.vercel.app/blog/why-3d-architectural-renders-save-construction-cost
+- Sitemap Index: https://studioyounick.vercel.app/sitemap.xml

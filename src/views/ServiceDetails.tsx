@@ -1,5 +1,7 @@
+"use client";
 import React, { useMemo, useCallback } from "react";
-import { Link, useParams, useNavigate, Navigate } from "react-router-dom";
+import Link from "next/link";
+import { useParams, useRouter, notFound } from "next/navigation";
 import {
   ArrowRight,
   ChevronLeft,
@@ -58,8 +60,9 @@ const SERVICE_GUIDE_MAP: Record<string, { slug: string; title: string; subtitle:
 };
 
 const ServiceDetails: React.FC = () => {
-  const { id } = useParams<{ id?: string }>();
-  const navigate = useNavigate();
+  const params = useParams();
+  const id = params?.id as string | undefined;
+  const router = useRouter();
 
   // Use route param; if not present (dev), fallback to first service
   const activeId = id ?? services?.[0]?.id;
@@ -86,15 +89,15 @@ const ServiceDetails: React.FC = () => {
 
   const goBack = useCallback(() => {
     try {
-      if (window.history.length > 1) navigate(-1);
-      else navigate("/services");
+      if (window.history.length > 1) router.back();
+      else router.push("/services");
     } catch {
-      navigate("/services");
+      router.push("/services");
     }
-  }, [navigate]);
+  }, [router]);
 
   if (!service) {
-    return <Navigate to="/404" replace />;
+    notFound();
   }
 
   return (
@@ -224,7 +227,7 @@ const ServiceDetails: React.FC = () => {
                   </div>
 
                   <Link
-                    to="/contact"
+                    href="/contact"
                     aria-label={`Request consultation for ${service.title}`}
                     className="block w-full py-3 bg-[#18181B] text-white text-center rounded-xl font-medium hover:bg-[#2b2b2f] transition-colors duration-200"
                   >
@@ -251,7 +254,7 @@ const ServiceDetails: React.FC = () => {
                 </h2>
               </div>
               <Link
-                to="/services"
+                href="/services"
                 className="text-xs font-mono uppercase tracking-widest text-[#E6B566] hover:text-white transition-colors inline-flex items-center gap-1.5"
               >
                 All Services <ArrowRight size={14} />
@@ -264,7 +267,7 @@ const ServiceDetails: React.FC = () => {
                 return (
                   <Link
                     key={s.id}
-                    to={`/services/${s.id}`}
+                    href={`/services/${s.id}`}
                     className={`p-3.5 rounded-xl border transition-all duration-300 flex flex-col justify-between ${
                       isCurrent
                         ? "bg-[#E6B566]/15 border-[#E6B566] text-white"
@@ -293,7 +296,7 @@ const ServiceDetails: React.FC = () => {
                 <h2 className="text-2xl md:text-3xl font-serif">Related Projects</h2>
               </div>
 
-              <Link to="/projects" className="hidden md:inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+              <Link href="/projects" className="hidden md:inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
                 View All <ArrowRight size={16} />
               </Link>
             </div>
@@ -301,7 +304,7 @@ const ServiceDetails: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedProjects.map((p) => (
                 <article key={p.id} className="group">
-                  <Link to={`/projects/${p.slug || p.id}`} className="block rounded-lg overflow-hidden" aria-label={`Open project ${p.title}`}>
+                  <Link href={`/projects/${p.slug || p.id}`} className="block rounded-lg overflow-hidden" aria-label={`Open project ${p.title}`}>
                     <div className="relative aspect-[4/3] bg-gray-800 mb-3 rounded-lg overflow-hidden">
                       <img
                         src={p.image || "/assets/Placeholder/placeholder-rect.jpg"}
@@ -326,7 +329,7 @@ const ServiceDetails: React.FC = () => {
             </div>
 
             <div className="mt-8 text-center md:hidden">
-              <Link to="/projects" className="inline-flex items-center gap-2 text-sm text-[#E6B566] font-medium">
+              <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-[#E6B566] font-medium">
                 View All Projects <ArrowRight size={16} />
               </Link>
             </div>
@@ -351,7 +354,7 @@ const ServiceDetails: React.FC = () => {
                   </p>
                 </div>
                 <Link
-                  to={`/blog/${relatedGuide.slug}`}
+                  href={`/blog/${relatedGuide.slug}`}
                   className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#E6B566] text-[#070D18] text-xs font-bold uppercase tracking-wider hover:bg-[#D4A054] transition-all shadow-md shadow-[#E6B566]/20"
                 >
                   <span>Read Full Guide</span>

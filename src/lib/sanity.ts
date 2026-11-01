@@ -1,9 +1,15 @@
 import { createClient, type ClientConfig } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
-export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || "b0rnzdhr";
-export const dataset = import.meta.env.VITE_SANITY_DATASET || "production";
-export const apiVersion = import.meta.env.VITE_SANITY_API_VERSION || "2024-01-01";
+export const projectId =
+  (typeof process !== "undefined" && (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.SANITY_PROJECT_ID || process.env.VITE_SANITY_PROJECT_ID)) ||
+  "b0rnzdhr";
+export const dataset =
+  (typeof process !== "undefined" && (process.env.NEXT_PUBLIC_SANITY_DATASET || process.env.SANITY_DATASET || process.env.VITE_SANITY_DATASET)) ||
+  "production";
+export const apiVersion =
+  (typeof process !== "undefined" && (process.env.NEXT_PUBLIC_SANITY_API_VERSION || process.env.SANITY_API_VERSION || process.env.VITE_SANITY_API_VERSION)) ||
+  "2024-01-01";
 
 export const isSanityConfigured = Boolean(
   projectId && projectId.trim() !== "" && projectId !== "your_project_id_here"
@@ -18,7 +24,7 @@ const config: ClientConfig = {
 
 export const sanityClient = createClient(config);
 
-const builder = imageUrlBuilder(sanityClient);
+const builder = createImageUrlBuilder(sanityClient);
 
 /**
  * Generates an optimized image URL from Sanity image asset reference or object.

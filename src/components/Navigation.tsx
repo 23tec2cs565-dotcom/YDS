@@ -1,6 +1,8 @@
+"use client";
 // src/components/Navigation.tsx
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { NavLink, useNavigate, useLocation, useSearchParams } from "react-router-dom";
+import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   Search,
   X as XIcon,
@@ -15,8 +17,9 @@ import {
   LayoutGrid,
   BookOpen,
 } from "lucide-react";
+
 interface NavigationProps {
-  onSearch: (query: string) => void;
+  onSearch?: (query: string) => void;
 }
 
 type Suggest =
@@ -49,9 +52,9 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
   const [scrolled, setScrolled] = useState(false);
   const [navQuery, setNavQuery] = useState("");
   const [suggests, setSuggests] = useState<Suggest[]>([]);
-  const [searchParams] = useSearchParams();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const searchParams = useSearchParams();
+  const pathname = usePathname() || "";
+  const router = useRouter();
 
   // typed debounce timer
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -75,15 +78,15 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
   useEffect(() => {
     setOpen(false);
     // keep existing behaviour: if we're on projects route, don't override query from params
-    const navQ = searchParams.get("navSearch") || "";
+    const navQ = searchParams?.get("navSearch") || "";
     // only set navQuery from params when not navigating inside projects (preserve user's typed query)
-    if (!location.pathname.startsWith("/projects")) {
+    if (!pathname.startsWith("/projects")) {
       setNavQuery(navQ);
     } else {
       // if we're already on /projects and navSearch param exists, reflect it but don't auto-submit
       setNavQuery(navQ);
     }
-  }, [location.pathname, searchParams]);
+  }, [pathname, searchParams]);
 
   // Debounced search suggestions
   useEffect(() => {
@@ -101,7 +104,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       }
 
       // call onSearch only for non-empty queries
-      onSearch(q);
+      onSearch?.(q);
 
       Promise.all([
         import("../data/projects"),
@@ -154,11 +157,11 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
     const q = navQuery.trim();
     // Only navigate if there is actually a query (guard against empty navigation)
     if (q) {
-      onSearch(q);
-      navigate(`/projects?navSearch=${encodeURIComponent(q)}`);
+      onSearch?.(q);
+      router.push(`/projects?navSearch=${encodeURIComponent(q)}`);
     } else {
       // if empty and user explicitly submitted (enter), go to projects list without navSearch param
-      navigate("/projects");
+      router.push("/projects");
     }
     setSuggests([]);
   };
@@ -171,9 +174,9 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
 
   const selectSuggestion = (s: Suggest) => {
     if (s.type === "project") {
-      navigate(`/projects/${encodeURIComponent(s.projectId)}`);
+      router.push(`/projects/${encodeURIComponent(s.projectId)}`);
     } else {
-      navigate(`/team#${s.memberId}`);
+      router.push(`/team#${s.memberId}`);
     }
     setNavQuery("");
     setSuggests([]);
@@ -201,7 +204,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
     [suggests.length]
   );
 
-  const is404 = location.pathname === "/404" || (
+  const is404 = pathname === "/404" || (
     ![
       "/",
       "/home",
@@ -214,13 +217,13 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       "/admin",
       "/blog",
       "/insights",
-    ].includes(location.pathname) &&
-    !location.pathname.startsWith("/services/") &&
-    !location.pathname.startsWith("/projects/") &&
-    !location.pathname.startsWith("/blog/")
+    ].includes(pathname) &&
+    !pathname.startsWith("/services/") &&
+    !pathname.startsWith("/projects/") &&
+    !pathname.startsWith("/blog/")
   );
 
-  const isSolid = scrolled || is404 || location.pathname !== "/";
+  const isSolid = scrolled || is404 || pathname !== "/";
 
   return (
     <nav
@@ -234,7 +237,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       <div className="max-w-[1680px] mx-auto px-3 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-14 sm:h-16 relative">
           {/* Logo */}
-          <NavLink to="/" end className="flex items-center space-x-2.5 sm:space-x-3 group">
+          <Link href="/" className="flex items-center space-x-2.5 sm:space-x-3 group">
             <img
               src="/younick-crest.webp"
               loading="eager"
@@ -259,17 +262,16 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                 Design Studio
               </span>
             </div>
-          </NavLink>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6">
             {navItems.map(({ path, label, title }) => {
-              const isActive = path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
+              const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
               return (
-                <NavLink
+                <Link
                   key={path}
-                  to={path}
-                  end={path === "/"}
+                  href={path}
                   title={title}
                   aria-label={title}
                   className={`group relative flex items-center px-3 py-2 rounded-md text-sm transition-all duration-200 ${
@@ -279,7 +281,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                   }`}
                 >
                   {label}
-                </NavLink>
+                </Link>
               );
             })}
 
@@ -360,27 +362,28 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                   className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 p-3 z-50"
                 >
                   <div className="grid grid-cols-3 gap-3">
-                    {gridItems.map(({ path, label, title, icon: Icon }) => (
-                      <NavLink
-                        key={path}
-                        to={path}
-                        title={title}
-                        aria-label={title}
-                        onClick={() => setDeskOpen(false)}
-                        className={({ isActive }) =>
-                          `flex flex-col items-center justify-center gap-1 p-2 rounded-lg transition-all ${
+                    {gridItems.map(({ path, label, title, icon: Icon }) => {
+                      const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
+                      return (
+                        <Link
+                          key={path}
+                          href={path}
+                          title={title}
+                          aria-label={title}
+                          onClick={() => setDeskOpen(false)}
+                          className={`flex flex-col items-center justify-center gap-1 p-2 rounded-lg transition-all ${
                             isActive
                               ? "bg-[#E6B566]/10 text-[#0B1220]"
                               : "text-gray-700 hover:text-[#0B1220] hover:scale-[1.03]"
-                          }`
-                        }
-                      >
-                        <div className="p-2 rounded-full bg-gray-50 shadow-sm">
-                          <Icon size={16} />
-                        </div>
-                        <span className="text-xs font-medium">{label}</span>
-                      </NavLink>
-                    ))}
+                          }`}
+                        >
+                          <div className="p-2 rounded-full bg-gray-50 shadow-sm">
+                            <Icon size={16} />
+                          </div>
+                          <span className="text-xs font-medium">{label}</span>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -409,11 +412,11 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
           <div className="bg-white/95 backdrop-blur rounded-lg mx-2 p-4 border border-gray-100 shadow-lg">
             <div className="grid grid-cols-3 gap-3 mb-4">
               {gridItems.map(({ path, label, title, icon: Icon }) => {
-                const isActive = path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
+                const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
                 return (
-                  <NavLink
+                  <Link
                     key={path}
-                    to={path}
+                    href={path}
                     title={title}
                     aria-label={title}
                     onClick={() => setOpen(false)}
@@ -433,7 +436,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                       <Icon size={18} />
                     </div>
                     <span className="text-xs font-medium">{label}</span>
-                  </NavLink>
+                  </Link>
                 );
               })}
             </div>

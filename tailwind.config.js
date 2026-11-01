@@ -20,6 +20,13 @@ export default {
       colors: {
         primary: "#E6B566",
         dark: "#0B0F0C",
+        obsidian: "#070D18",
+        stonecream: "#F5F2EA",
+        brass: {
+          300: "#F5D899",
+          400: "#E6B566",
+          500: "#C5A059",
+        },
       },
       keyframes: {
         float: {
