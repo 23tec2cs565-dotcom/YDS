@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { Sparkles, MoveHorizontal, ArrowRight, CheckCircle2, Layers } from "lucide-react";
+import { Sparkles, MoveHorizontal, ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MotionDiv = motion.div as unknown as React.ComponentType<any>;
@@ -43,7 +43,7 @@ export const COMPARISONS_DATA: ComparisonItem[] = [
     projectSlug: "goyal-renovation",
     title: "Mr. Goyal's Residential Renovation",
     category: "Complete Overhaul",
-    location: "Jaipur, Rajasthan",
+    location: "Govindgarh, Jaipur",
     beforeImage: "/assets/Projects/Mr. Goyal's renovation project/2.webp",
     afterImage: "/assets/Projects/Mr. Goyal's renovation project/1.webp",
     beforeLabel: "STRUCTURAL DEMOLITION",
@@ -133,31 +133,10 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
 
   return (
     <div className="w-full">
-      {/* Tab Switchers */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-8 sm:mb-12">
-        {items.map((item, idx) => (
-          <button
-            key={item.id}
-            onClick={() => {
-              setActiveTab(idx);
-              setSliderPosition(50);
-            }}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-              activeTab === idx
-                ? "bg-[#0B1220] text-white shadow-xl scale-105 border border-[#E6B566]/30"
-                : "bg-white/80 text-gray-600 hover:bg-white hover:text-[#0B1220] border border-gray-200"
-            }`}
-          >
-            <span className={`w-2 h-2 rounded-full ${activeTab === idx ? "bg-[#E6B566]" : "bg-gray-300"}`} />
-            <span>{item.title}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Main Grid: Visual Comparison + Project Details */}
-      <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        {/* Slider Viewport */}
-        <div className="lg:col-span-8">
+      {/* Main Grid: Visual Comparison Slider on Left, Project Image Switchers on Right */}
+      <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        {/* Left: Interactive Comparison Viewport */}
+        <div className="lg:col-span-7 w-full">
           <div
             ref={containerRef}
             onMouseDown={() => setIsDragging(true)}
@@ -166,34 +145,48 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
             onMouseMove={handleMouseMove}
             className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl select-none cursor-ew-resize bg-[#0B1220] border-4 border-white"
           >
-            {/* After Image (Background Layer) */}
-            <img decoding="async"
-              src={activeItem.afterImage}
-              alt={`${activeItem.title} - After Execution`}
-              title={`${activeItem.title} - After Execution by Younick Design Studio`}
-              width="1200"
-              height="750"
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-              loading="eager"
-            />
+            {/* Animated Transition for Project Images */}
+            <AnimatePresence mode="wait">
+              <MotionDiv
+                key={activeItem.id}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full"
+              >
+                {/* After Image (Background Layer) */}
+                <img
+                  decoding="async"
+                  src={activeItem.afterImage}
+                  alt={`${activeItem.title} - After Execution`}
+                  title={`${activeItem.title} - After Execution by Younick Design Studio`}
+                  width="1200"
+                  height="750"
+                  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                  loading="eager"
+                />
 
-            {/* Before Image (Foreground Clipped Layer) */}
-            <div
-              className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
-              style={{
-                clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
-              }}
-            >
-              <img decoding="async"
-                src={activeItem.beforeImage}
-                alt={`${activeItem.title} - Before Renovation`}
-                title={`${activeItem.title} - Before Renovation State`}
-                width="1200"
-                height="750"
-                className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                loading="eager"
-              />
-            </div>
+                {/* Before Image (Foreground Clipped Layer) */}
+                <div
+                  className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
+                  style={{
+                    clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
+                  }}
+                >
+                  <img
+                    decoding="async"
+                    src={activeItem.beforeImage}
+                    alt={`${activeItem.title} - Before Renovation`}
+                    title={`${activeItem.title} - Before Renovation State`}
+                    width="1200"
+                    height="750"
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    loading="eager"
+                  />
+                </div>
+              </MotionDiv>
+            </AnimatePresence>
 
             {/* Badge: BEFORE */}
             <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 z-20 pointer-events-none">
@@ -234,71 +227,164 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
               </div>
             </div>
           </div>
+
+          {/* Sub-caption below slider */}
+          <div className="mt-3.5 flex items-center justify-between text-xs text-gray-500 px-2 font-mono">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#E6B566]" />
+              {activeItem.location}
+            </span>
+            <span className="hidden sm:inline text-gray-400">
+              Drag center slider left or right to reveal transformation
+            </span>
+          </div>
         </div>
 
-        {/* Project Context & Transformation Highlights */}
-        <div className="lg:col-span-4">
+        {/* Right: Project Switcher using Project Images & Transformation Highlights */}
+        <div className="lg:col-span-5 w-full flex flex-col space-y-4">
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-gray-100 pb-2.5 px-1">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0B1220]">
+                Select Project to Compare
+              </span>
+            </div>
+            <span className="text-[11px] font-mono text-[#8C6226] font-semibold">
+              {activeTab + 1} of {items.length} Projects
+            </span>
+          </div>
+
+          {/* Project Image Switcher Tiles */}
+          <div className="space-y-2.5">
+            {items.map((item, idx) => {
+              const isActive = activeTab === idx;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => {
+                    if (activeTab !== idx) {
+                      setActiveTab(idx);
+                      setSliderPosition(50);
+                    }
+                  }}
+                  className={`w-full text-left group relative p-2.5 sm:p-3 rounded-2xl border-2 transition-all duration-300 flex items-center gap-3.5 cursor-pointer ${
+                    isActive
+                      ? "bg-[#0B1220] text-white border-[#E6B566] shadow-xl ring-2 ring-[#E6B566]/20 scale-[1.01]"
+                      : "bg-white text-gray-700 border-gray-200 hover:border-[#E6B566]/40 hover:bg-gray-50/80 shadow-xs hover:shadow-md"
+                  }`}
+                >
+                  {/* Project Image Preview */}
+                  <div className="relative w-24 sm:w-28 aspect-[16/11] rounded-xl overflow-hidden shrink-0 border border-white/10 bg-black shadow-sm">
+                    <img
+                      src={item.afterImage}
+                      alt={`${item.title} preview`}
+                      className={`w-full h-full object-cover transition-all duration-500 ${
+                        isActive ? "scale-105" : "opacity-80 group-hover:opacity-100 group-hover:scale-110"
+                      }`}
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                    <span className="absolute bottom-1.5 left-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider bg-black/80 text-[#E6B566] backdrop-blur-xs border border-white/10">
+                      0{idx + 1}
+                    </span>
+                  </div>
+
+                  {/* Project Title and Category */}
+                  <div className="flex-1 min-w-0 py-0.5">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span
+                        className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                          isActive
+                            ? "bg-[#E6B566]/20 text-[#E6B566] border border-[#E6B566]/30"
+                            : "bg-gray-100 text-gray-600 group-hover:text-gray-900"
+                        }`}
+                      >
+                        {item.category}
+                      </span>
+                      {isActive ? (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-mono text-[#E6B566] font-semibold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566] animate-pulse" />
+                          Active
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-mono text-gray-400 group-hover:text-[#8C6226] transition-colors flex items-center gap-1">
+                          Compare <ArrowRight size={10} />
+                        </span>
+                      )}
+                    </div>
+
+                    <div
+                      className={`text-sm sm:text-base font-serif font-semibold truncate ${
+                        isActive ? "text-white" : "text-[#0B1220] group-hover:text-[#8C6226]"
+                      }`}
+                    >
+                      {item.title}
+                    </div>
+
+                    <p
+                      className={`text-[11px] truncate mt-0.5 font-mono ${
+                        isActive ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      {item.location}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Project Details / Transformation Highlights Drawer */}
           <AnimatePresence mode="wait">
             <MotionDiv
               key={activeItem.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="space-y-6"
+              className="p-5 rounded-2xl bg-gray-50/90 border border-gray-200/90 space-y-3.5 shadow-xs"
             >
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6B566]/10 text-[#8C6226] text-xs font-bold uppercase tracking-wider mb-3">
-                  <Layers size={13} />
-                  {activeItem.category}
-                </div>
-                <div className="text-2xl sm:text-3xl font-serif text-[#0B1220] leading-tight font-medium">
-                  {activeItem.title}
-                </div>
-                <p className="text-xs text-gray-400 mt-1 font-mono tracking-wide">
-                  {activeItem.location}
-                </p>
-              </div>
-
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                 {activeItem.description}
               </p>
 
-              {/* Execution Points */}
-              <div className="space-y-3 pt-2">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#0B1220]">
-                  Transformation Key Points:
+              {/* Highlights */}
+              <div className="space-y-2 pt-1">
+                <p className="text-[11px] font-bold uppercase tracking-widest text-[#0B1220]">
+                  Transformation Highlights:
                 </p>
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   {activeItem.highlights.map((highlight, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs text-gray-700">
-                      <CheckCircle2 size={15} className="text-[#8C6226] shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2 text-xs text-gray-700">
+                      <CheckCircle2 size={14} className="text-[#8C6226] shrink-0 mt-0.5" />
                       <span>{highlight}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-5 border-t border-gray-200 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-medium text-gray-500">
+              {/* Action Footer */}
+              <div className="pt-3 border-t border-gray-200 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-3 text-[11px] font-medium text-gray-500 font-mono">
                   <span className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     Turnkey Handover
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566]" />
-                    On-Time Delivery
+                    On-Time
                   </span>
                 </div>
 
-                {/* Compact View button right next to delivery indicators */}
                 <Link
                   href={`/projects/${activeItem.projectSlug || activeItem.id}`}
-                  className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0B1220] hover:bg-[#1A2538] text-white text-xs font-mono uppercase tracking-wider font-semibold shadow-sm hover:shadow-md hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 shrink-0"
+                  className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0B1220] hover:bg-[#1A2538] text-white text-xs font-mono uppercase tracking-wider font-semibold shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
                   title={`View ${activeItem.title} project`}
                 >
-                  <span>View</span>
-                  <ArrowRight size={13} className="text-[#E6B566] transition-transform duration-300 group-hover:translate-x-1" />
+                  <span>View Project</span>
+                  <ArrowRight size={13} className="text-[#E6B566] transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </MotionDiv>

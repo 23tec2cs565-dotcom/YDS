@@ -367,10 +367,6 @@ const TransformationSection: React.FC = () => {
       <div className="max-w-[1680px] mx-auto px-4 sm:px-6">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] text-[#E6B566] text-xs font-bold tracking-widest uppercase mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
-              Before & After Transformations
-            </div>
             <h2 className="text-4xl md:text-5xl font-serif text-[#0B1220] mb-6 leading-tight">
               Witness the Art of <span className="italic text-[#8C6226] font-angelone">Turnkey Execution</span>
             </h2>
