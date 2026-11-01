@@ -770,7 +770,8 @@ const InsightsSection: React.FC = () => {
             href="/blog"
             className="mt-6 md:mt-0 group inline-flex items-center gap-2.5 px-5 py-3 sm:px-6 sm:py-3.5 bg-white text-[#0B1220] hover:bg-[#E6B566] hover:text-[#0B1220] text-xs font-mono font-bold uppercase tracking-wider shadow-md hover:shadow-xl transition-all duration-300 shrink-0"
           >
-            <span>Explore All Blogs & Articles</span>
+            <span>Explore All Blog Articles</span>
+            <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
 
