@@ -60,18 +60,18 @@ const Footer: React.FC = () => {
       id="contact"
       aria-label="Site Footer"
     >
-      {/* ── Thin Grey Architectural CAD Drafting Grid Background ── */}
+      {/* ── Thin Grey Architectural CAD Drafting Grid Background (Confined to CTA area, excluded from 4 columns) ── */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[560px] sm:h-[600px] lg:h-[640px] z-0 overflow-hidden"
         style={{
           backgroundImage: `
             linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
           `,
           backgroundSize: "48px 48px",
-          maskImage: "radial-gradient(ellipse 90% 75% at 50% 30%, #000 50%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse 90% 75% at 50% 30%, #000 50%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 65%, rgba(0, 0, 0, 0) 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 65%, rgba(0, 0, 0, 0) 100%)",
         }}
       />
 
@@ -100,10 +100,10 @@ const Footer: React.FC = () => {
       </div>
 
       {/* ── Main Footer Body ── */}
-      <div className="relative z-10 max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20 md:py-24">
+      <div className="relative z-10 max-w-[1680px] mx-auto px-6 sm:px-10 lg:px-16 pt-16 sm:pt-20 md:pt-24 pb-6 sm:pb-8">
 
         {/* ── CTA Banner — Luxury Framed Card ── */}
-        <section className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-r from-white/[0.05] via-white/[0.02] to-white/[0.05] backdrop-blur-md p-6 sm:p-10 md:p-14 lg:p-16 shadow-2xl overflow-hidden group mb-16 sm:mb-20">
+        <section className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-r from-white/[0.05] via-white/[0.02] to-white/[0.05] backdrop-blur-md p-6 sm:p-10 md:p-14 lg:p-16 shadow-2xl overflow-hidden group mb-10 sm:mb-12">
           {/* Subtle warm glow orbs inside card */}
           <div className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#E6B566]/10 blur-[80px]" />
           <div className="pointer-events-none absolute -left-16 -bottom-16 h-72 w-72 rounded-full bg-[#B08D57]/8 blur-[80px]" />
@@ -145,8 +145,11 @@ const Footer: React.FC = () => {
           </div>
         </section>
 
+        {/* ── Divider Line between CTA and 4 Columns ── */}
+        <div className="border-t border-white/10 my-8 sm:my-10" />
+
         {/* ── Footer Directory ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 sm:gap-12 pt-8 sm:pt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 sm:gap-12 pt-2">
 
           {/* Col 1: Brand Info (span 5) */}
           <div className="lg:col-span-5 space-y-5">
@@ -295,7 +298,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* ── Bottom Bar / Copyright ── */}
-        <div className="mt-16 sm:mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-stonecream/50 gap-4">
+        <div className="mt-6 sm:mt-8 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-stonecream/50 gap-4">
           <div>
             © {new Date().getFullYear()} YOUNICK DESIGN STUDIO. ALL RIGHTS RESERVED.
           </div>

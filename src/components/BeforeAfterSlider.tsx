@@ -28,8 +28,8 @@ export const COMPARISONS_DATA: ComparisonItem[] = [
     location: "New Light Colony, Tonk Road, Jaipur",
     beforeImage: "/assets/Projects/Foyer/2.webp",
     afterImage: "/assets/Projects/Foyer/1.webp",
-    beforeLabel: "RAW SITE / BEFORE",
-    afterLabel: "YOUNICK EXECUTION / AFTER",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER EXECUTION",
     description:
       "Complete metamorphosis of a bare, dark entryway into a welcoming architectural foyer with custom acoustic wall panelling, integrated mood cove lighting, and seamless floor transition.",
     highlights: [
@@ -133,8 +133,8 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
 
   return (
     <div className="w-full">
-      {/* Main Grid: Visual Comparison Slider on Left, Project Image Switchers on Right */}
-      <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+      {/* Main Grid: Comparison Viewport on Left, Vertical Thumbnails + Description on Right */}
+      <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* Left: Interactive Comparison Viewport */}
         <div className="lg:col-span-7 w-full">
           <div
@@ -143,7 +143,7 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
             onTouchStart={() => setIsDragging(true)}
             onTouchMove={handleTouchMove}
             onMouseMove={handleMouseMove}
-            className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl select-none cursor-ew-resize bg-[#0B1220] border-4 border-white"
+            className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[400px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl select-none cursor-ew-resize bg-[#0B1220] border-4 border-white"
           >
             {/* Animated Transition for Project Images */}
             <AnimatePresence mode="wait">
@@ -214,181 +214,144 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
               <div className="absolute top-0 bottom-0 -left-[1.5px] w-[3px] bg-gradient-to-b from-[#E6B566]/60 via-white to-[#E6B566]/60 shadow-[0_0_12px_rgba(230,181,102,0.8)]" />
 
               {/* Center Circular Grab Handle */}
-              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0B1220] border-2 border-[#E6B566] text-[#E6B566] shadow-2xl flex items-center justify-center pointer-events-auto cursor-grab active:cursor-grabbing hover:scale-110 transition-transform">
-                <MoveHorizontal size={18} className="text-[#E6B566]" />
+              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#0B1220] border-2 border-[#E6B566] text-[#E6B566] shadow-2xl flex items-center justify-center pointer-events-auto cursor-grab active:cursor-grabbing hover:scale-110 transition-transform">
+                <MoveHorizontal size={17} className="text-[#E6B566]" />
               </div>
             </div>
 
             {/* Drag Hint at Bottom */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-              <div className="px-4 py-1 rounded-full bg-black/60 backdrop-blur-md text-white/70 text-[10px] sm:text-xs tracking-wider uppercase flex items-center gap-2 border border-white/10">
-                <MoveHorizontal size={12} />
+            <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+              <div className="px-3 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white/70 text-[9px] sm:text-[10px] tracking-wider uppercase flex items-center gap-1.5 border border-white/10">
+                <MoveHorizontal size={11} />
                 <span>Drag to Compare</span>
               </div>
             </div>
           </div>
 
           {/* Sub-caption below slider */}
-          <div className="mt-3.5 flex items-center justify-between text-xs text-gray-500 px-2 font-mono">
+          <div className="mt-2.5 flex items-center justify-between text-xs text-gray-500 px-1 font-mono">
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#E6B566]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566]" />
               {activeItem.location}
             </span>
-            <span className="hidden sm:inline text-gray-400">
-              Drag center slider left or right to reveal transformation
+            <span className="hidden sm:inline text-gray-400 text-[11px]">
+              Drag center slider to reveal transformation
             </span>
           </div>
         </div>
 
-        {/* Right: Project Switcher using Project Images & Transformation Highlights */}
-        <div className="lg:col-span-5 w-full flex flex-col space-y-4">
+        {/* Right: Horizontal Image Filmstrip Carousel + Clicked Project Description */}
+        <div className="lg:col-span-5 w-full flex flex-col space-y-3">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-gray-100 pb-2.5 px-1">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0B1220]">
+          <div className="flex items-center justify-between border-b border-gray-100 pb-2 px-1">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[13px] font-mono font-bold uppercase tracking-wider text-[#0B1220]">
                 Select Project to Compare
               </span>
             </div>
-            <span className="text-[11px] font-mono text-[#8C6226] font-semibold">
-              {activeTab + 1} of {items.length} Projects
+            <span className="text-[10px] font-mono text-[#8C6226] font-semibold">
+              {activeTab + 1} of {items.length}
             </span>
           </div>
 
-          {/* Project Image Switcher Tiles */}
-          <div className="space-y-2.5">
-            {items.map((item, idx) => {
-              const isActive = activeTab === idx;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => {
-                    if (activeTab !== idx) {
-                      setActiveTab(idx);
-                      setSliderPosition(50);
-                    }
-                  }}
-                  className={`w-full text-left group relative p-2.5 sm:p-3 rounded-2xl border-2 transition-all duration-300 flex items-center gap-3.5 cursor-pointer ${
-                    isActive
-                      ? "bg-[#0B1220] text-white border-[#E6B566] shadow-xl ring-2 ring-[#E6B566]/20 scale-[1.01]"
-                      : "bg-white text-gray-700 border-gray-200 hover:border-[#E6B566]/40 hover:bg-gray-50/80 shadow-xs hover:shadow-md"
-                  }`}
-                >
-                  {/* Project Image Preview */}
-                  <div className="relative w-24 sm:w-28 aspect-[16/11] rounded-xl overflow-hidden shrink-0 border border-white/10 bg-black shadow-sm">
+          {/* Horizontal Image Carousel Strip (compact filmstrip matching the reference) */}
+          <div className="w-full">
+            <div className="inline-flex items-center gap-2 sm:gap-2.5 p-1.5 sm:p-2 rounded-2xl  border border-white/10 shadow-lg">
+              {items.map((item, idx) => {
+                const isActive = activeTab === idx;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => {
+                      if (activeTab !== idx) {
+                        setActiveTab(idx);
+                        setSliderPosition(50);
+                      }
+                    }}
+                    className={`relative w-20 sm:w-24 md:w-28 aspect-[16/10] rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer block shrink-0 ${
+                      isActive
+                        ? "border-[#E6B566] shadow-[0_0_12px_rgba(230,181,102,0.55)] opacity-100 scale-[1.03] z-10 ring-1 ring-[#E6B566]/40"
+                        : "border-transparent opacity-40 hover:opacity-85 hover:border-white/20"
+                    }`}
+                    title={item.title}
+                  >
                     <img
                       src={item.afterImage}
-                      alt={`${item.title} preview`}
-                      className={`w-full h-full object-cover transition-all duration-500 ${
-                        isActive ? "scale-105" : "opacity-80 group-hover:opacity-100 group-hover:scale-110"
-                      }`}
+                      alt={item.title}
+                      className="w-full h-full object-cover pointer-events-none"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
-                    <span className="absolute bottom-1.5 left-2 px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider bg-black/80 text-[#E6B566] backdrop-blur-xs border border-white/10">
-                      0{idx + 1}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Description & Details for the Specific Clicked Project */}
+          <div className="w-full">
+            <AnimatePresence mode="wait">
+              <MotionDiv
+                key={activeItem.id}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.25 }}
+                className="p-4 sm:p-5 rounded-2xl bg-gray-50/95 border border-gray-200/90 space-y-3 shadow-xs"
+              >
+                <div>
+                  <h4 className="text-base sm:text-lg font-serif font-semibold text-[#0B1220] leading-tight">
+                    {activeItem.title}
+                  </h4>
+                  <p className="text-[10px] font-mono text-gray-500 mt-0.5">
+                    {activeItem.location}
+                  </p>
+                </div>
+
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  {activeItem.description}
+                </p>
+
+                {/* Highlights */}
+                <div className="space-y-1.5 pt-0.5">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#0B1220]">
+                    Highlights:
+                  </p>
+                  <div className="space-y-1">
+                    {activeItem.highlights.map((highlight, idx) => (
+                      <div key={idx} className="flex items-start gap-1.5 text-xs text-gray-700">
+                        <CheckCircle2 size={13} className="text-[#8C6226] shrink-0 mt-0.5" />
+                        <span className="leading-snug">{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Footer */}
+                <div className="pt-2.5 border-t border-gray-200/80 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-3 text-[10px] sm:text-xs font-mono text-gray-500">
+                    <span className="flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      Turnkey
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566]" />
+                      On-Time
                     </span>
                   </div>
 
-                  {/* Project Title and Category */}
-                  <div className="flex-1 min-w-0 py-0.5">
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <span
-                        className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
-                          isActive
-                            ? "bg-[#E6B566]/20 text-[#E6B566] border border-[#E6B566]/30"
-                            : "bg-gray-100 text-gray-600 group-hover:text-gray-900"
-                        }`}
-                      >
-                        {item.category}
-                      </span>
-                      {isActive ? (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-mono text-[#E6B566] font-semibold">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566] animate-pulse" />
-                          Active
-                        </span>
-                      ) : (
-                        <span className="text-[10px] font-mono text-gray-400 group-hover:text-[#8C6226] transition-colors flex items-center gap-1">
-                          Compare <ArrowRight size={10} />
-                        </span>
-                      )}
-                    </div>
-
-                    <div
-                      className={`text-sm sm:text-base font-serif font-semibold truncate ${
-                        isActive ? "text-white" : "text-[#0B1220] group-hover:text-[#8C6226]"
-                      }`}
-                    >
-                      {item.title}
-                    </div>
-
-                    <p
-                      className={`text-[11px] truncate mt-0.5 font-mono ${
-                        isActive ? "text-gray-400" : "text-gray-500"
-                      }`}
-                    >
-                      {item.location}
-                    </p>
-                  </div>
-                </button>
-              );
-            })}
+                  <Link
+                    href={`/projects/${activeItem.projectSlug || activeItem.id}`}
+                    className="group inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#0B1220] hover:bg-[#1A2538] text-white text-[10px] sm:text-xs font-mono uppercase tracking-wider font-semibold shadow-xs hover:shadow-md transition-all shrink-0"
+                    title={`View ${activeItem.title} project`}
+                  >
+                    <span>View Project</span>
+                    <ArrowRight size={12} className="text-[#E6B566] transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                </div>
+              </MotionDiv>
+            </AnimatePresence>
           </div>
-
-          {/* Active Project Details / Transformation Highlights Drawer */}
-          <AnimatePresence mode="wait">
-            <MotionDiv
-              key={activeItem.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="p-5 rounded-2xl bg-gray-50/90 border border-gray-200/90 space-y-3.5 shadow-xs"
-            >
-              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                {activeItem.description}
-              </p>
-
-              {/* Highlights */}
-              <div className="space-y-2 pt-1">
-                <p className="text-[11px] font-bold uppercase tracking-widest text-[#0B1220]">
-                  Transformation Highlights:
-                </p>
-                <div className="space-y-1.5">
-                  {activeItem.highlights.map((highlight, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-gray-700">
-                      <CheckCircle2 size={14} className="text-[#8C6226] shrink-0 mt-0.5" />
-                      <span>{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Footer */}
-              <div className="pt-3 border-t border-gray-200 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-3 text-[11px] font-medium text-gray-500 font-mono">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    Turnkey Handover
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566]" />
-                    On-Time
-                  </span>
-                </div>
-
-                <Link
-                  href={`/projects/${activeItem.projectSlug || activeItem.id}`}
-                  className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0B1220] hover:bg-[#1A2538] text-white text-xs font-mono uppercase tracking-wider font-semibold shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
-                  title={`View ${activeItem.title} project`}
-                >
-                  <span>View Project</span>
-                  <ArrowRight size={13} className="text-[#E6B566] transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
-            </MotionDiv>
-          </AnimatePresence>
         </div>
       </div>
     </div>

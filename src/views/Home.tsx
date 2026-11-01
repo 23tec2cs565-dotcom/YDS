@@ -754,7 +754,7 @@ const InsightsSection: React.FC = () => {
   const guides = (posts && posts.length > 0) ? posts.slice(0, 3) : defaultBlogs.slice(0, 3);
 
   return (
-    <section className="py-24 bg-[#070D18] text-white border-t border-white/10 relative overflow-hidden">
+    <section className="pt-16 pb-20 bg-[#070D18] text-white border-t border-white/10 relative overflow-hidden">
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#E6B566]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-[1680px] mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
@@ -768,9 +768,9 @@ const InsightsSection: React.FC = () => {
           </div>
           <Link
             href="/blog"
-            className="mt-6 md:mt-0 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#E6B566] hover:text-white transition-colors"
+            className="mt-6 md:mt-0 group inline-flex items-center gap-2.5 px-5 py-3 sm:px-6 sm:py-3.5 bg-white text-[#0B1220] hover:bg-[#E6B566] hover:text-[#0B1220] text-xs font-mono font-bold uppercase tracking-wider shadow-md hover:shadow-xl transition-all duration-300 shrink-0"
           >
-            Explore All Blog Articles <ArrowRight size={14} />
+            <span>Explore All Blogs & Articles</span>
           </Link>
         </div>
 
