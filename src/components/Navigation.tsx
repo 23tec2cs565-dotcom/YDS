@@ -14,7 +14,6 @@ import {
   Info,
   Users,
   Clipboard,
-  LayoutGrid,
   BookOpen,
 } from "lucide-react";
 
@@ -352,16 +351,16 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                 aria-label="Navigation Grid Shortcuts"
                 className="inline-flex items-center justify-center p-2 rounded-lg bg-white/90 border border-gray-100 hover:shadow-sm transition text-[#0B1220]"
               >
-                <LayoutGrid size={18} />
+                <Menu size={18} />
               </button>
 
               {deskOpen && (
                 <div
                   role="menu"
                   aria-label="Navigation shortcuts"
-                  className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 p-3 z-50"
+                  className="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-gray-100 p-2 z-50"
                 >
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="flex flex-col space-y-1">
                     {gridItems.map(({ path, label, title, icon: Icon }) => {
                       const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
                       return (
@@ -371,16 +370,22 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                           title={title}
                           aria-label={title}
                           onClick={() => setDeskOpen(false)}
-                          className={`flex flex-col items-center justify-center gap-1 p-2 rounded-lg transition-all ${
+                          className={`group flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 ${
                             isActive
-                              ? "bg-[#E6B566]/10 text-[#0B1220]"
-                              : "text-gray-700 hover:text-[#0B1220] hover:scale-[1.03]"
+                              ? "bg-[#E6B566]/15 text-[#0B1220] font-semibold"
+                              : "text-gray-700 hover:text-[#0B1220] hover:bg-gray-50"
                           }`}
                         >
-                          <div className="p-2 rounded-full bg-gray-50 shadow-sm">
+                          <div
+                            className={`p-2 rounded-lg transition-colors ${
+                              isActive
+                                ? "bg-[#E6B566]/20 text-[#8C6226]"
+                                : "bg-gray-50 text-gray-500 group-hover:bg-[#E6B566]/10 group-hover:text-[#8C6226]"
+                            }`}
+                          >
                             <Icon size={16} />
                           </div>
-                          <span className="text-xs font-medium">{label}</span>
+                          <span className="text-xs sm:text-sm font-medium">{label}</span>
                         </Link>
                       );
                     })}
@@ -410,7 +415,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
           }`}
         >
           <div className="bg-white/95 backdrop-blur rounded-lg mx-2 p-4 border border-gray-100 shadow-lg">
-            <div className="grid grid-cols-3 gap-3 mb-4">
+            <div className="flex flex-col space-y-1 mb-4">
               {gridItems.map(({ path, label, title, icon: Icon }) => {
                 const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
                 return (
@@ -420,22 +425,22 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                     title={title}
                     aria-label={title}
                     onClick={() => setOpen(false)}
-                    className={`group flex flex-col items-center justify-center gap-2 p-3 rounded-lg text-center transition-all duration-300 ${
+                    className={`group flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl transition-all duration-200 ${
                       isActive
-                        ? "bg-[#E6B566]/10 text-[#0B1220]"
+                        ? "bg-[#E6B566]/15 text-[#0B1220] font-semibold"
                         : "text-gray-700 hover:text-[#0B1220] hover:bg-gray-50"
                     }`}
                   >
                     <div
-                      className={`p-2.5 rounded-full transition-all duration-300 ${
+                      className={`p-2 rounded-lg transition-all duration-200 ${
                         isActive
-                          ? "bg-[#E6B566]/20 text-[#B08D57] scale-110"
-                          : "bg-gray-50 text-gray-500 group-hover:bg-[#E6B566]/10 group-hover:text-[#B08D57] group-hover:scale-105"
+                          ? "bg-[#E6B566]/25 text-[#8C6226]"
+                          : "bg-gray-100/80 text-gray-500 group-hover:bg-[#E6B566]/10 group-hover:text-[#8C6226]"
                       }`}
                     >
                       <Icon size={18} />
                     </div>
-                    <span className="text-xs font-medium">{label}</span>
+                    <span className="text-sm font-medium">{label}</span>
                   </Link>
                 );
               })}
