@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { Sparkles, MoveHorizontal, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Sparkles, MoveHorizontal, ArrowRight, CheckCircle2, DotSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MotionDiv = motion.div as unknown as React.ComponentType<any>;
@@ -199,7 +199,6 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
             {/* Badge: AFTER */}
             <div className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-20 pointer-events-none">
               <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[9px] sm:text-xs font-bold tracking-widest uppercase bg-[#0B1220]/80 backdrop-blur-md text-[#E6B566] border border-[#E6B566]/40 shadow-lg flex items-center gap-1 sm:gap-1.5 whitespace-nowrap">
-                <Sparkles size={11} className="text-[#E6B566] shrink-0" />
                 <span className="sm:hidden">AFTER</span>
                 <span className="hidden sm:inline">{activeItem.afterLabel || "AFTER / YOUNICK"}</span>
               </span>
@@ -320,7 +319,7 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
                   <div className="space-y-1">
                     {activeItem.highlights.map((highlight, idx) => (
                       <div key={idx} className="flex items-start gap-1.5 text-xs text-gray-700">
-                        <CheckCircle2 size={13} className="text-[#8C6226] shrink-0 mt-0.5" />
+                        <DotSquare size={13} className="text-[#8C6226] shrink-0 mt-0.5" />
                         <span className="leading-snug">{highlight}</span>
                       </div>
                     ))}
