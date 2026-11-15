@@ -32,7 +32,43 @@ export const WhatsAppButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [customMsg, setCustomMsg] = useState("");
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
+
+  // Hide WhatsApp button when navbar menu is open
+  useEffect(() => {
+    const checkNav = () => {
+      const open = typeof document !== "undefined" && document.body.classList.contains("nav-menu-open");
+      setIsNavMenuOpen(open);
+    };
+    checkNav();
+
+    const observer = new MutationObserver(checkNav);
+    if (typeof document !== "undefined" && document.body) {
+      observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    }
+
+    const handleToggle = (e: any) => {
+      if (typeof e.detail?.open === "boolean") {
+        setIsNavMenuOpen(e.detail.open);
+      } else {
+        checkNav();
+      }
+    };
+    window.addEventListener("nav-menu-toggle", handleToggle);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("nav-menu-toggle", handleToggle);
+    };
+  }, []);
+
+  // Close WhatsApp popup if nav menu opens
+  useEffect(() => {
+    if (isNavMenuOpen && isOpen) {
+      setIsOpen(false);
+    }
+  }, [isNavMenuOpen, isOpen]);
 
   // Close popup when clicking outside
   useEffect(() => {
@@ -73,8 +109,15 @@ export const WhatsAppButton: React.FC = () => {
     setIsOpen(false);
   };
 
+  if (isNavMenuOpen) {
+    return null;
+  }
+
   return (
-    <div ref={widgetRef} className="fixed bottom-14 right-8 sm:bottom-8 sm:right-8 z-50 pointer-events-auto">
+    <div
+      ref={widgetRef}
+      className="fixed bottom-14 right-8 sm:bottom-8 sm:right-8 z-50 pointer-events-auto transition-all duration-300 [.nav-menu-open_&]:opacity-0 [.nav-menu-open_&]:pointer-events-none [.nav-menu-open_&]:invisible [.nav-menu-open_&]:scale-75"
+    >
       <AnimatePresence mode="wait">
         {isOpen ? (
           /* Expanded Luxury Chat Card Anchored in Bottom Right Corner */

@@ -1,6 +1,7 @@
 "use client";
 // src/components/Navigation.tsx
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
@@ -36,18 +37,19 @@ const navItems = [
 ];
 
 const gridItems = [
-  { path: "/blog", label: "Blog", icon: BookOpen, title: "Architectural & Interior Design Blog" },
-  { path: "/team", label: "Our Team", icon: Users, title: "Meet Our Architects and Interior Designers" },
-  { path: "/career", label: "Careers", icon: Clipboard, title: "Explore Career Opportunities at Younick Studio" },
+  { path: "/", label: "Home", icon: Home, title: "Younick Design Studio Home" },
   { path: "/projects", label: "Portfolio", icon: FolderOpen, title: "View Our Completed Architecture & Interior Projects" },
   { path: "/services", label: "Services", icon: Briefcase, title: "Explore Turnkey Interior & Construction Services" },
   { path: "/about", label: "About Us", icon: Info, title: "Learn About Younick Design Studio Philosophy" },
+  { path: "/blog", label: "Blog", icon: BookOpen, title: "Architectural & Interior Design Blog" },
+  { path: "/team", label: "Our Team", icon: Users, title: "Meet Our Architects and Interior Designers" },
+  { path: "/career", label: "Careers", icon: Clipboard, title: "Explore Career Opportunities at Younick Studio" },
   { path: "/contact", label: "Contact Us", icon: MessageSquare, title: "Get in Touch with Our Jaipur Studio" },
 ];
 
 const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
-  const [open, setOpen] = useState(false);
-  const [deskOpen, setDeskOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [navQuery, setNavQuery] = useState("");
   const [suggests, setSuggests] = useState<Suggest[]>([]);
@@ -57,8 +59,12 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
 
   // typed debounce timer
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const deskRef = useRef<HTMLDivElement | null>(null);
+  const drawerRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Navbar scroll detection
   useEffect(() => {
@@ -67,15 +73,43 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Body scroll lock when mobile nav open
+  // Body scroll lock, document class for hiding WhatsApp & full frosted glass overlay, plus drawer focus
   useEffect(() => {
-    if (open) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-  }, [open]);
+    if (menuOpen) {
+      document.body.classList.add("nav-menu-open");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => {
+        drawerRef.current?.focus();
+      }, 50);
+    } else {
+      document.body.classList.remove("nav-menu-open");
+      document.body.style.overflow = "";
+    }
 
-  // Reset navQuery when moving between routes but don't trigger search/navigation side-effects
+    window.dispatchEvent(
+      new CustomEvent("nav-menu-toggle", { detail: { open: menuOpen } })
+    );
+
+    return () => {
+      document.body.classList.remove("nav-menu-open");
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Close drawer on Escape key
   useEffect(() => {
-    setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  // Reset navQuery when moving between routes and close menu
+  useEffect(() => {
+    setMenuOpen(false);
     // keep existing behaviour: if we're on projects route, don't override query from params
     const navQ = searchParams?.get("navSearch") || "";
     // only set navQuery from params when not navigating inside projects (preserve user's typed query)
@@ -133,22 +167,6 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
       if (debounceTimer.current) clearTimeout(debounceTimer.current);
     };
   }, [navQuery, onSearch]);
-
-  // Close desktop popover when clicking outside or pressing ESC
-  useEffect(() => {
-    const onDocClick = (e: MouseEvent) => {
-      if (deskRef.current && !deskRef.current.contains(e.target as Node)) setDeskOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setDeskOpen(false);
-    };
-    document.addEventListener("mousedown", onDocClick);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onDocClick);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, []);
 
   // Search actions
   const submitSearch = (e: React.FormEvent) => {
@@ -342,80 +360,118 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
               )}
             </form>
 
-            {/* Grid Popover */}
-            <div className="relative" ref={deskRef}>
-              <button
-                onClick={() => setDeskOpen((v) => !v)}
-                aria-expanded={deskOpen}
-                aria-haspopup="menu"
-                aria-label="Navigation Grid Shortcuts"
-                className="inline-flex items-center justify-center p-2 rounded-lg bg-white/90 border border-gray-100 hover:shadow-sm transition text-[#0B1220]"
-              >
-                <Menu size={18} />
-              </button>
-
-              {deskOpen && (
-                <div
-                  role="menu"
-                  aria-label="Navigation shortcuts"
-                  className="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl border border-gray-100 p-2 z-50"
-                >
-                  <div className="flex flex-col space-y-1">
-                    {gridItems.map(({ path, label, title, icon: Icon }) => {
-                      const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
-                      return (
-                        <Link
-                          key={path}
-                          href={path}
-                          title={title}
-                          aria-label={title}
-                          onClick={() => setDeskOpen(false)}
-                          className={`group flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 ${
-                            isActive
-                              ? "bg-[#E6B566]/15 text-[#0B1220] font-semibold"
-                              : "text-gray-700 hover:text-[#0B1220] hover:bg-gray-50"
-                          }`}
-                        >
-                          <div
-                            className={`p-2 rounded-lg transition-colors ${
-                              isActive
-                                ? "bg-[#E6B566]/20 text-[#8C6226]"
-                                : "bg-gray-50 text-gray-500 group-hover:bg-[#E6B566]/10 group-hover:text-[#8C6226]"
-                            }`}
-                          >
-                            <Icon size={16} />
-                          </div>
-                          <span className="text-xs sm:text-sm font-medium">{label}</span>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Menu Trigger Button */}
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-expanded={menuOpen}
+              aria-haspopup="dialog"
+              aria-label="Navigation Menu"
+              className="inline-flex items-center justify-center p-2 rounded-lg bg-white/90 border border-gray-100 hover:shadow-sm transition text-[#0B1220]"
+            >
+              <Menu size={18} />
+            </button>
           </div>
 
           {/* Mobile Toggle */}
           <button
-            onClick={() => setOpen(!open)}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            className="lg:hidden p-2 rounded-lg hover:bg-white/10 text-[#E6B566]"
-            aria-label="Toggle menu"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-expanded={menuOpen}
+            aria-haspopup="dialog"
+            aria-label="Toggle Navigation Menu"
+            className="lg:hidden p-2 rounded-lg hover:bg-white/10 text-[#0B1220]"
           >
-            {open ? <XIcon size={22} /> : <Menu size={22} />}
+            <Menu size={22} />
           </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        <div
-          id="mobile-nav"
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            open ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="bg-white/95 backdrop-blur rounded-lg mx-2 p-4 border border-gray-100 shadow-lg">
-            <div className="flex flex-col space-y-1 mb-4">
+      {/* Frosted Glass Backdrop & Full-Height Right Drawer */}
+      {mounted && menuOpen && createPortal(
+        <>
+          {/* Frosted Glass Backdrop covering entire screen */}
+          <div
+            className="fixed inset-0 bg-black/40 backdrop-blur-md z-[60] transition-opacity duration-300"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Right-aligned Full-height Drawer touching the bottom */}
+          <aside
+            ref={drawerRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Studio Navigation Menu"
+            className="fixed top-0 right-0 bottom-0 h-full w-80 sm:w-96 max-w-[85vw] bg-white/95 backdrop-blur-2xl shadow-2xl border-l border-gray-100 z-[70] flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300 outline-none"
+          >
+            {/* Header */}
+            <div className="p-5 sm:p-6 border-b border-gray-100 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-10">
+              <div className="flex items-center space-x-2.5">
+                <img
+                  src="/younick-crest.webp"
+                  alt="Younick Crest"
+                  width="28"
+                  height="32"
+                  className="h-7 w-auto object-contain"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    img.onerror = null;
+                    img.src = "/younick-logo.webp";
+                  }}
+                />
+                <div className="flex flex-col leading-none">
+                  <span className="font-serif text-lg font-bold text-[#0B1220]">
+                    Younick
+                  </span>
+                  <span className="font-sans text-[9px] tracking-[0.2em] text-[#8C6226] uppercase font-semibold mt-0.5">
+                    Design Studio
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="p-2 rounded-xl text-gray-500 hover:text-[#0B1220] hover:bg-gray-100 transition-colors"
+                aria-label="Close navigation menu"
+              >
+                <XIcon size={20} />
+              </button>
+            </div>
+
+            {/* Vertical Series List */}
+            <div className="p-4 sm:p-6 flex-1 overflow-y-auto space-y-1">
+              {/* Mobile Search Input inside Drawer */}
+              <div className="lg:hidden mb-4">
+                <form onSubmit={submitSearch}>
+                  <div className="relative">
+                    <input
+                      id="drawer-search-input"
+                      name="q"
+                      type="text"
+                      placeholder="Search projects, team..."
+                      aria-label="Search"
+                      value={navQuery}
+                      onChange={(e) => setNavQuery(e.target.value)}
+                      className="pl-9 pr-9 py-2.5 w-full rounded-xl bg-gray-50 text-[#0B1220] text-sm placeholder-gray-400 border border-gray-200 focus:ring-2 focus:ring-[#E6B566] focus:outline-none"
+                    />
+                    <Search className="absolute left-3 top-3 text-[#E6B566]" size={16} />
+                    {navQuery && (
+                      <button
+                        type="button"
+                        onClick={clearSearch}
+                        className="absolute right-3 top-3 p-1 rounded-full hover:bg-gray-100/60"
+                        aria-label="Clear search"
+                      >
+                        <XIcon size={14} className="text-[#0B1220]" />
+                      </button>
+                    )}
+                  </div>
+                </form>
+              </div>
+
+              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider px-3 mb-2">
+                Studio Navigation
+              </div>
+
               {gridItems.map(({ path, label, title, icon: Icon }) => {
                 const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
                 return (
@@ -424,7 +480,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                     href={path}
                     title={title}
                     aria-label={title}
-                    onClick={() => setOpen(false)}
+                    onClick={() => setMenuOpen(false)}
                     className={`group flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl transition-all duration-200 ${
                       isActive
                         ? "bg-[#E6B566]/15 text-[#0B1220] font-semibold"
@@ -432,67 +488,50 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                     }`}
                   >
                     <div
-                      className={`p-2 rounded-lg transition-all duration-200 ${
+                      className={`p-2 rounded-lg transition-colors ${
                         isActive
                           ? "bg-[#E6B566]/25 text-[#8C6226]"
-                          : "bg-gray-100/80 text-gray-500 group-hover:bg-[#E6B566]/10 group-hover:text-[#8C6226]"
+                          : "bg-gray-100 text-gray-500 group-hover:bg-[#E6B566]/15 group-hover:text-[#8C6226]"
                       }`}
                     >
                       <Icon size={18} />
                     </div>
-                    <span className="text-sm font-medium">{label}</span>
+                    <span className="text-sm font-medium tracking-wide">{label}</span>
                   </Link>
                 );
               })}
             </div>
 
-            {/* Mobile Search */}
-            <div className="mt-3">
-              <form onSubmit={submitSearch}>
-                <div className="relative">
-                  <input
-                    id="mobile-search-input"
-                    name="q"
-                    type="text"
-                    placeholder="Search..."
-                    aria-label="Search"
-                    value={navQuery}
-                    onChange={(e) => setNavQuery(e.target.value)}
-                    className="pl-9 pr-9 py-2 w-full rounded-lg bg-gray-50 text-[#0B1220] text-sm placeholder-gray-400 border border-gray-200 focus:ring-2 focus:ring-[#E6B566] focus:outline-none"
-                  />
-                  <Search className="absolute left-3 top-2.5 text-[#E6B566]" size={16} />
-                  {navQuery && (
-                    <button
-                      type="button"
-                      onClick={clearSearch}
-                      className="absolute right-3 top-2.5 p-1 rounded-full hover:bg-gray-100/60"
-                      aria-label="Clear search"
-                    >
-                      <XIcon size={14} className="text-[#0B1220]" />
-                    </button>
-                  )}
+            {/* Drawer Bottom touching the bottom of the screen */}
+            <div className="p-4 sm:p-6 border-t border-gray-100 bg-gray-50/80 space-y-3">
+              <div className="text-xs text-gray-600 space-y-1">
+                <div className="font-semibold text-gray-800 uppercase tracking-wider text-[10px]">
+                  Jaipur Studio Office
                 </div>
-              </form>
-            </div>
-
-            {/* Contact Info */}
-            <div className="mt-5 text-sm text-gray-600 text-center">
-              <div>
-                Call:{" "}
-                <a href="tel:+918854883058" className="text-[#0B1220] hover:text-[#E6B566]">
-                  +91 88548 83058
-                </a>
+                <div>Orbit Mall, Civil Lines, Jaipur</div>
+                <div>
+                  <a href="tel:+918854883058" className="font-medium text-[#0B1220] hover:text-[#8C6226]">
+                    +91 88548 83058
+                  </a>
+                </div>
+                <div>
+                  <a href="mailto:studioyounick@gmail.com" className="text-gray-500 hover:text-[#8C6226]">
+                    studioyounick@gmail.com
+                  </a>
+                </div>
               </div>
-              <div>
-                Email:{" "}
-                <a href="mailto:studioyounick@gmail.com" className="text-[#0B1220] hover:text-[#E6B566]">
-                  studioyounick@gmail.com
-                </a>
-              </div>
+              <Link
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="block w-full text-center py-2.5 px-4 rounded-xl bg-[#0B1220] text-[#E6B566] font-medium text-xs tracking-wider uppercase hover:bg-black transition shadow-sm"
+              >
+                Book Studio Consultation
+              </Link>
             </div>
-          </div>
-        </div>
-      </div>
+          </aside>
+        </>,
+        document.body
+      )}
     </nav>
   );
 };
