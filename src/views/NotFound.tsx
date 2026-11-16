@@ -359,9 +359,9 @@ const NotFound: React.FC = () => {
 
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white hover:text-[#F9D2BA] hover:border-[#F9D2BA]/50 bg-white/[0.04] hover:bg-white/[0.08] px-5 sm:px-6 py-3 text-xs font-semibold uppercase tracking-widest backdrop-blur-xl transition-all duration-300 shadow-md cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 text-white hover:text-[#E6B566] hover:border-[#E6B566]/50 bg-white/[0.04] hover:bg-white/[0.08] px-5 sm:px-6 py-3 text-xs font-semibold uppercase tracking-widest backdrop-blur-xl transition-all duration-300 shadow-md cursor-pointer"
               >
-                <Calculator size={13} className="text-[#F9D2BA]" />
+                <Calculator size={13} className="text-[#E6B566]" />
                 <span>Cost Estimator</span>
               </Link>
 

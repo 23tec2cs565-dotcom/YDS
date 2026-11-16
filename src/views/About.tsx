@@ -136,8 +136,8 @@ const AboutContent = () => {
                   <span className="font-mono text-[10px] sm:text-xs font-bold tracking-widest text-[#B08D57] uppercase">Est. 2018 — Jaipur</span>
                 </div>
                 <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-serif text-[#18181B] leading-[0.9] tracking-tighter">
-                  Studio <br/>
-                  <span className="italic text-[#B08D57] pl-2 sm:pl-4 md:pl-12">Younick.</span>
+                  Younick <br/>
+                  <span className="italic text-[#B08D57] pl-2 sm:pl-4 md:pl-12">Studio.</span>
                 </h1>
               </div>
               <div className="lg:w-1/3 pb-2 sm:pb-4">
@@ -480,33 +480,6 @@ const AboutContent = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* --- SECTION: MONOCHROMATIC PRESS & RECOGNITION GRID --- */}
-        <section className="py-12 sm:py-24 px-5 sm:px-6 bg-white border-t border-gray-100">
-          <div className="max-w-[1680px] mx-auto text-center">
-            <span className="text-[#B08D57] font-mono font-bold tracking-widest text-[10px] sm:text-xs mb-6 sm:mb-12 block uppercase">
-              [ Selected Recognition ]
-            </span>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 md:gap-16 items-center justify-center">
-              {[
-                { name: "ARCHITECTURAL DIGEST", style: "font-serif tracking-[0.25em] text-sm font-semibold" },
-                { name: "ELLE DECOR", style: "font-serif tracking-[0.3em] text-base italic font-bold" },
-                { name: "DECO INDIA", style: "font-mono tracking-[0.2em] text-sm uppercase font-black" },
-                { name: "JAIPUR ARCH FORUM", style: "font-serif tracking-[0.15em] text-xs uppercase font-light" }
-              ].map((press, idx) => (
-                <div 
-                  key={idx}
-                  className="flex justify-center items-center py-3 sm:py-6 px-2 sm:px-4 transition-all duration-300 hover:scale-105"
-                >
-                  <span className={`${press.style} text-gray-400 hover:text-[#B08D57] cursor-default transition-colors duration-300 selection:bg-transparent`}>
-                    {press.name}
-                  </span>
-                </div>
-              ))}
             </div>
           </div>
         </section>

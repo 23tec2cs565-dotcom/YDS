@@ -62,7 +62,6 @@ import { YEARS_OF_EXPERIENCE } from "../utils/constants";
 const STATS = [
   { label: "Years of Experience", value: `${YEARS_OF_EXPERIENCE}+` },
   { label: "Projects Completed", value: `${projects.length}+` },
-  { label: "Design Awards", value: "08" },
   { label: "Happy Clients", value: "100%" },
 ];
 
@@ -363,9 +362,9 @@ const ServicesPage: React.FC = () => {
 
 <main className="bg-white">
         {/* Stats */}
-        <div className="bg-[#0F0F10] border-t border-white/10">
+        <div className="bg-[#0F0F10] border-t border-white/10 ">
           <div className="max-w-[1680px] mx-auto px-6 py-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 divide-x divide-white/10">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 divide-x divide-white/10">
               {STATS.map((stat, idx) => (
                 <div key={idx} className="text-center px-2 sm:px-4">
                   <div className="text-xl sm:text-2xl md:text-3xl font-serif text-[#E6B566] mb-1">{stat.value}</div>
@@ -450,17 +449,20 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* Interactive Budget Estimator Section */}
-        <section className="py-12 sm:py-24 px-5 sm:px-6 bg-gray-50 border-t border-gray-100">
-          <div className="max-w-[1680px] mx-auto">
+        <section className="py-16 sm:py-28 px-5 sm:px-6 bg-[#F8FAF9] border-t border-emerald-950/10 relative overflow-hidden">
+          {/* Fresh architectural ambient glow */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-emerald-500/5 via-teal-500/5 to-transparent blur-[140px] pointer-events-none" />
+
+          <div className="max-w-[1680px] mx-auto relative z-10">
             {/* Header */}
             <div className="text-center mb-8 sm:mb-16">
-              <span className="text-[#8C6226] font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-2 block">
+              <span className="text-emerald-800 font-bold tracking-[0.2em] uppercase text-[10px] sm:text-xs mb-2.5 block">
                 Interactive Tool
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-gray-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-slate-900 tracking-tight">
                 Project Budget Estimator
               </h2>
-              <p className="mt-3 sm:mt-4 text-gray-500 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
+              <p className="mt-3 sm:mt-4 text-slate-500 max-w-xl mx-auto text-xs sm:text-sm leading-relaxed">
                 Estimate your custom project costs instantly. Select multiple services, your location, area size, and finish quality to plan your next space.
               </p>
             </div>
@@ -469,14 +471,14 @@ const ServicesPage: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-stretch">
               
               {/* Controls Column (7 cols) */}
-              <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-sm border border-gray-100 flex flex-col justify-between">
+              <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-9 shadow-xl shadow-slate-200/50 border border-slate-200/80 flex flex-col justify-between">
                 
                 {/* Service Selector */}
-                <div className="mb-5 sm:mb-8">
-                  <label className="block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-500 mb-3 sm:mb-4">
+                <div className="mb-6 sm:mb-8">
+                  <label className="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">
                     1. Select Services (Select Multiple)
                   </label>
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                     {[
                       { id: "interior-design", label: "Interior Design", icon: "Paintbrush", desc: "Lighting, ceiling, furniture & woodwork" },
                       { id: "construction", label: "Turnkey Construction", icon: "Hammer", desc: "Civil architecture, brick & structure build" },
@@ -491,22 +493,31 @@ const ServicesPage: React.FC = () => {
                           key={svc.id}
                           type="button"
                           onClick={() => toggleService(svc.id)}
-                          className={`flex items-start text-left p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border transition-all duration-300 ${
+                          className={`group relative flex items-start text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-300 ${
                             isSelected
-                              ? "border-[#F9D2BA] bg-[#F9D2BA]/15 shadow-sm ring-1 ring-[#F9D2BA]"
-                              : "border-gray-200 hover:border-gray-300 bg-white"
+                              ? "border-emerald-600 bg-gradient-to-br from-emerald-50/90 via-teal-50/50 to-white shadow-md shadow-emerald-900/5 ring-1 ring-emerald-500/40"
+                              : "border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/30 bg-white"
                           }`}
                         >
-                          <div className={`mr-2 sm:mr-3.5 mt-0.5 p-1.5 sm:p-2 rounded-lg sm:rounded-xl flex items-center justify-center ${
-                            isSelected ? "bg-[#F9D2BA] text-gray-900 shadow-sm" : "bg-gray-100 text-gray-500"
+                          <div className={`mr-2.5 sm:mr-3.5 mt-0.5 p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-300 ${
+                            isSelected
+                              ? "bg-emerald-700 text-white shadow-sm shadow-emerald-800/30"
+                              : "bg-slate-100 text-slate-500 group-hover:text-slate-700 group-hover:bg-slate-200/60"
                           }`}>
                             <SvcIcon size={16} />
                           </div>
-                          <div>
-                            <span className="block text-xs font-semibold text-gray-900 leading-none mb-0.5 sm:mb-1">
-                              {svc.label}
-                            </span>
-                            <span className="hidden sm:block text-[11px] text-gray-400 leading-normal">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between mb-0.5 sm:mb-1">
+                              <span className={`block text-xs sm:text-sm font-semibold transition-colors duration-200 ${
+                                isSelected ? "text-slate-900" : "text-slate-800"
+                              }`}>
+                                {svc.label}
+                              </span>
+                              {isSelected && (
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 ml-1.5" />
+                              )}
+                            </div>
+                            <span className="hidden sm:block text-[11px] text-slate-400 leading-normal">
                               {svc.desc}
                             </span>
                           </div>
@@ -516,28 +527,28 @@ const ServicesPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mb-5 sm:mb-8 relative">
+                <div className="mb-6 sm:mb-8 relative">
                   {/* Location Selector (Searchable Dropdown) */}
                   <div className="flex justify-between items-center mb-3">
-                    <label htmlFor="city-search" className="block text-xs font-bold uppercase tracking-wider text-gray-500">
+                    <label htmlFor="city-search" className="block text-xs font-bold uppercase tracking-wider text-slate-500">
                       2. Project Location
                     </label>
                     {hasRestrictedService && (
-                      <span className="text-[10px] font-semibold text-[#8C6226] px-2 py-0.5 rounded-md bg-[#F9D2BA]/30 border border-[#F9D2BA]/50">
+                      <span className="text-[10px] font-semibold text-emerald-800 px-2.5 py-0.5 rounded-full bg-emerald-100 border border-emerald-300 tracking-wide">
                         Rajasthan Only
                       </span>
                     )}
                   </div>
                   
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                       <Search size={15} />
                     </div>
                     <input
                       id="city-search"
                       name="city-search"
                       type="text"
-                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-gray-200 text-sm focus:border-[#F9D2BA] focus:ring-2 focus:ring-[#F9D2BA]/40 outline-none transition-all bg-white text-gray-800"
+                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 text-sm focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all bg-white text-slate-900 placeholder:text-slate-400"
                       placeholder={hasRestrictedService ? "Search Rajasthan locations near Jaipur..." : "Search major India cities..."}
                       value={showDropdown ? searchQuery : selectedCityLabel}
                       onChange={(e) => setSearchQuery(e.target.value)}
@@ -553,7 +564,7 @@ const ServicesPage: React.FC = () => {
                           setLocation("jaipur");
                           setSearchQuery("");
                         }}
-                        className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600"
+                        className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600"
                       >
                         <X size={14} />
                       </button>
@@ -562,9 +573,9 @@ const ServicesPage: React.FC = () => {
 
                   {/* Dropdown Menu */}
                   {showDropdown && (
-                    <div className="absolute left-0 right-0 mt-1 max-h-52 overflow-y-auto bg-white border border-gray-200 rounded-xl shadow-xl z-50 py-1.5 scrollbar-thin">
+                    <div className="absolute left-0 right-0 mt-1 max-h-52 overflow-y-auto bg-white border border-slate-200 rounded-xl shadow-2xl z-50 py-1.5 scrollbar-thin">
                       {filteredCities.length === 0 ? (
-                        <div className="px-4 py-3 text-xs text-gray-400 italic">
+                        <div className="px-4 py-3 text-xs text-slate-400 italic">
                           No matching cities found
                         </div>
                       ) : (
@@ -583,15 +594,15 @@ const ServicesPage: React.FC = () => {
                               }}
                               className={`flex items-center justify-between w-full px-4 py-2.5 text-xs text-left transition-colors ${
                                 isSelected
-                                  ? "bg-[#F9D2BA]/25 text-gray-900 font-semibold"
-                                  : "hover:bg-gray-50 text-gray-700"
+                                  ? "bg-emerald-50 text-emerald-950 font-semibold"
+                                  : "hover:bg-slate-50 text-slate-700"
                               }`}
                             >
                               <div>
-                                <span className="block text-gray-900 font-medium">{city.label}</span>
-                                <span className="block text-[10px] text-gray-400">{city.region}</span>
+                                <span className="block text-slate-900 font-medium">{city.label}</span>
+                                <span className="block text-[10px] text-slate-400">{city.region}</span>
                               </div>
-                              {isSelected && <Check size={12} className="text-[#8C6226]" />}
+                              {isSelected && <Check size={13} className="text-emerald-700" />}
                             </button>
                           );
                         })
@@ -601,10 +612,10 @@ const ServicesPage: React.FC = () => {
 
                   {/* Service warning note */}
                   {hasRestrictedService && (
-                    <div className="mt-3.5 p-3.5 rounded-2xl bg-amber-950/80 border border-amber-500/30 text-[11px] text-amber-200 flex items-start gap-2.5">
-                      <AlertCircle size={15} className="shrink-0 text-[#F9D2BA] mt-0.5" />
+                    <div className="mt-3.5 p-3.5 rounded-xl bg-emerald-50/90 border border-emerald-200 text-[11px] text-emerald-900 flex items-start gap-2.5 shadow-sm">
+                      <AlertCircle size={15} className="shrink-0 text-emerald-700 mt-0.5" />
                       <div>
-                        <span className="font-bold block mb-1 text-white text-xs uppercase tracking-wider">Location Restricted Service</span>
+                        <span className="font-bold block mb-0.5 text-emerald-950 text-xs uppercase tracking-wider">Location Restricted Service</span>
                         Turnkey Construction and Renovation services are limited only to select locations in Rajasthan (primarily Jaipur and nearby surrounding districts).
                       </div>
                     </div>
@@ -612,12 +623,12 @@ const ServicesPage: React.FC = () => {
                 </div>
 
                 {/* Area Slider */}
-                <div className="mb-5 sm:mb-8">
+                <div className="mb-6 sm:mb-8">
                   <div className="flex justify-between items-center mb-3">
-                    <label htmlFor="area-number" className="block text-xs font-bold uppercase tracking-wider text-gray-500">
+                    <label htmlFor="area-number" className="block text-xs font-bold uppercase tracking-wider text-slate-500">
                       3. Area of Project
                     </label>
-                    <div className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-xl px-2.5 py-1 focus-within:border-[#F9D2BA] focus-within:ring-2 focus-within:ring-[#F9D2BA]/40 transition-all shadow-sm">
+                    <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-3 py-1.5 focus-within:border-emerald-600 focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all shadow-sm">
                       <input
                         id="area-number"
                         name="area-number"
@@ -632,9 +643,9 @@ const ServicesPage: React.FC = () => {
                         onBlur={() => {
                           if (area < 100) setArea(500);
                         }}
-                        className="w-20 bg-transparent text-right font-serif text-sm font-bold text-gray-900 outline-none border-none p-0 focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        className="w-20 bg-transparent text-right font-serif text-sm font-bold text-slate-900 outline-none border-none p-0 focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
-                      <span className="text-[10px] font-sans font-normal text-gray-400">Sq. Ft.</span>
+                      <span className="text-[10px] font-sans font-medium text-slate-400">Sq. Ft.</span>
                     </div>
                   </div>
                   <input
@@ -646,9 +657,9 @@ const ServicesPage: React.FC = () => {
                     step="100"
                     value={Math.max(500, Math.min(6000, area))}
                     onChange={(e) => setArea(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-[#F9D2BA]"
+                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-700"
                   />
-                  <div className="flex justify-between text-[10px] text-gray-400 mt-1 font-mono">
+                  <div className="flex justify-between text-[10px] text-slate-400 mt-1 font-mono tracking-wide">
                     <span>500 SQFT</span>
                     <span>3,000 SQFT</span>
                     <span>6,000 SQFT</span>
@@ -657,10 +668,10 @@ const ServicesPage: React.FC = () => {
 
                 {/* Quality/Material Selector */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
                     4. Material & Finish Grade
                   </label>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-3 gap-2.5">
                     {[
                       { id: "standard", label: "Classic", desc: "Quality essentials" },
                       { id: "premium", label: "Premium", desc: "Branded finishes" },
@@ -672,16 +683,20 @@ const ServicesPage: React.FC = () => {
                           key={g.id}
                           type="button"
                           onClick={() => setQuality(g.id as "standard" | "premium" | "luxury")}
-                          className={`flex flex-col items-center py-2 px-3 rounded-2xl border text-center transition-all duration-200 ${
+                          className={`flex flex-col items-center py-3 px-2 sm:px-3 rounded-2xl border text-center transition-all duration-300 relative ${
                             isSelected
-                              ? "border-[#F9D2BA] bg-[#F9D2BA]/15 shadow-sm ring-1 ring-[#F9D2BA]"
-                              : "border-gray-200 hover:border-gray-300 bg-white"
+                              ? "border-emerald-600 bg-gradient-to-b from-emerald-50/90 via-teal-50/50 to-white shadow-md shadow-emerald-900/10 ring-1 ring-emerald-500/40"
+                              : "border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50/70"
                           }`}
                         >
-                          <span className={`block text-xs font-semibold ${isSelected ? "text-gray-900" : "text-gray-700"}`}>
+                          <span className={`block text-xs sm:text-sm font-semibold transition-colors ${
+                            isSelected ? "text-slate-900" : "text-slate-700"
+                          }`}>
                             {g.label}
                           </span>
-                          <span className="block text-[10px] text-gray-400 mt-0.5">
+                          <span className={`block text-[10px] mt-0.5 transition-colors ${
+                            isSelected ? "text-emerald-700 font-medium" : "text-slate-400"
+                          }`}>
                             {g.desc}
                           </span>
                         </button>
@@ -692,30 +707,39 @@ const ServicesPage: React.FC = () => {
 
               </div>
 
-              {/* Estimate Results Card (5 cols) */}
-              <div className="lg:col-span-5 bg-[#0B1220] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden border border-[#F9D2BA]/25 shadow-2xl shadow-[#0B1220]/25">
+              {/* Estimate Results Card (5 cols) - Luminous Architectural Porcelain & Emerald */}
+              <div className="lg:col-span-5 bg-gradient-to-b from-white via-[#F7FCF9] to-[#EFF9F4] text-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden border-2 border-emerald-600/25 shadow-2xl shadow-emerald-950/10">
                 
-                {/* Accent glows */}
-                <div className="absolute top-0 right-0 w-80 h-80 bg-[#F9D2BA]/15 rounded-full blur-[80px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#B08D57]/10 rounded-full blur-[70px] pointer-events-none" />
+                {/* Subtle emerald top rim highlight */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-600 to-transparent pointer-events-none" />
+
+                {/* Soft ambient glows */}
+                <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-[90px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-500/10 rounded-full blur-[80px] pointer-events-none" />
 
                 <div className="relative z-10">
-                  <span className="text-[#F9D2BA] text-[10px] font-bold uppercase tracking-[0.25em]">
-                    Estimated Budget Range
-                  </span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-emerald-800 text-[10px] font-bold uppercase tracking-[0.25em] flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                      Estimated Budget Range
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-700/80 uppercase font-semibold px-2 py-0.5 rounded-md bg-emerald-100/60 border border-emerald-200/60">
+                      Live Calculation
+                    </span>
+                  </div>
                   
                   {/* Budget Counter */}
-                  <div className="mt-4 mb-2">
+                  <div className="mt-5 mb-2">
                     {selectedServices.length === 0 ? (
-                      <div className="text-2xl text-gray-400 font-serif py-4">
-                        Please select a service...
+                      <div className="text-xl sm:text-2xl text-slate-400 font-serif py-6 italic">
+                        Select one or more services to calculate estimate...
                       </div>
                     ) : (
                       <div>
-                        <div className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#F9D2BA] tracking-tight">
-                          {formatCost(min)} - {formatCost(max)}
+                        <div className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 font-bold drop-shadow-sm">
+                          {formatCost(min)} – {formatCost(max)}
                         </div>
-                        <p className="text-[11px] text-gray-400 mt-2 tracking-wide font-mono">
+                        <p className="text-[11px] text-slate-500 mt-2 tracking-wide font-mono">
                           *Estimated pricing for {selectedCityLabel || location} ({quality.charAt(0).toUpperCase() + quality.slice(1)} Grade)
                         </p>
                       </div>
@@ -724,8 +748,8 @@ const ServicesPage: React.FC = () => {
 
                   {/* Discounts Notifications */}
                   {(comboDiscount > 0 || scaleDiscount > 0) && (
-                    <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F9D2BA]/15 border border-[#F9D2BA]/30 text-[10.5px] text-[#F9D2BA]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#F9D2BA] animate-pulse" />
+                    <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-100/80 border border-emerald-300 text-[11px] text-emerald-900 font-semibold shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                       <span>
                         Applied: {comboDiscount > 0 ? `${comboDiscount}% Combo` : ""}{" "}
                         {comboDiscount > 0 && scaleDiscount > 0 ? "+" : ""}{" "}
@@ -736,28 +760,28 @@ const ServicesPage: React.FC = () => {
 
                   {/* Breakdown Progress Bars */}
                   {selectedServices.length > 0 && (
-                    <div className="mt-6 sm:mt-9 space-y-4 sm:space-y-5">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 border-b border-white/10 pb-2">
+                    <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-4.5 bg-white/70 backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-800/80 border-b border-emerald-100 pb-2">
                         Estimated Cost Allocation
                       </p>
                       
                       {[
-                        { label: "Design & Planning", pct: 10, detail: "Architecture, 3D views & project layouts" },
-                        { label: "Material Procurement", pct: 55, detail: "Core structural materials & premium fittings" },
-                        { label: "Execution & Labor", pct: 35, detail: "Site managers, artisans & carpentry" }
+                        { label: "Design & Planning", pct: 10, detail: "Architecture, 3D views & project layouts", gradient: "from-teal-600 to-emerald-500" },
+                        { label: "Material Procurement", pct: 55, detail: "Core structural materials & premium fittings", gradient: "from-emerald-600 to-teal-400" },
+                        { label: "Execution & Labor", pct: 35, detail: "Site managers, artisans & carpentry", gradient: "from-slate-700 to-slate-900" }
                       ].map((item, idx) => (
-                        <div key={idx} className="space-y-1">
+                        <div key={idx} className="space-y-1.5">
                           <div className="flex justify-between text-xs font-semibold">
-                            <span className="text-gray-200">{item.label}</span>
-                            <span className="text-[#F9D2BA] font-mono">{item.pct}%</span>
+                            <span className="text-slate-800">{item.label}</span>
+                            <span className="text-emerald-800 font-mono font-bold">{item.pct}%</span>
                           </div>
-                          <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                          <div className="h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
                             <div
-                              className="h-full bg-gradient-to-r from-[#B08D57] to-[#F9D2BA] rounded-full"
+                              className={`h-full bg-gradient-to-r ${item.gradient} rounded-full transition-all duration-500`}
                               style={{ width: `${item.pct}%` }}
                             />
                           </div>
-                          <span className="block text-[10px] text-gray-400 font-light leading-none">
+                          <span className="block text-[10px] text-slate-500 font-light leading-none">
                             {item.detail}
                           </span>
                         </div>
@@ -767,16 +791,16 @@ const ServicesPage: React.FC = () => {
 
                 </div>
 
-                <div className="relative z-10 mt-6 sm:mt-10 space-y-3 sm:space-y-4">
+                <div className="relative z-10 mt-6 sm:mt-8 space-y-3 sm:space-y-4">
                   <button
                     type="button"
                     onClick={startProject}
-                    className="w-full py-4 px-6 bg-[#F9D2BA] text-[#0B1220] hover:bg-white transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg shadow-[#F9D2BA]/25 active:scale-[0.98] flex items-center justify-center gap-2 group"
+                    className="w-full py-4 px-6 bg-gradient-to-r from-emerald-700 via-emerald-800 to-[#0B3528] hover:from-emerald-800 hover:to-[#08291F] text-white shadow-xl shadow-emerald-900/20 hover:shadow-emerald-900/30 hover:scale-[1.01] transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-widest active:scale-[0.98] flex items-center justify-center gap-2 group cursor-pointer"
                   >
-                    Discuss This Estimate
-                    <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
+                    <span>Discuss This Estimate</span>
+                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
-                  <p className="text-[10px] text-center text-gray-400 leading-normal">
+                  <p className="text-[10px] text-center text-slate-400 leading-normal">
                     Estimate is ballpark. Get in touch for a detailed, itemized quote based on your site drawings.
                   </p>
                 </div>
@@ -790,6 +814,5 @@ const ServicesPage: React.FC = () => {
     </>
   );
 };
-
 
 export default ServicesPage;
