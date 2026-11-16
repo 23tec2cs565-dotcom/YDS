@@ -39,7 +39,6 @@ const navItems = [
 ];
 
 const gridItems = [
-  { path: "/", label: "Home", icon: Home, title: "Younick Design Studio Home" },
   { path: "/projects", label: "Portfolio", icon: FolderOpen, title: "View Our Completed Architecture & Interior Projects" },
   { path: "/services", label: "Services", icon: Briefcase, title: "Explore Turnkey Interior & Construction Services" },
   { path: "/about", label: "About Us", icon: Info, title: "Learn About Younick Design Studio Philosophy" },
