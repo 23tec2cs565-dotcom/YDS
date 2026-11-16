@@ -449,16 +449,21 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* Interactive Budget Estimator Section */}
-        <section className="py-16 sm:py-28 px-5 sm:px-6 bg-[#F8FAF9] border-t border-emerald-950/10 relative overflow-hidden">
-          {/* Fresh architectural ambient glow */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-emerald-500/5 via-teal-500/5 to-transparent blur-[140px] pointer-events-none" />
+        <section className="py-16 sm:py-28 px-5 sm:px-6 bg-[#FAFAFB] border-t border-slate-200/80 relative overflow-hidden">
+          {/* Multi-tone architectural ambient glow triad */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[130px] pointer-events-none" />
+          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-rose-500/5 rounded-full blur-[130px] pointer-events-none" />
+          <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-72 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="max-w-[1680px] mx-auto relative z-10">
             {/* Header */}
             <div className="text-center mb-8 sm:mb-16">
-              <span className="text-emerald-800 font-bold tracking-[0.2em] uppercase text-[10px] sm:text-xs mb-2.5 block">
-                Interactive Tool
-              </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200/80 shadow-sm text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-700 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span>Interactive Tool</span>
+              </div>
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif text-slate-900 tracking-tight">
                 Project Budget Estimator
               </h2>
@@ -473,11 +478,16 @@ const ServicesPage: React.FC = () => {
               {/* Controls Column (7 cols) */}
               <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-9 shadow-xl shadow-slate-200/50 border border-slate-200/80 flex flex-col justify-between">
                 
-                {/* Service Selector */}
+                {/* 1. Service Selector (Primary Accent: Architectural Cobalt / Sapphire) */}
                 <div className="mb-6 sm:mb-8">
-                  <label className="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">
-                    1. Select Services (Select Multiple)
-                  </label>
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    <label className="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500">
+                      1. Select Services (Select Multiple)
+                    </label>
+                    <span className="text-[10px] font-mono text-blue-600 bg-blue-50 border border-blue-200/80 px-2 py-0.5 rounded-md font-semibold">
+                      {selectedServices.length} Selected
+                    </span>
+                  </div>
                   <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                     {[
                       { id: "interior-design", label: "Interior Design", icon: "Paintbrush", desc: "Lighting, ceiling, furniture & woodwork" },
@@ -495,13 +505,13 @@ const ServicesPage: React.FC = () => {
                           onClick={() => toggleService(svc.id)}
                           className={`group relative flex items-start text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all duration-300 ${
                             isSelected
-                              ? "border-emerald-600 bg-gradient-to-br from-emerald-50/90 via-teal-50/50 to-white shadow-md shadow-emerald-900/5 ring-1 ring-emerald-500/40"
-                              : "border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/30 bg-white"
+                              ? "border-blue-600 bg-gradient-to-br from-blue-50/80 via-indigo-50/40 to-white shadow-md shadow-blue-900/5 ring-1 ring-blue-500/40"
+                              : "border-slate-200 hover:border-blue-300 hover:bg-blue-50/20 bg-white"
                           }`}
                         >
                           <div className={`mr-2.5 sm:mr-3.5 mt-0.5 p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-300 ${
                             isSelected
-                              ? "bg-emerald-700 text-white shadow-sm shadow-emerald-800/30"
+                              ? "bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-sm shadow-blue-600/30"
                               : "bg-slate-100 text-slate-500 group-hover:text-slate-700 group-hover:bg-slate-200/60"
                           }`}>
                             <SvcIcon size={16} />
@@ -514,7 +524,7 @@ const ServicesPage: React.FC = () => {
                                 {svc.label}
                               </span>
                               {isSelected && (
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 ml-1.5" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 ml-1.5" />
                               )}
                             </div>
                             <span className="hidden sm:block text-[11px] text-slate-400 leading-normal">
@@ -527,14 +537,14 @@ const ServicesPage: React.FC = () => {
                   </div>
                 </div>
 
+                {/* 2. Project Location (Secondary Accent: Warm Terracotta / Coral) */}
                 <div className="mb-6 sm:mb-8 relative">
-                  {/* Location Selector (Searchable Dropdown) */}
                   <div className="flex justify-between items-center mb-3">
                     <label htmlFor="city-search" className="block text-xs font-bold uppercase tracking-wider text-slate-500">
                       2. Project Location
                     </label>
                     {hasRestrictedService && (
-                      <span className="text-[10px] font-semibold text-emerald-800 px-2.5 py-0.5 rounded-full bg-emerald-100 border border-emerald-300 tracking-wide">
+                      <span className="text-[10px] font-semibold text-rose-700 px-2.5 py-0.5 rounded-full bg-rose-50 border border-rose-200 tracking-wide">
                         Rajasthan Only
                       </span>
                     )}
@@ -548,7 +558,7 @@ const ServicesPage: React.FC = () => {
                       id="city-search"
                       name="city-search"
                       type="text"
-                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 text-sm focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all bg-white text-slate-900 placeholder:text-slate-400"
+                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all bg-white text-slate-900 placeholder:text-slate-400"
                       placeholder={hasRestrictedService ? "Search Rajasthan locations near Jaipur..." : "Search major India cities..."}
                       value={showDropdown ? searchQuery : selectedCityLabel}
                       onChange={(e) => setSearchQuery(e.target.value)}
@@ -594,7 +604,7 @@ const ServicesPage: React.FC = () => {
                               }}
                               className={`flex items-center justify-between w-full px-4 py-2.5 text-xs text-left transition-colors ${
                                 isSelected
-                                  ? "bg-emerald-50 text-emerald-950 font-semibold"
+                                  ? "bg-blue-50 text-blue-950 font-semibold"
                                   : "hover:bg-slate-50 text-slate-700"
                               }`}
                             >
@@ -602,7 +612,7 @@ const ServicesPage: React.FC = () => {
                                 <span className="block text-slate-900 font-medium">{city.label}</span>
                                 <span className="block text-[10px] text-slate-400">{city.region}</span>
                               </div>
-                              {isSelected && <Check size={13} className="text-emerald-700" />}
+                              {isSelected && <Check size={13} className="text-blue-700" />}
                             </button>
                           );
                         })
@@ -610,25 +620,25 @@ const ServicesPage: React.FC = () => {
                     </div>
                   )}
 
-                  {/* Service warning note */}
+                  {/* Service warning note (Warm Terracotta alert) */}
                   {hasRestrictedService && (
-                    <div className="mt-3.5 p-3.5 rounded-xl bg-emerald-50/90 border border-emerald-200 text-[11px] text-emerald-900 flex items-start gap-2.5 shadow-sm">
-                      <AlertCircle size={15} className="shrink-0 text-emerald-700 mt-0.5" />
+                    <div className="mt-3.5 p-3.5 rounded-xl bg-gradient-to-r from-rose-50/90 via-amber-50/60 to-rose-50/90 border border-rose-200/90 text-[11px] text-rose-950 flex items-start gap-2.5 shadow-sm">
+                      <AlertCircle size={15} className="shrink-0 text-rose-600 mt-0.5" />
                       <div>
-                        <span className="font-bold block mb-0.5 text-emerald-950 text-xs uppercase tracking-wider">Location Restricted Service</span>
+                        <span className="font-bold block mb-0.5 text-rose-900 text-xs uppercase tracking-wider">Location Restricted Service</span>
                         Turnkey Construction and Renovation services are limited only to select locations in Rajasthan (primarily Jaipur and nearby surrounding districts).
                       </div>
                     </div>
                   )}
                 </div>
 
-                {/* Area Slider */}
+                {/* 3. Area Slider (Tertiary Accent: Fresh Jade / Emerald) */}
                 <div className="mb-6 sm:mb-8">
                   <div className="flex justify-between items-center mb-3">
                     <label htmlFor="area-number" className="block text-xs font-bold uppercase tracking-wider text-slate-500">
                       3. Area of Project
                     </label>
-                    <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-3 py-1.5 focus-within:border-emerald-600 focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all shadow-sm">
+                    <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-3 py-1.5 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all shadow-sm">
                       <input
                         id="area-number"
                         name="area-number"
@@ -645,7 +655,7 @@ const ServicesPage: React.FC = () => {
                         }}
                         className="w-20 bg-transparent text-right font-serif text-sm font-bold text-slate-900 outline-none border-none p-0 focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
-                      <span className="text-[10px] font-sans font-medium text-slate-400">Sq. Ft.</span>
+                      <span className="text-[10px] font-sans font-semibold text-emerald-700">Sq. Ft.</span>
                     </div>
                   </div>
                   <input
@@ -657,7 +667,7 @@ const ServicesPage: React.FC = () => {
                     step="100"
                     value={Math.max(500, Math.min(6000, area))}
                     onChange={(e) => setArea(parseInt(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-700"
+                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                   />
                   <div className="flex justify-between text-[10px] text-slate-400 mt-1 font-mono tracking-wide">
                     <span>500 SQFT</span>
@@ -666,16 +676,34 @@ const ServicesPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Quality/Material Selector */}
+                {/* 4. Quality/Material Selector (Tri-Color Tiers: Emerald, Cobalt, Amber-Terracotta) */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
                     4. Material & Finish Grade
                   </label>
                   <div className="grid grid-cols-3 gap-2.5">
                     {[
-                      { id: "standard", label: "Classic", desc: "Quality essentials" },
-                      { id: "premium", label: "Premium", desc: "Branded finishes" },
-                      { id: "luxury", label: "Ultra-Luxury", desc: "Exotic & bespoke" }
+                      { 
+                        id: "standard", 
+                        label: "Classic", 
+                        desc: "Quality essentials",
+                        activeStyle: "border-emerald-600 bg-gradient-to-b from-emerald-50/80 to-white text-emerald-950 shadow-md shadow-emerald-500/10 ring-1 ring-emerald-500/40",
+                        activeTag: "text-emerald-700"
+                      },
+                      { 
+                        id: "premium", 
+                        label: "Premium", 
+                        desc: "Branded finishes",
+                        activeStyle: "border-blue-600 bg-gradient-to-b from-blue-50/80 to-white text-blue-950 shadow-md shadow-blue-500/10 ring-1 ring-blue-500/40",
+                        activeTag: "text-blue-700"
+                      },
+                      { 
+                        id: "luxury", 
+                        label: "Ultra-Luxury", 
+                        desc: "Exotic & bespoke",
+                        activeStyle: "border-amber-500 bg-gradient-to-b from-amber-50/80 to-white text-amber-950 shadow-md shadow-amber-500/10 ring-1 ring-amber-500/40",
+                        activeTag: "text-amber-700"
+                      }
                     ].map((g) => {
                       const isSelected = quality === g.id;
                       return (
@@ -685,17 +713,17 @@ const ServicesPage: React.FC = () => {
                           onClick={() => setQuality(g.id as "standard" | "premium" | "luxury")}
                           className={`flex flex-col items-center py-3 px-2 sm:px-3 rounded-2xl border text-center transition-all duration-300 relative ${
                             isSelected
-                              ? "border-emerald-600 bg-gradient-to-b from-emerald-50/90 via-teal-50/50 to-white shadow-md shadow-emerald-900/10 ring-1 ring-emerald-500/40"
+                              ? g.activeStyle
                               : "border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50/70"
                           }`}
                         >
                           <span className={`block text-xs sm:text-sm font-semibold transition-colors ${
-                            isSelected ? "text-slate-900" : "text-slate-700"
+                            isSelected ? "font-bold" : "text-slate-700"
                           }`}>
                             {g.label}
                           </span>
                           <span className={`block text-[10px] mt-0.5 transition-colors ${
-                            isSelected ? "text-emerald-700 font-medium" : "text-slate-400"
+                            isSelected ? `${g.activeTag} font-medium` : "text-slate-400"
                           }`}>
                             {g.desc}
                           </span>
@@ -707,28 +735,30 @@ const ServicesPage: React.FC = () => {
 
               </div>
 
-              {/* Estimate Results Card (5 cols) - Luminous Architectural Porcelain & Emerald */}
-              <div className="lg:col-span-5 bg-gradient-to-b from-white via-[#F7FCF9] to-[#EFF9F4] text-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden border-2 border-emerald-600/25 shadow-2xl shadow-emerald-950/10">
+              {/* Estimate Results Card (5 cols) - Multi 3-Color Graded Master Display */}
+              <div className="lg:col-span-5 bg-gradient-to-b from-white via-slate-50/90 to-blue-50/20 text-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden border border-slate-200 shadow-2xl shadow-slate-300/40">
                 
-                {/* Subtle emerald top rim highlight */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-600 to-transparent pointer-events-none" />
+                {/* Multi 3-color top rim highlight (Cobalt -> Rose -> Emerald) */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-500 via-rose-500 to-emerald-500 pointer-events-none" />
 
-                {/* Soft ambient glows */}
-                <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-[90px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-500/10 rounded-full blur-[80px] pointer-events-none" />
+                {/* Ambient multi-tone glows */}
+                <div className="absolute top-0 right-0 w-72 h-72 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-rose-500/10 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-emerald-500/5 rounded-full blur-[70px] pointer-events-none" />
 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between">
-                    <span className="text-emerald-800 text-[10px] font-bold uppercase tracking-[0.25em] flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                    <span className="text-blue-900 text-[10px] font-bold uppercase tracking-[0.25em] flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-blue-600" />
                       Estimated Budget Range
                     </span>
-                    <span className="text-[10px] font-mono text-emerald-700/80 uppercase font-semibold px-2 py-0.5 rounded-md bg-emerald-100/60 border border-emerald-200/60">
+                    <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 uppercase font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                       Live Calculation
                     </span>
                   </div>
                   
-                  {/* Budget Counter */}
+                  {/* Budget Counter with multi-tone depth */}
                   <div className="mt-5 mb-2">
                     {selectedServices.length === 0 ? (
                       <div className="text-xl sm:text-2xl text-slate-400 font-serif py-6 italic">
@@ -736,7 +766,7 @@ const ServicesPage: React.FC = () => {
                       </div>
                     ) : (
                       <div>
-                        <div className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight text-slate-900 font-bold drop-shadow-sm">
+                        <div className="font-serif text-3xl sm:text-4xl md:text-5xl tracking-tight font-bold bg-gradient-to-r from-slate-950 via-blue-950 to-indigo-900 bg-clip-text text-transparent drop-shadow-sm">
                           {formatCost(min)} – {formatCost(max)}
                         </div>
                         <p className="text-[11px] text-slate-500 mt-2 tracking-wide font-mono">
@@ -746,10 +776,10 @@ const ServicesPage: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Discounts Notifications */}
+                  {/* Discounts Notifications (Secondary Terracotta / Coral Accent) */}
                   {(comboDiscount > 0 || scaleDiscount > 0) && (
-                    <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-100/80 border border-emerald-300 text-[11px] text-emerald-900 font-semibold shadow-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                    <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gradient-to-r from-rose-50 via-amber-50 to-rose-50 border border-rose-300 text-[11px] text-rose-900 font-semibold shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
                       <span>
                         Applied: {comboDiscount > 0 ? `${comboDiscount}% Combo` : ""}{" "}
                         {comboDiscount > 0 && scaleDiscount > 0 ? "+" : ""}{" "}
@@ -758,22 +788,53 @@ const ServicesPage: React.FC = () => {
                     </div>
                   )}
 
-                  {/* Breakdown Progress Bars */}
+                  {/* Breakdown Progress Bars (Tri-Color Graded: Cobalt, Coral, Emerald) */}
                   {selectedServices.length > 0 && (
-                    <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-4.5 bg-white/70 backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-800/80 border-b border-emerald-100 pb-2">
-                        Estimated Cost Allocation
-                      </p>
+                    <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-4.5 bg-white/80 backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                          Estimated Cost Allocation
+                        </p>
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-blue-500" title="Design & Planning" />
+                          <span className="w-2 h-2 rounded-full bg-rose-500" title="Material Procurement" />
+                          <span className="w-2 h-2 rounded-full bg-emerald-500" title="Execution & Labor" />
+                        </div>
+                      </div>
                       
                       {[
-                        { label: "Design & Planning", pct: 10, detail: "Architecture, 3D views & project layouts", gradient: "from-teal-600 to-emerald-500" },
-                        { label: "Material Procurement", pct: 55, detail: "Core structural materials & premium fittings", gradient: "from-emerald-600 to-teal-400" },
-                        { label: "Execution & Labor", pct: 35, detail: "Site managers, artisans & carpentry", gradient: "from-slate-700 to-slate-900" }
+                        { 
+                          label: "Design & Planning", 
+                          pct: 10, 
+                          detail: "Architecture, 3D views & project layouts", 
+                          gradient: "from-blue-600 to-indigo-600",
+                          textColor: "text-blue-700",
+                          dotColor: "bg-blue-600"
+                        },
+                        { 
+                          label: "Material Procurement", 
+                          pct: 55, 
+                          detail: "Core structural materials & premium fittings", 
+                          gradient: "from-amber-500 to-rose-500",
+                          textColor: "text-rose-700",
+                          dotColor: "bg-rose-500"
+                        },
+                        { 
+                          label: "Execution & Labor", 
+                          pct: 35, 
+                          detail: "Site managers, artisans & carpentry", 
+                          gradient: "from-emerald-500 to-teal-500",
+                          textColor: "text-emerald-700",
+                          dotColor: "bg-emerald-500"
+                        }
                       ].map((item, idx) => (
                         <div key={idx} className="space-y-1.5">
-                          <div className="flex justify-between text-xs font-semibold">
-                            <span className="text-slate-800">{item.label}</span>
-                            <span className="text-emerald-800 font-mono font-bold">{item.pct}%</span>
+                          <div className="flex justify-between items-center text-xs font-semibold">
+                            <span className="text-slate-800 flex items-center gap-1.5">
+                              <span className={`w-1.5 h-1.5 rounded-full ${item.dotColor}`} />
+                              {item.label}
+                            </span>
+                            <span className={`${item.textColor} font-mono font-bold`}>{item.pct}%</span>
                           </div>
                           <div className="h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
                             <div
@@ -795,7 +856,7 @@ const ServicesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={startProject}
-                    className="w-full py-4 px-6 bg-gradient-to-r from-emerald-700 via-emerald-800 to-[#0B3528] hover:from-emerald-800 hover:to-[#08291F] text-white shadow-xl shadow-emerald-900/20 hover:shadow-emerald-900/30 hover:scale-[1.01] transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-widest active:scale-[0.98] flex items-center justify-center gap-2 group cursor-pointer"
+                    className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white shadow-xl shadow-blue-600/25 hover:shadow-blue-600/35 hover:scale-[1.01] transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-widest active:scale-[0.98] flex items-center justify-center gap-2 group cursor-pointer"
                   >
                     <span>Discuss This Estimate</span>
                     <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
