@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import {
   ChevronDown,
   ArrowRight,
@@ -196,6 +197,8 @@ const ServicesPage: React.FC = () => {
   const [location, setLocation] = useState<string>("jaipur");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [isPlateToggled, setIsPlateToggled] = useState(false);
+  const [isPlateHovered, setIsPlateHovered] = useState(false);
 
   // Turnkey construction & Renovation are restricted to Rajasthan locations near Jaipur (under 150-170 km)
   const hasRestrictedService = selectedServices.includes("construction") || selectedServices.includes("renovation");
@@ -427,8 +430,36 @@ const ServicesPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="relative">
-                <div className="absolute inset-0 bg-[#B08D57] transform translate-x-3 translate-y-3 rounded-2xl" />
+              {/* Interactive Precision Craftsmanship Image with Minimal Motion Golden Plate */}
+              <div 
+                className="relative select-none cursor-pointer group"
+                onMouseEnter={() => setIsPlateHovered(true)}
+                onMouseLeave={() => setIsPlateHovered(false)}
+                onClick={() => setIsPlateToggled(prev => !prev)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setIsPlateToggled(prev => !prev);
+                  }
+                }}
+              >
+                {/* Dynamic Minimal Golden Plate with Motion */}
+                <motion.div
+                  className="absolute inset-0 bg-[#B08D57] rounded-2xl shadow-md"
+                  animate={{
+                    x: (isPlateHovered !== isPlateToggled) ? -6 : 10,
+                    y: (isPlateHovered !== isPlateToggled) ? -6 : 10,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 24,
+                  }}
+                />
+
+                {/* Main Photograph Card */}
                 <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                   <img decoding="async" loading="lazy"
                     src="/assets/services/Service-2.avif"
@@ -436,7 +467,7 @@ const ServicesPage: React.FC = () => {
                     title="Precision Interior Execution Process by Younick Design Studio"
                     width="800"
                     height="600"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                     onError={handleImgError}
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
