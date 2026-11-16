@@ -647,7 +647,7 @@ const ServicesPage: React.FC = () => {
                     <label htmlFor="area-number" className="block text-xs font-bold uppercase tracking-[0.15em] text-stone-500">
                       3. Built-Up Area Scale
                     </label>
-                    <div className="flex items-center gap-2 bg-[#0F1420] text-white px-3.5 py-1.5 rounded-xl shadow-md border border-white/10 transition-all">
+                    <div className="flex items-center gap-2 bg-white text-slate-900 px-3.5 py-1.5 rounded-xl shadow-xs border border-[#EEEEEE] transition-all">
                       <input
                         id="area-number"
                         name="area-number"
@@ -662,9 +662,9 @@ const ServicesPage: React.FC = () => {
                         onBlur={() => {
                           if (area < 100) setArea(500);
                         }}
-                        className="w-18 bg-transparent text-right font-serif text-sm font-bold text-white outline-none border-none p-0 focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        className="w-18 bg-transparent text-right font-serif text-sm font-bold text-slate-900 outline-none border-none p-0 focus:ring-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
-                      <span className="text-[10px] font-mono font-semibold text-[#BEDEFF] tracking-wider">SQ. FT.</span>
+                      <span className="text-[10px] font-mono font-bold text-blue-900 bg-[#BEDEFF]/40 px-1.5 py-0.5 rounded tracking-wider">SQ. FT.</span>
                     </div>
                   </div>
 
@@ -763,30 +763,30 @@ const ServicesPage: React.FC = () => {
 
               </div>
 
-              {/* Right Results Column (5 cols) - Haute Smoked Glass Architectural Master Console */}
-              <div className="lg:col-span-5 bg-gradient-to-b from-[#0F1420] via-[#0A0E18] to-[#06080F] text-white rounded-3xl p-6 sm:p-9 flex flex-col justify-between relative overflow-hidden border border-white/10 shadow-[0_25px_60px_-15px_rgba(11,16,29,0.55)]">
+              {/* Right Results Column (5 cols) - Luminous Architectural Master Console (100% Light Palette) */}
+              <div className="lg:col-span-5 bg-gradient-to-b from-white via-[#FAF9F7] to-[#F5EFE6] text-slate-900 rounded-3xl p-6 sm:p-9 flex flex-col justify-between relative overflow-hidden border-2 border-[#EEEEEE] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.06)] hover:border-[#BEDEFF]/60 transition-colors duration-500">
                 
                 {/* Precision 3-color laser edge rim (#BEDEFF -> #EEEEEE -> #F8EADC) */}
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#BEDEFF] via-[#EEEEEE] to-[#F8EADC] pointer-events-none" />
 
                 {/* Multi-tone atmospheric jewel glows */}
-                <div className="absolute -top-10 -right-10 w-80 h-80 bg-[#BEDEFF]/20 rounded-full blur-[90px] pointer-events-none" />
-                <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-[#F8EADC]/20 rounded-full blur-[90px] pointer-events-none" />
-                <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-[#EEEEEE]/10 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute -top-10 -right-10 w-80 h-80 bg-[#BEDEFF]/25 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-[#F8EADC]/35 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-[#EEEEEE]/50 rounded-full blur-[70px] pointer-events-none" />
 
                 {/* Architectural Crosshairs */}
-                <span className="absolute top-3 left-3 text-white/20 font-mono text-[10px] select-none pointer-events-none">+</span>
-                <span className="absolute top-3 right-3 text-white/20 font-mono text-[10px] select-none pointer-events-none">+</span>
+                <span className="absolute top-3 left-3 text-slate-400 font-mono text-[10px] select-none pointer-events-none">+</span>
+                <span className="absolute top-3 right-3 text-slate-400 font-mono text-[10px] select-none pointer-events-none">+</span>
 
                 <div className="relative z-10">
                   {/* Console Header */}
-                  <div className="flex items-center justify-between border-b border-white/10 pb-3.5">
-                    <span className="text-[#F8EADC] text-[10px] font-bold uppercase tracking-[0.25em] flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#BEDEFF] shadow-[0_0_10px_rgba(190,222,255,0.9)]" />
+                  <div className="flex items-center justify-between border-b border-[#EEEEEE] pb-3.5">
+                    <span className="text-slate-800 text-[10px] font-bold uppercase tracking-[0.25em] flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#BEDEFF] shadow-[0_0_8px_rgba(190,222,255,1)]" />
                       Calibrated Budget Range
                     </span>
-                    <span className="text-[10px] font-mono text-[#BEDEFF] bg-[#BEDEFF]/15 border border-[#BEDEFF]/30 uppercase font-semibold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#BEDEFF] animate-pulse" />
+                    <span className="text-[10px] font-mono text-slate-800 bg-[#BEDEFF]/35 border border-[#BEDEFF] uppercase font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                       Live Model
                     </span>
                   </div>
@@ -794,16 +794,16 @@ const ServicesPage: React.FC = () => {
                   {/* Budget Counter with Metallic Platinum (#EEEEEE), Ice Blue (#BEDEFF) & Champagne Travertine (#F8EADC) */}
                   <div className="mt-6 mb-3">
                     {selectedServices.length === 0 ? (
-                      <div className="text-xl sm:text-2xl text-stone-400 font-serif py-8 italic font-light">
+                      <div className="text-xl sm:text-2xl text-slate-400 font-serif py-8 italic font-light">
                         Select one or more architectural disciplines to generate estimate...
                       </div>
                     ) : (
                       <div>
-                        <div className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight font-medium bg-gradient-to-r from-white via-[#BEDEFF] to-[#F8EADC] bg-clip-text text-transparent drop-shadow-[0_4px_20px_rgba(190,222,255,0.3)]">
+                        <div className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight font-bold text-slate-950">
                           {formatCost(min)} – {formatCost(max)}
                         </div>
-                        <p className="text-[11px] text-stone-400 mt-2.5 tracking-wider font-mono flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-[#BEDEFF]" />
+                        <p className="text-[11px] text-slate-600 mt-2.5 tracking-wider font-mono flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#BEDEFF] border border-blue-400" />
                           Indicative Turnkey Estimate for {selectedCityLabel || location} ({quality.charAt(0).toUpperCase() + quality.slice(1)} Tier)
                         </p>
                       </div>
@@ -812,8 +812,8 @@ const ServicesPage: React.FC = () => {
 
                   {/* Applied Volume & Combo Savings Pill (#F8EADC Accent) */}
                   {(comboDiscount > 0 || scaleDiscount > 0) && (
-                    <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#F8EADC]/15 via-[#BEDEFF]/15 to-[#F8EADC]/15 border border-[#F8EADC]/40 text-[11px] text-[#F8EADC] font-medium backdrop-blur-md shadow-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#F8EADC] shadow-[0_0_8px_rgba(248,234,220,0.9)] animate-pulse" />
+                    <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#F8EADC] border border-[#ECC8AA] text-[11px] text-stone-900 font-semibold shadow-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-600 shadow-[0_0_8px_rgba(217,119,6,0.6)] animate-pulse" />
                       <span>
                         Applied Privilege: {comboDiscount > 0 ? `${comboDiscount}% Multi-Service` : ""}{" "}
                         {comboDiscount > 0 && scaleDiscount > 0 ? "+" : ""}{" "}
@@ -824,15 +824,15 @@ const ServicesPage: React.FC = () => {
 
                   {/* Breakdown Progress Bars - Tri-Color Graded in #BEDEFF, #F8EADC, #EEEEEE */}
                   {selectedServices.length > 0 && (
-                    <div className="mt-7 sm:mt-9 space-y-4 bg-white/[0.04] backdrop-blur-xl p-5 sm:p-6 rounded-2xl border border-white/10 shadow-inner">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F8EADC]/90">
+                    <div className="mt-7 sm:mt-9 space-y-4 bg-white/95 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-[#EEEEEE] shadow-sm">
+                      <div className="flex items-center justify-between border-b border-[#EEEEEE] pb-2.5">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-800">
                           Capital Allocation Matrix
                         </p>
                         <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-[#BEDEFF] shadow-[0_0_8px_rgba(190,222,255,0.9)]" title="#BEDEFF Planning" />
-                          <span className="w-2 h-2 rounded-full bg-[#F8EADC] shadow-[0_0_8px_rgba(248,234,220,0.9)]" title="#F8EADC Materials" />
-                          <span className="w-2 h-2 rounded-full bg-[#EEEEEE] shadow-[0_0_8px_rgba(238,238,238,0.7)]" title="#EEEEEE Execution" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#BEDEFF] border border-blue-300" title="#BEDEFF Planning" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#F8EADC] border border-amber-300" title="#F8EADC Materials" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#EEEEEE] border border-stone-300" title="#EEEEEE Execution" />
                         </div>
                       </div>
                       
@@ -841,45 +841,47 @@ const ServicesPage: React.FC = () => {
                           label: "Design, Architecture & 3D Planning", 
                           pct: 10, 
                           detail: "Floorplans, elevations, structural CAD & digital twin visuals", 
-                          gradient: "from-[#BEDEFF] to-[#80B8F5]",
-                          glow: "shadow-[0_0_12px_rgba(190,222,255,0.45)]",
-                          textColor: "text-[#BEDEFF]",
-                          dotColor: "bg-[#BEDEFF]"
+                          gradient: "from-[#BEDEFF] to-[#7DB0ED]",
+                          glow: "shadow-[0_0_10px_rgba(190,222,255,0.7)]",
+                          badgeBg: "bg-[#BEDEFF]/35 border border-[#BEDEFF] text-blue-950",
+                          dotColor: "bg-[#BEDEFF] border border-blue-400"
                         },
                         { 
                           label: "High-Specification Material Procurement", 
                           pct: 55, 
                           detail: "Italian marble, engineered core, imported hardware & veneers", 
                           gradient: "from-[#F8EADC] to-[#ECC8AA]",
-                          glow: "shadow-[0_0_12px_rgba(248,234,220,0.45)]",
-                          textColor: "text-[#F8EADC]",
-                          dotColor: "bg-[#F8EADC]"
+                          glow: "shadow-[0_0_10px_rgba(248,234,220,0.8)]",
+                          badgeBg: "bg-[#F8EADC] border border-[#ECC8AA] text-stone-900",
+                          dotColor: "bg-[#F8EADC] border border-amber-400"
                         },
                         { 
                           label: "Master Artisans & Turnkey Execution", 
                           pct: 35, 
                           detail: "Master carpenters, site architects & QA engineering", 
                           gradient: "from-[#BEDEFF] via-[#EEEEEE] to-[#F8EADC]",
-                          glow: "shadow-[0_0_12px_rgba(238,238,238,0.35)]",
-                          textColor: "text-[#EEEEEE]",
-                          dotColor: "bg-[#EEEEEE]"
+                          glow: "shadow-[0_0_10px_rgba(238,238,238,0.8)]",
+                          badgeBg: "bg-[#EEEEEE] border border-stone-300 text-slate-900",
+                          dotColor: "bg-[#EEEEEE] border border-stone-400"
                         }
                       ].map((item, idx) => (
                         <div key={idx} className="space-y-1.5">
                           <div className="flex justify-between items-center text-xs font-semibold">
-                            <span className="text-stone-200 flex items-center gap-2">
+                            <span className="text-slate-800 flex items-center gap-2">
                               <span className={`w-1.5 h-1.5 rounded-full ${item.dotColor}`} />
                               {item.label}
                             </span>
-                            <span className={`${item.textColor} font-mono font-bold text-xs`}>{item.pct}%</span>
+                            <span className={`font-mono font-bold text-[11px] px-2 py-0.5 rounded ${item.badgeBg}`}>
+                              {item.pct}%
+                            </span>
                           </div>
-                          <div className="h-2 bg-white/10 rounded-full overflow-hidden p-[1px]">
+                          <div className="h-2 bg-[#EEEEEE] rounded-full overflow-hidden p-[1px]">
                             <div
                               className={`h-full bg-gradient-to-r ${item.gradient} rounded-full transition-all duration-500 ${item.glow}`}
                               style={{ width: `${item.pct}%` }}
                             />
                           </div>
-                          <span className="block text-[10px] text-stone-400 font-light leading-none">
+                          <span className="block text-[10.5px] text-slate-500 font-light leading-none">
                             {item.detail}
                           </span>
                         </div>
@@ -894,12 +896,12 @@ const ServicesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={startProject}
-                    className="w-full py-4 px-6 bg-gradient-to-r from-[#BEDEFF] via-[#F8EADC] to-[#BEDEFF] hover:from-[#B0D5FC] hover:to-[#F3E2D1] text-[#0A0E18] shadow-[0_12px_35px_-5px_rgba(190,222,255,0.45)] hover:shadow-[0_16px_45px_-5px_rgba(248,234,220,0.55)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-[0.16em] flex items-center justify-center gap-2 group cursor-pointer"
+                    className="w-full py-4 px-6 bg-gradient-to-r from-[#BEDEFF] via-[#F8EADC] to-[#BEDEFF] hover:from-[#A8D3FF] hover:to-[#F3DECE] text-slate-950 shadow-[0_12px_30px_-5px_rgba(190,222,255,0.7)] hover:shadow-[0_16px_35px_-5px_rgba(248,234,220,0.8)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-[0.16em] flex items-center justify-center gap-2 group cursor-pointer border border-[#BEDEFF]/60"
                   >
                     <span>Request Architectural Dossier</span>
-                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1.5 text-[#0A0E18]" />
+                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1.5 text-slate-950" />
                   </button>
-                  <p className="text-[10.5px] text-center text-stone-400 leading-relaxed font-sans">
+                  <p className="text-[10.5px] text-center text-slate-500 leading-relaxed font-sans">
                     Ballpark modeling only. Actual project scope is itemized upon site survey and CAD architectural drawings.
                   </p>
                 </div>
