@@ -446,13 +446,13 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                 aria-label="Close navigation menu"
               >
                 {/* Doctor Strange Sling Ring Molten Spark Portal */}
-                <SlingRingPortal active={isCloseHovered} />
+                <SlingRingPortal active={isCloseHovered} size={52} targetRadius={18} />
 
                 <Plus
-                  size={20}
+                  size={18}
                   className={`relative z-10 transition-transform duration-300 ease-out group-hover:rotate-45 ${
                     isCloseHovered
-                      ? "rotate-45 text-[#0B1220] drop-shadow-[0_0_6px_rgba(255,180,0,0.8)]"
+                      ? "rotate-45 text-[#0B1220]"
                       : "rotate-0 text-gray-700"
                   }`}
                 />

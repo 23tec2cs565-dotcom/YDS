@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from "react";
 
 interface SlingRingPortalProps {
   active: boolean;
-  size?: number; // Canvas width/height in CSS pixels (default: 140)
-  targetRadius?: number; // Portal ring radius in CSS pixels (default: 23)
+  size?: number; // Canvas width/height in CSS pixels (default: 52)
+  targetRadius?: number; // Portal ring radius in CSS pixels (default: 18)
   className?: string;
 }
 
@@ -18,14 +18,13 @@ interface Spark {
   maxLife: number;
   decay: number;
   width: number;
-  gravity: number;
   drag: number;
 }
 
 export const SlingRingPortal: React.FC<SlingRingPortalProps> = ({
   active,
-  size = 140,
-  targetRadius = 23,
+  size = 52,
+  targetRadius = 18,
   className = "",
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -46,7 +45,7 @@ export const SlingRingPortal: React.FC<SlingRingPortalProps> = ({
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    // High-DPI screen support (Retina / 4K)
+    // High-DPI screen support (crisp on Retina / 4K)
     const dpr = Math.min(typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1, 2);
     canvas.width = size * dpr;
     canvas.height = size * dpr;
@@ -62,63 +61,51 @@ export const SlingRingPortal: React.FC<SlingRingPortalProps> = ({
     let currentRadius = activeRef.current ? targetRadius : 0;
     let portalAlpha = activeRef.current ? 1 : 0;
     let headAngle = Math.random() * Math.PI * 2;
-    let secondaryAngle = headAngle + Math.PI;
 
-    // Helper: spawn realistic tangential Doctor Strange sparks
-    const spawnSpark = (
-      angle: number,
-      radius: number,
-      isLeadCutter: boolean = false
-    ) => {
-      // Spawn slightly fluctuating around the ring circumference
-      const radialJitter = (Math.random() - 0.5) * 1.8;
-      const r = Math.max(2, radius + radialJitter);
+    // Helper: spawn compact, delicate micro-sparks hugging the rim
+    const spawnSpark = (angle: number, radius: number, isLead: boolean = false) => {
+      // Spawn right on the ring circumference with subtle jitter
+      const r = radius + (Math.random() - 0.5) * 1.0;
       const originX = cx + Math.cos(angle) * r;
       const originY = cy + Math.sin(angle) * r;
 
-      // Tangential velocity vector (clockwise rotation)
+      // Tangential velocity (clockwise)
       const tangX = -Math.sin(angle);
       const tangY = Math.cos(angle);
 
-      // Centrifugal / outward velocity vector
+      // Controlled, subtle outward drift (tangent dominates)
       const outX = Math.cos(angle);
       const outY = Math.sin(angle);
 
-      // Speed configuration: cutter head produces high-velocity sparks, perimeter produces steady shower
-      const speed = isLeadCutter
-        ? 3.6 + Math.random() * 4.8
-        : 2.0 + Math.random() * 3.4;
+      // Low, controlled speed so sparks stay strictly within 2-5px of the ring
+      const speed = isLead ? 0.9 + Math.random() * 0.9 : 0.6 + Math.random() * 0.7;
+      const outwardBlend = 0.25;
 
-      // Real angle grinding: tangent dominates, with realistic outward burst angle (20° - 45°)
-      const outwardBlend = 0.35 + Math.random() * 0.45;
-      const vx = (tangX * (1 - outwardBlend) + outX * outwardBlend) * speed + (Math.random() - 0.5) * 1.0;
-      const vy = (tangY * (1 - outwardBlend) + outY * outwardBlend) * speed + (Math.random() - 0.5) * 1.0;
+      const vx = (tangX * (1 - outwardBlend) + outX * outwardBlend) * speed + (Math.random() - 0.5) * 0.3;
+      const vy = (tangY * (1 - outwardBlend) + outY * outwardBlend) * speed + (Math.random() - 0.5) * 0.3;
 
-      const maxLife = isLeadCutter
-        ? 32 + Math.floor(Math.random() * 28)
-        : 20 + Math.floor(Math.random() * 22);
+      const maxLife = isLead ? 12 + Math.floor(Math.random() * 10) : 8 + Math.floor(Math.random() * 8);
 
       sparks.push({
         x: originX,
         y: originY,
-        prevX: originX - vx * 0.45,
-        prevY: originY - vy * 0.45,
+        prevX: originX - vx * 0.5,
+        prevY: originY - vy * 0.5,
         vx,
         vy,
         life: maxLife,
         maxLife,
         decay: 1,
-        width: isLeadCutter ? 1.5 + Math.random() * 1.5 : 0.8 + Math.random() * 1.2,
-        gravity: 0.05 + Math.random() * 0.08, // Ballistic downward gravity
-        drag: 0.94 + Math.random() * 0.03, // Aerodynamic air drag
+        width: isLead ? 1.0 + Math.random() * 0.5 : 0.7 + Math.random() * 0.4,
+        drag: 0.92,
       });
     };
 
-    // Main physics and render step
+    // Main animation step
     const render = () => {
       const isCurrentlyActive = activeRef.current;
 
-      // If portal is closed and all flying sparks have decayed, sleep loop to save resources
+      // Sleep loop when portal is closed and sparks have fizzled
       if (!isCurrentlyActive && portalAlpha <= 0.01 && sparks.length === 0) {
         ctx.save();
         ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -137,111 +124,90 @@ export const SlingRingPortal: React.FC<SlingRingPortalProps> = ({
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      // Smooth radius and alpha dynamics
+      // Smooth radius and alpha transition
       if (isCurrentlyActive) {
-        currentRadius += (targetRadius - currentRadius) * 0.22;
+        currentRadius += (targetRadius - currentRadius) * 0.24;
         portalAlpha += (1 - portalAlpha) * 0.25;
       } else {
-        currentRadius += (0 - currentRadius) * 0.16;
-        portalAlpha += (0 - portalAlpha) * 0.18;
+        currentRadius += (0 - currentRadius) * 0.2;
+        portalAlpha += (0 - portalAlpha) * 0.22;
       }
 
-      // Rotate cutting heads around the circle
-      headAngle += 0.13;
-      secondaryAngle -= 0.09;
+      // Smooth, elegant rotation
+      headAngle += 0.07;
 
-      // Spawn new molten sparks while portal is active / opening
-      if (portalAlpha > 0.08 && currentRadius > 3) {
-        // High-density cutter head (the intense point where the sling ring grinds)
-        const cutterCount = isCurrentlyActive ? 4 : 1;
-        for (let i = 0; i < cutterCount; i++) {
-          const jitter = (Math.random() - 0.5) * 0.4;
-          spawnSpark(headAngle + jitter, currentRadius, true);
+      // Spawn subtle micro-sparks while portal is visible
+      if (portalAlpha > 0.1 && currentRadius > 3) {
+        // 1 lead spark on the cutter head
+        if (isCurrentlyActive) {
+          spawnSpark(headAngle, currentRadius, true);
         }
 
-        // Secondary counter-rotating head
-        if (isCurrentlyActive && Math.random() > 0.35) {
-          spawnSpark(secondaryAngle + (Math.random() - 0.5) * 0.4, currentRadius, false);
-        }
-
-        // Ambient perimeter spark emissions
-        const ambientCount = isCurrentlyActive ? 3 : 1;
-        for (let i = 0; i < ambientCount; i++) {
-          const randAngle = Math.random() * Math.PI * 2;
-          spawnSpark(randAngle, currentRadius, false);
+        // 1 subtle ambient spark along the rim
+        if (isCurrentlyActive && Math.random() > 0.4) {
+          spawnSpark(Math.random() * Math.PI * 2, currentRadius, false);
         }
       }
 
-      // Cap sparks buffer for rock-solid 60 FPS
-      if (sparks.length > 180) {
-        sparks = sparks.slice(sparks.length - 180);
+      // Keep spark pool clean and lightweight
+      if (sparks.length > 40) {
+        sparks = sparks.slice(sparks.length - 40);
       }
 
-      // Additive blending for blinding incendiary plasma glow
+      // Additive blending for clean radiant glow
       ctx.globalCompositeOperation = "lighter";
 
-      // 1. Draw the Blazing Ring Plasma Filaments
+      // 1. Draw the Sleek, Contained Mystic Ring
       if (portalAlpha > 0.02 && currentRadius > 1) {
-        // Outer fiery corona glow
+        // Outer amber glow halo
         ctx.beginPath();
         ctx.arc(cx, cy, currentRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(255, 75, 0, ${0.45 * portalAlpha})`;
-        ctx.lineWidth = 6.0;
-        ctx.shadowColor = "#FF3D00";
-        ctx.shadowBlur = 14;
+        ctx.strokeStyle = `rgba(255, 120, 0, ${0.4 * portalAlpha})`;
+        ctx.lineWidth = 3.0;
+        ctx.shadowColor = "#FF6F00";
+        ctx.shadowBlur = 6;
         ctx.stroke();
 
-        // Intense golden plasma ring body
+        // Golden fire core ring
         ctx.beginPath();
         ctx.arc(cx, cy, currentRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(255, 185, 10, ${0.85 * portalAlpha})`;
-        ctx.lineWidth = 3.2;
+        ctx.strokeStyle = `rgba(255, 185, 20, ${0.85 * portalAlpha})`;
+        ctx.lineWidth = 1.6;
         ctx.shadowColor = "#FFB300";
-        ctx.shadowBlur = 8;
-        ctx.stroke();
-
-        // Blinding white-hot incandescent filament
-        ctx.beginPath();
-        ctx.arc(cx, cy, currentRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(255, 255, 245, ${0.95 * portalAlpha})`;
-        ctx.lineWidth = 1.4;
-        ctx.shadowColor = "#FFFFFF";
         ctx.shadowBlur = 4;
         ctx.stroke();
 
-        // Rotating cutting arc segment (super-bright lead torch)
+        // Incandescent white-hot center filament
         ctx.beginPath();
-        ctx.arc(cx, cy, currentRadius, headAngle - 0.8, headAngle + 0.3);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${portalAlpha})`;
-        ctx.lineWidth = 3.6;
-        ctx.shadowColor = "#FFD54F";
-        ctx.shadowBlur = 12;
+        ctx.arc(cx, cy, currentRadius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255, 255, 240, ${0.9 * portalAlpha})`;
+        ctx.lineWidth = 0.8;
+        ctx.shadowColor = "#FFFFFF";
+        ctx.shadowBlur = 2;
         ctx.stroke();
 
-        // Counter-rotating ember ribbon
+        // Bright lead spark tracer arc (Doctor Strange sling ring cutter head)
         ctx.beginPath();
-        ctx.arc(cx, cy, currentRadius + 0.4, secondaryAngle - 0.6, secondaryAngle + 0.6);
-        ctx.strokeStyle = `rgba(255, 140, 0, ${0.75 * portalAlpha})`;
-        ctx.lineWidth = 2.4;
-        ctx.shadowColor = "#FF6F00";
+        ctx.arc(cx, cy, currentRadius, headAngle - 0.5, headAngle + 0.2);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.95 * portalAlpha})`;
+        ctx.lineWidth = 2.0;
+        ctx.shadowColor = "#FFE082";
         ctx.shadowBlur = 6;
         ctx.stroke();
       }
 
-      // 2. Simulate & Render Flying Molten Sparks (Motion Blurred Streaks)
+      // 2. Render Micro-Sparks (short, subtle, elegant streaks)
       for (let i = sparks.length - 1; i >= 0; i--) {
         const p = sparks[i];
 
-        // Save position for motion streak
         p.prevX = p.x;
         p.prevY = p.y;
 
-        // Physics step: air drag + velocity + downward gravity
         p.x += p.vx;
         p.y += p.vy;
         p.vx *= p.drag;
         p.vy *= p.drag;
-        p.vy += p.gravity;
+        p.vy += 0.02; // subtle gravity
 
         p.life -= p.decay;
 
@@ -250,48 +216,30 @@ export const SlingRingPortal: React.FC<SlingRingPortalProps> = ({
           continue;
         }
 
-        // Thermodynamic cooling: life ratio 1.0 -> 0.0
-        const lifeRatio = p.life / p.maxLife;
+        const ratio = p.life / p.maxLife;
 
         let strokeColor = "";
         let sparkShadow = "";
-        let blurAmount = 0;
 
-        if (lifeRatio > 0.7) {
-          // White-hot newly sheared molten metal
-          const alpha = Math.min(1, lifeRatio * 1.25);
-          strokeColor = `rgba(255, 255, 255, ${alpha})`;
+        if (ratio > 0.6) {
+          strokeColor = `rgba(255, 255, 255, ${ratio})`;
           sparkShadow = "#FFE082";
-          blurAmount = 4;
-        } else if (lifeRatio > 0.4) {
-          // Incandescent golden fire
-          const alpha = lifeRatio / 0.7;
-          strokeColor = `rgba(255, 195, 20, ${alpha})`;
+        } else if (ratio > 0.25) {
+          strokeColor = `rgba(255, 190, 30, ${ratio / 0.6})`;
           sparkShadow = "#FF9800";
-          blurAmount = 3;
-        } else if (lifeRatio > 0.15) {
-          // Fiery orange-red cooling plasma
-          const alpha = lifeRatio / 0.4;
-          strokeColor = `rgba(255, 80, 0, ${alpha})`;
-          sparkShadow = "#E64A19";
-          blurAmount = 2;
         } else {
-          // Deep red ember / cinder right before extinguishing
-          const alpha = lifeRatio / 0.15;
-          strokeColor = `rgba(180, 30, 0, ${alpha * 0.8})`;
-          sparkShadow = "#B71C1C";
-          blurAmount = 1;
+          strokeColor = `rgba(255, 80, 0, ${(ratio / 0.25) * 0.7})`;
+          sparkShadow = "#E64A19";
         }
 
-        // Draw elongated velocity streak
         ctx.beginPath();
         ctx.moveTo(p.prevX, p.prevY);
         ctx.lineTo(p.x, p.y);
         ctx.strokeStyle = strokeColor;
-        ctx.lineWidth = p.width * Math.max(0.4, lifeRatio);
+        ctx.lineWidth = p.width * Math.max(0.4, ratio);
         ctx.lineCap = "round";
         ctx.shadowColor = sparkShadow;
-        ctx.shadowBlur = blurAmount;
+        ctx.shadowBlur = 2;
         ctx.stroke();
       }
 
