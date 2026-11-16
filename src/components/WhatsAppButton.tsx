@@ -242,7 +242,6 @@ export const WhatsAppButton: React.FC = () => {
                   exit={{ opacity: 0, x: 10, scale: 0.9 }}
                   className="hidden sm:flex items-center gap-2 bg-[#c8d9e6] text-[#0B1220] text-xs font-semibold px-4 py-2.5 rounded-full shadow-xl border border-[#adc4d6]"
                 >
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span>Chat with Us!</span>
                   <button
                     onClick={(e) => {

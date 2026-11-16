@@ -468,9 +468,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                 </form>
               </div>
 
-              <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider px-3 mb-2">
-                Studio Navigation
-              </div>
+              
 
               {gridItems.map(({ path, label, title, icon: Icon }) => {
                 const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
@@ -481,7 +479,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                     title={title}
                     aria-label={title}
                     onClick={() => setMenuOpen(false)}
-                    className={`group flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl transition-all duration-200 ${
+                    className={`group flex items-center gap-3.5 px-3.5 py-2.5 transition-all duration-200 ${
                       isActive
                         ? "bg-[#E6B566]/15 text-[#0B1220] font-semibold"
                         : "text-gray-700 hover:text-[#0B1220] hover:bg-gray-50"
@@ -503,31 +501,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
             </div>
 
             {/* Drawer Bottom touching the bottom of the screen */}
-            <div className="p-4 sm:p-6 border-t border-gray-100 bg-gray-50/80 space-y-3">
-              <div className="text-xs text-gray-600 space-y-1">
-                <div className="font-semibold text-gray-800 uppercase tracking-wider text-[10px]">
-                  Jaipur Studio Office
-                </div>
-                <div>Orbit Mall, Civil Lines, Jaipur</div>
-                <div>
-                  <a href="tel:+918854883058" className="font-medium text-[#0B1220] hover:text-[#8C6226]">
-                    +91 88548 83058
-                  </a>
-                </div>
-                <div>
-                  <a href="mailto:studioyounick@gmail.com" className="text-gray-500 hover:text-[#8C6226]">
-                    studioyounick@gmail.com
-                  </a>
-                </div>
-              </div>
-              <Link
-                href="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="block w-full text-center py-2.5 px-4 rounded-xl bg-[#0B1220] text-[#E6B566] font-medium text-xs tracking-wider uppercase hover:bg-black transition shadow-sm"
-              >
-                Book Studio Consultation
-              </Link>
-            </div>
+            
           </aside>
         </>,
         document.body

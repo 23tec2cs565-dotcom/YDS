@@ -212,7 +212,7 @@ const Hero: React.FC = () => {
       <div className="max-w-[1680px] mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B3528] border border-emerald-500/40 shadow-md text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
-            <span className="w-2 h-2 rounded-full bg-[#E6B566] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-gray-400 animate-spin" />
             Jaipur, Rajasthan
           </div>
 
@@ -228,10 +228,29 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 mb-12">
-            <Button onClick={() => router.push("/contact")} withIcon
-              className="bg-[#0B3528] hover:bg-[#0B3528]/90 text-white shadow-xl">
-              Start a Conversation
-            </Button>
+            <Button
+  onClick={() => router.push("/contact")}
+  withIcon
+  className="group relative rounded-none bg-transparent hover:bg-transparent text-white shadow-none overflow-visible px-8 py-4"
+>
+  {/* Morphing SVG Background */}
+  <svg
+    viewBox="0 0 200 60"
+    preserveAspectRatio="none"
+    className="absolute inset-0 w-full h-full -z-10 drop-shadow-xl"
+  >
+    <path
+      d="M 0,0 Q 100,0 200,0 Q 200,30 200,60 Q 100,60 0,60 Q 0,30 0,0 Z"
+      className="fill-[#0B3528] transition-all duration-300 ease-out group-hover:fill-[#0B3528]/90 group-hover:[d:path('M_1,1_Q_100,4_199,1_Q_195,30_199,59_Q_100,56_1,59_Q_5,30_1,1_Z')]"
+    />
+  </svg>
+
+  <span className="relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:scale-[0.98]">
+    Start a Conversation
+  </span>
+</Button>
+
+
             <Link
               href="/projects"
               className="px-6 py-3 rounded-full text-sm font-medium text-gray-700 hover:text-[#0B1220] hover:bg-gray-100 transition-colors"
@@ -250,7 +269,7 @@ const Hero: React.FC = () => {
               <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Years Experience</p>
             </div>
             <div>
-              <div className="text-3xl font-serif text-[#0B1220]">4.9<span className="text-lg text-[#E6B566]">★</span></div>
+              <div className="text-3xl font-serif text-[#0B1220]">4.5<span className="gap-1 text-xl text-[#E6B566] align-middle">★</span></div>
               <p className="text-xs text-gray-500 uppercase tracking-wider mt-1">Client Rating</p>
             </div>
           </div>

@@ -230,7 +230,7 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
           {/* Sub-caption below slider */}
           <div className="mt-2.5 flex items-center justify-between text-xs text-gray-500 px-1 font-mono">
             <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-black" />
               {activeItem.location}
             </span>
             <span className="hidden sm:inline text-gray-400 text-[11px]">
@@ -330,13 +330,10 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
                 <div className="pt-2.5 border-t border-gray-200/80 flex items-center justify-between gap-2">
                   <div className="flex items-center gap-3 text-[10px] sm:text-xs font-mono text-gray-500">
                     <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                      Turnkey
+                      <span className="w-1.5 h-1.5 rounded-full bg-gray-400" />
+                      Turnkey "On-Time"
                     </span>
-                    <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E6B566]" />
-                      On-Time
-                    </span>
+                      
                   </div>
 
                   <Link
