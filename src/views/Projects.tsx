@@ -353,7 +353,6 @@ const Projects: React.FC = () => {
     return ALL_PROJECTS;
   }, [ALL_PROJECTS]);
 
-  const [filtered, setFiltered] = useState<Project[]>(combinedProjects);
   const [selected, setSelected] = useState<null | Project>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -427,7 +426,7 @@ const Projects: React.FC = () => {
     [combinedProjects]
   );
 
-  // Filter + sort logic with strict lowercase slug URL normalization
+  // Sync state from URL parameters
   useEffect(() => {
     const appliedSearch = searchParams?.get("search") || searchParams?.get("navSearch") || "";
     const rawFilter = searchParams?.get("filter") || "all";
@@ -451,25 +450,28 @@ const Projects: React.FC = () => {
       return;
     }
 
-    setCategory(appliedFilter);
-    setLocationFilter(appliedLocation);
-    setSort(appliedSort);
-    setSearchText(appliedSearch);
+    setCategory((prev) => (prev !== appliedFilter ? appliedFilter : prev));
+    setLocationFilter((prev) => (prev !== appliedLocation ? appliedLocation : prev));
+    setSort((prev) => (prev !== appliedSort ? appliedSort : prev));
+    setSearchText((prev) => (prev !== appliedSearch ? appliedSearch : prev));
+  }, [searchParams, router]);
 
+  // Pure memoized filtered projects calculation (prevents infinite re-render loops)
+  const filtered = useMemo(() => {
     let results = [...combinedProjects];
 
-    if (appliedFilter !== "all") {
-      const want = slugify(appliedFilter);
+    if (category !== "all") {
+      const want = slugify(category);
       results = results.filter((p) => slugify(p.category) === want);
     }
 
-    if (appliedLocation !== "all") {
-      const wantLoc = slugify(appliedLocation);
+    if (locationFilter !== "all") {
+      const wantLoc = slugify(locationFilter);
       results = results.filter((p) => slugify(p.location) === wantLoc);
     }
 
-    if (appliedSearch) {
-      const s = appliedSearch.toLowerCase();
+    if (searchText) {
+      const s = searchText.toLowerCase();
       results = results.filter((p) =>
         `${p.title} ${p.description || ""} ${p.category || ""} ${p.location || ""}`
           .toLowerCase()
@@ -477,16 +479,16 @@ const Projects: React.FC = () => {
       );
     }
 
-    if (appliedSort === "az") results.sort((a, b) => a.title.localeCompare(b.title));
-    else if (appliedSort === "za") results.sort((a, b) => b.title.localeCompare(a.title));
-    else if (appliedSort === "newest") {
+    if (sort === "az") results.sort((a, b) => a.title.localeCompare(b.title));
+    else if (sort === "za") results.sort((a, b) => b.title.localeCompare(a.title));
+    else if (sort === "newest") {
       results.sort((a, b) => parseDateScore(b.completionDate) - parseDateScore(a.completionDate));
-    } else if (appliedSort === "oldest") {
+    } else if (sort === "oldest") {
       results.sort((a, b) => parseDateScore(a.completionDate) - parseDateScore(b.completionDate));
     }
 
-    setFiltered(results);
-  }, [searchParams, combinedProjects, router]);
+    return results;
+  }, [combinedProjects, category, locationFilter, searchText, sort]);
 
   // Auto-redirect to dedicated case-study page if 'project' or 'id' query parameter is present
   useEffect(() => {
