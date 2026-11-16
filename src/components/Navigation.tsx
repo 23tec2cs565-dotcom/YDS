@@ -442,17 +442,19 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                 }}
                 onMouseEnter={() => setIsCloseHovered(true)}
                 onMouseLeave={() => setIsCloseHovered(false)}
+                onFocus={() => setIsCloseHovered(true)}
+                onBlur={() => setIsCloseHovered(false)}
                 className="group relative flex items-center justify-center w-10 h-10 rounded-full text-gray-700 hover:text-[#0B1220] transition-colors focus:outline-none"
                 aria-label="Close navigation menu"
               >
                 {/* Doctor Strange Sling Ring Molten Spark Portal */}
-                <SlingRingPortal active={isCloseHovered} size={52} targetRadius={18} />
+                <SlingRingPortal active={isCloseHovered} size={56} targetRadius={18.5} />
 
                 <Plus
                   size={18}
                   className={`relative z-10 transition-transform duration-300 ease-out group-hover:rotate-45 ${
                     isCloseHovered
-                      ? "rotate-45 text-[#0B1220]"
+                      ? "rotate-45 text-[#8C6226]"
                       : "rotate-0 text-gray-700"
                   }`}
                 />
