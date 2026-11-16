@@ -434,12 +434,102 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
               </div>
               <button
                 onClick={() => setMenuOpen(false)}
-                className="group p-2 sm:p-2.5 rounded-full text-gray-500 hover:text-[#0B1220] hover:bg-black/[0.04] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6B566]"
+                className="group relative flex items-center justify-center w-10 h-10 rounded-full text-gray-700 hover:text-[#0B1220] transition-colors focus:outline-none"
                 aria-label="Close navigation menu"
               >
+                {/* Doctor Strange Sling Ring Sparkle Portal */}
+                <div
+                  className="absolute -inset-2.5 pointer-events-none transition-all duration-500 ease-out opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100"
+                  aria-hidden="true"
+                >
+                  <svg
+                    viewBox="0 0 100 100"
+                    className="w-full h-full overflow-visible"
+                  >
+                    <defs>
+                      <linearGradient id="portalGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#FFA000" />
+                        <stop offset="25%" stopColor="#FFD54F" />
+                        <stop offset="50%" stopColor="#FFF9C4" />
+                        <stop offset="75%" stopColor="#FFB300" />
+                        <stop offset="100%" stopColor="#FF6F00" />
+                      </linearGradient>
+                      <filter id="portalGlow" x="-30%" y="-30%" width="160%" height="160%">
+                        <feGaussianBlur stdDeviation="1.6" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+
+                    {/* Ambient fiery halo */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="34"
+                      fill="none"
+                      stroke="#FFB300"
+                      strokeWidth="3.5"
+                      opacity="0.25"
+                      filter="url(#portalGlow)"
+                      className="animate-pulse"
+                    />
+
+                    {/* Clockwise rotating dashed spark ring */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="34"
+                      fill="none"
+                      stroke="url(#portalGold)"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeDasharray="4 8 1 12 10 5 2 9 6 3"
+                      filter="url(#portalGlow)"
+                      className="animate-[spin_1.6s_linear_infinite] origin-center"
+                    />
+
+                    {/* Counter-clockwise rotating inner spark ring */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="31"
+                      fill="none"
+                      stroke="#FFD54F"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeDasharray="8 6 2 10 14 5 1 8"
+                      filter="url(#portalGlow)"
+                      className="animate-[spin_2.2s_linear_infinite_reverse] origin-center opacity-90"
+                    />
+
+                    {/* Spraying ember sparks */}
+                    <g className="animate-[spin_2.8s_linear_infinite] origin-center">
+                      <circle cx="50" cy="11" r="1.4" fill="#FFF" filter="url(#portalGlow)" />
+                      <circle cx="83" cy="29" r="1.7" fill="#FFD54F" filter="url(#portalGlow)" />
+                      <circle cx="87" cy="65" r="1.2" fill="#FFA000" filter="url(#portalGlow)" />
+                      <circle cx="61" cy="88" r="1.5" fill="#FFF9C4" filter="url(#portalGlow)" />
+                      <circle cx="21" cy="79" r="1.3" fill="#FF8F00" filter="url(#portalGlow)" />
+                      <circle cx="13" cy="39" r="1.9" fill="#FFCA28" filter="url(#portalGlow)" />
+                      <circle cx="33" cy="17" r="1.2" fill="#FFF" filter="url(#portalGlow)" />
+                    </g>
+
+                    {/* Secondary flying sparks in reverse */}
+                    <g className="animate-[spin_1.9s_linear_infinite_reverse] origin-center opacity-90">
+                      <circle cx="50" cy="86" r="1.3" fill="#FFF" filter="url(#portalGlow)" />
+                      <circle cx="17" cy="59" r="1.5" fill="#FFD54F" filter="url(#portalGlow)" />
+                      <circle cx="27" cy="24" r="1" fill="#FFA000" filter="url(#portalGlow)" />
+                      <circle cx="76" cy="19" r="1.5" fill="#FFC107" filter="url(#portalGlow)" />
+                      <circle cx="85" cy="49" r="1.2" fill="#FFF" filter="url(#portalGlow)" />
+                      <circle cx="71" cy="81" r="1.3" fill="#FF8F00" filter="url(#portalGlow)" />
+                    </g>
+                  </svg>
+                </div>
+
                 <Plus
-                  size={22}
-                  className="transition-transform duration-300 ease-out group-hover:rotate-45 group-hover:text-[#8C6226]"
+                  size={20}
+                  className="relative z-10 transition-transform duration-300 ease-out group-hover:rotate-45"
                 />
               </button>
             </div>
