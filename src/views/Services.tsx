@@ -894,9 +894,9 @@ const ServicesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={startProject}
-                    className="w-full py-4.5 px-7 bg-gradient-to-r from-[#E6B566] via-[#F3DBA3] to-[#C5A059] hover:from-[#ECC278] hover:to-[#B89243] text-[#0A0E18] shadow-[0_12px_35px_-5px_rgba(230,181,102,0.45)] hover:shadow-[0_16px_45px_-5px_rgba(230,181,102,0.6)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2.5 group cursor-pointer"
+                    className="w-full py-4 px-6 bg-gradient-to-r from-[#E6B566] via-[#F3DBA3] to-[#C5A059] hover:from-[#ECC278] hover:to-[#B89243] text-[#0A0E18] shadow-[0_12px_35px_-5px_rgba(230,181,102,0.45)] hover:shadow-[0_16px_45px_-5px_rgba(230,181,102,0.6)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-[0.16em] flex items-center justify-center gap-2 group cursor-pointer"
                   >
-                    <span>Request Detailed Architectural Dossier</span>
+                    <span>Request Architectural Dossier</span>
                     <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1.5 text-[#0A0E18]" />
                   </button>
                   <p className="text-[10.5px] text-center text-stone-400 leading-relaxed font-sans">
