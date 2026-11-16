@@ -360,15 +360,18 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
               )}
             </form>
 
+            {/* White divider between Search and Menu buttons */}
+            <div className="h-6 w-[2px] bg-white shadow-sm rounded-full shrink-0" aria-hidden="true" />
+
             {/* Menu Trigger Button */}
             <button
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
               aria-haspopup="dialog"
               aria-label="Navigation Menu"
-              className="inline-flex items-center justify-center p-2 rounded-lg bg-white/90 border border-gray-100 hover:shadow-sm transition text-[#0B1220]"
+              className="inline-flex items-center justify-center p-2 rounded-lg text-[#0B1220] hover:text-[#8C6226] hover:bg-white/60 transition-colors"
             >
-              <Menu size={18} />
+              <Menu size={20} />
             </button>
           </div>
 
@@ -479,21 +482,20 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                     title={title}
                     aria-label={title}
                     onClick={() => setMenuOpen(false)}
-                    className={`group flex items-center gap-3.5 px-3.5 py-2.5 transition-all duration-200 ${
+                    className={`group flex items-center gap-3.5 px-4 py-3 border-b-2 border-white transition-all duration-200 ${
                       isActive
                         ? "bg-[#E6B566]/15 text-[#0B1220] font-semibold"
-                        : "text-gray-700 hover:text-[#0B1220] hover:bg-gray-50"
+                        : "bg-gray-50/70 text-gray-700 hover:text-[#0B1220] hover:bg-gray-100/80"
                     }`}
                   >
-                    <div
-                      className={`p-2 rounded-lg transition-colors ${
+                    <Icon
+                      size={18}
+                      className={`transition-colors shrink-0 ${
                         isActive
-                          ? "bg-[#E6B566]/25 text-[#8C6226]"
-                          : "bg-gray-100 text-gray-500 group-hover:bg-[#E6B566]/15 group-hover:text-[#8C6226]"
+                          ? "text-[#8C6226]"
+                          : "text-gray-500 group-hover:text-[#8C6226]"
                       }`}
-                    >
-                      <Icon size={18} />
-                    </div>
+                    />
                     <span className="text-sm font-medium tracking-wide">{label}</span>
                   </Link>
                 );
