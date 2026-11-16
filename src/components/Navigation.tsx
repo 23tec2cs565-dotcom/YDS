@@ -16,6 +16,7 @@ import {
   Users,
   Clipboard,
   BookOpen,
+  Plus,
 } from "lucide-react";
 
 interface NavigationProps {
@@ -433,10 +434,13 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
               </div>
               <button
                 onClick={() => setMenuOpen(false)}
-                className="p-2 rounded-xl text-gray-500 hover:text-[#0B1220] hover:bg-gray-100 transition-colors"
+                className="group p-2 sm:p-2.5 rounded-full text-gray-500 hover:text-[#0B1220] hover:bg-black/[0.04] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E6B566]"
                 aria-label="Close navigation menu"
               >
-                <XIcon size={20} />
+                <Plus
+                  size={22}
+                  className="transition-transform duration-300 ease-out group-hover:rotate-45 group-hover:text-[#8C6226]"
+                />
               </button>
             </div>
 
