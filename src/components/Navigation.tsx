@@ -441,7 +441,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
             </div>
 
             {/* Vertical Series List */}
-            <div className="p-4 sm:p-6 flex-1 overflow-y-auto space-y-1">
+            <div className="p-4 sm:p-6 flex-1 overflow-y-auto space-y-2">
               {/* Mobile Search Input inside Drawer */}
               <div className="lg:hidden mb-4">
                 <form onSubmit={submitSearch}>
@@ -482,21 +482,26 @@ const Navigation: React.FC<NavigationProps> = ({ onSearch }) => {
                     title={title}
                     aria-label={title}
                     onClick={() => setMenuOpen(false)}
-                    className={`group flex items-center gap-3.5 px-4 py-3 border-b-2 border-white transition-all duration-200 ${
+                    className={`group relative flex items-center gap-4 px-5 py-3.5 sm:py-4 rounded-2xl border border-transparent bg-transparent transition-all duration-300 ease-out hover:bg-[radial-gradient(ellipse_100%_80%_at_50%_50%,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.6)_55%,rgba(255,255,255,0.18)_100%)] hover:backdrop-blur-md hover:border-white/80 hover:shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.95),inset_0_-1px_1px_rgba(0,0,0,0.03),0_4px_14px_-3px_rgba(11,18,32,0.06),0_1px_3px_rgba(11,18,32,0.03)] hover:-translate-y-[1.5px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.99] ${
                       isActive
-                        ? "bg-[#E6B566]/15 text-[#0B1220] font-semibold"
-                        : "bg-gray-50/70 text-gray-700 hover:text-[#0B1220] hover:bg-gray-100/80"
+                        ? "text-[#0B1220] font-semibold"
+                        : "text-gray-700 hover:text-[#0B1220]"
                     }`}
                   >
                     <Icon
-                      size={18}
+                      size={20}
                       className={`transition-colors shrink-0 ${
                         isActive
                           ? "text-[#8C6226]"
                           : "text-gray-500 group-hover:text-[#8C6226]"
                       }`}
                     />
-                    <span className="text-sm font-medium tracking-wide">{label}</span>
+                    <span className="text-[15px] sm:text-base font-medium tracking-wide">
+                      {label}
+                    </span>
+                    {isActive && (
+                      <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#E6B566]" />
+                    )}
                   </Link>
                 );
               })}
