@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
       <div className="relative z-10 border-b border-white/10 bg-white/[0.02] backdrop-blur-sm px-4 sm:px-8 py-3.5 text-[11px] font-mono tracking-widest text-stonecream/60 uppercase flex flex-wrap justify-between items-center gap-4">
         <div className="flex items-center gap-3">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brass-400 opacity-75" />
+            <span className="animate-spin absolute inline-flex h-full w-full rounded-full bg-brass-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-brass-400" />
           </span>
           <span className="text-white/80 font-medium">YOUNICK DESIGN STUDIO • JAIPUR ARCHITECTURE &amp; LUXURY INTERIORS</span>

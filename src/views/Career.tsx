@@ -292,12 +292,12 @@ const Career: React.FC = () => {
               <div className="absolute -top-10 -left-10 w-32 h-32 border-l-2 border-t-2 border-[#B08D57]/30 pointer-events-none" />
               <div className="relative rounded-sm overflow-hidden h-[450px]">
                 <img decoding="async" loading="lazy" 
-                  src="/assets/Career/Career-1.avif" 
+                  src="/assets/Career/Career-1.jpg" 
                   alt="Architecture and interior design workspace at Younick Design Studio" 
                   title="Architecture and Interior Design Careers at Younick Design Studio Jaipur"
                   width="1200"
                   height="800"
-                  className="w-full h-full object-cover grayscale brightness-90 contrast-110"
+                  className="w-full h-full object-cover grayscale brightness-90 contrast-110 hover:grayscale-0 hover:brightness-100 hover:contrast-100 transition-all duration-700"
                   onError={handleImgError}
                 />
                 <div className="absolute bottom-6 left-6 z-20 bg-[#18181B]/90 backdrop-blur border border-white/10 px-4 py-2 text-xs font-mono uppercase tracking-widest text-white">
@@ -503,7 +503,7 @@ const Career: React.FC = () => {
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img decoding="async" loading="lazy"
-                src="/assets/Career/Career-1.avif"
+                src="/assets/Career/Career-2.jpg"
                 alt="Stone and luxury interior materials checking at Younick Design Studio"
                 title="Material Sourcing and Quality Inspection — Younick Design Studio"
                 width="600"
@@ -520,7 +520,7 @@ const Career: React.FC = () => {
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img decoding="async" loading="lazy"
-                src="/assets/Placeholder/Mock-7.avif"
+                src="/assets/Career/Career-3.jpg"
                 alt="Drafting architectural blueprints and 3D visual models"
                 title="Drafting CAD Blueprints & 3D Architectural Visuals"
                 width="600"
@@ -537,7 +537,7 @@ const Career: React.FC = () => {
             <div className="group relative rounded-sm overflow-hidden h-[400px]">
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 z-10" />
               <img decoding="async" loading="lazy"
-                src="/assets/Career/Career-3.avif"
+                src="/assets/Career/Career-4.jpg"
                 alt="Bespoke furniture joinery and civil site execution"
                 title="Bespoke Woodwork Craft and Turnkey Site Execution"
                 width="600"
