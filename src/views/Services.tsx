@@ -583,8 +583,8 @@ const ServicesPage: React.FC = () => {
                       2. Geographic Location
                     </label>
                     {hasRestrictedService && (
-                      <span className="text-[10px] font-semibold text-stone-900 px-3 py-0.5 rounded-full bg-[#F8EADC]/80 border border-[#F8EADC] tracking-wide shadow-sm flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#BEDEFF] animate-pulse" />
+                      <span className="text-[10px] font-semibold text-stone-900 px-3 py-0.5 rounded-full bg-[#F5BCB9]/80 border border-[#F8EADC] tracking-wide shadow-sm flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#A43323] animate-spin" />
                         Rajasthan Territorial Zone
                       </span>
                     )}
@@ -718,11 +718,11 @@ const ServicesPage: React.FC = () => {
                   </div>
 
                   {/* Architectural Graduation Ticks */}
-                  <div className="flex justify-between text-[10px] text-stone-400 font-mono tracking-wider pt-1 border-t border-[#EEEEEE]">
-                    <span>500 SQFT <span className="hidden sm:inline text-stone-300">(Studio)</span></span>
-                    <span>1,500 SQFT <span className="hidden sm:inline text-stone-300">(Apartment)</span></span>
-                    <span>3,000 SQFT <span className="hidden sm:inline text-stone-300">(Bungalow)</span></span>
-                    <span>6,000+ SQFT <span className="hidden sm:inline text-stone-300">(Estate)</span></span>
+                  <div className="flex justify-between text-[10px] text-black-400 font-mono tracking-wider pt-1 border-t border-[#EEEEEE]">
+                    <span>500 SQFT <span className="hidden sm:inline text-gray-400 bold">(Studio)</span></span>
+                    <span>1,500 SQFT <span className="hidden sm:inline text-gray-400 bold">(Apartment)</span></span>
+                    <span>3,000 SQFT <span className="hidden sm:inline text-gray-400 bold">(Bungalow)</span></span>
+                    <span>6,000+ SQFT <span className="hidden sm:inline text-gray-400 bold">(Estate)</span></span>
                   </div>
                 </div>
 
@@ -738,7 +738,7 @@ const ServicesPage: React.FC = () => {
                     {[
                       { 
                         id: "standard", 
-                        tier: "Tier I • #EEEEEE Platinum",
+                        tier: "Tier I •  Platinum",
                         label: "Classic Craft", 
                         desc: "Engineered oak, branded fittings & premium acrylic paints",
                         activeStyle: "border-[#EEEEEE] bg-gradient-to-b from-[#EEEEEE]/60 via-white to-[#EEEEEE]/30 text-slate-900 shadow-md ring-1 ring-stone-300",
@@ -746,7 +746,7 @@ const ServicesPage: React.FC = () => {
                       },
                       { 
                         id: "premium", 
-                        tier: "Tier II • #BEDEFF Choice",
+                        tier: "Tier II •  Choice",
                         label: "Signature Luxury", 
                         desc: "Italian Botticino, fluted glass, brass hardware & bespoke joinery",
                         activeStyle: "border-[#BEDEFF] bg-gradient-to-b from-[#BEDEFF]/30 via-white to-[#BEDEFF]/15 text-slate-950 shadow-md shadow-[#BEDEFF]/20 ring-1 ring-[#BEDEFF]",
@@ -754,7 +754,7 @@ const ServicesPage: React.FC = () => {
                       },
                       { 
                         id: "luxury", 
-                        tier: "Tier III • #F8EADC Bespoke",
+                        tier: "Tier III •  Bespoke",
                         label: "Ultra-Prestige", 
                         desc: "Statuario marble, exotic burl veneer, home automation & custom bronze",
                         activeStyle: "border-[#F8EADC] bg-gradient-to-b from-[#F8EADC]/60 via-white to-[#F8EADC]/25 text-amber-950 shadow-md shadow-[#F8EADC]/20 ring-1 ring-[#F8EADC]",
@@ -816,10 +816,7 @@ const ServicesPage: React.FC = () => {
                       <span className="w-2 h-2 rounded-full bg-[#BEDEFF] shadow-[0_0_8px_rgba(190,222,255,1)]" />
                       Calibrated Budget Range
                     </span>
-                    <span className="text-[10px] font-mono text-slate-800 bg-[#BEDEFF]/35 border border-[#BEDEFF] uppercase font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-xs">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-                      Live Model
-                    </span>
+                    
                   </div>
                   
                   {/* Budget Counter with Metallic Platinum (#EEEEEE), Ice Blue (#BEDEFF) & Champagne Travertine (#F8EADC) */}
@@ -834,7 +831,6 @@ const ServicesPage: React.FC = () => {
                           {formatCost(min)} – {formatCost(max)}
                         </div>
                         <p className="text-[11px] text-slate-600 mt-2.5 tracking-wider font-mono flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#BEDEFF] border border-blue-400" />
                           Indicative Turnkey Estimate for {selectedCityLabel || location} ({quality.charAt(0).toUpperCase() + quality.slice(1)} Tier)
                         </p>
                       </div>
@@ -843,8 +839,7 @@ const ServicesPage: React.FC = () => {
 
                   {/* Applied Volume & Combo Savings Pill (#F8EADC Accent) */}
                   {(comboDiscount > 0 || scaleDiscount > 0) && (
-                    <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#F8EADC] border border-[#ECC8AA] text-[11px] text-stone-900 font-semibold shadow-xs">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-600 shadow-[0_0_8px_rgba(217,119,6,0.6)] animate-pulse" />
+                    <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-100 border border-amber-300 text-[11px] text-stone-900 font-semibold shadow-xs">
                       <span>
                         Applied Privilege: {comboDiscount > 0 ? `${comboDiscount}% Multi-Service` : ""}{" "}
                         {comboDiscount > 0 && scaleDiscount > 0 ? "+" : ""}{" "}
@@ -875,7 +870,6 @@ const ServicesPage: React.FC = () => {
                           gradient: "from-[#BEDEFF] to-[#7DB0ED]",
                           glow: "shadow-[0_0_10px_rgba(190,222,255,0.7)]",
                           badgeBg: "bg-[#BEDEFF]/35 border border-[#BEDEFF] text-blue-950",
-                          dotColor: "bg-[#BEDEFF] border border-blue-400"
                         },
                         { 
                           label: "High-Specification Material Procurement", 
@@ -884,7 +878,6 @@ const ServicesPage: React.FC = () => {
                           gradient: "from-[#F8EADC] to-[#ECC8AA]",
                           glow: "shadow-[0_0_10px_rgba(248,234,220,0.8)]",
                           badgeBg: "bg-[#F8EADC] border border-[#ECC8AA] text-stone-900",
-                          dotColor: "bg-[#F8EADC] border border-amber-400"
                         },
                         { 
                           label: "Master Artisans & Turnkey Execution", 
@@ -893,13 +886,11 @@ const ServicesPage: React.FC = () => {
                           gradient: "from-[#BEDEFF] via-[#EEEEEE] to-[#F8EADC]",
                           glow: "shadow-[0_0_10px_rgba(238,238,238,0.8)]",
                           badgeBg: "bg-[#EEEEEE] border border-stone-300 text-slate-900",
-                          dotColor: "bg-[#EEEEEE] border border-stone-400"
                         }
                       ].map((item, idx) => (
                         <div key={idx} className="space-y-1.5">
                           <div className="flex justify-between items-center text-xs font-semibold">
                             <span className="text-slate-800 flex items-center gap-2">
-                              <span className={`w-1.5 h-1.5 rounded-full ${item.dotColor}`} />
                               {item.label}
                             </span>
                             <span className={`font-mono font-bold text-[11px] px-2 py-0.5 rounded ${item.badgeBg}`}>

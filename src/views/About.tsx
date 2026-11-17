@@ -273,7 +273,7 @@ const AboutContent = () => {
             <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#B08D57] block mb-5 sm:mb-8">
               [ Our Creed ]
             </span>
-            <blockquote className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-serif italic text-white/90 leading-snug tracking-tight mb-5 sm:mb-8">
+            <blockquote className="text-xl sm:text-3xl md:text-5xl lg:text-5xl font-serif italic text-white/90 leading-snug tracking-tight mb-5 sm:mb-8">
               "We do not build for the present moment. We build for the memories that will inhabit the space, and the quiet dignity of materials that age beautifully."
             </blockquote>
             <cite className="not-italic font-mono text-xs uppercase tracking-widest text-[#B08D57]/70">
