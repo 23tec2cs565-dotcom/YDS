@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  safelist: ['animate-float', 'animate-float-slow', 'text-primary', 'bg-primary'],
+  safelist: ['animate-float', 'animate-float-slow', 'animate-ping-delayed', 'text-primary', 'bg-primary'],
   theme: {
     container: {
       center: true,
@@ -39,10 +39,15 @@ export default {
           '50%': { transform: 'translateY(-6px)' },
           '100%': { transform: 'translateY(0px)' },
         },
+        'ping-delayed': {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '25%, 100%': { transform: 'scale(2)', opacity: '0' },
+        },
       },
       animation: {
         float: 'float 6s ease-in-out infinite',
         'float-slow': 'floatSlow 9s ease-in-out infinite',
+        'ping-delayed': 'ping-delayed 4s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
     },
   },

@@ -265,8 +265,8 @@ export const WhatsAppButton: React.FC = () => {
               aria-label="Open WhatsApp conversation"
               className="relative group w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-[#25D366] to-[#128C7E] text-white shadow-2xl hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center border-2 border-white/20"
             >
-              {/* Subtle Outer Glow Wave */}
-              <span className="absolute inset-0 rounded-full bg-[#25D366]/35 animate-ping pointer-events-none -z-10" />
+              {/* Subtle Outer Glow Wave with Delayed 4s Ripple */}
+              <span className="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping-delayed pointer-events-none -z-10" />
 
               <img decoding="async" loading="lazy"
                 src="/icons/whatsapp-logo-new.webp"

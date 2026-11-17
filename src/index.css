@@ -57,7 +57,35 @@
     box-shadow: 0 0 0 2px rgba(230, 181, 102, 0.5);
   }
 }
+@theme {
+  --animate-ping-delayed: ping-delayed 4s cubic-bezier(0, 0, 0.2, 1) infinite;
 
+  @keyframes ping-delayed {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    25%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes ping-delayed {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping-delayed {
+  animation: ping-delayed 4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
 @layer utilities {
   .sr-only {
     position: absolute;

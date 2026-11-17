@@ -39,12 +39,12 @@ const navItems = [
 ];
 
 const gridItems = [
+  { path: "/blog", label: "Blog", icon: BookOpen, title: "Architectural & Interior Design Blog" },
+  { path: "/career", label: "Careers", icon: Clipboard, title: "Explore Career Opportunities at Younick Studio" },
+  { path: "/team", label: "Our Team", icon: Users, title: "Meet Our Architects and Interior Designers" },
   { path: "/projects", label: "Portfolio", icon: FolderOpen, title: "View Our Completed Architecture & Interior Projects" },
   { path: "/services", label: "Services", icon: Briefcase, title: "Explore Turnkey Interior & Construction Services" },
   { path: "/about", label: "About Us", icon: Info, title: "Learn About Younick Design Studio Philosophy" },
-  { path: "/blog", label: "Blog", icon: BookOpen, title: "Architectural & Interior Design Blog" },
-  { path: "/team", label: "Our Team", icon: Users, title: "Meet Our Architects and Interior Designers" },
-  { path: "/career", label: "Careers", icon: Clipboard, title: "Explore Career Opportunities at Younick Studio" },
   { path: "/contact", label: "Contact Us", icon: MessageSquare, title: "Get in Touch with Our Jaipur Studio" },
 ];
 
