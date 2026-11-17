@@ -28,6 +28,63 @@ import { useBlogPosts } from "../hooks/useSanityData";
 import { blogs as defaultBlogs, type BlogPost } from "../data/blogs";
 import { urlFor } from "../lib/sanity";
 
+// Architectural Category Themes with multi-palette styling
+const CATEGORY_THEMES: Record<string, {
+  badgeBg: string;
+  badgeBorder: string;
+  badgeText: string;
+  cardBorder: string;
+  cardGlow: string;
+  rimGradient: string;
+  accentColor: string;
+}> = {
+  "Cost & Budgeting": {
+    badgeBg: "bg-[#F8EADC]",
+    badgeBorder: "border-[#ECC8AA]",
+    badgeText: "text-[#8C6226]",
+    cardBorder: "border-[#F8EADC]/80",
+    cardGlow: "shadow-[0_20px_45px_-15px_rgba(236,200,170,0.5)]",
+    rimGradient: "from-[#F8EADC] via-[#E8BA93] to-[#8C6226]",
+    accentColor: "text-[#8C6226]",
+  },
+  "Materials & Climate": {
+    badgeBg: "bg-[#FBE8E2]",
+    badgeBorder: "border-[#F4C5B8]",
+    badgeText: "text-[#A44A32]",
+    cardBorder: "border-[#FBE8E2]/90",
+    cardGlow: "shadow-[0_20px_45px_-15px_rgba(244,197,184,0.5)]",
+    rimGradient: "from-[#FBE8E2] via-[#E8A593] to-[#A44A32]",
+    accentColor: "text-[#A44A32]",
+  },
+  "Vastu & Planning": {
+    badgeBg: "bg-[#EAF2EC]",
+    badgeBorder: "border-[#C2DEC9]",
+    badgeText: "text-[#2D5A3C]",
+    cardBorder: "border-[#EAF2EC]/90",
+    cardGlow: "shadow-[0_20px_45px_-15px_rgba(194,222,201,0.5)]",
+    rimGradient: "from-[#EAF2EC] via-[#A8D3B2] to-[#2D5A3C]",
+    accentColor: "text-[#2D5A3C]",
+  },
+  "Turnkey Construction": {
+    badgeBg: "bg-[#EEEEEE]",
+    badgeBorder: "border-[#D6D6D6]",
+    badgeText: "text-[#2B303A]",
+    cardBorder: "border-[#EEEEEE]",
+    cardGlow: "shadow-[0_20px_45px_-15px_rgba(43,48,58,0.2)]",
+    rimGradient: "from-[#EEEEEE] via-[#CBD5E1] to-[#2B303A]",
+    accentColor: "text-[#2B303A]",
+  },
+  "3D Visualization": {
+    badgeBg: "bg-[#BEDEFF]/60",
+    badgeBorder: "border-[#BEDEFF]",
+    badgeText: "text-[#1A4971]",
+    cardBorder: "border-[#BEDEFF]/60",
+    cardGlow: "shadow-[0_20px_45px_-15px_rgba(190,222,255,0.6)]",
+    rimGradient: "from-[#BEDEFF] via-[#85B8F2] to-[#1A4971]",
+    accentColor: "text-[#1A4971]",
+  },
+};
+
 const BlogPostPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
   const params = useParams();
   const rawSlug = propSlug || (typeof params?.slug === "string" ? params.slug : Array.isArray(params?.slug) ? params.slug[0] : "");
@@ -103,6 +160,8 @@ const BlogPostPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
   const ogImage = post.coverImage.startsWith("http")
     ? post.coverImage
     : `${siteUrl}${post.coverImage}`;
+
+  const postTheme = CATEGORY_THEMES[post.category] || CATEGORY_THEMES["Cost & Budgeting"];
 
   // Structured Data Schema for Google BlogPosting + FAQPage + BreadcrumbList
   const schema = {
@@ -227,7 +286,7 @@ const BlogPostPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
 
           {/* Category & Read Time badge */}
           <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-4">
-            <span className="px-3 py-1 rounded-full bg-[#F8EADC] border border-[#ECC8AA] text-[#8C6226] font-bold">
+            <span className={`px-3 py-1 rounded-full ${postTheme.badgeBg} border ${postTheme.badgeBorder} ${postTheme.badgeText} font-bold shadow-xs`}>
               {post.category}
             </span>
             <span className="flex items-center gap-1.5"><Clock size={13} /> {post.readingTime}</span>
@@ -479,37 +538,46 @@ const BlogPostPage: React.FC<{ slug?: string }> = ({ slug: propSlug }) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedPosts.map((rel) => (
-                <Link
-                  key={rel.id}
-                  href={`/blog/${rel.slug}`}
-                  className="group flex flex-col rounded-2xl overflow-hidden border border-gray-200/80 bg-white hover:border-[#B08D57]/40 shadow-sm hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="aspect-[16/10] overflow-hidden bg-gray-100">
-                    <img
-                      src={rel.coverImage}
-                      alt={rel.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-2">
-                        <span className="text-[#8C6226] font-semibold">{rel.category}</span>
-                        <span>•</span>
-                        <span>{rel.readingTime}</span>
+              {relatedPosts.map((rel) => {
+                const relTheme = CATEGORY_THEMES[rel.category] || CATEGORY_THEMES["Cost & Budgeting"];
+                return (
+                  <Link
+                    key={rel.id}
+                    href={`/blog/${rel.slug}`}
+                    className={`group relative flex flex-col rounded-3xl overflow-hidden border ${relTheme.cardBorder} bg-white hover:border-[#B08D57]/40 shadow-sm hover:shadow-xl ${relTheme.cardGlow} hover:-translate-y-1 transition-all duration-300`}
+                  >
+                    {/* Top Laser Edge Rim in category gradient */}
+                    <div className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${relTheme.rimGradient}`} />
+
+                    <div className="aspect-[16/10] overflow-hidden bg-gray-100">
+                      <img
+                        src={rel.coverImage}
+                        alt={rel.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-2">
+                          <span className={`px-2 py-0.5 rounded-full ${relTheme.badgeBg} border ${relTheme.badgeBorder} ${relTheme.badgeText} font-bold text-[10px]`}>
+                            {rel.category}
+                          </span>
+                          <span>•</span>
+                          <span className="font-mono">{rel.readingTime}</span>
+                        </div>
+                        <h3 className={`text-sm font-serif font-bold text-gray-900 group-hover:${relTheme.accentColor} transition-colors line-clamp-2 leading-snug`}>
+                          {rel.title}
+                        </h3>
                       </div>
-                      <h3 className="text-sm font-serif font-bold text-gray-900 group-hover:text-[#8C6226] transition-colors line-clamp-2 leading-snug">
-                        {rel.title}
-                      </h3>
+                      <div className={`mt-4 pt-3 border-t border-gray-100 flex items-center gap-1 text-[11px] font-bold ${relTheme.accentColor}`}>
+                        <span>Read Guide</span>
+                        <ArrowRight size={11} className="transition-transform duration-300 group-hover:translate-x-1" />
+                      </div>
                     </div>
-                    <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-1 text-[11px] font-semibold text-[#8C6226]">
-                      Read Guide <ArrowRight size={11} />
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           </aside>
         )}
