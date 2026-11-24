@@ -211,10 +211,7 @@ const Hero: React.FC = () => {
 
       <div className="max-w-[1680px] mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0B3528] border border-emerald-500/40 shadow-md text-xs font-bold tracking-widest uppercase text-[#E6B566] mb-8">
-            <span className="w-2 h-2 rounded-full bg-gray-400 animate-spin" />
-            Jaipur, Rajasthan
-          </div>
+          
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-8">
             Interiors that <br />

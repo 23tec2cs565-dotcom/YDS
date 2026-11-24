@@ -129,15 +129,15 @@ const Footer: React.FC = () => {
             <div className="flex shrink-0 flex-col sm:flex-row gap-3.5 sm:gap-4 items-stretch sm:items-center">
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-[#E6B566] text-[#080D17] hover:bg-[#F5D899] px-7 sm:px-8 py-3.5 sm:py-4 font-mono text-xs font-bold uppercase tracking-wider shadow-lg shadow-[#E6B566]/20 hover:shadow-[#E6B566]/35 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-md bg-[#E6B566] text-[#080D17] hover:bg-[#F5D899] px-7 sm:px-8 py-3.5 sm:py-4 font-mono text-xs font-bold uppercase tracking-wider shadow-lg shadow-[#E6B566]/20 hover:shadow-[#E6B566]/35 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               >
                 <span>Start Your Project</span>
-                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1 " />
               </Link>
 
               <Link
                 href="/projects"
-                className="group relative inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] text-white hover:bg-white/10 hover:border-white/50 px-7 sm:px-8 py-3.5 sm:py-4 font-mono text-xs font-medium uppercase tracking-wider backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                className="group relative inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/[0.04] text-white hover:bg-white/10 hover:border-white/50 px-7 sm:px-8 py-3.5 sm:py-4 font-mono text-xs font-medium uppercase tracking-wider backdrop-blur-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               >
                 <span>View Portfolio</span>
               </Link>

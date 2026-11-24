@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { Sparkles, MoveHorizontal, ArrowRight, CheckCircle2, DotSquare } from "lucide-react";
+import { Sparkles, MoveHorizontal, ChevronRightCircleIcon, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MotionDiv = motion.div as unknown as React.ComponentType<any>;
@@ -230,7 +230,7 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
           {/* Sub-caption below slider */}
           <div className="mt-2.5 flex items-center justify-between text-xs text-gray-500 px-1 font-mono">
             <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-black" />
+              <MapPin size={12} strokeWidth={2.5} className="text-[#8C6226] shrink-0" aria-hidden="true" />
               {activeItem.location}
             </span>
             <span className="hidden sm:inline text-gray-400 text-[11px]">
@@ -239,87 +239,118 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
           </div>
         </div>
 
-        {/* Right: Horizontal Image Filmstrip Carousel + Clicked Project Description */}
-        <div className="lg:col-span-5 w-full flex flex-col space-y-3">
+        {/* Right: Project Selector + Project Details */}
+        <div className="lg:col-span-5 w-full flex flex-col gap-3">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-gray-100 pb-2 px-1">
-            <div className="flex items-center gap-1.5">
-              <span className="text-[13px] font-mono font-bold uppercase tracking-wider text-[#0B1220]">
-                Select Project to Compare
-              </span>
+          <div className="flex items-end justify-between border-b border-[#E6B566]/40 pb-3 px-1">
+            <div>
+              <p className="mb-1 text-[9px] font-mono font-bold uppercase tracking-[0.22em] text-[#A17A3A]">
+                Project gallery
+              </p>
+              <h3 className="flex items-center gap-2 text-[13px] sm:text-[14px] font-mono font-bold uppercase tracking-wider text-[#0B1220]">
+                Select to Compare
+              </h3>
             </div>
-            <span className="text-[10px] font-mono text-[#8C6226] font-semibold">
-              {activeTab + 1} of {items.length}
+            <span className="rounded-full border border-[#E6B566]/30 bg-[#F8F2E6] px-2.5 py-1 text-[10px] font-mono font-bold text-[#8C6226]">
+              {String(activeTab + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
             </span>
           </div>
 
-          {/* Horizontal Image Carousel Strip (compact filmstrip matching the reference) */}
-          <div className="w-full">
-            <div className="inline-flex items-center gap-2 sm:gap-2.5 p-1.5 sm:p-2 rounded-2xl  border border-white/10 shadow-lg">
+          {/* Elegant Horizontal Filmstrip */}
+          <div className="w-full overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div
+              className="grid items-stretch gap-2 rounded-2xl border border-gray-200/80 bg-[#F8F8F6] p-2 shadow-[0_8px_28px_rgba(11,18,32,0.07)]"
+              style={{ gridTemplateColumns: `repeat(${items.length}, minmax(96px, 1fr))` }}
+              role="tablist"
+              aria-label="Projects to compare"
+            >
               {items.map((item, idx) => {
                 const isActive = activeTab === idx;
                 return (
                   <button
                     key={item.id}
                     type="button"
+                    role="tab"
+                    aria-selected={isActive}
                     onClick={() => {
                       if (activeTab !== idx) {
                         setActiveTab(idx);
                         setSliderPosition(50);
                       }
                     }}
-                    className={`relative w-20 sm:w-24 md:w-28 aspect-[16/10] rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer block shrink-0 ${
+                    className={`group relative aspect-[16/10] min-w-[96px] overflow-hidden rounded-xl text-left transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? "border-[#E6B566] shadow-[0_0_12px_rgba(230,181,102,0.55)] opacity-100 scale-[1.03] z-10 ring-1 ring-[#E6B566]/40"
-                        : "border-transparent opacity-40 hover:opacity-85 hover:border-white/20"
+                        ? "ring-2 ring-[#D6A84F] ring-offset-2 ring-offset-[#F8F8F6] shadow-[0_8px_20px_rgba(166,126,58,0.22)]"
+                        : "opacity-60 hover:opacity-100 hover:-translate-y-0.5"
                     }`}
                     title={item.title}
                   >
                     <img
                       src={item.afterImage}
                       alt={item.title}
-                      className="w-full h-full object-cover pointer-events-none"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04] pointer-events-none"
                       loading="lazy"
                     />
+                    <span className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/75 to-transparent" aria-hidden="true" />
+                    <span className="absolute bottom-2 left-2 right-2 truncate text-[8px] font-mono font-bold uppercase tracking-[0.12em] text-white">
+                      {item.category}
+                    </span>
+                    {isActive && (
+                      <span className="absolute right-2 top-2 h-2 w-2 rounded-full border border-white/60 bg-[#E6B566] shadow-[0_0_8px_rgba(230,181,102,0.9)]" />
+                    )}
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Description & Details for the Specific Clicked Project */}
+          {/* Selected Project Details */}
           <div className="w-full">
             <AnimatePresence mode="wait">
               <MotionDiv
                 key={activeItem.id}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.25 }}
-                className="p-4 sm:p-5 rounded-2xl bg-gray-50/95 border border-gray-200/90 space-y-3 shadow-xs"
+                transition={{ duration: 0.28, ease: "easeOut" }}
+                className="relative overflow-hidden rounded-2xl border border-gray-200/90 bg-[linear-gradient(145deg,#FFFFFF_0%,#FAFAF8_100%)] p-4 sm:p-5 shadow-[0_12px_35px_rgba(11,18,32,0.08)]"
               >
-                <div>
-                  <h4 className="text-base sm:text-lg font-serif font-semibold text-[#0B1220] leading-tight">
-                    {activeItem.title}
-                  </h4>
-                  <p className="text-[10px] font-mono text-gray-500 mt-0.5">
-                    {activeItem.location}
-                  </p>
+                <span className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-[#E6B566]/10" aria-hidden="true" />
+
+                <div className="relative flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <p className="mb-1 text-[9px] font-mono font-bold uppercase tracking-[0.18em] text-[#A17A3A]">
+                      {activeItem.category}
+                    </p>
+                    <h4 className="text-base sm:text-lg font-serif font-semibold text-[#0B1220] leading-tight">
+                      {activeItem.title}
+                    </h4>
+                  </div>
+                  <span className="mt-0.5 shrink-0 font-serif text-3xl leading-none text-[#E6B566]/70">
+                    {String(activeTab + 1).padStart(2, "0")}
+                  </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                <p className="mt-2 flex items-center gap-1.5 text-[10px] font-mono text-gray-500">
+                  <MapPin size={11} className="text-[#A17A3A]" aria-hidden="true" />
+                  {activeItem.location}
+                </p>
+
+                <p className="mt-3 text-xs sm:text-[13px] text-gray-600 leading-relaxed">
                   {activeItem.description}
                 </p>
 
                 {/* Highlights */}
-                <div className="space-y-1.5 pt-0.5">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#0B1220]">
-                    Highlights:
+                <div className="mt-3.5 border-t border-gray-200/80 pt-3">
+                  <p className="mb-2 text-[9px] font-bold uppercase tracking-[0.18em] text-[#0B1220]">
+                    Project highlights
                   </p>
-                  <div className="space-y-1">
+                  <div className="grid gap-1.5">
                     {activeItem.highlights.map((highlight, idx) => (
-                      <div key={idx} className="flex items-start gap-1.5 text-xs text-gray-700">
-                        <DotSquare size={13} className="text-[#8C6226] shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-2 text-xs text-gray-700">
+                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#F3E8CE]">
+                          <ChevronRightCircleIcon size={11} className="text-[#9A7031]" />
+                        </span>
                         <span className="leading-snug">{highlight}</span>
                       </div>
                     ))}
@@ -327,24 +358,27 @@ export const BeforeAfterSlider: React.FC<{ items?: ComparisonItem[] }> = ({
                 </div>
 
                 {/* Action Footer */}
-                <div className="pt-2.5 border-t border-gray-200/80 flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-3 text-[10px] sm:text-xs font-mono text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-400" />
-                      Turnkey "On-Time"
+                <footer className="mt-3.5 flex items-center justify-between gap-3 border-t border-gray-200/80 pt-3">
+                  <p
+                    className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-gray-500"
+                    aria-label="Turnkey project delivered on time"
+                  >
+                    <span className="relative flex h-2 w-2" aria-hidden="true">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                     </span>
-                      
-                  </div>
+                    <span>Turnkey <span className="text-gray-700">· On-Time</span></span>
+                  </p>
 
                   <Link
                     href={`/projects/${activeItem.projectSlug || activeItem.id}`}
-                    className="group inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#0B1220] hover:bg-[#1A2538] text-white text-[10px] sm:text-xs font-mono uppercase tracking-wider font-semibold shadow-xs hover:shadow-md transition-all shrink-0"
+                    className="group inline-flex items-center gap-2 rounded-xl bg-[#0B1220] px-4 py-2 text-white text-[10px] sm:text-xs font-mono uppercase tracking-[0.12em] font-semibold shadow-[0_6px_18px_rgba(11,18,32,0.18)] hover:bg-[#1A2538] hover:shadow-[0_8px_22px_rgba(11,18,32,0.24)] transition-all shrink-0"
                     title={`View ${activeItem.title} project`}
                   >
                     <span>View Project</span>
-                    <ArrowRight size={12} className="text-[#E6B566] transition-transform group-hover:translate-x-0.5" />
+                    <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
                   </Link>
-                </div>
+                </footer>
               </MotionDiv>
             </AnimatePresence>
           </div>

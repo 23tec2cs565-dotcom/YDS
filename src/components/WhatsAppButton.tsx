@@ -174,7 +174,7 @@ export const WhatsAppButton: React.FC = () => {
             <div className="p-4 sm:p-5 space-y-4">
               <div className="bg-white/85 border border-[#adc4d6] p-3.5 rounded-2xl shadow-sm">
                 <div className="flex items-center gap-2 text-[#1E3A5F] text-xs font-bold uppercase tracking-wider mb-1">
-                  <img decoding="async" loading="lazy" src="/icons/whatsapp-logo-new.webp" alt="WhatsApp Direct Verified Line Icon" title="Chat with Younick Design Studio on WhatsApp" width="16" height="16" className="w-4 h-4 object-contain" />
+                  <img decoding="async" loading="lazy" src="/icons/whatsapp-logo-new.webp" alt="WhatsApp Direct Verified Line Icon" title="Chat with Younick Design Studio on WhatsApp" width="16" height="16" className="w-8 h-8 object-contain" />
                   <span>Direct WhatsApp Line</span>
                 </div>
                 <p className="text-xs text-slate-700 leading-relaxed font-normal">
@@ -271,17 +271,17 @@ export const WhatsAppButton: React.FC = () => {
               <img decoding="async" loading="lazy"
                 src="/icons/whatsapp-logo-new.webp"
                 alt="Floating WhatsApp Consultation Action Button"
-                title="Direct WhatsApp Consultation with Younick Design Studio"
+                title="Direct Consultation with Younick Design Studio"
                 width="40"
                 height="40"
-                className="w-40 h-40 sm:w-10 sm:h-10 object-contain drop-shadow-md transition-transform group-hover:scale-110"
+                className="w-40 h-40 sm:w-25 sm:h-25 object-contain drop-shadow-md transition-transform group-hover:scale-110"
                 onError={(e) => {
                   (e.currentTarget as HTMLElement).style.display = "none";
                 }}
               />
 
               {/* Unread dot indicator (without dark border) */}
-              <span className="absolute top-1 right-1 w-3 h-3 bg-[#E6B566] rounded-full shadow-md" />
+              <span className="absolute top-1 right-1 w-3 h-3 bg-[#E6B566] rounded-full shadow-md border-2 border-[#FAFAFB]" />
             </button>
           </div>
         )}

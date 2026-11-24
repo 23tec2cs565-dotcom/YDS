@@ -295,7 +295,6 @@ const Blog: React.FC = () => {
           return (
             <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 border-b border-gray-200/80">
               <div className="flex items-center gap-2 mb-6">
-                <Sparkles size={16} className="text-[#8C6226]" />
                 <span className="text-xs uppercase tracking-widest text-[#8C6226] font-bold">
                   Featured 2026 Flagship Guide
                 </span>
@@ -339,9 +338,9 @@ const Blog: React.FC = () => {
                       <div className="flex flex-wrap items-center gap-4">
                         <Link
                           href={`/blog/${featuredPost.slug}`}
-                          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#B08D57] to-[#8C6226] hover:from-[#9C7945] hover:to-[#79541F] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-[#B08D57]/25 hover:shadow-lg hover:shadow-[#B08D57]/35 hover:scale-[1.01]"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[#B9E4E8] to-[#F5F5F0] hover:from-[#B9E4E8]/80 hover:to-[#F5F5F0]/80  text-gray-900 text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-[#B08D57]/25 hover:shadow-lg hover:shadow-[#B08D57]/35 hover:scale-[1.01]"
                         >
-                          Read Full Guide <ArrowRight size={14} />
+                          Read Full Guide 
                         </Link>
 
                         <div className="flex items-center gap-2.5 text-xs text-gray-500">
@@ -493,8 +492,7 @@ const Blog: React.FC = () => {
               <span className="absolute top-3 right-3 font-mono text-[10px] text-gray-400 select-none">+</span>
 
               <div className="max-w-2xl mx-auto relative z-10">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8EADC] border border-[#ECC8AA] text-[10.5px] font-bold uppercase tracking-widest text-[#8C6226] mb-3 shadow-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#8C6226]" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black border border-amber-400 text-[10.5px] font-semi bold uppercase tracking-widest text-gray-300 mb-3 shadow-xs">
                   Have a Specific Site or Budget in Mind?
                 </span>
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
@@ -508,13 +506,13 @@ const Blog: React.FC = () => {
                     href="https://wa.me/918854883058?text=Hello%20Younick%20Studio%2C%20I%20read%20your%20Knowledge%20Center%20guides%20and%20would%20like%20to%20discuss%20an%20interior%2Fconstruction%20project%20in%20Jaipur."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-7 py-3.5 rounded-full bg-gradient-to-r from-[#B08D57] to-[#8C6226] hover:from-[#9C7945] hover:to-[#79541F] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#B08D57]/30 hover:shadow-lg hover:scale-[1.01]"
+                    className="px-7 py-3.5 rounded-lg bg-gradient-to-r from-[#9FED72] to-[#9FED72] hover:from-[#9FED72] hover:to-[#B7D894] text-gray-900 font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#B08D57]/30 hover:shadow-lg hover:scale-[1.01]"
                   >
                     Chat with Architect on WhatsApp
                   </a>
                   <Link
                     href="/contact"
-                    className="px-7 py-3.5 rounded-full border border-gray-300 bg-white hover:bg-gray-50 text-gray-900 font-bold text-xs uppercase tracking-wider transition-all shadow-sm hover:scale-[1.01]"
+                    className="px-7 py-3.5 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 text-gray-900 font-bold text-xs uppercase tracking-wider transition-all shadow-sm hover:scale-[1.01]"
                   >
                     Schedule Studio Meeting
                   </Link>

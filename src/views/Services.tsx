@@ -480,34 +480,34 @@ const ServicesPage: React.FC = () => {
         </section>
 
         {/* Interactive Budget Estimator Section - Haute Architectural Luxury Modeler */}
-        <section className="py-20 sm:py-32 px-5 sm:px-6 bg-gradient-to-b from-[#FAFAF8] via-[#F4F4F2] to-[#FAF9F7] border-t border-[#EEEEEE] relative overflow-hidden">
+        <section className="py-16 sm:py-24 px-5 sm:px-6 bg-[#F8F7F4] border-t border-stone-200/80 relative overflow-hidden">
           {/* Tri-tone atmospheric aura (#BEDEFF, #F8EADC, #EEEEEE) */}
-          <div className="absolute top-1/4 left-1/6 w-[550px] h-[550px] bg-[#BEDEFF]/20 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute top-1/3 right-1/6 w-[550px] h-[550px] bg-[#F8EADC]/30 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#EEEEEE]/40 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute top-1/4 left-1/6 w-[550px] h-[550px] bg-[#BEDEFF]/25 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute top-1/3 right-1/6 w-[550px] h-[550px] bg-[#F8EADC]/35 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-white/70 rounded-full blur-[150px] pointer-events-none" />
 
           <div className="max-w-[1680px] mx-auto relative z-10">
             {/* Editorial Header */}
-            <div className="text-center mb-10 sm:mb-18">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EEEEEE] shadow-sm text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-stone-700 mb-3.5">
+            <div className="text-center mb-9 sm:mb-14">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/85 backdrop-blur-md border border-stone-200 shadow-sm text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase text-stone-600 mb-4">
                 <span className="w-2 h-2 rounded-full bg-[#EEEEEE] border border-stone-300" title="#EEEEEE Platinum" />
                 <span className="w-2 h-2 rounded-full bg-[#BEDEFF] shadow-[0_0_8px_rgba(190,222,255,0.9)]" title="#BEDEFF Ice Blue" />
                 <span className="w-2 h-2 rounded-full bg-[#F8EADC] shadow-[0_0_8px_rgba(248,234,220,0.9)]" title="#F8EADC Travertine" />
                 <span>Architectural Investment Modeler</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif text-[#181C24] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif text-[#20242B] tracking-tight">
                 Project Budget Estimator
               </h2>
-              <p className="mt-3.5 sm:mt-4 text-stone-500 max-w-2xl mx-auto text-xs sm:text-sm leading-relaxed font-sans">
+              <p className="mt-4 text-stone-500 max-w-2xl mx-auto text-sm leading-7 font-sans">
                 Real-time algorithmic cost modeling calibrated across architectural disciplines, regional indices, and bespoke finish specifications.
               </p>
             </div>
 
             {/* Layout Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-10 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-7 items-stretch">
               
               {/* Left Controls Column (7 cols) - The Architectural Specification Tablet */}
-              <div className="lg:col-span-7 bg-white/95 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] border border-[#EEEEEE] flex flex-col justify-between relative overflow-hidden">
+              <div className="lg:col-span-7 bg-white/90 backdrop-blur-sm rounded-[1.75rem] p-5 sm:p-8 md:p-9 shadow-[0_18px_50px_-24px_rgba(40,38,32,0.22)] border border-white flex flex-col justify-between relative overflow-hidden">
                 
                 {/* Architectural CAD Drafting Crosshairs in corners */}
                 <span className="absolute top-3 left-3 text-stone-300 font-mono text-[10px] select-none pointer-events-none">+</span>
@@ -539,11 +539,12 @@ const ServicesPage: React.FC = () => {
                         <button
                           key={svc.id}
                           type="button"
+                          aria-pressed={isSelected}
                           onClick={() => toggleService(svc.id)}
-                          className={`group relative flex items-start text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                          className={`group relative flex items-start text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 ${
                             isSelected
                               ? "border-[#BEDEFF] bg-gradient-to-br from-[#BEDEFF]/25 via-white to-[#F8EADC]/20 shadow-[0_8px_25px_-5px_rgba(190,222,255,0.35)] ring-1 ring-[#BEDEFF] -translate-y-0.5"
-                              : "border-[#EEEEEE] hover:border-[#BEDEFF]/60 hover:bg-[#BEDEFF]/10 bg-[#FCFCFA] hover:-translate-y-0.5"
+                              : "border-stone-200/80 hover:border-[#BEDEFF] hover:bg-[#F8FBFF] bg-[#FCFCFA] hover:-translate-y-0.5"
                           }`}
                         >
                           {/* Disciplinary code watermark */}
@@ -583,8 +584,8 @@ const ServicesPage: React.FC = () => {
                       2. Geographic Location
                     </label>
                     {hasRestrictedService && (
-                      <span className="text-[10px] font-semibold text-stone-900 px-3 py-0.5 rounded-full bg-[#F5BCB9]/80 border border-[#F8EADC] tracking-wide shadow-sm flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#A43323] animate-spin" />
+                        <span className="text-[10px] font-semibold text-amber-950 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 tracking-wide flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
                         Rajasthan Territorial Zone
                       </span>
                     )}
@@ -598,7 +599,7 @@ const ServicesPage: React.FC = () => {
                       id="city-search"
                       name="city-search"
                       type="text"
-                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-[#EEEEEE] text-sm focus:border-[#BEDEFF] focus:ring-2 focus:ring-[#BEDEFF]/35 outline-none transition-all bg-[#FCFCFA] text-slate-900 placeholder:text-stone-400 shadow-sm"
+                      className="w-full pl-10 pr-10 py-3.5 rounded-xl border border-stone-200 text-sm focus:border-slate-400 focus:ring-2 focus:ring-[#BEDEFF]/60 outline-none transition-all bg-white text-slate-900 placeholder:text-stone-400 shadow-sm"
                       placeholder={hasRestrictedService ? "Search Rajasthan locations (Jaipur, Jodhpur, Udaipur, Kota...)" : "Search major Indian metropolitan cities..."}
                       value={showDropdown ? searchQuery : selectedCityLabel}
                       onChange={(e) => setSearchQuery(e.target.value)}
@@ -623,7 +624,7 @@ const ServicesPage: React.FC = () => {
 
                   {/* Dropdown Menu */}
                   {showDropdown && (
-                    <div className="absolute left-0 right-0 mt-1.5 max-h-56 overflow-y-auto bg-white border border-[#EEEEEE] rounded-2xl shadow-2xl z-50 py-2 scrollbar-thin">
+                    <div className="absolute left-0 right-0 mt-2 max-h-56 overflow-y-auto bg-white border border-stone-200 rounded-2xl shadow-xl z-50 py-2 scrollbar-thin">
                       {filteredCities.length === 0 ? (
                         <div className="px-4 py-3 text-xs text-stone-400 italic">
                           No matching territories found
@@ -662,10 +663,10 @@ const ServicesPage: React.FC = () => {
 
                   {/* Service warning note (#F8EADC & #EEEEEE styling) */}
                   {hasRestrictedService && (
-                    <div className="mt-3.5 p-3.5 rounded-2xl bg-gradient-to-r from-[#F8EADC]/80 via-[#EEEEEE]/50 to-[#F8EADC]/80 border border-[#F8EADC] text-[11px] text-stone-900 flex items-start gap-3 shadow-sm">
+                    <div className="mt-3.5 p-4 rounded-2xl bg-amber-50/80 border border-amber-200/80 text-[11px] text-stone-700 flex items-start gap-3">
                       <AlertCircle size={16} className="shrink-0 text-amber-800 mt-0.5" />
                       <div>
-                        <span className="font-bold block mb-0.5 text-stone-950 text-xs uppercase tracking-wider">Geographic Operational Scope</span>
+                        <span className="font-bold block mb-1 text-stone-900 text-xs uppercase tracking-wider">Geographic Operational Scope</span>
                         Turnkey Construction & Heritage Restoration are bespoke on-site disciplines currently restricted to select districts in Rajasthan (Jaipur, Ajmer, Sikar, Udaipur & surrounding regions).
                       </div>
                     </div>
@@ -678,7 +679,7 @@ const ServicesPage: React.FC = () => {
                     <label htmlFor="area-number" className="block text-xs font-bold uppercase tracking-[0.15em] text-stone-500">
                       3. Built-Up Area Scale
                     </label>
-                    <div className="flex items-center gap-2 bg-white text-slate-900 px-3.5 py-1.5 rounded-xl shadow-xs border border-[#EEEEEE] transition-all">
+                    <div className="flex items-center gap-2 bg-white text-slate-900 px-3.5 py-2 rounded-xl shadow-sm border border-stone-200 transition-all focus-within:ring-2 focus-within:ring-[#BEDEFF]/60">
                       <input
                         id="area-number"
                         name="area-number"
@@ -763,11 +764,12 @@ const ServicesPage: React.FC = () => {
                     ].map((g) => {
                       const isSelected = quality === g.id;
                       return (
-                        <button
+                          <button
                           key={g.id}
                           type="button"
+                            aria-pressed={isSelected}
                           onClick={() => setQuality(g.id as "standard" | "premium" | "luxury")}
-                          className={`flex flex-col items-start p-3.5 sm:p-4 rounded-2xl border text-left transition-all duration-300 relative cursor-pointer ${
+                            className={`flex flex-col items-start p-3.5 sm:p-4 rounded-2xl border text-left transition-all duration-200 relative cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 ${
                             isSelected
                               ? `${g.activeStyle} -translate-y-0.5`
                               : "border-[#EEEEEE] hover:border-stone-300 bg-[#FCFCFA] hover:bg-stone-50/70 hover:-translate-y-0.5"
@@ -795,7 +797,7 @@ const ServicesPage: React.FC = () => {
               </div>
 
               {/* Right Results Column (5 cols) - Luminous Architectural Master Console (100% Light Palette) */}
-              <div className="lg:col-span-5 bg-gradient-to-b from-white via-[#FAF9F7] to-[#F5EFE6] text-slate-900 rounded-3xl p-6 sm:p-9 flex flex-col justify-between relative overflow-hidden border-2 border-[#EEEEEE] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.06)] hover:border-[#BEDEFF]/60 transition-colors duration-500">
+              <div className="lg:col-span-5 bg-gradient-to-br from-white via-[#FBFAF7] to-[#F5EFE6] text-slate-900 rounded-[1.75rem] p-6 sm:p-9 flex flex-col justify-between relative overflow-hidden border border-white shadow-[0_18px_50px_-24px_rgba(40,38,32,0.22)]">
                 
                 {/* Precision 3-color laser edge rim (#BEDEFF -> #EEEEEE -> #F8EADC) */}
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#BEDEFF] via-[#EEEEEE] to-[#F8EADC] pointer-events-none" />
@@ -811,99 +813,111 @@ const ServicesPage: React.FC = () => {
 
                 <div className="relative z-10">
                   {/* Console Header */}
-                  <div className="flex items-center justify-between border-b border-[#EEEEEE] pb-3.5">
-                    <span className="text-slate-800 text-[10px] font-bold uppercase tracking-[0.25em] flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#BEDEFF] shadow-[0_0_8px_rgba(190,222,255,1)]" />
-                      Calibrated Budget Range
-                    </span>
-                    
+                  <div className="flex items-center justify-between border-b border-slate-200/80 pb-4">
+                    <div className="flex items-center gap-3">
+                      
+                      <span className="text-slate-800 text-[10px] font-bold uppercase tracking-[0.24em]">
+                        Calibrated Budget Range
+                      </span>
+                    </div>
+                    {selectedServices.length > 0 && (
+                      <span className="rounded-full border border-slate-200 bg-white/70 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        Live estimate
+                      </span>
+                    )}
                   </div>
                   
-                  {/* Budget Counter with Metallic Platinum (#EEEEEE), Ice Blue (#BEDEFF) & Champagne Travertine (#F8EADC) */}
+                  {/* Budget Counter */}
                   <div className="mt-6 mb-3">
                     {selectedServices.length === 0 ? (
-                      <div className="text-xl sm:text-2xl text-slate-400 font-serif py-8 italic font-light">
-                        Select one or more architectural disciplines to generate estimate...
+                      <div className="rounded-2xl border border-dashed border-slate-200 bg-white/55 px-5 py-8 text-center">
+                        <div className="mx-auto mb-3 h-px w-10 bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+                        <div className="font-serif text-xl sm:text-2xl text-slate-400 italic font-light">
+                          Select architectural disciplines to begin
+                        </div>
+                        <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                          Your estimate will appear here
+                        </p>
                       </div>
                     ) : (
                       <div>
-                        <div className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight font-bold text-slate-950">
-                          {formatCost(min)} – {formatCost(max)}
+                        <div className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-none tracking-tight font-semibold text-slate-950">
+                          {formatCost(min)} <span className="font-light text-slate-300">–</span> {formatCost(max)}
                         </div>
-                        <p className="text-[11px] text-slate-600 mt-2.5 tracking-wider font-mono flex items-center gap-2">
-                          Indicative Turnkey Estimate for {selectedCityLabel || location} ({quality.charAt(0).toUpperCase() + quality.slice(1)} Tier)
-                        </p>
+                        <div className="mt-4 flex flex-wrap items-center gap-2">
+                          <span className="h-px w-5 bg-slate-300" />
+                          <p className="text-[10.5px] text-slate-600 tracking-[0.08em] font-medium uppercase">
+                            {selectedCityLabel || location} <span className="mx-1 text-slate-300">•</span> {quality.charAt(0).toUpperCase() + quality.slice(1)} Tier
+                          </p>
+                          {(comboDiscount > 0 || scaleDiscount > 0) && (
+                            <div className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-[#E8D4BB] bg-[#FBF4E9] px-2.5 py-1 text-[9.5px] text-stone-800 font-semibold shadow-[0_6px_18px_-12px_rgba(120,98,70,0.45)]">
+                              <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white text-[8px] text-amber-700 ring-1 ring-amber-200">✓</span>
+                              <span>
+                                {comboDiscount > 0 ? `${comboDiscount}% Multi-Service` : ""}
+                                {comboDiscount > 0 && scaleDiscount > 0 ? " + " : ""}
+                                {scaleDiscount > 0 ? `${scaleDiscount}% Scale Index` : ""} Applied
+                              </span>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     )}
                   </div>
 
-                  {/* Applied Volume & Combo Savings Pill (#F8EADC Accent) */}
-                  {(comboDiscount > 0 || scaleDiscount > 0) && (
-                    <div className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-100 border border-amber-300 text-[11px] text-stone-900 font-semibold shadow-xs">
-                      <span>
-                        Applied Privilege: {comboDiscount > 0 ? `${comboDiscount}% Multi-Service` : ""}{" "}
-                        {comboDiscount > 0 && scaleDiscount > 0 ? "+" : ""}{" "}
-                        {scaleDiscount > 0 ? `${scaleDiscount}% Scale Index` : ""} Offset
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Breakdown Progress Bars - Tri-Color Graded in #BEDEFF, #F8EADC, #EEEEEE */}
+                  {/* Capital Allocation Matrix */}
                   {selectedServices.length > 0 && (
-                    <div className="mt-7 sm:mt-9 space-y-4 bg-white/95 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-[#EEEEEE] shadow-sm">
-                      <div className="flex items-center justify-between border-b border-[#EEEEEE] pb-2.5">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-800">
-                          Capital Allocation Matrix
+                    <div className="mt-7 sm:mt-8 space-y-5 rounded-[1.25rem] border border-white/90 bg-white/70 p-5 sm:p-6 shadow-[0_14px_35px_-24px_rgba(51,65,85,0.35)] backdrop-blur-md">
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <p className="text-[9.5px] font-bold uppercase tracking-[0.22em] text-slate-700">
+                          Capital Allocation
                         </p>
-                        <div className="flex items-center gap-2">
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#BEDEFF] border border-blue-300" title="#BEDEFF Planning" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#F8EADC] border border-amber-300" title="#F8EADC Materials" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#EEEEEE] border border-stone-300" title="#EEEEEE Execution" />
+                        <div className="flex items-center gap-1.5">
+                          <span className="h-2 w-2 rounded-full bg-[#BEDEFF] ring-1 ring-blue-200" title="Planning" />
+                          <span className="h-2 w-2 rounded-full bg-[#F8EADC] ring-1 ring-amber-200" title="Materials" />
+                          <span className="h-2 w-2 rounded-full bg-slate-200 ring-1 ring-slate-300" title="Execution" />
                         </div>
                       </div>
                       
                       {[
                         { 
-                          label: "Design, Architecture & 3D Planning", 
+                          label: "Design & 3D Planning", 
                           pct: 10, 
-                          detail: "Floorplans, elevations, structural CAD & digital twin visuals", 
-                          gradient: "from-[#BEDEFF] to-[#7DB0ED]",
-                          glow: "shadow-[0_0_10px_rgba(190,222,255,0.7)]",
-                          badgeBg: "bg-[#BEDEFF]/35 border border-[#BEDEFF] text-blue-950",
+                          detail: "Floorplans, elevations, CAD & digital visuals", 
+                          gradient: "from-[#BEDEFF] to-[#91BDEB]",
+                          glow: "shadow-[0_0_8px_rgba(190,222,255,0.75)]",
+                          badgeBg: "bg-[#EDF6FF] border border-[#C9DFF5] text-blue-950",
                         },
                         { 
-                          label: "High-Specification Material Procurement", 
+                          label: "Material Procurement", 
                           pct: 55, 
-                          detail: "Italian marble, engineered core, imported hardware & veneers", 
-                          gradient: "from-[#F8EADC] to-[#ECC8AA]",
-                          glow: "shadow-[0_0_10px_rgba(248,234,220,0.8)]",
-                          badgeBg: "bg-[#F8EADC] border border-[#ECC8AA] text-stone-900",
+                          detail: "Stone, engineered cores, hardware & veneers", 
+                          gradient: "from-[#F8EADC] to-[#E7C4A3]",
+                          glow: "shadow-[0_0_8px_rgba(248,234,220,0.85)]",
+                          badgeBg: "bg-[#FBF4E9] border border-[#E8D4BB] text-stone-900",
                         },
                         { 
-                          label: "Master Artisans & Turnkey Execution", 
+                          label: "Turnkey Execution", 
                           pct: 35, 
-                          detail: "Master carpenters, site architects & QA engineering", 
-                          gradient: "from-[#BEDEFF] via-[#EEEEEE] to-[#F8EADC]",
-                          glow: "shadow-[0_0_10px_rgba(238,238,238,0.8)]",
-                          badgeBg: "bg-[#EEEEEE] border border-stone-300 text-slate-900",
+                          detail: "Master artisans, site direction & quality assurance", 
+                          gradient: "from-[#DDE2E5] via-[#EEEEEE] to-[#E1CDBB]",
+                          glow: "shadow-[0_0_8px_rgba(210,210,210,0.7)]",
+                          badgeBg: "bg-slate-50 border border-slate-200 text-slate-900",
                         }
                       ].map((item, idx) => (
-                        <div key={idx} className="space-y-1.5">
-                          <div className="flex justify-between items-center text-xs font-semibold">
-                            <span className="text-slate-800 flex items-center gap-2">
-                              {item.label}
-                            </span>
-                            <span className={`font-mono font-bold text-[11px] px-2 py-0.5 rounded ${item.badgeBg}`}>
+                        <div key={idx} className="group space-y-2">
+                          <div className="flex justify-between items-center text-[11.5px] font-semibold">
+                            <span className="text-slate-800">{item.label}</span>
+                            <span className={`font-mono font-bold text-[10.5px] px-2 py-0.5 rounded-full ${item.badgeBg}`}>
                               {item.pct}%
                             </span>
                           </div>
-                          <div className="h-2 bg-[#EEEEEE] rounded-full overflow-hidden p-[1px]">
+                          <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden ring-1 ring-slate-100">
                             <div
-                              className={`h-full bg-gradient-to-r ${item.gradient} rounded-full transition-all duration-500 ${item.glow}`}
+                              className={`h-full bg-gradient-to-r ${item.gradient} rounded-full transition-all duration-700 ${item.glow}`}
                               style={{ width: `${item.pct}%` }}
                             />
                           </div>
-                          <span className="block text-[10.5px] text-slate-500 font-light leading-none">
+                          <span className="block text-[9.5px] text-slate-400 font-light leading-tight">
                             {item.detail}
                           </span>
                         </div>
@@ -918,10 +932,10 @@ const ServicesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={startProject}
-                    className="w-full py-4 px-6 bg-gradient-to-r from-[#BEDEFF] via-[#F8EADC] to-[#BEDEFF] hover:from-[#A8D3FF] hover:to-[#F3DECE] text-slate-950 shadow-[0_12px_30px_-5px_rgba(190,222,255,0.7)] hover:shadow-[0_16px_35px_-5px_rgba(248,234,220,0.8)] hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 rounded-full font-bold text-xs uppercase tracking-[0.16em] flex items-center justify-center gap-2 group cursor-pointer border border-[#BEDEFF]/60"
+                    className="w-full py-4 px-6 bg-slate-900 hover:bg-slate-800 text-white shadow-lg shadow-slate-900/10 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 rounded-full font-bold text-xs uppercase tracking-[0.16em] flex items-center justify-center gap-2 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2"
                   >
                     <span>Request Architectural Dossier</span>
-                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1.5 text-slate-950" />
+                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1.5 text-white" />
                   </button>
                   <p className="text-[10.5px] text-center text-slate-500 leading-relaxed font-sans">
                     Ballpark modeling only. Actual project scope is itemized upon site survey and CAD architectural drawings.
