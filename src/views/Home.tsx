@@ -1,44 +1,26 @@
 "use client";
 // src/pages/Home.tsx
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import {
-  X,
   ArrowRight,
   Star,
-  Play,
   ChevronLeft,
   ChevronRight,
   CheckCircle2,
   Quote,
-} from "lucide-react";
-import {
   Home as HomeIcon,
   Building,
   Wrench,
   MessageCircle,
   Eye,
-  HelpCircle
+  HelpCircle,
 } from "lucide-react";
-
-const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Home: HomeIcon,
-  Building,
-  Wrench,
-  MessageCircle,
-  Eye
-};
 
 // -- Data imports with Sanity / local fallback
 import { projects as defaultProjects } from "../data/projects";
-import { services as defaultServices } from "../data/services";
 import { teamMembers as defaultTeam } from "../data/team";
 import { blogs as defaultBlogs } from "../data/blogs";
 import { useProjects, useServices, useTeam, useTestimonials, useBlogPosts } from "../hooks/useSanityData";
@@ -50,6 +32,33 @@ import { pageSEO } from "../utils/seo";
 import { BeforeAfterSlider } from "../components/BeforeAfterSlider";
 import { YEARS_OF_EXPERIENCE } from "../utils/constants";
 
+const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  Home: HomeIcon,
+  Building,
+  Wrench,
+  MessageCircle,
+  Eye,
+};
+
+const HERO_VIDEOS = [
+  "/assets/Projects/Detailing devils/video-1.mp4",
+  "/assets/Projects/Detailing devils/video-2.mp4",
+  "/assets/Projects/Detailing devils/video-3.mp4",
+  "/assets/Projects/Detailing devils/video-4.mp4",
+  "/assets/Projects/Detailing devils/video-5.mp4",
+  "/assets/Projects/Detailing devils/video-6.mp4",
+  "/assets/Projects/Detailing devils/video-7.mp4",
+  "/assets/Projects/Detailing devils/video-8.mp4",
+  "/assets/Projects/Detailing devils/video-9.mp4",
+  "/assets/Projects/Detailing devils/video-10.mp4",
+  "/assets/Projects/Detailing devils/video-11.mp4",
+  "/assets/Projects/Detailing devils/video-12.mp4",
+  "/assets/Projects/Detailing devils/video-13.mp4",
+  "/assets/Projects/Detailing devils/video-14.mp4",
+];
+
+const PROJECT_FILTERS = ["All", "Interior Design", "Construction", "Renovation"] as const;
+
 const cn = (...args: Array<string | false | null | undefined>) =>
   args.filter(Boolean).join(" ");
 
@@ -58,10 +67,6 @@ const MotionDiv = motion.div as unknown as React.ComponentType<any>;
 
 interface ExtendedProject extends Project {
   imageUrl?: string;
-  date?: string;
-  year?: string;
-  tags?: string[];
-  tagsList?: string[];
 }
 
 interface ExtendedService extends Service {
@@ -75,6 +80,20 @@ function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
     img.src = "/assets/Placeholder/Mock-9.avif";
     img.alt = "Younick studio image fallback";
   }
+}
+
+function handleAvatarError(
+  e: React.SyntheticEvent<HTMLImageElement>,
+  name: string,
+  size: number,
+  fontSize: number
+) {
+  const img = e.currentTarget;
+  img.onerror = null;
+  const initial = (name || "Y").charAt(0).toUpperCase();
+  img.src = `data:image/svg+xml;utf8,${encodeURIComponent(
+    `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='${fontSize}' fill='#B08D57'>${initial}</text></svg>`
+  )}`;
 }
 
 
@@ -150,44 +169,25 @@ Button.displayName = "Button";
 
 // ------------------ Sections ------------------
 
-const Hero: React.FC = () => {
+const Hero: React.FC<{ projects: Project[] }> = React.memo(({ projects }) => {
   const router = useRouter();
-
-  // Detailing Devils video playlist for hero front panel
-  const heroVideos = [
-    "/assets/Projects/Detailing devils/video-1.mp4",
-    "/assets/Projects/Detailing devils/video-2.mp4",
-    "/assets/Projects/Detailing devils/video-3.mp4",
-    "/assets/Projects/Detailing devils/video-4.mp4",
-    "/assets/Projects/Detailing devils/video-5.mp4",
-    "/assets/Projects/Detailing devils/video-6.mp4",
-    "/assets/Projects/Detailing devils/video-7.mp4",
-    "/assets/Projects/Detailing devils/video-8.mp4",
-    "/assets/Projects/Detailing devils/video-9.mp4",
-    "/assets/Projects/Detailing devils/video-10.mp4",
-    "/assets/Projects/Detailing devils/video-11.mp4",
-    "/assets/Projects/Detailing devils/video-12.mp4",
-    "/assets/Projects/Detailing devils/video-13.mp4",
-    "/assets/Projects/Detailing devils/video-14.mp4",
-  ];
   const videoIdxRef = useRef(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoEnded = useCallback(() => {
-    videoIdxRef.current = (videoIdxRef.current + 1) % heroVideos.length;
+    videoIdxRef.current = (videoIdxRef.current + 1) % HERO_VIDEOS.length;
     const vid = videoRef.current;
     if (vid) {
-      vid.src = heroVideos[videoIdxRef.current];
+      vid.src = HERO_VIDEOS[videoIdxRef.current];
       vid.play().catch(() => {});
     }
-  }, [heroVideos]);
-
-  const { projects } = useProjects();
+  }, []);
 
   // Back panel static image from first featured project
-  const featuredProjects = projects.filter((p) => p.featured);
-  const heroProject = featuredProjects[0] ?? projects[0];
-  const heroBackImg = (heroProject as ExtendedProject)?.imageUrl ?? heroProject?.image ?? "/assets/Hero/hero-1920.webp";
+  const heroBackImg = useMemo(() => {
+    const featured = projects.find((p) => p.featured) ?? projects[0];
+    return (featured as ExtendedProject)?.imageUrl ?? featured?.image ?? "/assets/Hero/hero-1920.webp";
+  }, [projects]);
 
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-[#FAFAFB]">
@@ -211,8 +211,6 @@ const Hero: React.FC = () => {
 
       <div className="max-w-[1680px] mx-auto grid lg:grid-cols-12 gap-16 items-center h-full">
         <div className="lg:col-span-6 relative z-10">
-          
-
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#0B1220] leading-[1.1] mb-8">
             Interiors that <br />
             <span className="italic text-[#8C6226] font-angelone">feel curated</span>
@@ -226,27 +224,27 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-wrap items-center gap-4 mb-12">
             <Button
-  onClick={() => router.push("/contact")}
-  withIcon
-  className="group relative rounded-none bg-transparent hover:bg-transparent text-white shadow-none overflow-visible px-8 py-4"
->
-  {/* Morphing SVG Background */}
-  <svg
-    viewBox="0 0 200 60"
-    preserveAspectRatio="none"
-    className="absolute inset-0 w-full h-full -z-10 drop-shadow-xl"
-  >
-    <path
-      d="M 0,0 Q 100,0 200,0 Q 200,30 200,60 Q 100,60 0,60 Q 0,30 0,0 Z"
-      className="fill-[#0B3528] transition-all duration-300 ease-out group-hover:fill-[#0B3528]/90 group-hover:[d:path('M_1,1_Q_100,4_199,1_Q_195,30_199,59_Q_100,56_1,59_Q_5,30_1,1_Z')]"
-    />
-  </svg>
+              onClick={() => router.push("/contact")}
+              withIcon
+              className="group relative rounded-none bg-transparent hover:bg-transparent text-white shadow-none overflow-visible px-8 py-4"
+            >
+              {/* Morphing SVG Background */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 200 60"
+                preserveAspectRatio="none"
+                className="absolute inset-0 w-full h-full -z-10 drop-shadow-xl"
+              >
+                <path
+                  d="M 0,0 Q 100,0 200,0 Q 200,30 200,60 Q 100,60 0,60 Q 0,30 0,0 Z"
+                  className="fill-[#0B3528] transition-all duration-300 ease-out group-hover:fill-[#0B3528]/90 group-hover:[d:path('M_1,1_Q_100,4_199,1_Q_195,30_199,59_Q_100,56_1,59_Q_5,30_1,1_Z')]"
+                />
+              </svg>
 
-  <span className="relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:scale-[0.98]">
-    Start a Conversation
-  </span>
-</Button>
-
+              <span className="relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:scale-[0.98]">
+                Start a Conversation
+              </span>
+            </Button>
 
             <Link
               href="/projects"
@@ -275,7 +273,9 @@ const Hero: React.FC = () => {
         <div className="lg:col-span-6 relative h-[600px] hidden md:block">
           <div className="absolute top-0 right-0 w-4/5 h-4/5 z-10">
             <div className="w-full h-full rounded-tr-[100px] rounded-bl-[40px] overflow-hidden shadow-2xl">
-              <img decoding="async"
+              <img
+                decoding="async"
+                fetchPriority="high"
                 src={heroBackImg}
                 alt="Luxury Interior Living Space by Younick Design Studio"
                 title="Luxury Interior Architecture — Younick Design Studio Jaipur"
@@ -292,17 +292,18 @@ const Hero: React.FC = () => {
             <div className="w-full h-full rounded-tl-[60px] rounded-br-[20px] overflow-hidden shadow-2xl border-8 border-[#FAFAFB]">
               <video
                 ref={videoRef}
-                src={heroVideos[0]}
+                src={HERO_VIDEOS[0]}
                 autoPlay
                 muted
                 playsInline
+                preload="metadata"
                 onEnded={handleVideoEnded}
                 className="w-full h-full object-cover"
               />
             </div>
 
             <div className="absolute -top-8 -right-8 bg-white p-4 rounded-xl shadow-xl max-w-[180px]">
-              <div className="flex items-center gap-1 mb-2">
+              <div className="flex items-center gap-1 mb-2" aria-hidden="true">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star key={i} className="w-3 h-3 text-[#E6B566]" />
                 ))}
@@ -314,14 +315,19 @@ const Hero: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
-const About: React.FC = () => {
-  const { projects } = useProjects();
-  const projectList = (projects && projects.length > 0) ? projects : defaultProjects;
-  const featuredProjects = projectList.filter((p) => p.featured);
-  const aboutImg1 = (featuredProjects[0] as ExtendedProject)?.imageUrl ?? featuredProjects[0]?.image ?? (projectList[0] as ExtendedProject)?.imageUrl ?? projectList[0]?.image ?? "/assets/Placeholder/Mock-4.jpg";
-  const aboutImg2 = (featuredProjects[1] as ExtendedProject)?.imageUrl ?? featuredProjects[1]?.image ?? (projectList[1] as ExtendedProject)?.imageUrl ?? projectList[1]?.image ?? "/assets/Placeholder/Mock-9.avif";
+const About: React.FC<{ projects: Project[] }> = React.memo(({ projects }) => {
+  const { aboutImg1, aboutImg2 } = useMemo(() => {
+    const projectList = projects.length > 0 ? projects : defaultProjects;
+    const featured = projectList.filter((p) => p.featured);
+    const first = featured[0] ?? projectList[0];
+    const second = featured[1] ?? projectList[1];
+    return {
+      aboutImg1: (first as ExtendedProject)?.imageUrl ?? first?.image ?? "/assets/Placeholder/Mock-4.jpg",
+      aboutImg2: (second as ExtendedProject)?.imageUrl ?? second?.image ?? "/assets/Placeholder/Mock-9.avif",
+    };
+  }, [projects]);
 
   return (
     <section id="about" className="py-24 bg-white relative">
@@ -375,9 +381,9 @@ const About: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
-const TransformationSection: React.FC = () => {
+const TransformationSection: React.FC = React.memo(() => {
   return (
     <section className="py-16 sm:py-24 bg-white relative overflow-hidden border-t border-gray-100 w-full">
       <div className="max-w-[1680px] mx-auto px-4 sm:px-6">
@@ -398,28 +404,22 @@ const TransformationSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
-const ProjectsSection: React.FC = () => {
+const ProjectsSection: React.FC<{ projects: Project[] }> = React.memo(({ projects }) => {
   const router = useRouter();
-  const { projects } = useProjects();
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>("All");
-  const filtered = (
-    filter === "All"
-      ? projects.filter((p) => p.featured)
-      : projects.filter((p) => p.category === filter).sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
-  ).slice(0, 6);
-
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedProject) {
-        setSelectedProject(null);
-      }
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [selectedProject]);
+  const filtered = useMemo(
+    () =>
+      (
+        filter === "All"
+          ? projects.filter((p) => p.featured)
+          : projects
+              .filter((p) => p.category === filter)
+              .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+      ).slice(0, 6),
+    [projects, filter]
+  );
 
   return (
     <section id="projects" className="py-24 bg-[#FAFAFB]">
@@ -432,7 +432,7 @@ const ProjectsSection: React.FC = () => {
 
           <Reveal delay={0.1}>
             <div className="flex gap-2 p-1 bg-white rounded-full border border-gray-200 shadow-sm overflow-x-auto">
-              {["All", "Interior Design", "Construction", "Renovation"].map((cat) => (
+              {PROJECT_FILTERS.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setFilter(cat)}
@@ -488,57 +488,11 @@ const ProjectsSection: React.FC = () => {
           <Button onClick={() => router.push("/projects")} variant="outline" className="border-gray-300">View Full Portfolio</Button>
         </div>
       </div>
-
-      <AnimatePresence>
-        {selectedProject && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" role="dialog" aria-modal="true">
-            <MotionDiv initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-[#0B1220]/80 backdrop-blur-sm" />
-            <MotionDiv layoutId={`project-${selectedProject.id}`} className="bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row" initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 50, opacity: 0 }}>
-              <button onClick={() => setSelectedProject(null)} aria-label="Close modal" className="absolute top-4 right-4 z-50 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"><X size={20} /></button>
-
-              <div className="w-full md:w-1/2 h-64 md:h-auto relative bg-gray-100">
-                <img decoding="async" loading="lazy" src={(selectedProject as ExtendedProject)?.imageUrl ?? selectedProject.image ?? ""} alt={`${selectedProject.title} — ${selectedProject.category || "Architecture"}`} title={`${selectedProject.title} — ${selectedProject.category || "Architecture"} in ${selectedProject.location || "Jaipur"}`} width="800" height="600" className="w-full h-full object-cover" onError={handleImgError} />
-              </div>
-
-              <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
-                <span className="inline-block px-3 py-1 bg-[#E6B566]/10 text-[#E6B566] rounded-full text-xs font-bold uppercase tracking-wider mb-4">{selectedProject.category}</span>
-                <div className="text-4xl font-serif text-[#0B1220] mb-6">{selectedProject.title}</div>
-
-                <div className="grid grid-cols-2 gap-6 py-6 border-y border-gray-100 mb-8">
-                  <div>
-                    <span className="block text-xs text-gray-400 uppercase tracking-wide">Location</span>
-                    <span className="font-medium">{selectedProject.location}</span>
-                  </div>
-                  <div>
-                    <span className="block text-xs text-gray-400 uppercase tracking-wide">Area</span>
-                    <span className="font-medium">{selectedProject.area}</span>
-                  </div>
-                  <div>
-                    <span className="block text-xs text-gray-400 uppercase tracking-wide">Date</span>
-                    <span className="font-medium">{(selectedProject as ExtendedProject).date ?? (selectedProject as ExtendedProject).year ?? selectedProject.completionDate ?? ""}</span>
-                  </div>
-                </div>
-
-                <p className="text-gray-600 leading-relaxed mb-8 text-lg">{selectedProject.description}</p>
-
-                <div>
-                  <h4 className="font-bold text-sm text-[#0B1220] mb-3">Scope & Tags</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {((selectedProject as ExtendedProject).tags ?? (selectedProject as ExtendedProject).tagsList ?? selectedProject.workScope ?? []).map((tag: string) => (
-                      <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 text-xs rounded-md">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </MotionDiv>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
-};
+});
 
-const ServicesSection: React.FC = () => {
+const ServicesSection: React.FC = React.memo(() => {
   const { services } = useServices();
   return (
     <section id="services" className="py-24 bg-white">
@@ -556,9 +510,7 @@ const ServicesSection: React.FC = () => {
           {services.map((service, index) => {
             const s = service as ExtendedService;
             const img = s?.imageUrl ?? s?.image ?? "";
-
             const Icon = s?.icon ? ICON_MAP[s.icon] || HelpCircle : null;
-
             const isEven = index % 2 === 0;
 
             return (
@@ -585,22 +537,22 @@ const ServicesSection: React.FC = () => {
                     )}
                   />
                   <div className="relative overflow-hidden rounded-2xl aspect-[16/10] shadow-xl">
-                      <img
-                        src={img}
-                        alt={`${s?.title} — Architecture & Turnkey Service`}
-                        title={`${s?.title} — Younick Design Studio Services Jaipur`}
-                        width="800"
-                        height="500"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        onError={handleImgError}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <div className="absolute top-4 left-4 sm:top-5 sm:left-5 w-12 h-12 sm:w-14 sm:h-14 bg-[#0B3528]/95 backdrop-blur-md rounded-2xl border border-emerald-500/40 flex items-center justify-center shadow-xl text-[#E6B566] z-10 shadow-emerald-950/40">
+                    <img
+                      src={img}
+                      alt={`${s?.title} — Architecture & Turnkey Service`}
+                      title={`${s?.title} — Younick Design Studio Services Jaipur`}
+                      width="800"
+                      height="500"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      onError={handleImgError}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute top-4 left-4 sm:top-5 sm:left-5 w-12 h-12 sm:w-14 sm:h-14 bg-[#0B3528]/95 backdrop-blur-md rounded-2xl border border-emerald-500/40 flex items-center justify-center shadow-xl text-[#E6B566] z-10 shadow-emerald-950/40">
                       {Icon ? (
                         <Icon size={28} />
                       ) : (
-                        <svg width="28" height="28" aria-hidden />
+                        <svg width="28" height="28" aria-hidden="true" />
                       )}
                     </div>
                   </div>
@@ -649,15 +601,15 @@ const ServicesSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
-const TestimonialsSection: React.FC = () => {
+const TestimonialsSection: React.FC = React.memo(() => {
   const { testimonials: TESTIMONIALS } = useTestimonials();
   const [index, setIndex] = useState(0);
-  const list = (TESTIMONIALS && TESTIMONIALS.length > 0) ? TESTIMONIALS : TESTIMONIALS_FALLBACK;
+  const list = TESTIMONIALS && TESTIMONIALS.length > 0 ? TESTIMONIALS : TESTIMONIALS_FALLBACK;
   const total = list.length || 1;
-  const next = () => setIndex((p) => (p + 1) % total);
-  const prev = () => setIndex((p) => (p - 1 + total) % total);
+  const next = useCallback(() => setIndex((p) => (p + 1) % total), [total]);
+  const prev = useCallback(() => setIndex((p) => (p - 1 + total) % total), [total]);
   const current = list[index] || list[0];
 
   if (!current) return null;
@@ -665,7 +617,7 @@ const TestimonialsSection: React.FC = () => {
   return (
     <section className="py-24 bg-[#FAFAFB] border-y border-white">
       <div className="max-w-5xl mx-auto px-6 relative">
-        <div className="absolute top-0 left-10 text-[#E6B566]/10 pointer-events-none">
+        <div className="absolute top-0 left-10 text-[#E6B566]/10 pointer-events-none" aria-hidden="true">
           <Quote size={120} />
         </div>
 
@@ -683,20 +635,24 @@ const TestimonialsSection: React.FC = () => {
 
           <AnimatePresence mode="wait">
             <MotionDiv key={index} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4 }} className="max-w-2xl">
-              <div className="flex justify-center gap-1 mb-6">
+              <div className="flex justify-center gap-1 mb-6" aria-hidden="true">
                 {[...Array(5)].map((_, i) => <Star key={i} size={16} className="text-[#E6B566]" />)}
               </div>
-              <p className="text-2xl md:text-3xl font-serif text-[#0B1220] leading-relaxed italic mb-8">"{current?.quote || 'Exceptional craftsmanship and attention to detail.'}"</p>
+              <p className="text-2xl md:text-3xl font-serif text-[#0B1220] leading-relaxed italic mb-8">"{current?.quote || "Exceptional craftsmanship and attention to detail."}"</p>
               <div className="flex flex-col items-center">
-                <img src={current?.avatarUrl || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=512&auto=format&fit=crop"} alt={`${current?.name || 'Client'} — Client Review`} title={`${current?.name || 'Client'} — Client Review for Younick Design Studio`} width="64" height="64" className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md" loading="lazy" decoding="async" onError={(e) => {
-                  const img = e.currentTarget;
-                  img.onerror = null;
-                  img.src = `data:image/svg+xml;utf8,${encodeURIComponent(
-                    `<svg xmlns='http://www.w3.org/2000/svg' width='128' height='128'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' fill='#B08D57'>${(current?.name || 'C').charAt(0)}</text></svg>`
-                  )}`;
-                }} />
-                <div className="font-bold text-[#0B1220]">{current?.name || 'Satisfied Client'}</div>
-                <p className="text-sm text-gray-500">{current?.role || 'Homeowner'}</p>
+                <img
+                  src={current?.avatarUrl || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=512&auto=format&fit=crop"}
+                  alt={`${current?.name || "Client"} — Client Review`}
+                  title={`${current?.name || "Client"} — Client Review for Younick Design Studio`}
+                  width="64"
+                  height="64"
+                  className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white shadow-md"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => handleAvatarError(e, current?.name || "C", 128, 48)}
+                />
+                <div className="font-bold text-[#0B1220]">{current?.name || "Satisfied Client"}</div>
+                <p className="text-sm text-gray-500">{current?.role || "Homeowner"}</p>
               </div>
             </MotionDiv>
           </AnimatePresence>
@@ -704,27 +660,30 @@ const TestimonialsSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
-const LeadershipSection: React.FC = () => {
+const LeadershipSection: React.FC = React.memo(() => {
   const { teamMembers } = useTeam();
-  const members = (teamMembers && teamMembers.length > 0) ? teamMembers : defaultTeam;
-  const leadership = members.filter((member) => member.isFounder);
+  const displayedLeadership = useMemo(() => {
+    const members = teamMembers && teamMembers.length > 0 ? teamMembers : defaultTeam;
+    const founders = members.filter((member) => member.isFounder);
+    return (founders.length > 0 ? founders : members).slice(0, 3);
+  }, [teamMembers]);
 
   return (
     <section id="team" className="py-24 bg-white">
       <div className="max-w-[1680px] mx-auto px-6">
         <Reveal>
           <div className="text-center mb-16">
-            <div className="text-4xl font-serif mb-4">The Leadership</div>
+            <h2 className="text-4xl font-serif mb-4">The Leadership</h2>
             <p className="text-gray-500">
-              Founders & core leadership shaping our design language.
+              Founders &amp; core leadership shaping our design language.
             </p>
           </div>
         </Reveal>
 
         <div className="grid md:grid-cols-3 gap-12">
-          {(leadership.length > 0 ? leadership : members).slice(0, 3).map((member, i) => (
+          {displayedLeadership.map((member, i) => (
             <Reveal key={member.id || i} delay={i * 0.1}>
               <div className="group text-center">
                 <div className="relative w-64 h-64 mx-auto mb-8 overflow-hidden rounded-full border-4 border-white shadow-xl">
@@ -737,18 +696,12 @@ const LeadershipSection: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                     loading="lazy"
                     decoding="async"
-                    onError={(e) => {
-                      const img = e.currentTarget;
-                      img.onerror = null;
-                      img.src = `data:image/svg+xml;utf8,${encodeURIComponent(
-                        `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='#18181B'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='96' fill='#B08D57'>${(member?.name || 'Y').charAt(0)}</text></svg>`
-                      )}`;
-                    }}
+                    onError={(e) => handleAvatarError(e, member?.name || "Y", 256, 96)}
                   />
                 </div>
-                <div className="text-xl font-bold text-[#0B1220]">
+                <h3 className="text-xl font-bold text-[#0B1220]">
                   {member.name}
-                </div>
+                </h3>
                 <p className="text-xs uppercase tracking-widest text-[#E6B566] font-bold mt-1 mb-4">
                   {member.role}
                 </p>
@@ -762,12 +715,15 @@ const LeadershipSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 // Insights & Knowledge Center Section for SEO & Client Education
-const InsightsSection: React.FC = () => {
+const InsightsSection: React.FC = React.memo(() => {
   const { posts } = useBlogPosts();
-  const guides = (posts && posts.length > 0) ? posts.slice(0, 3) : defaultBlogs.slice(0, 3);
+  const guides = useMemo(
+    () => (posts && posts.length > 0 ? posts : defaultBlogs).slice(0, 3),
+    [posts]
+  );
 
   return (
     <section className="pt-16 pb-20 bg-[#070D18] text-white border-t border-white/10 relative overflow-hidden">
@@ -802,9 +758,12 @@ const InsightsSection: React.FC = () => {
                 <img
                   src={urlFor(g.coverImage) || "/assets/services/interior-design3.jpg"}
                   alt={g.title}
+                  width="640"
+                  height="400"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   onError={handleImgError}
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#070D18]/80 backdrop-blur-md border border-white/10 text-[10px] font-bold text-[#E6B566] uppercase tracking-wider">
                   {g.category}
@@ -835,23 +794,23 @@ const InsightsSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 const Home: React.FC = () => {
+  const { projects } = useProjects();
+
   return (
     <>
       <SEOHead seo={pageSEO.home} />
       <div className="min-h-screen bg-[#FAFAFB] text-[#0B1220] font-sans selection:bg-[#E6B566] selection:text-white">
-        <main>
-          <Hero />
-          <About />
-          <TransformationSection />
-          <ProjectsSection />
-          <ServicesSection />
-          <TestimonialsSection />
-          <LeadershipSection />
-          <InsightsSection />
-        </main>
+        <Hero projects={projects} />
+        <About projects={projects} />
+        <TransformationSection />
+        <ProjectsSection projects={projects} />
+        <ServicesSection />
+        <TestimonialsSection />
+        <LeadershipSection />
+        <InsightsSection />
         {/* FooterSection intentionally not rendered on the Home page per request */}
       </div>
     </>
