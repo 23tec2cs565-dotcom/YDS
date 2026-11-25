@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { MapPin, ArrowUpRight, User, IndianRupee, Play } from "lucide-react";
+import { MapPin, ArrowUpRight, User, IndianRupee } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Project } from "../data/projects";
 import { getCategoryStyles } from "../utils/categoryStyles";
 import { safeCapture } from "../utils/analytics";
+import { handleImgError } from "../utils/imageFallback";
 
 interface ProjectCardProps {
   project: Project;
@@ -21,7 +22,7 @@ const buildSrcSet = (src: string) => {
   ].join(", ");
 };
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
+const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, onClick }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const imgSrc =
@@ -29,11 +30,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
     (Array.isArray(project.images) && project.images.length > 0
       ? project.images[0]
       : "/assets/Placeholder/placeholder.jpg");
-
-  const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    const img = e.currentTarget;
-    img.src = "/assets/Placeholder/placeholder.jpg";
-  };
 
   const projectSlug = project.slug || project.id;
 
@@ -163,6 +159,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
     </motion.div>
     </Link>
   );
-};
+});
 
 export default ProjectCard;

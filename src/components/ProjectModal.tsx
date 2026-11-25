@@ -12,8 +12,7 @@ import {
   Play, 
   IndianRupee, 
   Image as ImageIcon, 
-  Film,
-  Sparkles
+  Film
 } from "lucide-react";
 import type { Project } from "../data/projects";
 
@@ -81,13 +80,14 @@ export default function ProjectModal({ project, isOpen, onClose, related = [], o
   }, [onClose]);
 
   // Reset indices on project change
+  const projectId = project?.id;
   useEffect(() => {
-    if (project) {
+    if (projectId) {
       setActivePhotoIndex(0);
       setActiveVideoIndex(0);
       setActiveTab("photos");
     }
-  }, [project?.id]);
+  }, [projectId]);
 
   // Open/close side effects: keyboard, focus trapping, body scroll, restore focus
   useEffect(() => {

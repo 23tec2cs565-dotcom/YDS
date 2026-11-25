@@ -62,7 +62,7 @@ export const SlingRingPortal: React.FC<SlingRingPortalProps> = ({
 
     // Sling-ring tracing state (Kamar-Taj circular conjuring gesture)
     let traceProgress = activeRef.current ? 1 : 0; // 0 to 1
-    let traceAngleStart = -Math.PI / 2; // Begin trace from the top
+    const traceAngleStart = -Math.PI / 2; // Begin trace from the top
     let portalAlpha = activeRef.current ? 1 : 0;
     let headAngle = traceAngleStart;
     let secondaryAngle = headAngle + Math.PI;

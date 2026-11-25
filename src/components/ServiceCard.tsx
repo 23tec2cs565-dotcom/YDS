@@ -11,6 +11,7 @@ import {
   Eye,
 } from "lucide-react";
 import { Service } from "../data/services";
+import { handleImgError } from "../utils/imageFallback";
 
 interface ServiceCardProps {
   service: Service;
@@ -29,19 +30,13 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: 
   Eye,
 };
 
-const ServiceCard: React.FC<ServiceCardProps> = ({
+const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   service,
   variant = "default",
   reverse = false,
 }) => {
   // ✅ Guaranteed icon (never blank)
   const ServiceIcon = ICON_MAP[service.icon] ?? LayoutDashboard;
-
-  const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    const img = e.currentTarget as HTMLImageElement;
-    img.onerror = null;
-    img.src = "/assets/Placeholder/placeholder.jpg";
-  };
 
   /* =========================
      SERVICE PAGE CARD
@@ -168,6 +163,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       </div>
     </article>
   );
-};
+});
 
 export default ServiceCard;

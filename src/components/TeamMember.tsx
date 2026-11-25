@@ -1,5 +1,5 @@
 // src/components/TeamMember.tsx
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { Mail, Phone, MessageCircle, Linkedin, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 import { TeamMember as TeamMemberType } from "../data/team";
@@ -9,36 +9,38 @@ interface TeamMemberProps {
   index?: number;
 }
 
-const TeamMember: React.FC<TeamMemberProps> = ({ member, index = 0 }) => {
-  const buildSrcSet = () => {
+const IMAGE_SIZES = "(max-width:600px) 480px, (max-width:1024px) 768px, 1024px";
+
+const TeamMember: React.FC<TeamMemberProps> = React.memo(({ member, index = 0 }) => {
+  const srcSet = useMemo(() => {
     const parts: string[] = [];
     if (member.image480) parts.push(`${member.image480} 480w`);
     if (member.image768) parts.push(`${member.image768} 768w`);
     if (member.image) parts.push(`${member.image} 1024w`);
     return parts.join(", ");
-  };
+  }, [member.image480, member.image768, member.image]);
 
-  const srcSet = buildSrcSet();
-  const sizes = "(max-width:600px) 480px, (max-width:1024px) 768px, 1024px";
+  const sizes = IMAGE_SIZES;
 
-  const initials =
-    (member.name || "")
-      .split(" ")
-      .map((p) => p[0])
-      .filter(Boolean)
-      .slice(0, 2)
-      .join("")
-      .toUpperCase() || "U";
-
-  const placeholderSvg = encodeURIComponent(
-    `<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'><rect width='100%' height='100%' fill='#1a1a2e'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, system-ui, sans-serif' font-size='180' fill='#E6B566'>${initials}</text></svg>`
-  );
-  const placeholderDataUrl = `data:image/svg+xml;utf8,${placeholderSvg}`;
+  const placeholderDataUrl = useMemo(() => {
+    const initials =
+      (member.name || "")
+        .split(" ")
+        .map((p) => p[0])
+        .filter(Boolean)
+        .slice(0, 2)
+        .join("")
+        .toUpperCase() || "U";
+    const placeholderSvg = encodeURIComponent(
+      `<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'><rect width='100%' height='100%' fill='#1a1a2e'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, system-ui, sans-serif' font-size='180' fill='#E6B566'>${initials}</text></svg>`
+    );
+    return `data:image/svg+xml;utf8,${placeholderSvg}`;
+  }, [member.name]);
 
   const [imgSrc, setImgSrc] = useState<string>(member.image || placeholderDataUrl);
-  const onImgError = () => {
-    if (imgSrc !== placeholderDataUrl) setImgSrc(placeholderDataUrl);
-  };
+  const onImgError = useCallback(() => {
+    setImgSrc((prev) => (prev !== placeholderDataUrl ? placeholderDataUrl : prev));
+  }, [placeholderDataUrl]);
 
   const whatsappDigits = member.contact?.whatsapp
     ? member.contact.whatsapp.replace(/[^0-9+]/g, "")
@@ -189,6 +191,6 @@ const TeamMember: React.FC<TeamMemberProps> = ({ member, index = 0 }) => {
       </div>
     </motion.article>
   );
-};
+});
 
 export default TeamMember;
