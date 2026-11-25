@@ -13,18 +13,9 @@ import {
   BookOpen,
 } from "lucide-react";
 import SEOHead from "../components/SEOHead";
-import { pageSEO } from "../utils/seo";
 import { services } from "../data/services";
 import { projects as ALL_PROJECTS } from "../data/projects";
-
-/* Helper: graceful image fallback */
-function handleImgError(ev: React.SyntheticEvent<HTMLImageElement>) {
-  const el = ev.currentTarget;
-  if (!el.dataset.fallback) {
-    el.dataset.fallback = "1";
-    el.src = "/assets/Placeholder/placeholder-rect.jpg"; // keep or replace with your optimized fallback
-  }
-}
+import { handleImgError } from "../utils/imageFallback";
 
 const SERVICE_GUIDE_MAP: Record<string, { slug: string; title: string; subtitle: string; category: string }> = {
   "interior-design": {
@@ -112,7 +103,7 @@ const ServiceDetails: React.FC = () => {
         }}
       />
 
-      <main className="bg-white min-h-screen pt-20">
+      <div className="bg-white min-h-screen pt-20">
         {/* HERO */}
         <header className="relative h-[60vh] min-h-[420px] bg-[#0F0F10] text-white flex items-end" role="region" aria-label={`${service.title} hero`}>
           <div className="absolute inset-0">
@@ -123,7 +114,8 @@ const ServiceDetails: React.FC = () => {
               width="1920"
               height="800"
               className="w-full h-full object-cover opacity-60"
-              loading="lazy"
+              loading="eager"
+              fetchPriority="high"
               decoding="async"
               onError={handleImgError}
             />
@@ -364,7 +356,7 @@ const ServiceDetails: React.FC = () => {
             </div>
           </section>
         )}
-      </main>
+      </div>
     </>
   );
 };

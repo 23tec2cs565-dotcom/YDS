@@ -16,16 +16,7 @@ import {
   Compass,
   Award
 } from "lucide-react";
-
-// --- HELPERS ---
-function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
-  const img = e.currentTarget;
-  if (!img.dataset.fallback) {
-    img.dataset.fallback = "1";
-    img.src = "/assets/Placeholder/Mock-9.avif"; 
-    img.alt = "Younick studio image fallback";
-  }
-}
+import { handleImgError } from "../utils/imageFallback";
 
 // --- DATA STRUCTURES ---
 const CORE_VALUES = [
@@ -219,15 +210,8 @@ const Career: React.FC = () => {
     e.preventDefault();
     if (validate()) {
       setStatus("sending");
-      
-      const sanitized = {
-        name: formValues.name.replace(/<[^>]*>/g, "").trim(),
-        email: formValues.email.replace(/<[^>]*>/g, "").trim(),
-        portfolio: formValues.portfolio.replace(/<[^>]*>/g, "").trim(),
-        message: formValues.message.replace(/<[^>]*>/g, "").trim()
-      };
-      
-      // Simulate form submission using sanitized data
+
+      // Simulate form submission
       setTimeout(() => {
         setStatus("success");
         setTimeout(() => {

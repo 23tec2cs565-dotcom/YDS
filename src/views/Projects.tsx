@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo, useCallback, useRef } from "react"
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Search, Grid, List, Filter, SlidersHorizontal, ChevronDown, X, MapPin, Calendar, ArrowUpRight } from "lucide-react";
-import { projects as defaultProjects, type Project } from "../data/projects";
+import { type Project } from "../data/projects";
 import { useProjects } from "../hooks/useSanityData";
 import ProjectCard from "../components/ProjectCard";
 const ProjectModal = React.lazy(() => import('../components/ProjectModal'));
@@ -12,20 +12,12 @@ import SEOHead from "../components/SEOHead";
 import { safeCapture } from "../utils/analytics";
 import { getSimilarProjects } from "../utils/recommendation";
 import { getCategoryStyles } from "../utils/categoryStyles";
+import { handleImgError } from "../utils/imageFallback";
 const HeroScene3D = React.lazy(() => import('../components/HeroScene3D'));
 
 /* ── helpers ────────────────────────────────────── */
 const slugify = (s?: string) =>
   (s || "").toString().trim().toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
-
-const handleImgError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-  const img = e.currentTarget;
-  if (!img.dataset.fallback) {
-    img.dataset.fallback = "1";
-    img.src = "/assets/Placeholder/Mock-9.avif"; 
-    img.alt = "Younick studio image fallback";
-  }
-};
 
 const parseDateScore = (d?: string) => {
   if (!d) return 0;
@@ -46,7 +38,7 @@ const Reveal: React.FC<{
   delay?: number;
   className?: string;
   once?: boolean;
-}> = ({ children, delay = 0, className = "", once = true }) => (
+}> = React.memo(({ children, delay = 0, className = "", once = true }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -56,10 +48,10 @@ const Reveal: React.FC<{
   >
     {children}
   </motion.div>
-);
+));
 
 /* ── Animated counter ───────────────────────────── */
-const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
+const Counter: React.FC<{ value: number; label: string; suffix?: string }> = React.memo(({
   value,
   label,
   suffix = "",
@@ -69,6 +61,7 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
   const started = useRef(false);
 
   useEffect(() => {
+    let rafId = 0;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
@@ -79,15 +72,18 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
             const t = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - t, 3);
             setCount(Math.round(eased * value));
-            if (t < 1) requestAnimationFrame(step);
+            if (t < 1) rafId = requestAnimationFrame(step);
           };
-          requestAnimationFrame(step);
+          rafId = requestAnimationFrame(step);
         }
       },
       { threshold: 0.5 }
     );
     if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [value]);
 
   return (
@@ -99,7 +95,7 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
       <div className="text-xs uppercase tracking-widest text-white/50 mt-1">{label}</div>
     </div>
   );
-};
+});
 
 /* ── Featured bento card ────────────────────────── */
 const BentoCard: React.FC<{

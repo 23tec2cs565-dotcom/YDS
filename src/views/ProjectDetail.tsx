@@ -4,7 +4,7 @@
 
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { useParams, useRouter, notFound } from "next/navigation";
+import { useParams, notFound } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
@@ -25,19 +25,11 @@ import {
   X
 } from "lucide-react";
 import SEOHead from "../components/SEOHead";
-import { projects as defaultProjects, type Project } from "../data/projects";
+import { projects as defaultProjects } from "../data/projects";
 import { useProjects } from "../hooks/useSanityData";
 import { safeCapture } from "../utils/analytics";
 import { getProjectSeoTitle } from "../utils/seo";
-
-function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
-  const img = e.currentTarget;
-  if (!img.dataset.fallback) {
-    img.dataset.fallback = "1";
-    img.src = "/assets/Placeholder/placeholder.jpg";
-    img.alt = "Younick studio image fallback";
-  }
-}
+import { handleImgError } from "../utils/imageFallback";
 
 const slugify = (s?: string) =>
   (s || "").toString().trim().toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
@@ -45,7 +37,6 @@ const slugify = (s?: string) =>
 const ProjectDetail: React.FC = () => {
   const params = useParams();
   const slug = params?.slug as string;
-  const router = useRouter();
   const { projects: sanityProjects, loading } = useProjects();
 
   // Combine Sanity + local storage + default projects

@@ -4,7 +4,6 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   BookOpen,
   Calendar,
@@ -12,18 +11,14 @@ import {
   Search,
   ArrowRight,
   Sparkles,
-  Tag,
   ChevronRight,
-  ShieldCheck,
   Building,
   Home,
   Palette,
   Compass,
-  CheckCircle2,
 } from "lucide-react";
 import SEOHead from "../components/SEOHead";
 import { useBlogPosts } from "../hooks/useSanityData";
-import { type BlogPost } from "../data/blogs";
 import { urlFor } from "../lib/sanity";
 
 const CATEGORIES = [
@@ -145,7 +140,7 @@ const CATEGORY_THEMES: Record<string, {
 };
 
 const Blog: React.FC = () => {
-  const { posts, loading } = useBlogPosts();
+  const { posts } = useBlogPosts();
   const [selectedCategory, setSelectedCategory] = useState<string>("All Guides");
   const [searchQuery, setSearchQuery] = useState<string>("");
 

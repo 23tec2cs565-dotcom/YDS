@@ -1,7 +1,7 @@
 "use client";
 // src/pages/OurTeam.tsx
 // Consolidated, High-Impact Team Page
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import {
@@ -20,22 +20,60 @@ import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
 import HeroGradientMesh from "../components/HeroGradientMesh";
 import { YEARS_OF_EXPERIENCE } from "../utils/constants";
+import { handleImgError } from "../utils/imageFallback";
 
-function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
-  const img = e.currentTarget;
-  if (!img.dataset.fallback) {
-    img.dataset.fallback = "1";
-    img.src = "/assets/Placeholder/Mock-4.jpg"; 
-    img.alt = "Younick studio image fallback";
-  }
-}
+const STUDIO_VALUES = [
+  {
+    icon: Heart,
+    title: "Client First",
+    desc: "Every design decision is rooted in understanding our client's needs, lifestyle, and aspirations.",
+  },
+  {
+    icon: Sparkles,
+    title: "Craftsmanship",
+    desc: "Meticulous attention to detail from initial sketch through to flawless on-site execution.",
+  },
+  {
+    icon: Leaf,
+    title: "Sustainability",
+    desc: "Responsibly sourced, long-lasting materials that honor both beauty and the environment.",
+  },
+  {
+    icon: Award,
+    title: "Timeless Quality",
+    desc: "Built to endure with refined materials, precision detailing, and architectural elegance.",
+  },
+];
+
+const TEAM_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "Our Team | Younick Design Studio",
+  description: "Principal architects, interior designers, and turnkey civil engineers at Younick Design Studio.",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: defaultTeam.map((member, idx) => ({
+      "@type": "Person",
+      position: idx + 1,
+      name: member.name,
+      jobTitle: member.role,
+      description: member.description,
+      ...(member.social?.linkedin ? { sameAs: [member.social.linkedin] } : {}),
+      worksFor: {
+        "@type": "Organization",
+        name: "Younick Design Studio",
+        url: "https://studioyounick.vercel.app",
+      },
+    })),
+  },
+};
 
 /* ── Reveal wrapper ─────────────────────────────── */
 const Reveal: React.FC<{
   children: React.ReactNode;
   delay?: number;
   className?: string;
-}> = ({ children, delay = 0, className = "" }) => (
+}> = React.memo(({ children, delay = 0, className = "" }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -45,10 +83,10 @@ const Reveal: React.FC<{
   >
     {children}
   </motion.div>
-);
+));
 
 /* ── Animated counter ───────────────────────────── */
-const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
+const Counter: React.FC<{ value: number; label: string; suffix?: string }> = React.memo(({
   value,
   label,
   suffix = "",
@@ -58,6 +96,7 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
   const started = useRef(false);
 
   useEffect(() => {
+    let rafId = 0;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
@@ -68,15 +107,18 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
             const t = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - t, 3);
             setCount(Math.round(eased * value));
-            if (t < 1) requestAnimationFrame(step);
+            if (t < 1) rafId = requestAnimationFrame(step);
           };
-          requestAnimationFrame(step);
+          rafId = requestAnimationFrame(step);
         }
       },
       { threshold: 0.5 }
     );
     if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [value]);
 
   return (
@@ -88,7 +130,7 @@ const Counter: React.FC<{ value: number; label: string; suffix?: string }> = ({
       <div className="text-xs uppercase tracking-widest text-white/50 mt-1">{label}</div>
     </div>
   );
-};
+});
 
 /* ══════════════════════════════════════════════════
    MAIN TEAM PAGE
@@ -128,55 +170,14 @@ const OurTeam: React.FC = () => {
   });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const values = [
-    {
-      icon: Heart,
-      title: "Client First",
-      desc: "Every design decision is rooted in understanding our client's needs, lifestyle, and aspirations.",
-    },
-    {
-      icon: Sparkles,
-      title: "Craftsmanship",
-      desc: "Meticulous attention to detail from initial sketch through to flawless on-site execution.",
-    },
-    {
-      icon: Leaf,
-      title: "Sustainability",
-      desc: "Responsibly sourced, long-lasting materials that honor both beauty and the environment.",
-    },
-    {
-      icon: Award,
-      title: "Timeless Quality",
-      desc: "Built to endure with refined materials, precision detailing, and architectural elegance.",
-    },
-  ];
-
-  const teamSchema = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: "Our Team | Younick Design Studio",
-    description: "Principal architects, interior designers, and turnkey civil engineers at Younick Design Studio.",
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: defaultTeam.map((member, idx) => ({
-        "@type": "Person",
-        position: idx + 1,
-        name: member.name,
-        jobTitle: member.role,
-        description: member.description,
-        ...(member.social?.linkedin ? { sameAs: [member.social.linkedin] } : {}),
-        worksFor: {
-          "@type": "Organization",
-          name: "Younick Design Studio",
-          url: "https://studioyounick.vercel.app",
-        },
-      })),
-    },
-  };
+  const activeTeam = useMemo(
+    () => (teamMembers && teamMembers.length > 0 ? teamMembers : defaultTeam),
+    [teamMembers]
+  );
 
   return (
     <>
-      <SEOHead seo={pageSEO.team} schema={teamSchema} />
+      <SEOHead seo={pageSEO.team} schema={TEAM_SCHEMA} />
 
       {/* ═══════════════════════════════════════════
           SECTION 1: HERO & VISION (Consolidated)
@@ -227,12 +228,12 @@ const OurTeam: React.FC = () => {
         </motion.div>
       </header>
 
-      <main className="bg-gradient-to-b from-[#F8F7F4] via-white to-[#F8F4EE] min-h-screen">
+      <div className="bg-gradient-to-b from-[#F8F7F4] via-white to-[#F8F4EE] min-h-screen">
         {/* Values Row — 2 columns x 2 rows on mobile, 4 columns on desktop */}
         <section className="max-w-[1680px] mx-auto px-4 sm:px-6 py-10 sm:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
-            {values.map((v, idx) => (
-              <Reveal key={idx} delay={idx * 0.1}>
+            {STUDIO_VALUES.map((v, idx) => (
+              <Reveal key={v.title} delay={idx * 0.1}>
                 <div className="h-full relative group bg-white/70 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
                   <div>
                     <div className="h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center rounded-lg bg-[#0B1220] text-[#E6B566] mb-3 group-hover:scale-105 transition-transform duration-300">
@@ -269,7 +270,7 @@ const OurTeam: React.FC = () => {
 
           {/* Unified Team Grid (All members on a single cohesive list) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamMembers.map((member, idx) => (
+            {activeTeam.map((member, idx) => (
               <TeamMember key={member.id} member={member} index={idx} />
             ))}
           </div>
@@ -398,7 +399,7 @@ const OurTeam: React.FC = () => {
               </div>
             </div>
           </section>
-      </main>
+      </div>
     </>
   );
 };

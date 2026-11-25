@@ -3,29 +3,23 @@
 // Dedicated Architectural Guide & Knowledge Center Article Page for Younick Design Studio
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { useParams, useRouter, notFound } from "next/navigation";
+import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Calendar,
   Clock,
   ChevronRight,
   Share2,
   Check,
-  ArrowLeft,
   ArrowRight,
   HelpCircle,
   ChevronDown,
   MessageCircle,
-  Building,
   ShieldCheck,
-  CheckCircle2,
   Tag,
-  BookOpen,
 } from "lucide-react";
 import SEOHead from "../components/SEOHead";
 import { useBlogPosts } from "../hooks/useSanityData";
-import { blogs as defaultBlogs, type BlogPost } from "../data/blogs";
 import { urlFor } from "../lib/sanity";
 
 // Architectural Category Themes with multi-palette styling

@@ -11,21 +11,11 @@ import {
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
 import { projects } from "../data/projects";
-
-
-
-function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
-  const img = e.currentTarget;
-  if (!img.dataset.fallback) {
-    img.dataset.fallback = "1";
-    img.src = "/assets/Placeholder/Mock-9.avif"; 
-    img.alt = "Younick studio image fallback";
-  }
-}
+import { handleImgError } from "../utils/imageFallback";
 
 // --- COMPONENTS ---
 
-const Marquee = () => (
+const Marquee = React.memo(() => (
   <div className="bg-[#18181B] text-[#E6B566] py-4 overflow-hidden border-y border-[#E6B566]/20">
     <div className="flex whitespace-nowrap animate-marquee">
       {[...Array(4)].map((_, i) => (
@@ -44,7 +34,7 @@ const Marquee = () => (
       ))}
     </div>
   </div>
-);
+));
 
 
 const blueprintSteps = [
@@ -102,25 +92,12 @@ const blueprintSteps = [
   }
 ];
 
-const AboutContent = () => {
+const About: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
   return (
     <>
       <SEOHead seo={pageSEO.about} />
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation: scroll 30s linear infinite;
-        }
-        .font-mono-num {
-          font-variant-numeric: tabular-nums;
-        }
-      `}</style>
-
-      <main className="bg-white min-h-screen">
+      <div className="bg-white min-h-screen">
         
         {/* --- HERO SECTION: EDITORIAL STYLE --- */}
         <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-20 px-5 sm:px-6 overflow-hidden min-h-[65vh] sm:min-h-[90vh] flex flex-col justify-center">
@@ -484,14 +461,8 @@ const AboutContent = () => {
           </div>
         </section>
 
-      </main>
+      </div>
     </>
-  );
-};
-
-const About: React.FC = () => {
-  return (
-    <AboutContent />
   );
 };
 

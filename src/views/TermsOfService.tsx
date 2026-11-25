@@ -230,7 +230,7 @@ export default function TermsOfService() {
   };
 
   return (
-    <main className="min-h-screen bg-[#070D18] pt-24 pb-20">
+    <div className="min-h-screen bg-[#070D18] pt-24 pb-20">
       <SEOHead seo={pageSEO.terms} />
       
       <div className="container mx-auto px-4 md:px-6 max-w-[1680px]">
@@ -353,6 +353,6 @@ export default function TermsOfService() {
       >
         <ArrowUp className="w-6 h-6" />
       </button>
-    </main>
+    </div>
   );
 }

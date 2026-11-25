@@ -42,21 +42,10 @@ const ESTIMATOR_ICON_MAP: Record<string, React.ComponentType<{ size?: number }>>
   HelpCircle,
   Home,
 };
-import { services as defaultServices } from "../data/services";
 import { useServices } from "../hooks/useSanityData";
 import SEOHead from "../components/SEOHead";
 import { pageSEO } from "../utils/seo";
-
-function handleImgError(e: React.SyntheticEvent<HTMLImageElement>) {
-  const img = e.currentTarget;
-  if (!img.dataset.fallback) {
-    img.dataset.fallback = "1";
-    img.src = "/assets/Placeholder/Mock-9.avif"; 
-    img.alt = "Younick studio image fallback";
-  }
-}
-
-
+import { handleImgError } from "../utils/imageFallback";
 import { projects } from "../data/projects";
 import { YEARS_OF_EXPERIENCE } from "../utils/constants";
 
@@ -363,7 +352,7 @@ const ServicesPage: React.FC = () => {
   </div>
 </header>
 
-<main className="bg-white">
+<div className="bg-white">
         {/* Stats */}
         <div className="bg-[#0F0F10] border-t border-white/10 ">
           <div className="max-w-[1680px] mx-auto px-6 py-12">
@@ -947,7 +936,7 @@ const ServicesPage: React.FC = () => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 };
